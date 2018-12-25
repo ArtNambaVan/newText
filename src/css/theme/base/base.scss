@@ -1,0 +1,76 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body {
+    box-sizing: border-box;
+    background-color: $colorWhite;
+}
+
+.cims {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    outline: none;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    padding-top: 0;
+}
+
+#wrapper {
+    padding-top: 0;
+}
+
+.page-link:focus {
+    box-shadow: none;
+}
+
+main {
+    flex: 1 1 0;
+}
+
+div[class^="col-"] {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+dl,
+ol,
+ul,
+label {
+    margin-bottom: 0;
+}
+
+a {
+    color: $primaryColor;
+}
+
+@media (min-width: 1680px) {
+    .container {
+        max-width: 1600px;
+    }
+}
+
+.container-fluid {
+
+    @media (min-width: 992px) {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    @media (min-width: 1200px) {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    @media (min-width: 1680px) {
+        padding-left: 135px;
+        padding-right: 135px;
+    }
+}

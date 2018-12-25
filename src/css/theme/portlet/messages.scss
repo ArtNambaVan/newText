@@ -1,0 +1,527 @@
+.messages-portlet {
+    display: flex;
+}
+
+.filters-panel {
+    position: relative;
+    flex: 0 0 500px;
+    z-index: 2;
+    transition: transform 0.4s;
+    border: 1px solid black;
+
+    &__btn {
+        position: relative;
+        top: 0;
+        left: 600px;
+        bottom: 0;
+        z-index: 100;
+        width: 70px;
+        background-color: $primaryColor;
+        cursor: pointer;
+        transition: background-color 200ms linear;
+
+        &:hover {
+            background-color: lighten($primaryColor,2%);
+        }
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            display: inline-block;
+            width: 40px;
+            font-size: 14px;
+            transform: translateY(-50%);
+            color: $colorWhite;
+
+            &::after {
+                content: '\f105';
+                position: absolute;
+                right: -18px;
+                top: 50%;
+                display: inline-block;
+                font-family: FontAwesome;
+                font-size: 2rem;
+                font-weight: bold;
+                color: $thirdlyColor;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    &__body {
+        padding: 0;
+    }
+
+    &--open {
+        transform: translateX(0);
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        .filters-panel__btn {
+            position: absolute;
+            top: 0;
+            left: auto;
+            right: 0;
+            bottom: 0;
+            width: 30px;
+            background-color: transparent;
+
+            &:hover {
+                background-color: #dce2e8;
+            }
+
+            span {
+                font-size: 0;
+
+                &::after {
+                    content: "\f104";
+                    right: 30px;
+                }
+            }
+        }
+    }
+
+    &--open + .messages {
+        @media (min-width: 1200px) {
+            padding-left: 590px;
+        }
+
+        @media (min-width: 1680px) {
+            padding-left: 500px;
+        }
+    }
+}
+
+.filter-category {
+    border-bottom: 1px solid #000;
+    padding: 15px;
+
+    &__head {
+        display: block;
+        position: relative;
+
+        &,
+        &:hover {
+            color: $primaryColor;
+            text-decoration: none;
+        }
+    }
+
+    &__title {
+        font-size: 16px;
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    &__body {
+        //padding-top: 5px;
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    &__item {
+        display: flex;
+        margin-top: 0.8rem;
+    }
+
+    &__label {
+        flex: 0 0 30%;
+        text-align: right;
+        padding-top: 0.3rem;
+        padding-right: 0.5rem;
+        align-items: center;
+        display: block;
+    }
+
+    &__control {
+        flex: 1;
+    }
+}
+
+.filters-group {
+    @include padding(10px, null, 10px, null);
+}
+
+.panel {
+    background-color: transparent;
+}
+
+.messages {
+    padding-left: 2rem;
+    transition: all 0.4s;
+
+    @media (min-width: 1200px) {
+        padding-left: 60px;
+    }
+
+    @media (min-width: 1680px) {
+        padding-left: 0;
+    }
+}
+
+.sheet-subtitle {
+    display: block;
+    padding-bottom: 0.35rem;
+    padding-top: 0.35rem;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: $primaryColor;
+    text-transform: none;
+    border: none;
+
+    &.collapsed {
+        border-bottom: 1px solid $primaryColor;
+    }
+}
+
+.tree-heading {
+    &,
+    &:link,
+    &:hover {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        border: 1px solid $primaryColor;
+        border-radius: 0.25rem;
+        text-decoration: none;
+    }
+}
+
+.category {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .jstree {
+        padding-top: 10px;
+        max-height: 390px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        box-shadow: 0 1px 10px rgba($color: #000,$alpha: 0.3);
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    .jstree-default .jstree-themeicon {
+        display: none;
+    }
+
+    &__rating {
+        &::after {
+            content: "R";
+            color: $colorGray;
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 12px;
+        }
+    }
+
+    &__list {
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        & + & {
+            border-top: 1px solid $borderColor;
+        }
+    }
+
+    &__item {
+        & + & {
+            margin-top: 0.8rem;
+        }
+    }
+
+    &__name {
+        text-align: left;
+        color: #747474;
+
+        &::before {
+            content: "\f105";
+            font-family: FontAwesome;
+            margin-right: 5px;
+            color: $primaryColor;
+        }
+    }
+
+    &__classification {
+        display: inline-block;
+        margin-right: 7px;
+
+        &--neutral {
+            label {
+                background: url(../images/emotion-neutral.png), transparent;
+                background-size: cover;
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+            }
+
+            & input:checked ~ label {
+                background: url(../images/emotion-neutral.png), #d0e9fa;
+                background-size: cover;
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+            }
+        }
+
+        &--negative {
+            label {
+                background: url(../images/emotion-angry.png), transparent;
+                background-size: cover;
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+            }
+
+            & input:checked ~ label {
+                background: url(../images/emotion-angry.png), #d0e9fa;
+                background-size: cover;
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+            }
+        }
+
+        input {
+            display: none;
+        }
+    }
+
+    &__value {
+        .subtitle {
+            position: absolute;
+            top: 8px;
+            left: -21px;
+        }
+    }
+}
+
+.delete-category {
+    &,
+    &:link,
+    &:hover {
+        display: inline-block;
+        text-decoration: none;
+    }
+}
+
+.category-wrapper {
+    margin-left: -30px;
+    padding-left: 30px;
+    padding-right: 15px;
+    background-color: $colorWhite;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #707070;
+    vertical-align: middle;
+}
+
+.messages-list {
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.panel-close {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 20px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.messages-settings {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 1rem;
+
+    &__pagination {
+        margin-right: auto;
+    }
+
+    &__translation {
+        align-self: flex-end;
+        margin-right: 3rem;
+    }
+}
+
+.messages-container {
+    margin-top: 4rem;
+}
+
+.messages-heading {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $borderColor;
+}
+
+.form-group + .panel,
+.panel + .form-group {
+    margin-top: 1.6rem;
+}
+
+.bootstrap-select .dropdown-toggle::before {
+    content: "\f107";
+    font-family: FontAwesome;
+    font-weight: bold;
+}
+
+.bootstrap-select > .dropdown-toggle {
+    padding: 0.375rem 0.75rem;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid $borderColor;
+}
+
+.message-item {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    &__heading {
+        font-size: 19px;
+        color: $primaryColor;
+        text-transform: uppercase;
+        margin-right: 5rem;
+    }
+
+    &__text {
+        margin-top: 0.8rem;
+        font-size: 18px;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__translation {
+        border-top: 1px solid $borderColor;
+        padding-top: 0.8rem;
+        position: relative;
+
+        .label-success {
+            position: absolute;
+            top: 0.8rem;
+            right: 0;
+        }
+    }
+
+    & + & {
+        border-top: 1px solid $borderColor;
+    }
+}
+
+.access {
+    list-style-type: none;
+    margin-top: auto;
+
+    &__item {
+        color: gray;
+
+        & + & {
+            margin-top: 0.5rem;
+        }
+    }
+
+    i {
+        margin-right: 10px;
+    }
+
+    .access__name {
+        color: $colorGray;
+
+        &::before {
+            margin-right: 0.8rem;
+            display: inline-block;
+        }
+
+        &:hover {
+            &::before {
+                text-decoration: none;
+            }
+        }
+
+        &--url-name {
+            &::before {
+                content: "\f015";
+                font-family: FontAwesome;
+            }
+        }
+
+        &--url-link::before {
+            content: "\f0ac";
+            font-family: FontAwesome;
+        }
+
+        &--time::before {
+            content: "\f073";
+            font-family: FontAwesome;
+        }
+
+        &--views::before {
+            content: "\f0c0";
+            font-family: FontAwesome;
+        }
+    }
+}
+
+.label-success {
+    background-color: rgba($sucessColor,0.3);
+    border-color: rgba($sucessColor,0.3);
+    color: $sucessColor;
+}
+
+.open-jstree {
+    width: 20px;
+    height: 25px;
+    padding-top: 0.25rem;
+    padding-left: 0.4rem;
+    cursor: pointer;
+    color: $thirdlyColor;
+}
+
+i {
+    //color: $thirdlyColor;
+}
+
+.radio-group {
+    display: flex;
+}
+
+.inputGroup {
+    background-color: #fff;
+    display: inline-block;
+    position: relative;
+
+    label {
+        padding: 0.2rem 0.5rem;
+        width: 100%;
+        display: block;
+        text-align: left;
+        color: #3C454C;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+        transition: color 200ms ease-in;
+        overflow: hidden;
+        border: 1px solid $primaryColor;
+    }
+
+    input:checked ~ label {
+        color: #fff;
+        background: $primaryColor;
+    }
+
+    input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+}
