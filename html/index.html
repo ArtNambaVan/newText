@@ -83,12 +83,11 @@
 
                     <div class="messages-portlet">
                         <div class="filters-panel filters-panel--open" id="filtersPanel">
-                            
+
                             <div class="filters-panel__body">
                                 <form>
-
-                                    <div class="filter-category filter-category--panel">
-
+                                    
+                                    <div class="filter-category">
                                         <a class="filter-category__head collapse-icon" aria-controls="textFilterBody"
                                         aria-expanded="true" data-toggle="collapse" href="#textFilterBody" id="textFilter" role="tab">
                                             <span class="filter-category__title">text & period filter</span>
@@ -102,11 +101,10 @@
                                             </span>
                                         </a>
                                         <div class="filter-category__body collapse show" aria-labelledby="textFilter" id="textFilterBody" role="tabpanel">
-                                            <div class="row no-gutters filter-category__item">
+                                            <div class="[ row no-gutters ] filter-category__item">
                                                 <div class="col-3">
                                                     <label class="filter-category__label">Text Search</label>
                                                 </div>
-                                                
                                                 <div class="col-8">
                                                     <select class="filter-category__control">
                                                         <option>1</option>
@@ -116,7 +114,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row no-gutters filter-category__item">
+                                            <div class="[ row no-gutters ] filter-category__item">
                                                 <div class="col-3">
                                                     <label class="filter-category__label">Text Search</label>
                                                 </div>
@@ -127,8 +125,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
 
-                                    <div class="filter-category filter-category--panel">
+                                    
+                                    <div class="filter-category">
 
                                         <a class="filter-category__head collapse-icon" aria-controls="categoryFilterBody"
                                             aria-expanded="true" data-toggle="collapse" href="#categoryFilterBody" id="categoryFilter" role="tab">
@@ -144,14 +144,14 @@
                                         </a>
                                         
                                         <div class="filter-category__body collapse show" aria-labelledby="categoryFilter" id="categoryFilterBody" role="tabpanel"> 
-                                            <div class="row no-gutters filter-category__item">
+                                            <div class="[ row no-gutters ]  filter-category__item">
                                                 <div class="col-3">
                                                     <label class="filter-category__label">Category:</label>
                                                 </div>
                                                 
                                                 <div class="col-8">
                                                     <input type="text" class="filter-category__control" placeholder="Search title or message">
-                                                    <div aria-labelledby="categoryNameHeading" class="panel-collapse collapse show" id="categoryNameBody" role="tabpanel">
+                                                    <div aria-labelledby="categoryNameHeading" class="panel-collapse collapse" id="categoryNameBody" role="tabpanel">
                                                         <div id="jsTreeCategory">
                                             
                                                         </div>
@@ -165,171 +165,153 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row no-gutters filter-category__item">         
+                                            <div class="[ row no-gutters ] filter-category__item">         
                                                 <div class="col-8 offset-3">
-                                                    
-
                                                     <div class="radio-group">
                                                         <div class="inputGroup">
-                                                            <input id="radio1" name="radio" type="radio" checked/>
+                                                            <input id="radio1" name="radio1" type="radio" checked/>
                                                             <label for="radio1">And</label>
                                                         </div>
                                                         <div class="inputGroup">
-                                                            <input id="radio2" name="radio" type="radio"/>
+                                                            <input id="radio2" name="radio1" type="radio"/>
                                                             <label for="radio2">Or</label>
                                                         </div>
                                                     </div>
-
-                                                    
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
+                                            <div class="filter-category__item">
+                                                <ul class="category category--unrating">
+                                                    <li class="category__item">
+                                                        <span class="category__delete"><i class="icon-remove"></i></span>
+                                                        <span class="category__name">China</span>
+                                                    </li>
+                                                    <li class="category__item">
+                                                        <span class="category__delete"><i class="icon-remove"></i></span>
+                                                        <span class="category__name">Germany</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
 
-                                    <div class="panel">
-                                            <a aria-controls="categoryBody" aria-expanded="true" class="collapse-icon sheet-subtitle panel__title" data-toggle="collapse" href="#categoryBody" id="categoryHeading" role="tab">
-                                                <span>Select Category</span>
-                                                <span class="collapse-icon-closed">
-                                                    <i class="icon-chevron-down"></i>
-                                                </span>
-                                                <span class="collapse-icon-open">
-                                                    <i class="icon-chevron-up"></i>
-                                                </span>
-                                            </a>
-
-
-                                        <div aria-labelledby="categoryHeading" class="panel-collapse category-wrapper collapse show" id="categoryBody" role="tabpanel">
-                                            <div class="category">
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        
+                                            <div class="filter-category__item">
+                                                <div class="radio-group radio-group--main">
+                                                    <div class="inputGroup">
+                                                        <input id="radio3" name="radio2" type="radio" checked/>
+                                                        <label for="radio3">And</label>
+                                                    </div>
+                                                    <div class="inputGroup">
+                                                        <input id="radio4" name="radio2" type="radio"/>
+                                                        <label for="radio4">Or</label>
+                                                    </div>
+                                                    <div class="inputGroup">
+                                                        <input id="radio5" name="radio2" type="radio"/>
+                                                        <label for="radio5">Exclude</label>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="category__list">
-                                                    <div class="category__item row">
-                                                        <div class="col-4">
-                                                            <div class="category__name">China</div>
-                                                        </div>
-                                                        <div class="col-5">
-                                                            <div class="category__classification"></div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <div class="category__value">
-                                                                <span class="subtitle">Add</span>
-                                                                <select class="selectpicker" data-width="85px">
-                                                                    <option>AND</option>
-                                                                    <option>OR</option>
-                                                                </select>
-                                                                <a href="#" class="delete-category"><i class="icon-remove"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class=" category__item row">
-                                                        <div class="col-4">
-                                                            <div class="category__name">2018</div>
-                                                        </div>
-                                                        <div class="col-5">
-                                                            <div class="category__classification"></div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <div class="category__value">
-                                                                <span class="subtitle">Add</span>
-                                                                <select class="selectpicker" data-width="85px">
-                                                                    <option>AND</option>
-                                                                    <option>OR</option>
-                                                                </select>
-                                                                <a href="#" class="delete-category"><i class="icon-remove"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="category__item row">
-                                                        <div class="col-4">
-                                                            <div class="category__name">2019</div>
-                                                        </div>
-                                                        <div class="col-5">
-                                                            <div class="category__classification"></div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <div class="category__value">
-                                                                <span class="subtitle">Add</span>
-                                                                <select class="selectpicker" data-width="85px">
-                                                                    <option>AND</option>
-                                                                    <option>OR</option>
-                                                                </select>
-                                                                <a href="#" class="delete-category"><i class="icon-remove"></i></a>
-                                                            </div>
+                                            <div class="[ row no-gutters ]  filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Category:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <input type="text" class="filter-category__control" placeholder="Search title or message">
+                                                    <div aria-labelledby="categoryNameHeading" class="panel-collapse collapse" id="categoryNameBody" role="tabpanel">
+                                                        <div id="jsTreeCategory">
+                                            
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-1">
+                                                    <div class="open-jstree" aria-controls="categoryNameBody" aria-expanded="true"
+                                                    class="tree-heading" data-toggle="collapse" href="#categoryNameBody" id="categoryNameHeading" role="tab">
+                                                        <i class="icon-folder-close"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                                <div class="category__list">
-                                                    <div class="category__item row">
-                                                        <div class="col-4">
-                                                            <div class="category__name">China</div>
+                                            <div class="[ row no-gutters ] filter-category__item">         
+                                                <div class="col-8 offset-3">
+                                                    <div class="radio-group">
+                                                        <div class="inputGroup">
+                                                            <input id="radio11" name="radio4" type="radio" checked/>
+                                                            <label for="radio11">And</label>
                                                         </div>
-                                                        <div class="col-5">
-                                                            <div class="category__classification category__classification--positive">                                         
-                                                                <input type="radio" name="classyfication-input" id="classification-input-positive" value="1" aria-label="1">
-                                                                <label for="classification-input-positive" class="classification-label-positive"></label>
-                                                            </div>
-                                                            <div class="category__classification category__classification--neutral">  
-                                                                <input type="radio" name="classyfication-input" id="classification-input-neutral" value="0" aria-label="0">
-                                                                <label for="classification-input-neutral" class="classification-label-neutral"></label>
-                                                            </div> 
-                                                            <div class="category__classification category__classification--negative">  
-                                                                <input type="radio" name="classyfication-input" id="classification-input-negative" value="-1" aria-label="-1">
-                                                                <label for="classification-input-negative" class="classification-label-negative"></label>
-                                                            </div>
-                                                            <span class="subtitle">>=</span>
-                                                            <select class="selectpicker" data-width="85px">
-                                                                <option>25</option>
-                                                                <option>50</option>
-                                                                <option>75</option>
-                                                                <option>100</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <div class="category__value">
-                                                                <span class="subtitle">Add</span>
-                                                                <select class="selectpicker " data-width="85px">
-                                                                    <option>AND</option>
-                                                                    <option>OR</option>
-                                                                </select>
-                                                                <a href="#" class="delete-category"><i class="icon-remove"></i></a>
-                                                            </div>
+                                                        <div class="inputGroup">
+                                                            <input id="radio22" name="radio4" type="radio"/>
+                                                            <label for="radio22">Or</label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="filter-category__item">
+                                                <ul class="category category--rating">
+                                                    <li class="category__item">
+                                                        <span class="category__delete"><i class="icon-remove"></i></span>
+                                                        <span class="category__name">Engine Noise</span>
+                                                        <div class="category__value">
+                                                            <span>100%</span>
+                                                            <a href="#" class="btn-link add-tonality">
+                                                                <i class="icon-plus-sign-alt"></i>
+                                                                Add Tonality
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                    <li class="category__item">
+                                                        <span class="category__delete"><i class="icon-remove"></i></span>
+                                                        <span class="category__name">Powertrain</span>
+                                                        <div class="category__value">
+                                                            <span>100%</span>
+                                                            <a href="#" class="btn-link add-tonality">
+                                                                <i class="icon-plus-sign-alt"></i>
+                                                                Add Tonality
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
+
                                     </div>
 
-                                    <div class="form-group row">
-                                        <label for="messageSource" class="col-3 col-form-label">Source:</label>
-                                        <div class="col-6">
-                                            <select class="selectpicker form-control">
-                                                <option>Type or select source</option>
-                                                <option>Type or select source2</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="messageViews" class="col-3 col-form-label">Views:</label>
-                                        <div class="col-6">
-                                            <input type="text" class="form-control" id="messageViews" placeholder=">=">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="messageDate" class="col-3 col-form-label">Date:</label>
-                                        <div class="col-6">
-                                            <select class="selectpicker form-control">
-                                                <option>Type or select source</option>
-                                                <option>Type or select source2</option>
-                                            </select>
+                                    <div class="filter-category">
+                                        <a class="filter-category__head collapse-icon" aria-controls="miscellanousFilterBody"
+                                        aria-expanded="true" data-toggle="collapse" href="#miscellanousFilterBody" id="miscellanousFilter" role="tab">
+                                            <span class="filter-category__title">miscellanous filter</span>
+                                            <span class="cims-tooltip" data-toggle="tooltip" data-placement="right"
+                                            title="Tooltip on right"><i class="icon-question"></i></span>
+                                            <span class="collapse-icon-closed">
+                                                <i class="icon-chevron-down"></i>
+                                            </span>
+                                            <span class="collapse-icon-open">
+                                                <i class="icon-chevron-up"></i>
+                                            </span>
+                                        </a>
+                                        <div class="filter-category__body collapse show" aria-labelledby="miscellanousFilter" id="miscellanousFilterBody" role="tabpanel">
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Text Search</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <select class="filter-category__control">
+                                                        <option>1</option>
+                                                        <option>12</option>
+                                                        <option>13</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Text Search</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <input type="text" class="filter-category__control" placeholder="Search title or message">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 

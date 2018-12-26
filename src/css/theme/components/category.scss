@@ -1,0 +1,33 @@
+.category {
+    &--unrating {
+        .category__name::before { content: "\f02b"; }
+    }
+
+    &--rating {
+        .category__name::before { content: "\f005"; }
+    }
+
+    &__item {
+        display: flex;
+    }
+
+    &__value {
+        //margin-left: auto;
+    }
+
+    &__delete {
+        color: $thirdlyColor;
+        margin-right: 0.5rem;
+        cursor: pointer;
+    }
+
+    &__name {
+        color: $primaryColor;
+        flex: 1;
+
+        &::before {
+            font-family: FontAwesome;
+            margin-right: 0.25rem;
+        }
+    }
+}

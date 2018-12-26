@@ -6,91 +6,7 @@
     position: relative;
     flex: 0 0 500px;
     z-index: 2;
-    transition: transform 0.4s;
     border: 1px solid black;
-
-    &__btn {
-        position: relative;
-        top: 0;
-        left: 600px;
-        bottom: 0;
-        z-index: 100;
-        width: 70px;
-        background-color: $primaryColor;
-        cursor: pointer;
-        transition: background-color 200ms linear;
-
-        &:hover {
-            background-color: lighten($primaryColor,2%);
-        }
-
-        span {
-            position: absolute;
-            top: 50%;
-            left: 10px;
-            display: inline-block;
-            width: 40px;
-            font-size: 14px;
-            transform: translateY(-50%);
-            color: $colorWhite;
-
-            &::after {
-                content: '\f105';
-                position: absolute;
-                right: -18px;
-                top: 50%;
-                display: inline-block;
-                font-family: FontAwesome;
-                font-size: 2rem;
-                font-weight: bold;
-                color: $thirdlyColor;
-                transform: translateY(-50%);
-            }
-        }
-    }
-
-    &__body {
-        padding: 0;
-    }
-
-    &--open {
-        transform: translateX(0);
-        overflow-x: hidden;
-        overflow-y: auto;
-
-        .filters-panel__btn {
-            position: absolute;
-            top: 0;
-            left: auto;
-            right: 0;
-            bottom: 0;
-            width: 30px;
-            background-color: transparent;
-
-            &:hover {
-                background-color: #dce2e8;
-            }
-
-            span {
-                font-size: 0;
-
-                &::after {
-                    content: "\f104";
-                    right: 30px;
-                }
-            }
-        }
-    }
-
-    &--open + .messages {
-        @media (min-width: 1200px) {
-            padding-left: 590px;
-        }
-
-        @media (min-width: 1680px) {
-            padding-left: 500px;
-        }
-    }
 }
 
 .filter-category {
@@ -116,27 +32,24 @@
     }
 
     &__body {
-        //padding-top: 5px;
         padding-right: 1rem;
         padding-left: 1rem;
     }
 
     &__item {
-        display: flex;
         margin-top: 0.8rem;
+
+        .category {
+            padding: 0 3rem;
+        }
     }
 
     &__label {
-        flex: 0 0 30%;
         text-align: right;
         padding-top: 0.3rem;
         padding-right: 0.5rem;
         align-items: center;
         display: block;
-    }
-
-    &__control {
-        flex: 1;
     }
 }
 
@@ -144,36 +57,9 @@
     @include padding(10px, null, 10px, null);
 }
 
-.panel {
-    background-color: transparent;
-}
-
 .messages {
     padding-left: 2rem;
     transition: all 0.4s;
-
-    @media (min-width: 1200px) {
-        padding-left: 60px;
-    }
-
-    @media (min-width: 1680px) {
-        padding-left: 0;
-    }
-}
-
-.sheet-subtitle {
-    display: block;
-    padding-bottom: 0.35rem;
-    padding-top: 0.35rem;
-    margin-bottom: 0;
-    font-size: 14px;
-    color: $primaryColor;
-    text-transform: none;
-    border: none;
-
-    &.collapsed {
-        border-bottom: 1px solid $primaryColor;
-    }
 }
 
 .tree-heading {
@@ -190,111 +76,6 @@
     }
 }
 
-.category {
-    padding-top: 10px;
-    padding-bottom: 10px;
-
-    .jstree {
-        padding-top: 10px;
-        max-height: 390px;
-        overflow-x: hidden;
-        overflow-y: auto;
-        box-shadow: 0 1px 10px rgba($color: #000,$alpha: 0.3);
-        border-bottom-left-radius: 6px;
-        border-bottom-right-radius: 6px;
-    }
-
-    .jstree-default .jstree-themeicon {
-        display: none;
-    }
-
-    &__rating {
-        &::after {
-            content: "R";
-            color: $colorGray;
-            display: inline-block;
-            margin-left: 10px;
-            font-size: 12px;
-        }
-    }
-
-    &__list {
-        padding-top: 20px;
-        padding-bottom: 20px;
-
-        & + & {
-            border-top: 1px solid $borderColor;
-        }
-    }
-
-    &__item {
-        & + & {
-            margin-top: 0.8rem;
-        }
-    }
-
-    &__name {
-        text-align: left;
-        color: #747474;
-
-        &::before {
-            content: "\f105";
-            font-family: FontAwesome;
-            margin-right: 5px;
-            color: $primaryColor;
-        }
-    }
-
-    &__classification {
-        display: inline-block;
-        margin-right: 7px;
-
-        &--neutral {
-            label {
-                background: url(../images/emotion-neutral.png), transparent;
-                background-size: cover;
-                background-position: 50% 50%;
-                background-repeat: no-repeat;
-            }
-
-            & input:checked ~ label {
-                background: url(../images/emotion-neutral.png), #d0e9fa;
-                background-size: cover;
-                background-position: 50% 50%;
-                background-repeat: no-repeat;
-            }
-        }
-
-        &--negative {
-            label {
-                background: url(../images/emotion-angry.png), transparent;
-                background-size: cover;
-                background-position: 50% 50%;
-                background-repeat: no-repeat;
-            }
-
-            & input:checked ~ label {
-                background: url(../images/emotion-angry.png), #d0e9fa;
-                background-size: cover;
-                background-position: 50% 50%;
-                background-repeat: no-repeat;
-            }
-        }
-
-        input {
-            display: none;
-        }
-    }
-
-    &__value {
-        .subtitle {
-            position: absolute;
-            top: 8px;
-            left: -21px;
-        }
-    }
-}
-
 .delete-category {
     &,
     &:link,
@@ -302,15 +83,6 @@
         display: inline-block;
         text-decoration: none;
     }
-}
-
-.category-wrapper {
-    margin-left: -30px;
-    padding-left: 30px;
-    padding-right: 15px;
-    background-color: $colorWhite;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 .subtitle {
@@ -492,6 +264,25 @@ i {
 
 .radio-group {
     display: flex;
+    position: relative;
+    width: 100%;
+
+    &--main {
+        justify-content: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background-color: $colorGray;
+        }
+    }
 }
 
 .inputGroup {
@@ -504,7 +295,7 @@ i {
         width: 100%;
         display: block;
         text-align: left;
-        color: #3C454C;
+        color: $primaryColor;
         cursor: pointer;
         position: relative;
         z-index: 2;

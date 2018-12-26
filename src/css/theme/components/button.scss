@@ -29,3 +29,18 @@
         }
     }
 }
+
+.btn-link {
+    &,
+    &:link,
+    &:hover,
+    &:focus {
+        color: $primaryColor;
+        //text-decoration: none;
+        box-shadow: none;
+    }
+
+    i {
+        color: $thirdlyColor;
+    }
+}
