@@ -64,8 +64,41 @@ i {
 input[type="text"],
 select {
     padding: 0.2rem;
-    height: 32px;
+    height: 30px;
     width: 100%;
+    border: 1px solid $primaryColor;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+}
+
+.select-container {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        right: 6px;
+        top: 10px;
+        border: 7px solid transparent;
+        border-top: 10px solid $primaryColor;
+        z-index: -1;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 25px;
+        height: 100%;
+        width: 1px;
+        background-color: $primaryColor;
+        z-index: -1;
+    }
 }
 
 .collapse-icon {

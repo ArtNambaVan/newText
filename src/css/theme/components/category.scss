@@ -12,7 +12,8 @@
     }
 
     &__value {
-        //margin-left: auto;
+        width: 120px;
+        text-align: right;
     }
 
     &__delete {
@@ -28,6 +29,70 @@
         &::before {
             font-family: FontAwesome;
             margin-right: 0.25rem;
+        }
+    }
+
+    &__popup {
+        position: absolute;
+        top: 0;
+        right: 1rem;
+    }
+
+    &__indicator {
+        width: 110px;
+        display: inline-block;
+        
+        
+        height: 18px;
+        vertical-align: middle;
+        border: 1px solid;
+        border-radius: 2px;
+
+        position: relative;
+
+        &--negative {
+            background: linear-gradient(90deg, $dangerColor 2px, transparent 0);
+            background-size: 4.2px;
+        }
+        &--positive {
+            background: linear-gradient(90deg, $sucessColor 2px, transparent 0);
+            background-size: 4.2px;
+        }
+        &--neutral {
+            background: linear-gradient(90deg, $colorGray 2px, transparent 0);
+            background-size: 4.2px;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $colorWhite;
+            height: 100%;
+            border-bottom-right-radius: 2px;
+            border-top-right-radius: 2px;
+        }
+
+        &--progress-25 {
+            &::before {
+                width: 75%;
+            }
+        }
+        &--progress-50 {
+            &::before {
+                width: 50%;
+            }
+        }
+        &--progress-75 {
+            &::before {
+                width: 25%;
+            }
+        }
+        &--progress-100 {
+            &::before {
+                width: 0;
+            }
         }
     }
 }

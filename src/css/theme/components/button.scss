@@ -43,4 +43,17 @@
     i {
         color: $thirdlyColor;
     }
+
+    &--primary {
+        font-weight: bold;
+    }
+}
+
+.btn-container {
+    display: flex;
+    padding: 20px 0;
+
+    &--center {
+         justify-content: space-around;
+    }
 }

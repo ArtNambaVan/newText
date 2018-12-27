@@ -67,8 +67,8 @@ PATH.sass = {
 }
 
 PATH.fonts = {
-  in  : PATH.src  + 'fonts/**/*.*',
-  out : PATH.dest + 'fonts/'
+  in  : PATH.src  + 'font/**/*.*',
+  out : PATH.dest + 'font/'
 };
 
 PATH.js = {
@@ -128,7 +128,7 @@ gulp.task('css', function() {
 gulp.task('css_libs', function() {
     return gulp.src([
             PATH.css_libs.in + 'clay.css',
-            PATH.css_libs.in + 'bootstrap-select.css',
+            //PATH.css_libs.in + 'bootstrap-select.css',
             PATH.css_libs.in + 'main.css',
             PATH.css_libs.in + 'treeJS.css'
         ])
@@ -193,7 +193,7 @@ gulp.task('js_libs', function() {
             PATH.js_libs.in + 'jquery.js',
             PATH.js_libs.in + 'popper.js',
             PATH.js_libs.in + 'bootstrap.js',
-            PATH.js_libs.in + 'bootstrap-select.js',
+            //PATH.js_libs.in + 'bootstrap-select.js',
             PATH.js_libs.in + 'jstree.min.js'
         ])
         .pipe(concat('libs.js'))

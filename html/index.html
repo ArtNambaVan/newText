@@ -14,11 +14,10 @@
     
 
     <link rel="stylesheet" href="css/libs/main.css">
-    <link rel="stylesheet" href="css/libs/bootstrap-select.css">
      <link rel="stylesheet" href="css/libs/treeJS.css">
     <link rel="stylesheet" href="css/custom.css">
     <script src="js/libs.js"></script>
-    <script src="js/main.js"></script>
+    
 
 </head>
 
@@ -101,18 +100,7 @@
                                             </span>
                                         </a>
                                         <div class="filter-category__body collapse show" aria-labelledby="textFilter" id="textFilterBody" role="tabpanel">
-                                            <div class="[ row no-gutters ] filter-category__item">
-                                                <div class="col-3">
-                                                    <label class="filter-category__label">Text Search</label>
-                                                </div>
-                                                <div class="col-8">
-                                                    <select class="filter-category__control">
-                                                        <option>1</option>
-                                                        <option>12</option>
-                                                        <option>13</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                            
 
                                             <div class="[ row no-gutters ] filter-category__item">
                                                 <div class="col-3">
@@ -217,15 +205,15 @@
                                                 
                                                 <div class="col-8">
                                                     <input type="text" class="filter-category__control" placeholder="Search title or message">
-                                                    <div aria-labelledby="categoryNameHeading" class="panel-collapse collapse" id="categoryNameBody" role="tabpanel">
-                                                        <div id="jsTreeCategory">
+                                                    <div aria-labelledby="categoryNameHeading2" class="panel-collapse collapse" id="categoryNameBody2" role="tabpanel">
+                                                        <div id="jsTreeCategory2">
                                             
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-1">
-                                                    <div class="open-jstree" aria-controls="categoryNameBody" aria-expanded="true"
-                                                    class="tree-heading" data-toggle="collapse" href="#categoryNameBody" id="categoryNameHeading" role="tab">
+                                                    <div class="open-jstree" aria-controls="categoryNameBody2" aria-expanded="true"
+                                                    class="tree-heading" data-toggle="collapse" href="#categoryNameBody2" id="categoryNameHeading2" role="tab">
                                                         <i class="icon-folder-close"></i>
                                                     </div>
                                                 </div>
@@ -252,22 +240,42 @@
                                                         <span class="category__delete"><i class="icon-remove"></i></span>
                                                         <span class="category__name">Engine Noise</span>
                                                         <div class="category__value">
-                                                            <span>100%</span>
-                                                            <a href="#" class="btn-link add-tonality">
-                                                                <i class="icon-plus-sign-alt"></i>
-                                                                Add Tonality
-                                                            </a>
+                                                            <span class="category__indicator category__indicator--positive category__indicator--progress-25"></span>
                                                         </div>
                                                     </li>
                                                     <li class="category__item">
                                                         <span class="category__delete"><i class="icon-remove"></i></span>
                                                         <span class="category__name">Powertrain</span>
                                                         <div class="category__value">
-                                                            <span>100%</span>
                                                             <a href="#" class="btn-link add-tonality">
                                                                 <i class="icon-plus-sign-alt"></i>
                                                                 Add Tonality
                                                             </a>
+                                                        </div>
+                                                        <div class="tonality-popup collapse">
+                                                            <a href="#close" title="Close" class="close"><i class="icon-remove-sign"></i></a>
+                                                            <h4 class="tonality-popup__header"></h4>
+                                                            <span>negative</span>
+                                                            <div class="tonality-popup__group">
+                                                                <span class="tonality-popup__btn tonality-popup__btn--negative-25">25%</span>
+                                                                <span class="tonality-popup__btn tonality-popup__btn--negative-50">50%</span>
+                                                                <span class="tonality-popup__btn tonality-popup__btn--negative-75">75%</span>
+                                                                <span class="tonality-popup__btn tonality-popup__btn--negative-100">100%</span>
+                                                            </div>
+                                                            <span>neutral</span>
+                                                            <div class="tonality-popup__group">
+                                                                <span class="tonality-popup__btn tonality-popup__btn--neutral-25">25%</span>
+                                                                <span class="tonality-popup__btn tonality-popup__btn--neutral-50">50%</span>
+                                                                <span class="tonality-popup__btn tonality-popup__btn--neutral-75">75%</span>
+                                                                <span class="tonality-popup__btn tonality-popup__btn--neutral-100">100%</span>
+                                                            </div>
+                                                            <span>positive</span>
+                                                            <div class="tonality-popup__group">
+                                                                <span class="tonality-popup__btn tonality-popup__btn--positive-25">25%</span>
+                                                                <span class="tonality-popup__btn tonality-popup__btn--positive-50">50%</span>
+                                                                <span class="tonality-popup__btn tonality-popup__btn--positive-75">75%</span>
+                                                                <span class="tonality-popup__btn tonality-popup__btn--positive-100">100%</span>
+                                                            </div>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -292,20 +300,22 @@
                                         <div class="filter-category__body collapse show" aria-labelledby="miscellanousFilter" id="miscellanousFilterBody" role="tabpanel">
                                             <div class="[ row no-gutters ] filter-category__item">
                                                 <div class="col-3">
-                                                    <label class="filter-category__label">Text Search</label>
+                                                    <label class="filter-category__label">Status</label>
                                                 </div>
                                                 <div class="col-8">
-                                                    <select class="filter-category__control">
-                                                        <option>1</option>
-                                                        <option>12</option>
-                                                        <option>13</option>
-                                                    </select>
+                                                    <div class="select-container">
+                                                        <select class="filter-category__control">
+                                                            <option selected>Open</option>
+                                                            <option>12</option>
+                                                            <option>13</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
 
                                             <div class="[ row no-gutters ] filter-category__item">
                                                 <div class="col-3">
-                                                    <label class="filter-category__label">Text Search</label>
+                                                    <label class="filter-category__label">Source</label>
                                                 </div>
                                                 
                                                 <div class="col-8">
@@ -315,9 +325,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group form-group--right">
-                                        <button class="btn btn--primary">Submit</button>
-                                        <button class="btn btn--secondary">Reset</button>
+                                    <div class="btn-container btn-container--center">
+                                        <a href="#" class="btn-link">
+                                            <i class="icon-plus-sign-alt"></i>
+                                            Add Tonality
+                                        </a>
+
+                                        <a href="#" class="btn-link btn-link--primary">
+                                            <i class="icon-plus-sign-alt"></i>
+                                            Add Tonality
+                                        </a>
                                     </div>
                                 </form>
                             </div>
@@ -496,6 +513,6 @@
     </div>
 
     <!-- SCRIPTS -->
- 
+     <script src="js/main.js"></script>
 </body>
 </html>

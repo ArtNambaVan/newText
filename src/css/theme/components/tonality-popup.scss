@@ -1,0 +1,85 @@
+.tonality-popup {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+    background-color: $colorWhite;
+    color: $colorGray;
+    padding: 0.5rem;
+
+    border: 1px solid gray;
+
+    &__header {
+        color: gray;
+        font-size: 16px;
+    }
+
+    &__group {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__btn {
+        padding: 0.25rem 0.5rem;
+        border-radius: 9px;
+        color: $colorWhite;
+        cursor: pointer;
+
+        &--positive {
+            &-25 {
+                background-color: rgba($sucessColor, 0.25);
+            }
+            &-50 {
+                background-color: rgba($sucessColor, 0.5);
+            }
+            &-75 {
+                background-color: rgba($sucessColor, 0.75);
+            }
+            &-100 {
+                background-color: rgba($sucessColor, 1);
+            }
+        }
+
+        &--negative {
+            &-25 {
+                background-color: rgba($dangerColor, 0.25);
+            }
+            &-50 {
+                background-color: rgba($dangerColor, 0.5);
+            }
+            &-75 {
+                background-color: rgba($dangerColor, 0.75);
+            }
+            &-100 {
+                background-color: rgba($dangerColor, 1);
+            }
+        }
+
+        &--neutral {
+            &-25 {
+                background-color: rgba($colorGray, 0.25);
+            }
+            &-50 {
+                background-color: rgba($colorGray, 0.5);
+            }
+            &-75 {
+                background-color: rgba($colorGray, 0.75);
+            }
+            &-100 {
+                background-color: rgba($colorGray, 1);
+            }
+        }
+
+        & + & {
+            margin-left: 3px;
+        }
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $thirdlyColor;
+        font-size: 1.5rem;
+    }
+}
