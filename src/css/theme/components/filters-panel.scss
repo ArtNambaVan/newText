@@ -1,0 +1,59 @@
+.filters-panel {
+    position: relative;
+    flex: 0 0 500px;
+    z-index: 2;
+
+    &__body {
+        border: 1px solid black;
+    }
+}
+
+.filter-category {
+    border-bottom: 1px solid #000;
+    padding: 15px;
+    position: relative;
+
+    &__head {
+        display: block;
+        position: relative;
+
+        &,
+        &:hover {
+            color: $primaryColor;
+            text-decoration: none;
+        }
+    }
+
+    &__title {
+        font-size: 16px;
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    &__body {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    &__item {
+        margin-top: 0.8rem;
+
+        .category {
+            padding: 0 3rem;
+        }
+    }
+
+    &__label {
+        text-align: right;
+        padding-top: 0.3rem;
+        padding-right: 0.5rem;
+        align-items: center;
+        display: block;
+        font-size: 14px;
+    }
+}
+
+.filters-group {
+    @include padding(10px, null, 10px, null);
+}

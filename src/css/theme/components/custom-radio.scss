@@ -1,0 +1,54 @@
+.custom-radio {
+    background-color: #fff;
+    display: inline-block;
+    position: relative;
+
+    label {
+        padding: 0.2rem 0.5rem;
+        width: 100%;
+        display: block;
+        text-align: left;
+        color: $primaryColor;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+        transition: color 200ms ease-in;
+        overflow: hidden;
+        border: 1px solid $primaryColor;
+    }
+
+    input:checked ~ label {
+        color: #fff;
+        background: $primaryColor;
+    }
+
+    input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+}
+
+.radio-group {
+    display: flex;
+    position: relative;
+    width: 100%;
+
+    &--main {
+        justify-content: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background-color: $colorGray;
+        }
+    }
+}

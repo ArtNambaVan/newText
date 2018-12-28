@@ -1,36 +1,38 @@
-.toggle-switch + span {
-    color: $primaryColor;
-    vertical-align: text-bottom;
-}
-
-.toggle-switch-check {
-    &:empty ~ .toggle-switch-bar {
-        &::before {
-            border-color: $primaryColor;
-            border-width: 2px;
-            background-color: $colorWhite;
-            border-radius: 20px;
-        }
-
-        &::after {
-            border-color: $primaryColor;
-            border-radius: 50%;
-            border-width: 2px;
-        }
+.cims {
+    .toggle-switch + span {
+        color: $primaryColor;
+        vertical-align: text-bottom;
     }
 
-    &:checked ~ .toggle-switch-bar {
-        &::before {
-            border-color: $primaryColor;
-            border-width: 2px;
-            background-color: $primaryColor;
-            border-radius: 20px;
+    .toggle-switch-check {
+        &:empty ~ .toggle-switch-bar {
+            &::before {
+                border-color: $primaryColor;
+                border-width: 2px;
+                background-color: $colorWhite;
+                border-radius: 20px;
+            }
+
+            &::after {
+                border-color: $primaryColor;
+                border-radius: 50%;
+                border-width: 2px;
+            }
         }
 
-        &::after {
-            border-color: $primaryColor;
-            border-radius: 50%;
-            border-width: 2px;
+        &:checked ~ .toggle-switch-bar {
+            &::before {
+                border-color: $primaryColor;
+                border-width: 2px;
+                background-color: $primaryColor;
+                border-radius: 20px;
+            }
+
+            &::after {
+                border-color: $primaryColor;
+                border-radius: 50%;
+                border-width: 2px;
+            }
         }
     }
 }

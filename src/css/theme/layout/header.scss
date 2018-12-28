@@ -4,9 +4,29 @@
         padding-top: 15px;
         padding-bottom: 15px;
         border-bottom: 1px solid $borderColor;
-        background-color: $colorWhite;
+        background-color: $primaryColor;
         position: relative;
         z-index: 20;
+    }
+
+    .main-logo {
+        &__img {
+            width: 80px;
+            transform: scale(-1, 1) rotate(-30deg);
+        }
+
+        &__name {
+            color: $colorWhite;
+            font-size: 2rem;
+            vertical-align: bottom;
+            display: inline-block;
+            line-height: 1;
+            margin-right: 2rem;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
 
     .main-nav {
@@ -21,6 +41,8 @@
         &__navigation {
             align-items: flex-end;
             margin-top: 0;
+            flex-direction: column-reverse;
+            justify-content: space-between;
 
             @media (max-width: 768px) {
                 position: absolute;
@@ -41,8 +63,7 @@
 
         &__item {
             display: inline-block;
-            padding-left: 1rem;
-            padding-right: 1rem;
+            margin-left: 1rem;
 
             @media (max-width: 768px) {
                 display: block;
@@ -68,6 +89,8 @@
 
         &__link {
             display: inline-block;
+            color: $colorWhite;
+            text-transform: uppercase;
 
             @media (max-width: 768px) {
                 display: block;
@@ -81,6 +104,10 @@
         display: flex;
         align-items: flex-end;
         position: relative;
+
+        &--left {
+            margin-right: auto;
+        }
 
         &--right {
             margin-left: auto;

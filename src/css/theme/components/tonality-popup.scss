@@ -27,46 +27,55 @@
 
         &--positive {
             &-25 {
-                background-color: rgba($sucessColor, 0.25);
+                background-color: rgba($sucessColor,0.25);
             }
+
             &-50 {
-                background-color: rgba($sucessColor, 0.5);
+                background-color: rgba($sucessColor,0.5);
             }
+
             &-75 {
-                background-color: rgba($sucessColor, 0.75);
+                background-color: rgba($sucessColor,0.75);
             }
+
             &-100 {
-                background-color: rgba($sucessColor, 1);
+                background-color: rgba($sucessColor,1);
             }
         }
 
         &--negative {
             &-25 {
-                background-color: rgba($dangerColor, 0.25);
+                background-color: rgba($dangerColor,0.25);
             }
+
             &-50 {
-                background-color: rgba($dangerColor, 0.5);
+                background-color: rgba($dangerColor,0.5);
             }
+
             &-75 {
-                background-color: rgba($dangerColor, 0.75);
+                background-color: rgba($dangerColor,0.75);
             }
+
             &-100 {
-                background-color: rgba($dangerColor, 1);
+                background-color: rgba($dangerColor,1);
             }
         }
 
         &--neutral {
             &-25 {
-                background-color: rgba($colorGray, 0.25);
+                background-color: rgba($colorGray,0.25);
             }
+
             &-50 {
-                background-color: rgba($colorGray, 0.5);
+                background-color: rgba($colorGray,0.5);
             }
+
             &-75 {
-                background-color: rgba($colorGray, 0.75);
+                background-color: rgba($colorGray,0.75);
             }
+
             &-100 {
-                background-color: rgba($colorGray, 1);
+                background-color: rgba($colorGray,1);
             }
         }
 

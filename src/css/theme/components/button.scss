@@ -1,59 +1,30 @@
 .cims {
-    .btn {
-        padding: 10px 30px;
-        font-size: 14px;
-
-        &:active,
+    .btn-link {
+        &,
+        &:link,
+        &:hover,
         &:focus {
+            color: $primaryColor;
             box-shadow: none;
         }
 
+        i {
+            color: $thirdlyColor;
+            text-decoration: none;
+            display: inline-block;
+        }
+
         &--primary {
-            &,
-            &:focus,
-            &:active {
-                background-color: $primaryColor;
-                color: $colorWhite;
-            }
-        }
-
-        &--secondary {
-            background-color: transparent;
-            color: $primaryColor;
-            border-color: $primaryColor;
-
-            &:active {
-                background-color: $primaryColor;
-                color: $colorWhite;
-            }
+            font-weight: bold;
         }
     }
-}
 
-.btn-link {
-    &,
-    &:link,
-    &:hover,
-    &:focus {
-        color: $primaryColor;
-        //text-decoration: none;
-        box-shadow: none;
-    }
+    .btn-container {
+        display: flex;
+        padding: 10px 0;
 
-    i {
-        color: $thirdlyColor;
-    }
-
-    &--primary {
-        font-weight: bold;
-    }
-}
-
-.btn-container {
-    display: flex;
-    padding: 20px 0;
-
-    &--center {
-         justify-content: space-around;
+        &--center {
+            justify-content: space-around;
+        }
     }
 }

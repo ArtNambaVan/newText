@@ -9,6 +9,11 @@
 
     &__item {
         display: flex;
+        font-size: 14px;
+
+        & + & {
+            margin-top: 0.2rem;
+        }
     }
 
     &__value {
@@ -41,25 +46,25 @@
     &__indicator {
         width: 110px;
         display: inline-block;
-        
-        
-        height: 18px;
+        height: 17px;
         vertical-align: middle;
         border: 1px solid;
         border-radius: 2px;
-
+        overflow: hidden;
         position: relative;
 
         &--negative {
-            background: linear-gradient(90deg, $dangerColor 2px, transparent 0);
+            background: linear-gradient(90deg,$dangerColor 2px,transparent 0);
             background-size: 4.2px;
         }
+
         &--positive {
-            background: linear-gradient(90deg, $sucessColor 2px, transparent 0);
+            background: linear-gradient(90deg,$sucessColor 2px,transparent 0);
             background-size: 4.2px;
         }
+
         &--neutral {
-            background: linear-gradient(90deg, $colorGray 2px, transparent 0);
+            background: linear-gradient(90deg,$colorGray 2px,transparent 0);
             background-size: 4.2px;
         }
 
@@ -79,16 +84,19 @@
                 width: 75%;
             }
         }
+
         &--progress-50 {
             &::before {
                 width: 50%;
             }
         }
+
         &--progress-75 {
             &::before {
                 width: 25%;
             }
         }
+
         &--progress-100 {
             &::before {
                 width: 0;

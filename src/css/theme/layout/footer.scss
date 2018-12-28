@@ -1,11 +1,13 @@
-.footer {
-    border-top: 1px solid $borderColor;
+.cims {
+    .footer {
+        border-top: 1px solid $borderColor;
 
-    &__copyright {
-        text-align: right;
-        padding-top: 0.8rem;
-        padding-bottom: 0.8rem;
-        margin-bottom: 0;
-        color: rgba($primaryColor,0.5);
+        &__copyright {
+            text-align: right;
+            padding-top: 0.8rem;
+            padding-bottom: 0.8rem;
+            margin-bottom: 0;
+            color: rgba($primaryColor,0.5);
+        }
     }
 }

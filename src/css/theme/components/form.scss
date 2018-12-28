@@ -10,101 +10,73 @@
             border-color: $primaryColor;
         }
     }
-}
 
-i {
-    // color: $thirdlyColor;
-}
+    .form-group {
+        margin-bottom: 0;
 
-.search + i {
-    position: absolute;
-    right: 24px;
-    top: 10px;
-}
+        & + & {
+            margin-top: 1rem;
+        }
 
-.input-icon {
-    i {
-        cursor: default;
-        position: absolute;
-        line-height: 1;
-        text-align: center;
-        opacity: 0.5;
-        -webkit-transition: opacity 0.3s ease;
-        transition: opacity 0.3s ease;
-        top: 11px;
-        right: 20px;
-        font-size: 15px;
-    }
-}
-
-.left-icon {
-
-    i {
-        position: absolute;
-        top: 10px;
-    }
-}
-
-.form-group {
-    margin-bottom: 0;
-
-    & + & {
-        margin-top: 1rem;
+        &--right {
+            text-align: right;
+        }
     }
 
-    &--right {
-        text-align: right;
+    input[type="text"],
+    select {
+        padding: 0.2rem;
+        height: 30px;
+        width: 100%;
+        border: 1px solid $primaryColor;
+    }
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        padding-right: 2rem;
+    }
+
+    .select-container {
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            right: 6px;
+            top: 10px;
+            border: 7px solid transparent;
+            border-top: 10px solid $primaryColor;
+            z-index: -1;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 25px;
+            height: 100%;
+            width: 1px;
+            background-color: $primaryColor;
+            z-index: -1;
+        }
+    }
+
+    .collapse-icon {
+        & .collapse-icon-closed,
+        & .collapse-icon-open {
+            top: 0;
+            right: 0.9rem;
+        }
+    }
+
+    select::-ms-expand {
+        display: none;
     }
 }
 
 .custom-control .custom-control-input:focus ~ .custom-control-label::before {
     box-shadow: none;
-}
-
-input[type="text"],
-select {
-    padding: 0.2rem;
-    height: 30px;
-    width: 100%;
-    border: 1px solid $primaryColor;
-}
-
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: transparent;
-}
-
-.select-container {
-    position: relative;
-
-    &::before {
-        content: "";
-        position: absolute;
-        right: 6px;
-        top: 10px;
-        border: 7px solid transparent;
-        border-top: 10px solid $primaryColor;
-        z-index: -1;
-    }
-
-    &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 25px;
-        height: 100%;
-        width: 1px;
-        background-color: $primaryColor;
-        z-index: -1;
-    }
-}
-
-.collapse-icon {
-    & .collapse-icon-closed,
-    & .collapse-icon-open {
-        top: 0;
-        right: 0.9rem;
-    }
 }

@@ -140,7 +140,7 @@ gulp.task('css_libs', function() {
 gulp.task('sass', function() {
     return gulp.src(PATH.sass.all)
         .pipe(sass.sync().on('error', sass.logError))
-        .pipe(autoprefixer(SASS_PREFIXER))
+        //.pipe(autoprefixer(SASS_PREFIXER))
         .pipe(gulp.dest(PATH.sass.out))
 })
 
