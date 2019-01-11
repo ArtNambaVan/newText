@@ -42,6 +42,11 @@
     .select-container {
         position: relative;
 
+        & > input {
+            background-color: transparent;
+            cursor: pointer;
+        }
+
         &::before {
             content: "";
             position: absolute;
@@ -61,6 +66,23 @@
             width: 1px;
             background-color: $primaryColor;
             z-index: -1;
+        }
+
+        &--icon-right {
+            & > input {
+                padding-right: 40px;
+            }
+
+            & > i {
+                position: absolute;
+                top: 6px;
+                right: 22px;
+                z-index: -1;
+            }
+
+            &::after {
+                right: 45px;
+            }
         }
     }
 

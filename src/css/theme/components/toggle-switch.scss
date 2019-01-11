@@ -11,12 +11,18 @@
                 border-width: 2px;
                 background-color: $colorWhite;
                 border-radius: 20px;
+                width: 50px;
             }
 
             &::after {
                 border-color: $primaryColor;
                 border-radius: 50%;
                 border-width: 2px;
+                width: 25px;
+                height: 25px;
+                left: 0;
+                top: 0;
+                bottom: 0;
             }
         }
 
@@ -32,6 +38,7 @@
                 border-color: $primaryColor;
                 border-radius: 50%;
                 border-width: 2px;
+                left: 26px;
             }
         }
     }

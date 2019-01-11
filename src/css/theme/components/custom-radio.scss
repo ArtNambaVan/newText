@@ -15,6 +15,7 @@
         transition: color 200ms ease-in;
         overflow: hidden;
         border: 1px solid $primaryColor;
+        font-weight: normal;
     }
 
     input:checked ~ label {
@@ -27,6 +28,12 @@
         top: 0;
         left: 0;
         z-index: -1;
+    }
+
+    & + & {
+        label {
+            border-left: none;
+        }
     }
 }
 
@@ -48,7 +55,7 @@
             top: 50%;
             left: 0;
             transform: translateY(-50%);
-            background-color: $colorGray;
+            background-color: rgba($colorGray,0.5);
         }
     }
 }

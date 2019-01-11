@@ -2,7 +2,7 @@
     .header {
         margin-top: 0;
         padding-top: 15px;
-        padding-bottom: 15px;
+        padding-bottom: 25px;
         border-bottom: 1px solid $borderColor;
         background-color: $primaryColor;
         position: relative;
@@ -10,14 +10,16 @@
     }
 
     .main-logo {
+        margin-top: 3px;
+
         &__img {
-            width: 80px;
-            transform: scale(-1, 1) rotate(-30deg);
+            width: 50px;
+            transform: scale(-1,1) rotate(-30deg);
         }
 
         &__name {
             color: $colorWhite;
-            font-size: 2rem;
+            font-size: 1.7rem;
             vertical-align: bottom;
             display: inline-block;
             line-height: 1;
@@ -107,10 +109,12 @@
 
         &--left {
             margin-right: auto;
+            font-size: 18px;
         }
 
         &--right {
             margin-left: auto;
+            font-size: 14px;
         }
     }
 }

@@ -98,6 +98,29 @@
                                         </a>
                                         <div class="filter-category__body collapse show" aria-labelledby="textFilter" id="textFilterBody" role="tabpanel">
                                             
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Posted:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <div class="select-container select-container--icon-right">
+                                                        <input type="text" autocomplete="off" class="filter-category__control datepicker-input dropdown-toggle" 
+                                                        id="q" data-toggle="dropdown" readonly value="01.01.2019 - 07.01.2019">
+                                                        <i class="icon-calendar"></i>
+                                                        <div class="dropdown-menu datepicker" aria-labelledby="q">
+                                                        <ul class="range">
+                                                            <li class="range__item range__item--active">Last 30 days</li>
+                                                            <li class="range__item">Last Month</li>
+                                                            <li class="range__item">Last Quarter</li>
+                                                            <li class="range__item">Last Year</li>
+                                                            <li class="range__item">Total</li>
+                                                        </ul>
+                                                    </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
 
                                             <div class="[ row no-gutters ] filter-category__item">
                                                 <div class="col-3">
@@ -163,11 +186,11 @@
                                             <div class="filter-category__item">
                                                 <ul class="category category--unrating">
                                                     <li class="category__item">
-                                                        <span class="category__delete"><i class="icon-remove"></i></span>
+                                                        <span class="category__delete">&#10006;</span>
                                                         <span class="category__name">China</span>
                                                     </li>
                                                     <li class="category__item">
-                                                        <span class="category__delete"><i class="icon-remove"></i></span>
+                                                        <span class="category__delete">&#10006;</span>
                                                         <span class="category__name">Germany</span>
                                                     </li>
                                                 </ul>
@@ -229,7 +252,7 @@
                                             <div class="filter-category__item">
                                                 <ul class="category category--rating">
                                                     <li class="category__item">
-                                                        <span class="category__delete"><i class="icon-remove"></i></span>
+                                                        <span class="category__delete">&#10006;</span>
                                                         <span class="category__name">Engine Noise</span>
                                                         <div class="category__value">
                                                             
@@ -238,7 +261,7 @@
                                                         </div>
                                                     </li>
                                                     <li class="category__item">
-                                                        <span class="category__delete"><i class="icon-remove"></i></span>
+                                                        <span class="category__delete">&#10006;</span>
                                                         <span class="category__name">Powertrain</span>
                                                         <div class="category__value">
                                                             <a href="#" class="btn-link add-tonality">
@@ -290,20 +313,6 @@
                                         </a>
 
                                         <div class="filter-category__body collapse show" aria-labelledby="miscellanousFilter" id="miscellanousFilterBody" role="tabpanel">
-                                            <div class="[ row no-gutters ] filter-category__item">
-                                                <div class="col-3">
-                                                    <label class="filter-category__label">Status</label>
-                                                </div>
-                                                <div class="col-8">
-                                                    <div class="select-container">
-                                                        <select class="filter-category__control">
-                                                            <option selected>Open</option>
-                                                            <option>12</option>
-                                                            <option>13</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
 
                                             <div class="[ row no-gutters ] filter-category__item">
                                                 <div class="col-3">
@@ -348,7 +357,7 @@
                             <div class="messages-settings">
                                 <div class="messages-settings__translation form-group">
                                     <label class="toggle-switch">
-                                        <input class="toggle-switch-check" type="checkbox"/>
+                                        <input class="toggle-switch-check" type="checkbox" checked/>
                                         <span aria-hidden="true" class="toggle-switch-bar">
                                             <span class="toggle-switch-handle"></span>
                                         </span>
@@ -368,7 +377,7 @@
                                         </li>
                                         <li class="page-pagination__item">
                                             <a class="page-pagination__link" href="#1" role="button">
-                                                <i class="icon-long-arrow-left" aria-hidden="true"></i>
+                                                <i class="icon-chevron-left"></i>
                                             </a>
                                         </li>
                                         <li class="active page-pagination__item"><a class="page-pagination__link" href="#1">1</a></li>
@@ -377,7 +386,7 @@
                                         <li class="page-pagination__item"><a class="page-pagination__link" href="#1">4</a></li>
                                         <li class="page-pagination__item">
                                             <a class="page-pagination__link" href="#1" role="button">
-                                                <i class="icon-long-arrow-right" aria-hidden="true"></i>
+                                                <i class="icon-chevron-right" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li class="page-pagination__item">
@@ -390,16 +399,20 @@
                                     <div class="select-container">
                                         <select class="filter-category__control">
                                             <option>10 per page</option>
-                                            <option>25 per page</option>
-                                            <option>100 per page</option>
+                                            <option selected>20 per page</option>
+                                            <option>30 per page</option>
+                                            <option>50 per page</option>
+                                            <option>100 per page</option>   
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="select-container">
                                     <select>
-                                        <option>Sort by date</option>
-                                        <option>Sort by views</option>
+                                        <option>Sort by date (descending)</option>
+                                        <option>Sort by date (ascending)</option>
+                                        <option>Sort by views (descending)</option>
+                                        <option>Sort by views (ascending)</option>
                                     </select>
                                 </div>
                             </div>

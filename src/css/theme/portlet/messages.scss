@@ -1,6 +1,5 @@
 .messages-portlet {
     display: flex;
-    margin-top: 1rem;
 }
 
 .messages {
@@ -129,21 +128,22 @@
             right: 0;
         }
     }
+
+    &__footer {
+        background-color: rgba($colorGray,0.1);
+    }
 }
 
 .message-information {
     list-style-type: none;
     margin-top: auto;
-    background-color: rgba($colorGray,0.1);
     font-size: 14px;
+    width: calc(100% - 120px - 320px);
 
     &__item {
         color: gray;
         display: inline-block;
-
-        & + & {
-            margin-left: 1rem;
-        }
+        margin-right: 1rem;
     }
 
     .message-information__name {

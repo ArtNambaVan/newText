@@ -16,6 +16,10 @@ $( document ).ready(function() {
         $(this).closest($tonalityPopup).removeClass('show');
     })
 
+    // $('.dropdown-toggle').on('click', function (event) {
+    //     $(this).siblings('.dropdown-menu').toggleClass('show');
+    // });
+
 
 
     $('#jsTreeCategory').jstree({

@@ -41,6 +41,8 @@ body {
 
     main {
         flex-grow: 1;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
 
     .container-fluid {
@@ -51,6 +53,11 @@ body {
 
 #wrapper {
     padding-top: 0;
+}
+
+.jstree {
+    max-height: 170px;
+    overflow-y: auto;
 }
 
 .jstree-default .jstree-themeicon {
