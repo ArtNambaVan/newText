@@ -1,6 +1,7 @@
 .page-pagination {
     display: flex;
     align-items: center;
+    font-size: 12px;
 
     &__list {
         display: flex;
@@ -17,18 +18,14 @@
     }
 
     &__item.active &__link {
-        background-color: $thirdlyColor;
-        color: $colorWhite;
+        color: $thirdlyColor;
     }
 
     &__link {
-        border-radius: 50%;
         padding: 0;
-        width: 22px;
+        min-width: 12px;
         display: inline-block;
         text-align: center;
-        line-height: 22px;
-        height: 22px;
         color: #012b5b;
         border: none;
         position: relative;
@@ -36,7 +33,7 @@
 
         &:hover {
             text-decoration: none;
-            background-color: rgba($colorGray,0.3);
+            color: $thirdlyColor;
         }
     }
 

@@ -90,46 +90,17 @@ $( document ).ready(function() {
     $('#jsTreeCategory2').jstree({
 		'core' : {
 			'data' : [
-				{
-					"text" : "first root node",
-                    "state" : { "opened" : true },
-                    "a_attr" : {
-                        "class" : "category__rating"
-                    },
-					"children" : [
-                        { "text" : "Child node 1",
-                            "a_attr" : {
-                                "class" : "category__rating"
-                            },
-                         },
+				{ "text" : "Child node 1",
+                "a_attr" : {
+                    "class" : "category__rating"
+                },
+                },
 
-                         { "text" : "Child node 2",
-                            "a_attr" : {
-                                "class" : "category__rating"
-                            },
-                         },
-
-                         { "text" : "Child node 3",
-                            "a_attr" : {
-                                "class" : "category__rating"
-                            },
-                         },
-
-                         { "text" : "Child node 4",
-                            "a_attr" : {
-                                "class" : "category__rating"
-                            },
-                         },
-
-                         { "text" : "Child node 5",
-                            "a_attr" : {
-                                "class" : "category__rating"
-                            },
-                         },
-
-						{ "text" : "Child node 6"}
-					]
+                { "text" : "Child node 2",
+                "a_attr" : {
+                    "class" : "category__rating"
                 }
+            }
 			]
 		}
 	});

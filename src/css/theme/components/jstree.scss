@@ -1,0 +1,13 @@
+.jstree {
+    max-height: 170px;
+    overflow-y: auto;
+    font-size: 12px;
+}
+
+.jstree-default .jstree-themeicon {
+    display: none;
+}
+
+.jstree-children > .jstree-node:last-child {
+    background-color: transparent;
+}

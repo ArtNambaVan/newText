@@ -2,27 +2,39 @@
     .toggle-switch + span {
         color: $primaryColor;
         vertical-align: text-bottom;
+        font-size: 12px;
     }
 
     .toggle-switch-check {
         &:empty ~ .toggle-switch-bar {
+            height: 14px;
+            line-height: 14px;
+            width: 25px;
+
             &::before {
                 border-color: $primaryColor;
-                border-width: 2px;
+                border-width: 1px;
                 background-color: $colorWhite;
                 border-radius: 20px;
-                width: 50px;
+                width: 25px;
             }
 
             &::after {
                 border-color: $primaryColor;
                 border-radius: 50%;
-                border-width: 2px;
-                width: 25px;
-                height: 25px;
+                border-width: 1px;
+                width: 14px;
+                height: 14px;
                 left: 0;
                 top: 0;
                 bottom: 0;
+            }
+
+            .toggle-switch-handle::after {
+                margin-left: 35px;
+                font-size: 12px;
+                color: $primaryColor;
+                text-transform: none;
             }
         }
 
@@ -37,8 +49,8 @@
             &::after {
                 border-color: $primaryColor;
                 border-radius: 50%;
-                border-width: 2px;
-                left: 26px;
+                border-width: 1px;
+                left: 11px;
             }
         }
     }

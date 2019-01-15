@@ -9,7 +9,7 @@
 
     &__item {
         display: flex;
-        font-size: 14px;
+        font-size: 12px;
 
         & + & {
             margin-top: 0.2rem;
@@ -23,7 +23,7 @@
 
     &__delete {
         color: $thirdlyColor;
-        margin-right: 0.5rem;
+        margin-right: 0.3rem;
         cursor: pointer;
     }
 

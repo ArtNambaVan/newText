@@ -4,7 +4,8 @@
     position: relative;
 
     label {
-        padding: 0.2rem 0.5rem;
+        padding: 0.1rem 0.5rem;
+        font-size: 12px;
         width: 100%;
         display: block;
         text-align: left;
@@ -44,8 +45,8 @@
 
     &--main {
         justify-content: center;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
 
         &::before {
             content: "";
