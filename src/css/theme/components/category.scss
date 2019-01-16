@@ -1,4 +1,22 @@
 .category {
+    &-control {
+        font-size: 12px;
+        text-align: center;
+        margin-top: 1rem;
+
+        &--plus {
+            i[class^="icon-minus"] {
+                display: none;
+            }
+        }
+
+        &--minus {
+            i[class^="icon-plus"] {
+                display: none;
+            }
+        }
+    }
+
     &--unrating {
         .category__name::before { content: "\f02b"; }
     }
@@ -10,6 +28,14 @@
     &__item {
         display: flex;
         font-size: 12px;
+
+        &--unrating {
+            .category__name::before { content: "\f02b"; }
+        }
+
+        &--rating {
+            .category__name::before { content: "\f005"; }
+        }
 
         & + & {
             margin-top: 0.2rem;

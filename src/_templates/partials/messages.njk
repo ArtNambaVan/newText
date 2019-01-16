@@ -81,155 +81,182 @@
                                         </a>
                                         
                                         <div class="filter-category__body collapse show" aria-labelledby="categoryFilter" id="categoryFilterBody" role="tabpanel"> 
-                                            <div class="[ row no-gutters ]  filter-category__item">
-                                                <div class="col-3">
-                                                    <label class="filter-category__label">Category:</label>
-                                                </div>
+                                            <div class="filter-category__section">
+                                                <div class="[ row no-gutters ]  filter-category__item">
+                                                    <div class="col-3">
+                                                        <label class="filter-category__label">Category:</label>
+                                                    </div>
+                                                    
+                                                    <div class="col-8">
+                                                        <input type="text" class="filter-category__control" placeholder="Search title or message">
+                                                        <div aria-labelledby="categoryNameHeading" class="panel-collapse collapse" id="categoryNameBody" role="tabpanel">
+                                                            <div id="jsTreeCategory">
                                                 
-                                                <div class="col-8">
-                                                    <input type="text" class="filter-category__control" placeholder="Search title or message">
-                                                    <div aria-labelledby="categoryNameHeading" class="panel-collapse collapse" id="categoryNameBody" role="tabpanel">
-                                                        <div id="jsTreeCategory">
-                                            
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <div class="open-jstree" aria-controls="categoryNameBody" aria-expanded="true"
+                                                        class="tree-heading" data-toggle="collapse" href="#categoryNameBody" id="categoryNameHeading" role="tab">
+                                                            <i class="icon-folder-close"></i>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-1">
-                                                    <div class="open-jstree" aria-controls="categoryNameBody" aria-expanded="true"
-                                                    class="tree-heading" data-toggle="collapse" href="#categoryNameBody" id="categoryNameHeading" role="tab">
-                                                        <i class="icon-folder-close"></i>
+
+                                                <div class="[ row no-gutters ] filter-category__item">         
+                                                    <div class="col-8 offset-3">
+                                                        <div class="radio-group">
+                                                            <div class="custom-radio">
+                                                                <input id="radio1" name="radio1" type="radio" checked/>
+                                                                <label for="radio1">And</label>
+                                                            </div>
+                                                            <div class="custom-radio">
+                                                                <input id="radio2" name="radio1" type="radio"/>
+                                                                <label for="radio2">Or</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                </div>
+
+                                                <div class="filter-category__item">
+                                                    <ul class="category">
+                                                        <li class="category__item category__item--unrating">
+                                                            <span class="category__delete">&#10006;</span>
+                                                            <span class="category__name">China</span>
+                                                        </li>
+                                                        <li class="category__item category__item--unrating">
+                                                            <span class="category__delete">&#10006;</span>
+                                                            <span class="category__name">Germany</span>
+                                                        </li>
+                                                        <li class="category__item category__item--rating">
+                                                            <span class="category__delete">&#10006;</span>
+                                                            <span class="category__name">Engine Noise</span>
+                                                            <div class="category__value">
+                                                                <label class="category__indicator category__indicator--positive category__indicator--progress-25" for="searchCategory"></label>
+                                                                <input id="searchCategory" type="hidden">
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="filter-category__item category-control category-control--minus">
+                                                    <a href="#" class="btn-link filter-btn">
+                                                        <i class="icon-plus-sign-alt"></i>
+                                                        <i class="icon-minus-sign-alt"></i>
+                                                        Remove Filter Group 
+                                                    </a>
                                                 </div>
                                             </div>
 
-                                            <div class="[ row no-gutters ] filter-category__item">         
-                                                <div class="col-8 offset-3">
-                                                    <div class="radio-group">
+                                            <div class="filter-category__section">
+                                                <div class="filter-category__item">
+                                                    <div class="radio-group radio-group--main">
                                                         <div class="custom-radio">
-                                                            <input id="radio1" name="radio1" type="radio" checked/>
-                                                            <label for="radio1">And</label>
+                                                            <input id="radio3" name="radio2" type="radio" checked/>
+                                                            <label for="radio3">And</label>
                                                         </div>
                                                         <div class="custom-radio">
-                                                            <input id="radio2" name="radio1" type="radio"/>
-                                                            <label for="radio2">Or</label>
+                                                            <input id="radio4" name="radio2" type="radio"/>
+                                                            <label for="radio4">Or</label>
+                                                        </div>
+                                                        <div class="custom-radio">
+                                                            <input id="radio5" name="radio2" type="radio"/>
+                                                            <label for="radio5">Exclude</label>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="filter-category__item">
-                                                <ul class="category category--unrating">
-                                                    <li class="category__item">
-                                                        <span class="category__delete">&#10006;</span>
-                                                        <span class="category__name">China</span>
-                                                    </li>
-                                                    <li class="category__item">
-                                                        <span class="category__delete">&#10006;</span>
-                                                        <span class="category__name">Germany</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="filter-category__item">
-                                                <div class="radio-group radio-group--main">
-                                                    <div class="custom-radio">
-                                                        <input id="radio3" name="radio2" type="radio" checked/>
-                                                        <label for="radio3">And</label>
+                                                <div class="[ row no-gutters ]  filter-category__item">
+                                                    <div class="col-3">
+                                                        <label class="filter-category__label">Category:</label>
                                                     </div>
-                                                    <div class="custom-radio">
-                                                        <input id="radio4" name="radio2" type="radio"/>
-                                                        <label for="radio4">Or</label>
-                                                    </div>
-                                                    <div class="custom-radio">
-                                                        <input id="radio5" name="radio2" type="radio"/>
-                                                        <label for="radio5">Exclude</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="[ row no-gutters ]  filter-category__item">
-                                                <div class="col-3">
-                                                    <label class="filter-category__label">Category:</label>
-                                                </div>
+                                                    
+                                                    <div class="col-8">
+                                                        <input type="text" class="filter-category__control" placeholder="Search title or message">
+                                                        <div aria-labelledby="categoryNameHeading2" class="panel-collapse collapse" id="categoryNameBody2" role="tabpanel">
+                                                            <div id="jsTreeCategory2">
                                                 
-                                                <div class="col-8">
-                                                    <input type="text" class="filter-category__control" placeholder="Search title or message">
-                                                    <div aria-labelledby="categoryNameHeading2" class="panel-collapse collapse" id="categoryNameBody2" role="tabpanel">
-                                                        <div id="jsTreeCategory2">
-                                            
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <div class="open-jstree" aria-controls="categoryNameBody2" aria-expanded="true"
+                                                        class="tree-heading" data-toggle="collapse" href="#categoryNameBody2" id="categoryNameHeading2" role="tab">
+                                                            <i class="icon-folder-close"></i>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-1">
-                                                    <div class="open-jstree" aria-controls="categoryNameBody2" aria-expanded="true"
-                                                    class="tree-heading" data-toggle="collapse" href="#categoryNameBody2" id="categoryNameHeading2" role="tab">
-                                                        <i class="icon-folder-close"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="[ row no-gutters ] filter-category__item">         
-                                                <div class="col-8 offset-3">
-                                                    <div class="radio-group">
-                                                        <div class="custom-radio">
-                                                            <input id="radio11" name="radio4" type="radio" checked/>
-                                                            <label for="radio11">And</label>
-                                                        </div>
-                                                        <div class="custom-radio">
-                                                            <input id="radio22" name="radio4" type="radio"/>
-                                                            <label for="radio22">Or</label>
+                                                <div class="[ row no-gutters ] filter-category__item">         
+                                                    <div class="col-8 offset-3">
+                                                        <div class="radio-group">
+                                                            <div class="custom-radio">
+                                                                <input id="radio11" name="radio4" type="radio" checked/>
+                                                                <label for="radio11">And</label>
+                                                            </div>
+                                                            <div class="custom-radio">
+                                                                <input id="radio22" name="radio4" type="radio"/>
+                                                                <label for="radio22">Or</label>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="filter-category__item">
-                                                <ul class="category category--rating">
-                                                    <li class="category__item">
-                                                        <span class="category__delete">&#10006;</span>
-                                                        <span class="category__name">Engine Noise</span>
-                                                        <div class="category__value">
-                                                            {# <span class="category__indicator category__indicator--positive category__indicator--progress-25"></span> #}
-                                                            <label class="category__indicator category__indicator--positive category__indicator--progress-25" for="searchCategory"></label>
-                                                            <input id="searchCategory" type="hidden">
-                                                        </div>
-                                                    </li>
-                                                    <li class="category__item">
-                                                        <span class="category__delete">&#10006;</span>
-                                                        <span class="category__name">Powertrain</span>
-                                                        <div class="category__value">
-                                                            <a href="#" class="btn-link add-tonality">
-                                                                <i class="icon-plus-sign-alt"></i>
-                                                                Add Tonality
-                                                            </a>
-                                                        </div>
-                                                        <div class="tonality-popup collapse">
-                                                            <a href="#close" title="Close" class="close"><i class="icon-remove-sign"></i></a>
-                                                            <h4 class="tonality-popup__header"></h4>
-                                                            <span>negative</span>
-                                                            <div class="tonality-popup__group">
-                                                                <span class="tonality-popup__btn tonality-popup__btn--negative-25">25%</span>
-                                                                <span class="tonality-popup__btn tonality-popup__btn--negative-50">50%</span>
-                                                                <span class="tonality-popup__btn tonality-popup__btn--negative-75">75%</span>
-                                                                <span class="tonality-popup__btn tonality-popup__btn--negative-100">100%</span>
+                                                <div class="filter-category__item">
+                                                    <ul class="category category">
+                                                        <li class="category__item category__item--rating">
+                                                            <span class="category__delete">&#10006;</span>
+                                                            <span class="category__name">Engine Noise</span>
+                                                            <div class="category__value">
+                                                                {# <span class="category__indicator category__indicator--positive category__indicator--progress-25"></span> #}
+                                                                <label class="category__indicator category__indicator--positive category__indicator--progress-25" for="searchCategory"></label>
+                                                                <input id="searchCategory" type="hidden">
                                                             </div>
-                                                            <span>neutral</span>
-                                                            <div class="tonality-popup__group">
-                                                                <span class="tonality-popup__btn tonality-popup__btn--neutral-25">25%</span>
-                                                                <span class="tonality-popup__btn tonality-popup__btn--neutral-50">50%</span>
-                                                                <span class="tonality-popup__btn tonality-popup__btn--neutral-75">75%</span>
-                                                                <span class="tonality-popup__btn tonality-popup__btn--neutral-100">100%</span>
+                                                        </li>
+                                                        <li class="category__item category__item--rating">
+                                                            <span class="category__delete">&#10006;</span>
+                                                            <span class="category__name">Powertrain</span>
+                                                            <div class="category__value">
+                                                                <a href="#" class="btn-link add-tonality">
+                                                                    <i class="icon-plus-sign-alt"></i>
+                                                                    Add Tonality
+                                                                </a>
                                                             </div>
-                                                            <span>positive</span>
-                                                            <div class="tonality-popup__group">
-                                                                <span class="tonality-popup__btn tonality-popup__btn--positive-25">25%</span>
-                                                                <span class="tonality-popup__btn tonality-popup__btn--positive-50">50%</span>
-                                                                <span class="tonality-popup__btn tonality-popup__btn--positive-75">75%</span>
-                                                                <span class="tonality-popup__btn tonality-popup__btn--positive-100">100%</span>
+                                                            <div class="tonality-popup collapse">
+                                                                <a href="#close" title="Close" class="close"><i class="icon-remove-sign"></i></a>
+                                                                <h4 class="tonality-popup__header"></h4>
+                                                                <span>negative</span>
+                                                                <div class="tonality-popup__group">
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--negative-25">25%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--negative-50">50%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--negative-75">75%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--negative-100">100%</span>
+                                                                </div>
+                                                                <span>neutral</span>
+                                                                <div class="tonality-popup__group">
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--neutral-25">25%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--neutral-50">50%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--neutral-75">75%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--neutral-100">100%</span>
+                                                                </div>
+                                                                <span>positive</span>
+                                                                <div class="tonality-popup__group">
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--positive-25">25%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--positive-50">50%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--positive-75">75%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--positive-100">100%</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="filter-category__item category-control category-control--plus">
+                                                    <a href="#" class="btn-link filter-btn">
+                                                        <i class="icon-plus-sign-alt"></i>
+                                                        <i class="icon-minus-sign-alt"></i>
+                                                        Add Filter Group 
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

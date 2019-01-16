@@ -29,36 +29,27 @@ $( document ).ready(function() {
 					"text" : "first root node",
                     "state" : { "opened" : true },
                     "a_attr" : {
-                        "class" : "category__rating"
+                        "class" : "jstree-rating"
                     },
 					"children" : [
                         { "text" : "Child node 1",
                             "a_attr" : {
-                                "class" : "category__rating"
+                                "class" : "jstree-rating"
                             },
                          },
 
-                         { "text" : "Child node 2",
-                            "a_attr" : {
-                                "class" : "category__rating"
-                            },
+                         { "text" : "Child node 2"
                          },
 
-                         { "text" : "Child node 3",
-                            "a_attr" : {
-                                "class" : "category__rating"
-                            },
+                         { "text" : "Child node 3"
                          },
 
-                         { "text" : "Child node 4",
-                            "a_attr" : {
-                                "class" : "category__rating"
-                            },
+                         { "text" : "Child node 4"
                          },
 
                          { "text" : "Child node 5",
                             "a_attr" : {
-                                "class" : "category__rating"
+                                "class" : "jstree-rating"
                             },
                          },
 
@@ -92,13 +83,13 @@ $( document ).ready(function() {
 			'data' : [
 				{ "text" : "Child node 1",
                 "a_attr" : {
-                    "class" : "category__rating"
+                    "class" : "jstree-rating"
                 },
                 },
 
                 { "text" : "Child node 2",
                 "a_attr" : {
-                    "class" : "category__rating"
+                    "class" : "jstree-rating"
                 }
             }
 			]

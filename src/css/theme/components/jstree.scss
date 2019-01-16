@@ -11,3 +11,11 @@
 .jstree-children > .jstree-node:last-child {
     background-color: transparent;
 }
+
+.jstree-rating::after {
+    content: "R";
+    display: inline-block;
+    margin-left: 4px;
+    color: rgba($colorGray,0.75);
+    font-weight: bold;
+}
