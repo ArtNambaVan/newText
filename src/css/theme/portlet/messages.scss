@@ -4,8 +4,11 @@
 
 .messages {
     width: 100%;
+    min-height: 75vh;
+    position: relative;
     padding-left: 1rem;
     transition: all 0.4s;
+    overflow: hidden;
 }
 
 .page-pagination + .select-container {
@@ -56,11 +59,13 @@
 }
 
 .messages-container {
+    position: absolute;
+    top: auto;
+    overflow-y: auto;
     padding-right: 1rem;
     margin-top: 1rem;
-    border-top: 1px solid $colorGray;
-    max-height: 35rem;
-    overflow-y: auto;
+    border-top: 1px solid $primaryBorderColor;
+    height: calc(100% - 100px);
 }
 
 .message-item {
@@ -89,7 +94,6 @@
         font-size: 16px;
         color: $primaryColor;
         text-transform: uppercase;
-        margin-right: 5rem;
     }
 
     &__text {
@@ -109,15 +113,19 @@
 
             & + .category {
                 padding-top: 1rem;
-                border-top: 1px solid $colorGray;
+                border-top: 1px solid $primaryBorderColor;
             }
         }
     }
 
     &__translation {
-        border-top: 1px solid $borderColor;
+        border-top: 1px solid $primaryBorderColor;
         padding-top: 1rem;
         position: relative;
+
+        .message-item__heading {
+            margin-right: 5rem;
+        }
 
         .label-success {
             position: absolute;
@@ -138,9 +146,8 @@
     width: calc(100% - 120px - 250px);
 
     &__item {
-        color: gray;
+        color: $colorGray;
         display: inline-block;
-        
         margin-right: 1rem;
     }
 
@@ -183,9 +190,9 @@
 }
 
 .label-success {
-    background-color: rgba($sucessColor,0.3);
-    border-color: rgba($sucessColor,0.3);
-    color: $sucessColor;
+    background-color: transparent;
+    border-color: $primaryBorderColor;
+    color: $thirdlyColor;
 }
 
 .open-jstree {

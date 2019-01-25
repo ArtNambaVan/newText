@@ -4,6 +4,35 @@
     font-size: 12px;
 }
 
+.modal-dialog {
+    width: 60%;
+}
+
+.modal-content {
+    height: 500px;
+}
+
+.modal .jstree {
+    max-height: none;
+}
+
+.jsTree-wrapper {
+    overflow: hidden;
+    height: 100%;
+
+    &__left {
+        float: left;
+        overflow-y: auto;
+        height: 100%;
+        width: 60%;
+    }
+
+    &__right {
+        float: right;
+        width: 40%;
+    }
+}
+
 .jstree-default .jstree-themeicon {
     display: none;
 }

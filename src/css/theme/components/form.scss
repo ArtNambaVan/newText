@@ -99,6 +99,17 @@
     select::-ms-expand {
         display: none;
     }
+
+    input.disabled {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+        opacity: 0.5;
+        color:#AAA;
+        background:#F5F5F5;
+    }
 }
 
 .custom-control .custom-control-input:focus ~ .custom-control-label::before {
