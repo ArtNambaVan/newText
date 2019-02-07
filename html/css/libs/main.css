@@ -1848,6 +1848,12 @@
     top: 0;
     -webkit-overflow-scrolling: touch; }
   
+  .modal {
+    display: block;
+    margin: 0;
+    overflow: hidden;
+    position: fixed; }
+  
   .modal-body {
     overflow: auto; }
     .modal-body.dialog-iframe-bd {
@@ -1862,6 +1868,9 @@
   
   .modal-hidden {
     display: none; }
+  
+  .modal-open .modal {
+    overflow: hidden; }
   
   .portal-popup .columns-max > .portlet-layout.row {
     margin-left: 0;

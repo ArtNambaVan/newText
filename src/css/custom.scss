@@ -1,5 +1,6 @@
 //@import "theme/fonts.scss";
 @import "theme/font-awesome/scss/font-awesome.scss";
+@import "theme/font-awesome2/scss/fontawesome.scss";
 
 @import "theme/abstract/variables.scss";
 @import "theme/abstract/mixin.scss";
@@ -8,6 +9,8 @@
 @import "theme/layout/header.scss";
 @import "theme/layout/footer.scss";
 
+//@import "theme/components/tree-js.scss";
+@import "theme/components/jstree-custom.scss";
 @import "theme/components/tooltip.scss";
 @import "theme/components/button.scss";
 @import "theme/components/form.scss";
@@ -18,6 +21,5 @@
 @import "theme/components/custom-radio.scss";
 @import "theme/components/tonality-popup.scss";
 @import "theme/components/datepicker.scss";
-@import "theme/components/jstree.scss";
 
 @import "theme/portlet/messages.scss";

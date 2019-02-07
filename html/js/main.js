@@ -20,6 +20,22 @@ $( document ).ready(function() {
         $(this).parent().toggleClass('open');
     });
 
+    $('.open-jstree').on('click', function(e) {
+        $('#popup').addClass('show');
+    })
+
+    $('#popup').find('.close').on('click', function(e) {
+        $('#popup').removeClass('show')
+    })
+
+
+
+
+
+
+
+
+
     $('#source').on('click', function (e) {
         var target = $(e.target);
         if(target.hasClass('jstree-anchor')){

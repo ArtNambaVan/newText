@@ -1,0 +1,58 @@
+@import "../abstract/variables";
+
+.jstree {
+    max-height: 170px;
+    overflow-y: auto;
+    font-size: 12px;
+}
+
+.jstree-default .jstree-themeicon {
+    display: none;
+}
+
+.jstree-children > .jstree-node:last-child {
+    background-color: transparent;
+}
+
+.jstree-rating::after {
+    content: "R";
+    display: inline-block;
+    margin-left: 4px;
+    color: rgba($colorGray,0.75);
+    font-weight: bold;
+}
+
+.category-popup {
+    background-color:white;
+    border: 2px solid #aaa;
+    padding:5px 15px;
+    position:fixed;
+    top:15%;
+    width:45%;
+    left:30%;
+    height: 70vh;
+    z-index: 1100;
+}
+
+.category-popup .jstree {
+    width:auto;
+    max-height: 60vh;
+}
+
+.category-popup a:hover {
+    text-decoration: none;
+}
+.category-popup a[title="Close"] {
+    color: #aaa;
+    float:right;
+}
+
+.category-popup a[title="expand all"],
+.category-popup a[title="collapse all"] {
+    margin-top:20px;
+    display: inline-block;
+    margin-bottom:10px;
+    border: 2px solid #012b5b;
+    border-radius: 3px;
+    padding:2px 4px;
+}

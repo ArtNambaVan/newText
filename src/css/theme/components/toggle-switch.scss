@@ -1,3 +1,5 @@
+@import "../abstract/variables";
+
 .cims {
     .toggle-switch + span {
         color: $primaryColor;
@@ -7,9 +9,9 @@
 
     .toggle-switch-check {
         &:empty ~ .toggle-switch-bar {
+            width: 25px;
             height: 14px;
             line-height: 14px;
-            width: 25px;
 
             &::before {
                 border-color: $primaryColor;
@@ -35,6 +37,7 @@
                 font-size: 12px;
                 color: $primaryColor;
                 text-transform: none;
+                font-weight: normal;
             }
         }
 

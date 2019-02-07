@@ -1,3 +1,5 @@
+@import "../abstract/variables";
+
 .cims {
     .form-control {
         min-height: auto;
@@ -39,6 +41,7 @@
         background-color: transparent;
         padding-right: 2rem;
         color: $primaryColor;
+        cursor: pointer;
     }
 
     .select-container {
@@ -47,6 +50,8 @@
         & > input {
             background-color: transparent;
             cursor: pointer;
+            color: transparent;
+            text-shadow: 0 0 0 #000;
         }
 
         &::before {
@@ -62,9 +67,9 @@
         &::after {
             content: "";
             position: absolute;
-            top: 0;
+            bottom: 0;
             right: 25px;
-            height: 100%;
+            height: 25px;
             width: 1px;
             background-color: $primaryColor;
             z-index: -1;

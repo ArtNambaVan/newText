@@ -1,5 +1,8 @@
+@import "../abstract/variables";
+
 .messages-portlet {
     display: flex;
+    margin-top: 1rem;
 }
 
 .messages {
@@ -59,13 +62,14 @@
 }
 
 .messages-container {
+    width: calc(100% - 1rem);
+    height: calc(100% - 100px);
     position: absolute;
     top: auto;
-    overflow-y: auto;
     padding-right: 1rem;
     margin-top: 1rem;
     border-top: 1px solid $primaryBorderColor;
-    height: calc(100% - 100px);
+    overflow-y: auto;
 }
 
 .message-item {
@@ -77,6 +81,7 @@
 
     &__main-content {
         flex: 1;
+        overflow: hidden;
     }
 
     &__logo {
@@ -94,6 +99,7 @@
         font-size: 16px;
         color: $primaryColor;
         text-transform: uppercase;
+        font-weight: normal;
     }
 
     &__text {
@@ -148,7 +154,10 @@
     &__item {
         color: $colorGray;
         display: inline-block;
-        margin-right: 1rem;
+
+        & + & {
+            margin-left: 1rem;
+        }
     }
 
     .message-information__name {
@@ -190,9 +199,9 @@
 }
 
 .label-success {
-    background-color: transparent;
+    background-color: $thirdlyColor;
     border-color: $primaryBorderColor;
-    color: $thirdlyColor;
+    color: WHITE;
 }
 
 .open-jstree {
