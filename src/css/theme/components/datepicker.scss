@@ -1,4 +1,5 @@
 @import "../abstract/variables";
+@import "../abstract/mixin";
 
 .datepicker {
     display: none;
@@ -15,6 +16,10 @@
     &.show {
         display: flex;
     }
+}
+
+.controls {
+    @include margin(4px, 4px, 4px, 4px);
 }
 
 .period {
@@ -71,11 +76,20 @@
 }
 
 .calendar {
-    min-width: 190px;
+    @include margin(4px, 4px, 4px, 4px);
+
+    &__title {
+        @include padding(4px, 9px, 4px, 9px);
+        @include margin(null, auto, null, auto);
+
+        text-align: center;
+        display: block;
+    }
 
     &__header {
+        @include margin(8px, auto, null, auto);
         display: flex;
-        margin: 0 6px 4px;
+        min-width: 190px;
     }
 
     &-select {
@@ -87,11 +101,15 @@
         padding: 2px;
 
         select {
-            -webkit-appearance: none;
-            -moz-appearance: auto;
-            appearance: auto;
+            @include padding(2px, 2px, 2px, 4px);
+            @include margin(null, 2px, null, 2px);
 
-            padding: 0; background: #fff;
+            width: 100%;
+            height: auto;
+            font-size: 12px;
+            line-height: 1.5em;
+            text-align: center;
+            //border-radius: 6px;
         }
     }
 
@@ -99,5 +117,89 @@
         flex: 1;
         text-align: center;
         padding: 4px 0;
+        margin: 0;
+        padding: 4px 0;
+        width: 100%;
+        border-radius: 4px;
+        background: 0 0;
+        border: none;
+        cursor: pointer;
+        outline: none;
+
+        &:hover,
+        {
+            background-color: rgba($colorGray, 0.2);
+        }
+    }
+
+    &-table {
+        height: 180px;
+        overflow: hidden;
+        padding: 5px;
+        display: flex;
+        align-content: stretch;
+        justify-content: space-around;
+        flex-direction: column;
+        border: 1px solid #f5f5f5;
+
+        &__row {
+            display: -ms-flexbox;
+            display: flex;
+            align-content: stretch;
+            justify-content: space-around;
+            flex: 1;
+
+            &.week {
+                font-weight: bold;
+            }
+        }
+
+        &__col {
+            display: flex;
+            flex: 1;
+            text-align: center;
+            line-height: 1;
+            cursor: default;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: white;
+
+            &.clickable {
+                cursor: pointer;
+
+                &:hover {
+                    .calendar-table__value-wrapper {
+                        background: #f5f5f5;
+                        border-radius: 4px;
+                    }
+                }
+
+                &.active {
+                    .calendar-table__value-wrapper {
+                        background: $primaryColor;
+                        color: $colorWhite;
+                    }
+                }
+            }
+
+            
+        }
+
+        &__value-wrapper {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            border-radius: 4px;
+        }
+
+        &__value {
+            flex: 1;
+
+            &.unavailable {
+                color: #bbb;
+            }
+        }
     }
 }

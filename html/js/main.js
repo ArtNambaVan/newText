@@ -29,7 +29,23 @@ $( document ).ready(function() {
     })
 
 
+    // $(function () {
+    //     $('.datepicker').dropdown();
+    //     $('.datepicker').click(function (e) {
+    //         e.stopPropagation();
+    //         return false;
+    //     });
+    // });
 
+    $('.datepicker').on('click', function (e) {
+        var target = $(e.target);
+        console.log(target)
+        if(target.hasClass("period__item") || target.hasClass("calendar") || target.parents(".calendar").length){
+            return false; // returning false should stop the dropdown from hiding.
+        }else{
+            return true;
+        }
+    });
 
 
 
@@ -41,6 +57,8 @@ $( document ).ready(function() {
         if(target.hasClass('jstree-anchor')){
             return true; 
         } else {
+            e.stopPropagation();
+            target.stopPropagation();
             return false;
         }
     });

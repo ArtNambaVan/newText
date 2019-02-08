@@ -95,8 +95,6 @@
                                             </span>
                                             <span class="collapse-icon-open">
                                                 <i class="icon-chevron-up"></i>
-                                                <i class="fas fa-igloo"></i>
-                                                <i class="fas fa-camera-retro"></i>
                                             </span>
                                         </a>
                                         <div class="filter-category__body collapse show" aria-labelledby="textFilter" id="textFilterBody" role="tabpanel">
@@ -130,25 +128,210 @@
                                                             <div class="calendar">
                                                                 <div class="calendar__title">Start</div>
                                                                 <div class="calendar__header">
-                                                                    <div class="arrow">
+                                                                    <button class="arrow">
                                                                         <i class="icon-long-arrow-left"></i>
-                                                                    </div>
+                                                                    </button>
                                                                     <div class="calendar-select">
                                                                         <select>
-                                                                            <option>1</option>
-                                                                            <option>2</option>
-                                                                            <option>3</option>
+                                                                            <option value="0">Jan</option>
+                                                                            <option value="1">Feb</option>
+                                                                            <option value="2">Mar</option>
+                                                                            <option value="3">Apr</option>
+                                                                            <option value="4">May</option>
+                                                                            <option value="5">Jun</option>
+                                                                            <option value="6">Jul</option>
+                                                                            <option value="7">Aug</option>
+                                                                            <option value="8">Sep</option>
+                                                                            <option value="9">Oct</option>
+                                                                            <option value="10">Nov</option>
+                                                                            <option value="11">Dec</option>
                                                                         </select>
-                                                                        <select>
-                                                                            <option>1</option>
-                                                                            <option>2</option>
-                                                                            <option>3</option>
+                                                                        <select class="year-select">
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2017">2017</option>
+                                                                            <option value="2018">2018</option>
+                                                                            <option value="2019">2019</option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="arrow">
+                                                                    <button class="arrow">
                                                                         <i class="icon-long-arrow-right"></i>
-                                                                    </div>
+                                                                    </button>
                                                                 </div>
+                                                                <div class="calendar-table">
+                                                                    <div class="calendar-table__row week"> 
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Su</div> 
+                                                                            </div> 
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Mo</div> 
+                                                                            </div> 
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Tu</div> 
+                                                                            </div> 
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">We</div> 
+                                                                            </div> 
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Th</div> 
+                                                                            </div> 
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Fr</div> 
+                                                                            </div> 
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Sa</div> 
+                                                                            </div> 
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable active">  
+                                                                            <div class="calendar-table__value-wrapper">
+                                                                                <div class="calendar-table__value unavailable">28</div>  
+
+                                                                                <div class="calendar-table__value unavailable">29</div>  
+                                                                         
+                                                                                <div class="calendar-table__value unavailable">30</div>  
+                                                                         
+                                                                                <div class="calendar-table__value unavailable">31</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">1</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">2</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">3</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">4</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">5</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">6</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">7</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">8</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">9</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">10</div>
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">11</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">12</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">13</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">14</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">15</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">16</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">17</div>
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">18</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">19</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">20</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">21</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">22</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">23</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">24</div>
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">25</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">26</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">27</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">28</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">29</div>  
+                                                                         
+                                                                                <div class="calendar-table__value">30</div>  
+                                                                         
+                                                                                <div class="calendar-table__value unavailable">1</div> 
+                                                                            </div>    
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value unavailable">2</div>  
+                                                                         
+                                                                                <div class="calendar-table__value unavailable">3</div>  
+                                                                         
+                                                                                <div class="calendar-table__value unavailable">4</div>  
+                                                                         
+                                                                                <div class="calendar-table__value unavailable">5</div>  
+                                                                         
+                                                                                <div class="calendar-table__value unavailable">6</div>  
+                                                                         
+                                                                                <div class="calendar-table__value unavailable">7</div>  
+                                                                         
+                                                                                <div class="calendar-table__value unavailable">8</div> 
+                                                                            </div>    
+                                                                        </div>
+                                                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                    </div>
                                                             </div>
                                                         </div>
                                                     </div>
