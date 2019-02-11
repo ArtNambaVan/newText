@@ -5,8 +5,8 @@
         margin-top: 0;
         padding-top: 15px;
         padding-bottom: 25px;
-        border-bottom: 1px solid $borderColor;
-        background-color: $primaryColor;
+        border-bottom: 1px solid $primaryColor;
+        background-color: $colorWhite;
         position: relative;
         z-index: 20;
     }
@@ -15,12 +15,12 @@
         margin-top: 3px;
 
         &__img {
-            width: 50px;
-            transform: scale(-1,1) rotate(-30deg);
+            width: 125px;
+            //transform: scale(-1,1) rotate(-30deg);
         }
 
         &__name {
-            color: $colorWhite;
+            color: $primaryColor;
             font-size: 1.7rem;
             vertical-align: bottom;
             display: inline-block;
@@ -83,7 +83,7 @@
             }
 
             .active {
-                color: $thirdlyColor;
+                color: rgb(0, 164, 211);
 
                 @media (max-width: 768px) {
                     display: none;
@@ -93,7 +93,7 @@
 
         &__link {
             display: inline-block;
-            color: $colorWhite;
+            color: $primaryColor;
             text-transform: uppercase;
 
             @media (max-width: 768px) {

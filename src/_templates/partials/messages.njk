@@ -29,7 +29,7 @@
                                                         <input type="text" autocomplete="off" class="filter-category__control datepicker-input dropdown-toggle" 
                                                         id="q" data-toggle="dropdown" readonly value="01.01.2019 - 07.01.2019">
                                                         <i class="icon-calendar"></i>
-                                                        <div class="dropdown-menu datepicker" aria-labelledby="q">
+                                                        {# <div class="dropdown-menu datepicker" aria-labelledby="q">
                                                             <div class="controls">
                                                                 <ul class="period">
                                                                     <li class="period__item period__item--active">Day</li>
@@ -40,11 +40,21 @@
                                                                 </ul>
                                                                 <ul class="range">
                                                                     <li class="range__item range__item--active">Last 30 days</li>
-                                                                    <li class="range__item">Last Month</li>
-                                                                    <li class="range__item">Last Quarter</li>
+                                                                    <li class="range__item">Last 90 days</li>
                                                                     <li class="range__item">Last Year</li>
-                                                                    <li class="range__item">Total</li>
+                                                                    <li class="range__item">All Time</li>
+                                                                    <li class="range__item">Custom Range</li>
                                                                 </ul>
+                                                                <form>
+                                                                    <div class="custom-range"> 
+                                                                        <input class="custom-range__input" type="text">
+                                                                        <input class="custom-range__input" type="text">
+                                                                    </div>
+                                                                    <div class="custom-range"> 
+                                                                        <button class="apply-btn" type="submit">Apply</button>
+                                                                        <button class="cancel-btn">Cancel</button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                             <div class="calendar">
                                                                 <div class="calendar__title">Start</div>
@@ -122,10 +132,13 @@
                                                                             </div> 
                                                                         </div>
                                                                     </div>
-                                                                    {% include "./datepicker.njk" %}
+                                                                {% include "./datepicker.njk" %}
+                                                                    
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> #}
+                                                        {% include "./datepickerFull.njk" %}
+                                                        
                                                     </div>
                                                     
                                                 </div>

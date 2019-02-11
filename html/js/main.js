@@ -37,18 +37,33 @@ $( document ).ready(function() {
     //     });
     // });
 
+
     $('.datepicker').on('click', function (e) {
         var target = $(e.target);
-        console.log(target)
-        if(target.hasClass("period__item") || target.hasClass("calendar") || target.parents(".calendar").length){
-            return false; // returning false should stop the dropdown from hiding.
-        }else{
+        console.log(target.index(), target.parent().children().length - 1)
+
+        if (target.hasClass('range__item') && target.index() !== target.parent().children().length - 1) {
             return true;
+        } else {
+            return false
         }
+
     });
 
-
-
+    $('.period').each(function() {
+        $(this).find('li').each(function(i) {
+            $(this).click(function(){
+                console.log($(this).index())
+                if ($(this).index() === 0) {
+                    $(this).addClass('period__item--active').siblings().removeClass('period__item--active')
+                    .closest('.datepicker').find('.calendar').removeClass('active')
+                } else {
+                    $(this).addClass('period__item--active').siblings().removeClass('period__item--active')
+                    .closest('.datepicker').find('.calendar').removeClass('active').eq(i - 1).addClass('active');
+                }
+            });
+        });
+    });
 
 
 

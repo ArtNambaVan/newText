@@ -5768,18 +5768,17 @@ body {
   margin-top: 0;
   padding-top: 15px;
   padding-bottom: 25px;
-  border-bottom: 1px solid #bfbfbf;
-  background-color: #012b5b;
+  border-bottom: 1px solid #012b5b;
+  background-color: #fff;
   position: relative;
   z-index: 20; }
 
 .cims .main-logo {
   margin-top: 3px; }
   .cims .main-logo__img {
-    width: 50px;
-    transform: scale(-1, 1) rotate(-30deg); }
+    width: 125px; }
   .cims .main-logo__name {
-    color: #fff;
+    color: #012b5b;
     font-size: 1.7rem;
     vertical-align: bottom;
     display: inline-block;
@@ -5824,13 +5823,13 @@ body {
     .cims .main-nav__item + .cims .main-nav__item {
       margin-top: 0; }
     .cims .main-nav__item .active {
-      color: #e98f18; }
+      color: #00a4d3; }
       @media (max-width: 768px) {
         .cims .main-nav__item .active {
           display: none; } }
   .cims .main-nav__link {
     display: inline-block;
-    color: #fff;
+    color: #012b5b;
     text-transform: uppercase; }
     @media (max-width: 768px) {
       .cims .main-nav__link {
@@ -5941,13 +5940,22 @@ body {
   .cims .form-group--right {
     text-align: right; }
 
-.cims input[type="text"],
+.cims [type="text"],
 .cims select {
   padding: 0.2rem;
   height: 25px;
   width: 100%;
   border: 1px solid #012b5b;
   font-size: 12px; }
+
+.cims .select-container select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  padding-right: 2rem;
+  color: #012b5b;
+  cursor: pointer; }
 
 .cims .select-container {
   position: relative; }
@@ -6304,7 +6312,7 @@ body {
     color: #e98f18;
     font-size: 1.5rem; }
 
-.datepicker {
+.cims .datepicker {
   display: none;
   position: absolute;
   background: #fff;
@@ -6315,40 +6323,46 @@ body {
   font-family: sans-serif;
   width: auto;
   max-width: none; }
-  .datepicker.show {
+  .cims .datepicker.show {
     display: flex; }
 
-.controls {
+.cims .controls {
   margin-top: 4px;
   margin-right: 4px;
   margin-bottom: 4px;
   margin-left: 4px; }
 
-.period {
+.cims .period {
   display: flex;
   list-style-type: none; }
-  .period__item {
-    padding: 5px 9.6px;
+  .cims .period__item {
+    padding-top: 5px;
+    padding-right: 9.6px;
+    padding-bottom: 5px;
+    padding-left: 9.6px;
     background: #f5f5f5;
     color: #012b5b;
     transition: all 0.1s;
     cursor: pointer; }
-    .period__item:hover, .period__item--active {
+    .cims .period__item:hover, .cims .period__item--active {
       background-color: #012b5b;
       color: #fff; }
-    .period__item:first-child {
+    .cims .period__item:first-child {
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px; }
-    .period__item:last-child {
+    .cims .period__item:last-child {
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px; }
 
-.range {
+.cims .range {
   display: flex;
   flex-direction: column;
   margin-top: 10px; }
-  .range__item {
-    padding: 4px 9px;
+  .cims .range__item {
+    padding-top: 4px;
+    padding-right: 9px;
+    padding-bottom: 4px;
+    padding-left: 9px;
     margin: 0;
     background: #f5f5f5;
     color: #012b5b;
@@ -6357,16 +6371,61 @@ body {
     margin-bottom: 8px;
     text-align: left;
     transition: all 0.15s; }
-    .range__item:hover, .range__item--active {
+    .cims .range__item:hover, .cims .range__item--active {
       background-color: #012b5b;
       color: #fff; }
 
-.calendar {
+.cims .custom-range {
+  margin-right: -3px;
+  margin-left: -3px;
+  display: flex; }
+  .cims .custom-range__input {
+    margin-right: 3px;
+    margin-left: 3px;
+    flex: 1;
+    border-radius: 4px;
+    border: 1px solid #bfbfbf;
+    padding: .5em;
+    font-size: 13px;
+    color: #333; }
+  .cims .custom-range button {
+    margin-right: 3px;
+    margin-left: 3px;
+    padding-top: 4px;
+    padding-right: 9px;
+    padding-bottom: 4px;
+    padding-left: 9px;
+    padding: 4px 9px;
+    border-radius: 4px;
+    background: #f5f5f5;
+    color: #012b5b;
+    border: none;
+    outline: none;
+    cursor: pointer; }
+    .cims .custom-range button:hover {
+      background: gainsboro; }
+  .cims .custom-range .apply-btn {
+    background-color: #e98f18;
+    color: #fff; }
+    .cims .custom-range .apply-btn:hover {
+      background: #bc7312; }
+  .cims .custom-range + .custom-range {
+    margin-top: 8px; }
+
+.cims .calendar {
+  display: none;
   margin-top: 4px;
   margin-right: 4px;
   margin-bottom: 4px;
   margin-left: 4px; }
-  .calendar__title {
+  .cims .calendar.active {
+    display: block; }
+  .cims .calendar-months .calendar-table__col,
+  .cims .calendar-years .calendar-table__col {
+    font-size: 16px; }
+  .cims .calendar-quarters .calendar-table__col {
+    font-size: 32px; }
+  .cims .calendar__title {
     padding-top: 4px;
     padding-right: 9px;
     padding-bottom: 4px;
@@ -6375,20 +6434,20 @@ body {
     margin-left: auto;
     text-align: center;
     display: block; }
-  .calendar__header {
+  .cims .calendar__header {
     margin-top: 8px;
     margin-right: auto;
     margin-left: auto;
     display: flex;
     min-width: 190px; }
-  .calendar-select {
+  .cims .calendar-select {
     flex: 5;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2px; }
-    .calendar-select select {
+    .cims .calendar-select select {
       padding-top: 2px;
       padding-right: 2px;
       padding-bottom: 2px;
@@ -6396,11 +6455,12 @@ body {
       margin-right: 2px;
       margin-left: 2px;
       width: 100%;
+      max-width: 75%;
       height: auto;
       font-size: 12px;
       line-height: 1.5em;
       text-align: center; }
-  .calendar .arrow {
+  .cims .calendar .arrow {
     flex: 1;
     text-align: center;
     padding: 4px 0;
@@ -6412,26 +6472,26 @@ body {
     border: none;
     cursor: pointer;
     outline: none; }
-    .calendar .arrow:hover {
+    .cims .calendar .arrow:hover {
       background-color: rgba(117, 115, 115, 0.2); }
-  .calendar-table {
-    height: 180px;
+  .cims .calendar-table {
+    height: 235px;
     overflow: hidden;
+    margin-top: 5px;
     padding: 5px;
     display: flex;
     align-content: stretch;
     justify-content: space-around;
     flex-direction: column;
     border: 1px solid #f5f5f5; }
-    .calendar-table__row {
-      display: -ms-flexbox;
+    .cims .calendar-table__row {
       display: flex;
       align-content: stretch;
       justify-content: space-around;
       flex: 1; }
-      .calendar-table__row.week {
+      .cims .calendar-table__row.week {
         font-weight: bold; }
-    .calendar-table__col {
+    .cims .calendar-table__col {
       display: flex;
       flex: 1;
       text-align: center;
@@ -6441,24 +6501,29 @@ body {
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
-      background-color: white; }
-      .calendar-table__col.clickable {
+      background-color: #fff; }
+      .cims .calendar-table__col.clickable {
         cursor: pointer; }
-        .calendar-table__col.clickable:hover .calendar-table__value-wrapper {
+        .cims .calendar-table__col.clickable:hover .calendar-table__value-wrapper {
           background: #f5f5f5;
           border-radius: 4px; }
-        .calendar-table__col.clickable.active .calendar-table__value-wrapper {
+        .cims .calendar-table__col.clickable.active .calendar-table__value-wrapper {
           background: #012b5b;
           color: #fff; }
-    .calendar-table__value-wrapper {
+    .cims .calendar-table__value-wrapper {
       display: flex;
       flex: 1;
       align-items: center;
       border-radius: 4px; }
-    .calendar-table__value {
+    .cims .calendar-table__value {
       flex: 1; }
-      .calendar-table__value.unavailable {
+      .cims .calendar-table__value.unavailable {
         color: #bbb; }
+  .cims .calendar .months {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+    opacity: 0.8; }
 
 .messages-portlet {
   display: flex;
