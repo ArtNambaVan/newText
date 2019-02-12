@@ -1,0 +1,35 @@
+@import "../abstract/variables";
+
+.custom-checkbox {
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    font-size: 12px;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+
+        &:checked ~ span {
+            &::before {
+                content: '\F14A';
+            }
+        }
+    }
+
+    span:before {
+        content: '\F096';
+        display: inline-block;
+        font-family: FontAwesome;
+        width: 15px;
+        height: 15px;
+        padding-right: 4px;
+        font-size: 1rem;
+        color: $thirdlyColor;
+    }
+
+}

@@ -9,7 +9,7 @@
 
     .toggle-switch-check {
         &:empty ~ .toggle-switch-bar {
-            width: 25px;
+            //width: 25px;
             height: 14px;
             line-height: 14px;
 
@@ -33,7 +33,7 @@
             }
 
             .toggle-switch-handle::after {
-                margin-left: 35px;
+                margin-left: 30px;
                 font-size: 12px;
                 color: $primaryColor;
                 text-transform: none;

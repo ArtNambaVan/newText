@@ -46,6 +46,8 @@
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
+    font-size: 12px;
+    color: $primaryColor;
 
     & + & {
         padding-top: 0.5rem;
@@ -55,9 +57,17 @@
         margin-right: auto;
     }
 
-    &__translation {
+    &__item {
         align-self: flex-end;
-        margin-right: 3rem;
+        margin-right: 1rem;
+    }
+
+    .toggle-switch {
+        vertical-align: text-top;
+    }
+
+    .link-icon > span {
+        color: $thirdlyColor;
     }
 }
 

@@ -18,29 +18,39 @@
                                                                     <li class="range__item">All Time</li>
                                                                     <li class="range__item">Custom Range</li>
                                                                 </ul>
-                                                                <form>
-                                                                    <div class="custom-range"> 
-                                                                        <input class="custom-range__input" type="text">
-                                                                        <input class="custom-range__input" type="text">
-                                                                    </div>
-                                                                    <div class="custom-range"> 
-                                                                        <button class="apply-btn" type="submit">Apply</button>
-                                                                        <button class="cancel-btn">Cancel</button>
-                                                                    </div>
-                                                                </form>
+                                                                <div class="custom-range"> 
+                                                                    <input class="custom-range__input" type="text">
+                                                                    <input class="custom-range__input" type="text">
+                                                                </div>
+                                                                <div class="custom-range"> 
+                                                                    <button class="apply-btn" type="submit">Apply</button>
+                                                                    <button class="cancel-btn">Cancel</button>
+                                                                </div>
                                                             </div>
 
                                                             <div class="calendar calendar-weeks">
+                                                                <!-- WEEKS -->
                                                                 {% include "./datepicker/calendar-weeks.njk" %}
+
+                                                                <!-- WEEKS END -->
                                                             </div>
                                                             <div class="calendar calendar-months">
+                                                                <!-- MONTHS -->
                                                                 {% include "./datepicker/calendar-months.njk" %}
+
+                                                                <!-- MONTHS END-->
                                                             </div>
                                                             <div class="calendar calendar-quarters">
+                                                                <!-- QUARTERS -->
                                                                 {% include "./datepicker/calendar-quarter.njk" %}
+
+                                                                <!-- QUARTERS END -->
                                                             </div>
                                                             <div class="calendar calendar-years">
+                                                                <!-- YEAR -->
                                                                 {% include "./datepicker/calendar-year.njk" %}
+
+                                                                <!-- YEAR END -->
                                                             </div>
                                                         </div>
                                                         <!--Datepicker ends-->
