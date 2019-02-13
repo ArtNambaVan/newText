@@ -3,15 +3,22 @@
 .messages-portlet {
     display: flex;
     margin-top: 1rem;
+    justify-content: space-between;
 }
 
 .messages {
-    width: 100%;
+    width: calc(100% - 80px);
     min-height: 75vh;
     position: relative;
     padding-left: 1rem;
+    //padding-left: 100px;
     transition: all 0.4s;
     overflow: hidden;
+}
+
+.filters-panel.active + .messages {
+    padding-left: 1rem;
+    width: calc(100% - 450px);
 }
 
 .page-pagination + .select-container {
@@ -87,6 +94,10 @@
 
     &__head {
         display: flex;
+
+        @media (max-width: 1280px) {
+            flex-wrap: wrap;
+        }
     }
 
     &__main-content {
@@ -114,6 +125,7 @@
 
     &__text {
         margin-top: 0.8rem;
+        margin-bottom: 0;
         font-size: 12px;
     }
 
@@ -132,11 +144,30 @@
                 border-top: 1px solid $primaryBorderColor;
             }
         }
+
+        @media (max-width: 1280px) {
+            flex: 100%;
+            display: flex;
+            margin: 0.5rem 0;
+
+            .category {
+                flex: 1;
+                padding: 0;
+
+                & + .category {
+                    padding-top: 0;
+                    padding-left: 0.25rem;
+                    border-left: 1px solid $primaryBorderColor;
+                    border-top: 0;
+                }
+            }
+        }
     }
 
     &__translation {
         border-top: 1px solid $primaryBorderColor;
         padding-top: 1rem;
+        margin-top: 1rem;
         position: relative;
 
         .message-item__heading {
@@ -152,6 +183,8 @@
 
     &__footer {
         background-color: rgba($colorGray,0.1);
+        display: flex;
+        justify-content: space-between;
     }
 }
 
@@ -160,6 +193,10 @@
     margin-top: auto;
     font-size: 12px;
     width: calc(100% - 120px - 250px);
+
+    & + & {
+        width: 250px;
+    }
 
     &__item {
         color: $colorGray;

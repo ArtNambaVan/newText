@@ -6082,12 +6082,18 @@ body {
   left: 11px; }
 
 .filters-panel {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  flex: 0 0 450px;
-  width: 450px;
-  z-index: 2; }
+  width: 0;
+  z-index: 2;
+  transform: translateX(-350px);
+  transition: all 0.4s; }
   .filters-panel__body {
-    border: 1px solid #aaa; }
+    border: 1px solid #aaa;
+    opacity: 0;
+    visibility: hidden;
+    display: none; }
   .filters-panel__btn {
     position: absolute;
     top: 5px;
@@ -6098,12 +6104,51 @@ body {
     height: 23px;
     cursor: pointer;
     z-index: 2;
-    background-color: transparent; }
-    .filters-panel__btn.active .collapse-icon-open {
+    background-color: transparent;
+    transform: translateX(350px);
+    background: rgba(205, 226, 241, 0.25);
+    height: 100%;
+    width: 80px;
+    transition: background 200ms; }
+    .filters-panel__btn .collapse-icon-open {
+      display: block; }
+    .filters-panel__btn .collapse-icon-closed {
       display: none; }
     .filters-panel__btn span {
       position: absolute;
-      right: 33px; }
+      right: 33px;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-left: 10px; }
+  .filters-panel.active {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    width: 450px; }
+    .filters-panel.active .filters-panel__btn {
+      transform: translateX(0);
+      height: 23px;
+      width: 100%;
+      background: transparent; }
+      .filters-panel.active .filters-panel__btn span {
+        position: absolute;
+        right: 33px;
+        top: auto;
+        transform: translateY(0);
+        padding-left: 0; }
+        .filters-panel.active .filters-panel__btn span:first-child {
+          opacity: 0; }
+      .filters-panel.active .filters-panel__btn .collapse-icon-open {
+        display: none; }
+      .filters-panel.active .filters-panel__btn .collapse-icon-closed {
+        display: block; }
+    .filters-panel.active .filters-panel__body {
+      opacity: 1;
+      visibility: visible;
+      display: block; }
 
 .filter-category {
   border-bottom: 1px solid #aaa;
@@ -6567,15 +6612,20 @@ body {
 
 .messages-portlet {
   display: flex;
-  margin-top: 1rem; }
+  margin-top: 1rem;
+  justify-content: space-between; }
 
 .messages {
-  width: 100%;
+  width: calc(100% - 80px);
   min-height: 75vh;
   position: relative;
   padding-left: 1rem;
   transition: all 0.4s;
   overflow: hidden; }
+
+.filters-panel.active + .messages {
+  padding-left: 1rem;
+  width: calc(100% - 450px); }
 
 .page-pagination + .select-container {
   margin-left: auto; }
@@ -6626,6 +6676,9 @@ body {
   margin-top: 2rem; }
   .message-item__head {
     display: flex; }
+    @media (max-width: 1280px) {
+      .message-item__head {
+        flex-wrap: wrap; } }
   .message-item__main-content {
     flex: 1;
     overflow: hidden; }
@@ -6643,6 +6696,7 @@ body {
     font-weight: normal; }
   .message-item__text {
     margin-top: 0.8rem;
+    margin-bottom: 0;
     font-size: 12px; }
   .message-item__rating {
     flex: 0 0 250px; }
@@ -6653,9 +6707,23 @@ body {
       .message-item__rating .category + .category {
         padding-top: 1rem;
         border-top: 1px solid #aaa; }
+    @media (max-width: 1280px) {
+      .message-item__rating {
+        flex: 100%;
+        display: flex;
+        margin: 0.5rem 0; }
+        .message-item__rating .category {
+          flex: 1;
+          padding: 0; }
+          .message-item__rating .category + .category {
+            padding-top: 0;
+            padding-left: 0.25rem;
+            border-left: 1px solid #aaa;
+            border-top: 0; } }
   .message-item__translation {
     border-top: 1px solid #aaa;
     padding-top: 1rem;
+    margin-top: 1rem;
     position: relative; }
     .message-item__translation .message-item__heading {
       margin-right: 5rem; }
@@ -6664,13 +6732,17 @@ body {
       top: 0.8rem;
       right: 0; }
   .message-item__footer {
-    background-color: rgba(117, 115, 115, 0.1); }
+    background-color: rgba(117, 115, 115, 0.1);
+    display: flex;
+    justify-content: space-between; }
 
 .message-information {
   list-style-type: none;
   margin-top: auto;
   font-size: 12px;
   width: calc(100% - 120px - 250px); }
+  .message-information + .message-information {
+    width: 250px; }
   .message-information__item {
     color: #757373;
     display: inline-block; }

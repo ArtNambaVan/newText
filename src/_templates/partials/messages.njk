@@ -2,13 +2,14 @@
 
                     <div class="messages-portlet">
                         <!-- FILTERS-PANEL START -->
-                        <div class="filters-panel" id="filtersPanel">
+                        <div class="filters-panel active" id="filtersPanel">
                             <div class="filters-panel__btn active" id="filtersBtn">
+                                <span>Show filters</span>
                                 <span class="collapse-icon-closed">
                                     <i class="icon-chevron-left"></i>
                                 </span>
                                 <span class="collapse-icon-open">
-                                    <i class="icon-chevron-up"></i>
+                                    <i class="icon-chevron-right"></i>
                                 </span>
                             </div>
                             <div class="filters-panel__body">
@@ -21,6 +22,7 @@
                                                 <div class="col-8 offset-3">
                                                     <div class="select-container">
                                                         <select class="filter-category__control">
+                                                            <option value="" disabled selected hidden>Select saved filter</option>
                                                             <option>Lorem1</option>
                                                             <option>Lorem2</option>
                                                             <option>Lorem3</option>
@@ -95,7 +97,7 @@
                                             </span>
                                         </a>
                                         
-                                        <div class="filter-category__body collapse" aria-labelledby="extendedTextSearch" id="extendedTextSearchBody" role="tabpanel"> 
+                                        <div class="filter-category__body collapse show" aria-labelledby="extendedTextSearch" id="extendedTextSearchBody" role="tabpanel"> 
                                             <div class="filter-category__section">
                                                 <div class="[ row no-gutters ]  filter-category__item">
                                                     <div class="col-3">
@@ -235,7 +237,7 @@
                                             </span>
                                         </a>
                                         
-                                        <div class="filter-category__body collapse" aria-labelledby="categoryFilter" id="categoryFilterBody" role="tabpanel"> 
+                                        <div class="filter-category__body collapse show" aria-labelledby="categoryFilter" id="categoryFilterBody" role="tabpanel"> 
                                             <div class="filter-category__section">
                                                 <div class="[ row no-gutters ]  filter-category__item">
                                                     <div class="col-3">
@@ -740,6 +742,27 @@
                                                 </li>
                                                 <li class="message-information__item">
                                                     <span class="message-information__name message-information__name--views">251</span>
+                                                </li>
+                                            </ul>
+
+                                            <ul class="message-information">
+                                                <li class="message-information__item">
+                                                    <a href="#" class="link-icon">
+                                                        <span><i class="icon-trash"></i></span>
+                                                        Edit
+                                                    </a>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <a href="#" class="link-icon">
+                                                        <span><i class="icon-trash"></i></span>
+                                                        History
+                                                    </a>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox" name="test"/>
+                                                        <span>Marked</span>
+                                                    </label>
                                                 </li>
                                             </ul>
                                         </div>

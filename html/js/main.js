@@ -1,6 +1,10 @@
 $( document ).ready(function() {
 
     var $tonalityPopup = $('.tonality-popup');
+    var filtersBtn = $('.filters-panel__btn');
+    var filtersPanel = $('.filters-panel');
+    var closePanel = $('#panelClose');
+    var openPanel = "filters-panel--open";
 
     $('.category__value').find('a').on('click', function(e) {
         e.preventDefault();
@@ -36,6 +40,10 @@ $( document ).ready(function() {
     //         return false;
     //     });
     // });
+
+    filtersBtn.on('click', function() {
+        filtersPanel.hasClass('active') ? filtersPanel.removeClass('active') : filtersPanel.addClass('active');
+    });
 
 
     $('.datepicker').on('click', function (e) {
