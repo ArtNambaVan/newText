@@ -45,6 +45,10 @@ $( document ).ready(function() {
         filtersPanel.hasClass('active') ? filtersPanel.removeClass('active') : filtersPanel.addClass('active');
     });
 
+    function hideOverflowMobile() {
+        $('#wrapper').addClass('mobile-hidden');
+    }
+
 
     $('.datepicker').on('click', function (e) {
         var target = $(e.target);

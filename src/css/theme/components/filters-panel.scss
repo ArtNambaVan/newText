@@ -11,12 +11,30 @@
     transform: translateX(-350px);
     transition: all 0.4s;
 
+    @media (max-width: 576px ) {
+        position: fixed;
+        top: 90px;
+        z-index: 1;
+        left: 0;
+        bottom: 0;
+        border: none;
+        background: white;
+    }
+
+    
+
     &__body {
         border: 1px solid $primaryBorderColor;
         opacity: 0;
         visibility: hidden;
         display: none;
+
+        @media (max-width: 576px ) {
+            overflow-y: auto;
+            border: none;
+        }
     }
+    
 
     &__btn {
         position: absolute;
@@ -62,6 +80,17 @@
         transform: translateX(0);
         //flex: 0 0 450px;
         width: 450px;
+
+        @media (max-width: 576px ) {
+            width: 100%;
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            clear: both;
+            overflow: hidden;
+        }
 
         .filters-panel__btn {
             transform: translateX(0);

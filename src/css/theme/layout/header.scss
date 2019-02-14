@@ -8,14 +8,17 @@
         border-bottom: 1px solid $primaryColor;
         background-color: $colorWhite;
         position: relative;
+        height: 90px;
         //z-index: 20;
     }
 
     .main-logo {
         margin-top: 3px;
+        display: inline-block;
 
         &__img {
-            width: 125px;
+            //width: 125px;
+            height: 45px;
             //transform: scale(-1,1) rotate(-30deg);
         }
 
@@ -54,6 +57,7 @@
                 width: 100%;
                 left: 0;
                 background-color: $primaryColor;
+                z-index: 20;
             }
         }
 

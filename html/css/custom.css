@@ -5749,9 +5749,10 @@ body {
     flex-grow: 1;
     padding-top: 1rem;
     padding-bottom: 1rem; }
-  .cims .container-fluid {
-    padding-left: 40px;
-    padding-right: 40px; }
+  @media (min-width: 1281px) {
+    .cims .container-fluid {
+      padding-left: 40px;
+      padding-right: 40px; } }
 
 #wrapper {
   padding-top: 0; }
@@ -5770,12 +5771,14 @@ body {
   padding-bottom: 25px;
   border-bottom: 1px solid #012b5b;
   background-color: #fff;
-  position: relative; }
+  position: relative;
+  height: 90px; }
 
 .cims .main-logo {
-  margin-top: 3px; }
+  margin-top: 3px;
+  display: inline-block; }
   .cims .main-logo__img {
-    width: 125px; }
+    height: 45px; }
   .cims .main-logo__name {
     color: #012b5b;
     font-size: 1.7rem;
@@ -5804,7 +5807,8 @@ body {
         top: 100%;
         width: 100%;
         left: 0;
-        background-color: #012b5b; } }
+        background-color: #012b5b;
+        z-index: 20; } }
   .cims .main-nav__list {
     list-style-type: none; }
     @media (max-width: 768px) {
@@ -6089,11 +6093,24 @@ body {
   z-index: 2;
   transform: translateX(-350px);
   transition: all 0.4s; }
+  @media (max-width: 576px) {
+    .filters-panel {
+      position: fixed;
+      top: 90px;
+      z-index: 1;
+      left: 0;
+      bottom: 0;
+      border: none;
+      background: white; } }
   .filters-panel__body {
     border: 1px solid #aaa;
     opacity: 0;
     visibility: hidden;
     display: none; }
+    @media (max-width: 576px) {
+      .filters-panel__body {
+        overflow-y: auto;
+        border: none; } }
   .filters-panel__btn {
     position: absolute;
     top: 5px;
@@ -6128,6 +6145,14 @@ body {
     -ms-transform: translateX(0);
     transform: translateX(0);
     width: 450px; }
+    @media (max-width: 576px) {
+      .filters-panel.active {
+        width: 100%; } }
+    .filters-panel.active:after {
+      content: '';
+      display: block;
+      clear: both;
+      overflow: hidden; }
     .filters-panel.active .filters-panel__btn {
       transform: translateX(0);
       height: 23px;
@@ -6622,6 +6647,10 @@ body {
   padding-left: 1rem;
   transition: all 0.4s;
   overflow: hidden; }
+  @media (max-width: 576px) {
+    .messages {
+      width: 100%;
+      padding-left: 0; } }
 
 .filters-panel.active + .messages {
   padding-left: 1rem;
@@ -6652,8 +6681,14 @@ body {
   color: #012b5b; }
   .messages-settings + .messages-settings {
     padding-top: 0.5rem; }
-  .messages-settings__pagination {
-    margin-right: auto; }
+  @media (max-width: 1280px) {
+    .messages-settings {
+      align-items: flex-end; }
+      .messages-settings .page-pagination {
+        flex-direction: column;
+        align-items: flex-start; }
+        .messages-settings .page-pagination__results {
+          padding-left: 0; } }
   .messages-settings__item {
     align-self: flex-end;
     margin-right: 1rem; }
@@ -6671,6 +6706,21 @@ body {
   margin-top: 1rem;
   border-top: 1px solid #aaa;
   overflow-y: auto; }
+  @media (max-width: 1280px) {
+    .messages-container {
+      height: calc(100% - 125px - 2rem); } }
+  @media (max-width: 768px) {
+    .messages-container {
+      height: auto;
+      position: static;
+      top: auto;
+      padding-right: 0;
+      margin-top: 0;
+      border-top: 1px solid #aaa;
+      overflow-y: auto; } }
+  @media (max-width: 576px) {
+    .messages-container {
+      width: 100%; } }
 
 .message-item {
   margin-top: 2rem; }
@@ -6685,6 +6735,9 @@ body {
   .message-item__logo {
     flex: 0 0 120px;
     text-align: center; }
+    @media (max-width: 576px) {
+      .message-item__logo {
+        flex: 0 0 70px; } }
     .message-item__logo img {
       max-width: 90%;
       text-align: center;
@@ -6734,20 +6787,30 @@ body {
   .message-item__footer {
     background-color: rgba(117, 115, 115, 0.1);
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    align-items: baseline; }
+    @media (max-width: 1280px) {
+      .message-item__footer {
+        flex-wrap: wrap; } }
 
 .message-information {
   list-style-type: none;
-  margin-top: auto;
+  margin: 0;
   font-size: 12px;
   width: calc(100% - 120px - 250px); }
   .message-information + .message-information {
     width: 250px; }
+  @media (max-width: 1280px) {
+    .message-information {
+      width: auto; }
+      .message-information + .message-information {
+        width: auto;
+        text-align: right; } }
   .message-information__item {
     color: #757373;
+    display: block;
+    margin-right: 1rem;
     display: inline-block; }
-    .message-information__item + .message-information__item {
-      margin-left: 1rem; }
   .message-information .message-information__name {
     color: #757373; }
     .message-information .message-information__name::before {
