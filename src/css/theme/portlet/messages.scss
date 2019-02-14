@@ -15,17 +15,19 @@
     transition: all 0.4s;
     overflow: hidden;
 
-    @media (max-width: 576px) {
+    @media (max-width: 992px) {
         width: 100%;
         padding-left: 0;
     }
 }
 
+@media (min-width: 991px) {
+
 .filters-panel.active + .messages {
     padding-left: 1rem;
     width: calc(100% - 450px);
 }
-
+}
 .page-pagination + .select-container {
     margin-left: auto;
 }
@@ -105,18 +107,11 @@
         height: calc(100% - 125px - 2rem);
     }
 
-    @media (max-width: 768px) {
-        height: auto;
-        position: static;
-        top: auto;
-        padding-right: 0;
-        margin-top: 0;
-        border-top: 1px solid $primaryBorderColor;
-        overflow-y: auto;
-    }
-
-    @media (max-width: 576px) {
+    @media (max-width: 991px) {
         width: 100%;
+        position: static;
+        overflow: auto;
+        height: auto;
     }
 }
 
@@ -125,6 +120,7 @@
 
     &__head {
         display: flex;
+        position: relative;
 
         @media (max-width: 1280px) {
             flex-wrap: wrap;
@@ -140,14 +136,22 @@
         flex: 0 0 120px;
         text-align: center;
 
-        @media (max-width: 576px) {
-            flex: 0 0 70px;
+        @media (max-width: 991px) {
+            flex: 0 0 1px;
         }
 
         img {
             max-width: 90%;
             text-align: center;
             margin-top: 20px;
+
+            @media (max-width: 991px) {
+                width: 50px;
+                position: absolute;
+                top: -1rem;
+                right: 0;
+                margin: 0;
+            }
         }
     }
 
@@ -156,6 +160,10 @@
         color: $primaryColor;
         text-transform: uppercase;
         font-weight: normal;
+
+        @media (max-width: 991px) {
+            padding-right: 50px;
+        }
     }
 
     &__text {
@@ -166,6 +174,7 @@
 
     &__rating {
         flex: 0 0 250px;
+        font-size: 12px;
 
         .category {
             padding-bottom: 0.5rem;

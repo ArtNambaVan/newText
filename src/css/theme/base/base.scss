@@ -43,6 +43,10 @@ body {
         flex-grow: 1;
         padding-top: 1rem;
         padding-bottom: 1rem;
+
+        @media (max-width: 991px) {
+            margin-top: 90px;
+        }
     }
 
     .container-fluid {

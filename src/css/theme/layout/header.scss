@@ -9,7 +9,13 @@
         background-color: $colorWhite;
         position: relative;
         height: 90px;
-        //z-index: 20;
+        z-index: 10;
+
+        @media (max-width: 991px) {
+            position: fixed;
+            width: 100%;
+            margin-bottom: 90px;
+        }
     }
 
     .main-logo {
@@ -41,7 +47,7 @@
         flex-wrap: wrap;
         margin-top: 0;
 
-        @media (max-width: 768px) {
+        @media (max-width: 991px) {
             display: block;
         }
 
@@ -51,7 +57,7 @@
             flex-direction: column-reverse;
             justify-content: space-between;
 
-            @media (max-width: 768px) {
+            @media (max-width: 991px) {
                 position: absolute;
                 top: 100%;
                 width: 100%;
@@ -64,7 +70,7 @@
         &__list {
             list-style-type: none;
 
-            @media (max-width: 768px) {
+            @media (max-width: 991px) {
                 width: 100%;
             }
         }
@@ -73,7 +79,7 @@
             display: inline-block;
             margin-left: 1rem;
 
-            @media (max-width: 768px) {
+            @media (max-width: 991px) {
                 display: block;
                 padding: 0;
 
@@ -89,7 +95,7 @@
             .active {
                 color: rgb(0, 164, 211);
 
-                @media (max-width: 768px) {
+                @media (max-width: 991px) {
                     display: none;
                 }
             }
@@ -100,7 +106,7 @@
             color: $primaryColor;
             text-transform: uppercase;
 
-            @media (max-width: 768px) {
+            @media (max-width: 991px) {
                 display: block;
                 padding: 1rem 2rem;
                 color: $colorWhite;
