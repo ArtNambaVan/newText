@@ -1,0 +1,43 @@
+@import "../abstract/variables";
+
+.tooltip-cims {
+    position: relative;
+    display: inline-block;
+    color: $thirdlyColor;
+    font-size: 14px;
+    z-index: 3;
+    cursor: pointer;
+
+    &__text::before {
+        content: attr(data-tooltip);
+        visibility: hidden;
+        min-width: 140px;
+        max-width: 250px;
+        background-color: #F9F2D5;
+        color: #000;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: -5px;
+        left: 23px;
+    }
+
+    &__text::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 14px;
+        margin-top: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent #F9F2D5 transparent transparent;
+        visibility: hidden;
+    }
+    &:hover &__text::before,
+    &:hover &__text::after {
+        visibility: visible;
+    }
+  }
+  

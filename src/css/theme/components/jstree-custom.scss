@@ -32,6 +32,13 @@
     left:30%;
     height: 70vh;
     z-index: 1100;
+    
+    @media (max-width: 992px) {
+        left: 10%;
+        width: 80%;
+        top: 120px;
+        height: calc(95vh - 120px);
+    }
 }
 
 .category-popup .jstree {

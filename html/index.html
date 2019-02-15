@@ -78,7 +78,6 @@
         </header>        <main>
             <div class="container-fluid">
                 <div class="portlet-body">
-
                     <div class="messages-portlet">
                         <!-- FILTERS-PANEL START -->
                         <div class="filters-panel active" id="filtersPanel">
@@ -98,7 +97,12 @@
                                 <form>
                                     <!-- SEARCH & FILTER STARTS -->
                                     <div class="filter-category">
-                                        <div class="filter-category__title">search & filter</div>
+                                        <div class="filter-category__title">search & filter
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="icon-question-sign"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm tooltip"></span>
+                                            </span>
+                                        </div>
                                         <div class="filter-category__body">
                                             <div class="[ row no-gutters ] filter-category__item">
                                                 <div class="col-8 offset-3">
@@ -128,6 +132,10 @@
                                         <a class="filter-category__head collapse-icon" aria-controls="textFilterBody"
                                         aria-expanded="true" data-toggle="collapse" href="#textFilterBody" id="textFilter" role="tab">
                                             <span class="filter-category__title">text & period filter</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="icon-question-sign"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm tooltip"></span>
+                                            </span>
                                             <span class="collapse-icon-closed">
                                                 <i class="icon-chevron-down"></i>
                                             </span>
@@ -591,6 +599,10 @@
                                         <a class="filter-category__head collapse-icon" aria-controls="extendedTextSearchBody"
                                             aria-expanded="true" data-toggle="collapse" href="#extendedTextSearchBody" id="extendedTextSearch" role="tab">
                                             <span class="filter-category__title">extended text search</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="icon-question-sign"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm another tooltip"></span>
+                                            </span>
                                             <span class="collapse-icon-closed">
                                                 <i class="icon-chevron-down"></i>
                                             </span>
@@ -731,6 +743,10 @@
                                         <a class="filter-category__head collapse-icon" aria-controls="categoryFilterBody"
                                             aria-expanded="true" data-toggle="collapse" href="#categoryFilterBody" id="categoryFilter" role="tab">
                                             <span class="filter-category__title">category filter</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="icon-question-sign"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm another tooltip"></span>
+                                            </span>
                                             <span class="collapse-icon-closed">
                                                 <i class="icon-chevron-down"></i>
                                             </span>
@@ -929,6 +945,10 @@
                                         <a class="filter-category__head collapse-icon" aria-controls="adminFilterBody"
                                         aria-expanded="true" data-toggle="collapse" href="#adminFilterBody" id="adminFilter" role="tab">
                                             <span class="filter-category__title">admin filter</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="icon-question-sign"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm another tooltip"></span>
+                                            </span>
                                             <span class="collapse-icon-closed">
                                                 <i class="icon-chevron-down"></i>
                                             </span>
@@ -1862,6 +1882,10 @@
                                         <a class="filter-category__head collapse-icon" aria-controls="miscellanousFilterBody"
                                         aria-expanded="true" data-toggle="collapse" href="#miscellanousFilterBody" id="miscellanousFilter" role="tab">
                                             <span class="filter-category__title">miscellanous filter</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="icon-question-sign"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm another tooltip"></span>
+                                            </span>
                                             <span class="collapse-icon-closed">
                                                 <i class="icon-chevron-down"></i>
                                             </span>
@@ -1918,109 +1942,105 @@
 
 
                         <div class="messages">
-                            <!-- TEST -->
-                            <div class="test">
-                                <div class="messages-settings">
-                                    <div class="messages-settings__item">
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="test"/>
-                                            <span>Mark all messages</span>
-                                        </label>
-                                    </div>
-                                    <div class="messages-settings__item">
-                                        <a href="#" class="link-icon">
-                                            <span><i class="icon-envelope"></i></span>
-                                            Add marked to newsletter
-                                        </a>
-                                    </div>
-                                    <div class="messages-settings__item">
-                                        <a href="#" class="link-icon">
-                                            <span><i class="icon-download-alt"></i></span>
-                                            Export filtered
-                                        </a>
-                                    </div>
-                                    <div class="messages-settings__item">
-                                        <a href="#" class="link-icon">
-                                            <span><i class="icon-ok"></i></span>
-                                            Publish marked
-                                        </a>
-                                    </div>
-                                    <div class="messages-settings__item">
-                                        <a href="#" class="link-icon">
-                                            <span><i class="icon-trash"></i></span>
-                                            Delete marked
-                                        </a>
-                                    </div>
-                                    <div class="messages-settings__item">
-                                        <label class="toggle-switch">
-                                            <input class="toggle-switch-check" type="checkbox" checked/>
-                                            <span aria-hidden="true" class="toggle-switch-bar">
-                                                <span class="toggle-switch-handle" data-label-on="Show Translation" data-label-off="Show Translation"></span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <div class="messages-settings__item">
-                                        <label class="toggle-switch">
-                                            <input class="toggle-switch-check" type="checkbox"/>
-                                            <span aria-hidden="true" class="toggle-switch-bar">
-                                                <span class="toggle-switch-handle" data-label-on="Show HTML source" data-label-off="Show HTML source"></span>
-                                            </span>
-                                        </label>
-                                    </div>
+                            <div class="messages-settings">
+                                <div class="messages-settings__item">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="test"/>
+                                        <span>Mark all messages</span>
+                                    </label>
                                 </div>
+                                <div class="messages-settings__item">
+                                    <a href="#" class="link-icon">
+                                        <span><i class="icon-envelope"></i></span>
+                                        Add marked to newsletter
+                                    </a>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <a href="#" class="link-icon">
+                                        <span><i class="icon-download-alt"></i></span>
+                                        Export filtered
+                                    </a>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <a href="#" class="link-icon">
+                                        <span><i class="icon-ok"></i></span>
+                                        Publish marked
+                                    </a>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <a href="#" class="link-icon">
+                                        <span><i class="icon-trash"></i></span>
+                                        Delete marked
+                                    </a>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <label class="toggle-switch">
+                                        <input class="toggle-switch-check" type="checkbox" checked/>
+                                        <span aria-hidden="true" class="toggle-switch-bar">
+                                            <span class="toggle-switch-handle" data-label-on="Show Translation" data-label-off="Show Translation"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <label class="toggle-switch">
+                                        <input class="toggle-switch-check" type="checkbox"/>
+                                        <span aria-hidden="true" class="toggle-switch-bar">
+                                            <span class="toggle-switch-handle" data-label-on="Show HTML source" data-label-off="Show HTML source"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
 
-                                <div class="messages-settings">
-                                    <div class="page-pagination">
-                                        <ul class="page-pagination__list">
-                                            <li class="page-pagination__item">
-                                                <a class="page-pagination__link" href="#1" role="button">
-                                                    <i class="icon-step-backward" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li class="page-pagination__item">
-                                                <a class="page-pagination__link" href="#1" role="button">
-                                                    <i class="icon-chevron-left"></i>
-                                                </a>
-                                            </li>
-                                            <li class="active page-pagination__item"><a class="page-pagination__link" href="#1">1</a></li>
-                                            <li class="page-pagination__item"><a class="page-pagination__link" href="#1">2</a></li>
-                                            <li class="page-pagination__item"><a class="page-pagination__link" href="#1">3</a></li>
-                                            <li class="page-pagination__item"><a class="page-pagination__link" href="#1">4423423</a></li>
-                                            <li class="page-pagination__item"><a class="page-pagination__link" href="#1">44234</a></li>
-                                            <li class="page-pagination__item">
-                                                <a class="page-pagination__link" href="#1" role="button">
-                                                    <i class="icon-chevron-right" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li class="page-pagination__item">
-                                                <a class="page-pagination__link" href="#1" role="button">
-                                                    <i class="icon-step-forward" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <div class="page-pagination__results">Page 1 of 31 (1.013 messages in total)</div>
-                                        <div class="select-container">
-                                            <select class="filter-category__control">
-                                                <option>10 per page</option>
-                                                <option selected>20 per page</option>
-                                                <option>30 per page</option>
-                                                <option>50 per page</option>
-                                                <option>100 per page</option>   
-                                            </select>
-                                        </div>
-                                    </div>
-
+                            <div class="messages-settings">
+                                <div class="page-pagination">
+                                    <ul class="page-pagination__list">
+                                        <li class="page-pagination__item">
+                                            <a class="page-pagination__link" href="#1" role="button">
+                                                <i class="icon-step-backward" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="page-pagination__item">
+                                            <a class="page-pagination__link" href="#1" role="button">
+                                                <i class="icon-chevron-left"></i>
+                                            </a>
+                                        </li>
+                                        <li class="active page-pagination__item"><a class="page-pagination__link" href="#1">1</a></li>
+                                        <li class="page-pagination__item"><a class="page-pagination__link" href="#1">2</a></li>
+                                        <li class="page-pagination__item"><a class="page-pagination__link" href="#1">3</a></li>
+                                        <li class="page-pagination__item"><a class="page-pagination__link" href="#1">4423423</a></li>
+                                        <li class="page-pagination__item"><a class="page-pagination__link" href="#1">44234</a></li>
+                                        <li class="page-pagination__item">
+                                            <a class="page-pagination__link" href="#1" role="button">
+                                                <i class="icon-chevron-right" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="page-pagination__item">
+                                            <a class="page-pagination__link" href="#1" role="button">
+                                                <i class="icon-step-forward" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="page-pagination__results">Page 1 of 31 (1.013 messages in total)</div>
                                     <div class="select-container">
-                                        <select>
-                                            <option>Sort by date (descending)</option>
-                                            <option>Sort by date (ascending)</option>
-                                            <option>Sort by views (descending)</option>
-                                            <option>Sort by views (ascending)</option>
+                                        <select class="filter-category__control">
+                                            <option>10 per page</option>
+                                            <option selected>20 per page</option>
+                                            <option>30 per page</option>
+                                            <option>50 per page</option>
+                                            <option>100 per page</option>   
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="select-container">
+                                    <select>
+                                        <option>Sort by date (descending)</option>
+                                        <option>Sort by date (ascending)</option>
+                                        <option>Sort by views (descending)</option>
+                                        <option>Sort by views (ascending)</option>
+                                    </select>
+                                </div>
                             </div>
-                            <!-- TEST ENDS -->
 
                                 <div class="messages-container">
                                     <div class="message-item">
@@ -2076,7 +2096,7 @@
                                         <div class="message-item__footer">
                                             <ul class="message-information">
                                                 <li class="message-information__item">
-                                                    <a class="message-information__name message-information__name--url-name" href="#">google.com</a>
+                                                    <span class="message-information__name message-information__name--url-name" href="#">google.com</span>
                                                 </li>
                                                 <li class="message-information__item">
                                                     <a class="message-information__name message-information__name--url-link" href="#">URL</a>
@@ -2092,7 +2112,7 @@
                                             <ul class="message-information">
                                                 <li class="message-information__item">
                                                     <a href="#" class="link-icon">
-                                                        <span><i class="icon-trash"></i></span>
+                                                        <span><i class="icon-pencil"></i></span>
                                                         Edit
                                                     </a>
                                                 </li>
@@ -2165,7 +2185,7 @@
                                         <div class="message-item__footer">
                                             <ul class="message-information">
                                                 <li class="message-information__item">
-                                                    <a class="message-information__name message-information__name--url-name" href="#">google.com</a>
+                                                    <span class="message-information__name message-information__name--url-name" href="#">google.com</span>
                                                 </li>
                                                 <li class="message-information__item">
                                                     <a class="message-information__name message-information__name--url-link" href="#">URL</a>
@@ -2175,6 +2195,26 @@
                                                 </li>
                                                 <li class="message-information__item">
                                                     <span class="message-information__name message-information__name--views">251</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="message-information">
+                                                <li class="message-information__item">
+                                                    <a href="#" class="link-icon">
+                                                        <span><i class="icon-pencil"></i></span>
+                                                        Edit
+                                                    </a>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <a href="#" class="link-icon">
+                                                        <span><i class="icon-trash"></i></span>
+                                                        History
+                                                    </a>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox" name="test"/>
+                                                        <span>Marked</span>
+                                                    </label>
                                                 </li>
                                             </ul>
                                         </div>
@@ -2233,7 +2273,7 @@
                                         <div class="message-item__footer">
                                             <ul class="message-information">
                                                 <li class="message-information__item">
-                                                    <a class="message-information__name message-information__name--url-name" href="#">google.com</a>
+                                                    <span class="message-information__name message-information__name--url-name" href="#">google.com</span>
                                                 </li>
                                                 <li class="message-information__item">
                                                     <a class="message-information__name message-information__name--url-link" href="#">URL</a>
@@ -2243,6 +2283,26 @@
                                                 </li>
                                                 <li class="message-information__item">
                                                     <span class="message-information__name message-information__name--views">251</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="message-information">
+                                                <li class="message-information__item">
+                                                    <a href="#" class="link-icon">
+                                                        <span><i class="icon-pencil"></i></span>
+                                                        Edit
+                                                    </a>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <a href="#" class="link-icon">
+                                                        <span><i class="icon-trash"></i></span>
+                                                        History
+                                                    </a>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox" name="test"/>
+                                                        <span>Marked</span>
+                                                    </label>
                                                 </li>
                                             </ul>
                                         </div>

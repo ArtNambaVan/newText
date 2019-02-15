@@ -21,15 +21,24 @@
         }
     }
 
-    span:before {
-        content: '\F096';
+    span {
+        position: relative;
         display: inline-block;
-        font-family: FontAwesome;
-        width: 15px;
-        height: 15px;
-        padding-right: 4px;
-        font-size: 1rem;
-        color: $thirdlyColor;
+        margin-left: 15px;
+
+        &:before {
+            content: '\F096';
+            display: inline-block;
+            font-family: FontAwesome;
+            position: absolute;
+            top: -2.7px;
+            left: -15px;
+            width: 15px;
+            height: 15px;
+            padding-right: 4px;
+            font-size: 1rem;
+            color: $thirdlyColor;
+        }
     }
 
 }

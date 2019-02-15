@@ -6,6 +6,8 @@ $( document ).ready(function() {
     var closePanel = $('#panelClose');
     var openPanel = "filters-panel--open";
 
+    filtersPanel.hasClass('active') ? $('#wrapper').addClass('panel-open-mb') : $('#wrapper').removeClass('panel-open-mb');
+
     $('.category__value').find('a').on('click', function(e) {
         e.preventDefault();
         var $item = $(this).closest('.category__item');
@@ -43,6 +45,7 @@ $( document ).ready(function() {
 
     filtersBtn.on('click', function() {
         filtersPanel.hasClass('active') ? filtersPanel.removeClass('active') : filtersPanel.addClass('active');
+        filtersPanel.hasClass('active') ? $('#wrapper').addClass('panel-open-mb') : $('#wrapper').removeClass('panel-open-mb');
     });
 
     function hideOverflowMobile() {

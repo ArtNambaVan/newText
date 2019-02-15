@@ -15,6 +15,7 @@
         
         position: static;
         z-index: 22;
+        overflow-y: auto;
         
     }
 
@@ -25,9 +26,13 @@
         display: none;
 
         @media (max-width: 991px ) {
-            overflow-y: auto;
+            //
             border: none;
         }
+    }
+
+    [class^="collapse-icon"] {
+        font-size: 1rem;
     }
     
 
@@ -38,10 +43,11 @@
         display: block;
         width: 100%;
         left: 0;
+        font-size: 1rem;
         height: 23px;
         cursor: pointer;
         z-index: 2;
-        background-color: transparent;
+        background-color: rgba($secondaryColor, 0.25);
         //transform: translateX(350px);
         
         height: 100%;
@@ -50,17 +56,19 @@
 
         @media (max-width: 991px ) {
             //position: static;
+            color: $primaryColor;
             background: transparent;
             height: 25px;
             z-index: 100;
             left: auto;
-            right: 15px;
+            right: 16px;
             top: 25px;
         }
         
 
         .collapse-icon-open {
             display: none;
+            font-size: 1rem;
             @media (min-width: 992px ) {
                 display: block;
             }
@@ -68,6 +76,7 @@
 
         .collapse-icon-closed {
             display: none;
+            font-size: 1rem;
         }
 
         .search-mobile {
@@ -86,7 +95,7 @@
             @media (max-width: 991px ) {
                 position: fixed;
                 font-size: 1.4rem;
-                top: 5%;
+                top: 42px;
 
                 &:first-child {
                     display: none;
@@ -124,6 +133,7 @@
             height: 23px;
             width: 100%;
             background: transparent;
+            z-index: 2;
             @media (max-width: 991px ) {
                 top: 8px;
             }
@@ -177,9 +187,8 @@
     padding-left: 15px;
     position: relative;
 
-    @media (max-width: 991px ) {
+    @media (min-width: 576px) and (max-width: 991px) {
         font-size: 16px;
-
     }
 
     &__head {
@@ -207,6 +216,10 @@
     &__body {
         padding-right: 1rem;
         padding-left: 1rem;
+
+        @media (max-width: 992px) {
+            padding: 0;
+        }
     }
 
     &__item {
@@ -214,6 +227,10 @@
 
         .category {
             padding: 0 3rem;
+
+            @media (max-width: 576px) {
+                padding: 0 1rem;
+            }
         }
     }
 
