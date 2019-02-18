@@ -556,6 +556,22 @@
                                         </a>
 
                                         <div class="filter-category__body collapse show" aria-labelledby="miscellanousFilter" id="miscellanousFilterBody" role="tabpanel">
+                                            
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Status:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <div class="select-container">
+                                                        <select class="filter-category__control">
+                                                            <option>New Message</option>
+                                                            <option>Unpublished</option>
+                                                            <option>Published</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <div class="[ row no-gutters ] filter-category__item">
                                                 <div class="col-3">
@@ -566,7 +582,7 @@
                                                     <div class="select-container">
                                                         <input type="text" autocomplete="off" class="filter-category__control dropdown-toggle" data-toggle="dropdown"
                                                         readonly value="Source" id="source-input" data-toggle="dropdown">
-                                                        <div class="dropdown-menu datepicker" id="source" aria-labelledby="source-input">
+                                                        <div class="dropdown-menu dropdown-tree" id="source" aria-labelledby="source-input">
 
                                                         </div>
                                                     </div>
@@ -579,7 +595,11 @@
                                                 </div>
                                                 
                                                 <div class="col-8">
-                                                    <input type="text" class="filter-category__control" placeholder=">=">
+                                                    <div id="slider-range"></div>
+                                                    <div class="slider-value">
+                                                        <input type="text" id="amount1" readonly>
+                                                        <input type="text" id="amount2" readonly>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -706,6 +726,7 @@
                                 <div class="messages-container">
                                     <div class="message-item">
                                         <div class="message-item__head">
+                                            <span class="message-status message-status--new"><i class="icon-sun"></i> New</span>
                                             <div class="message-item__main-content">
                                                 <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
                                                 <p class="message-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -795,6 +816,7 @@
 
                                     <div class="message-item">
                                         <div class="message-item__head">
+                                            <span class="message-status message-status--published"><i class="icon-check"></i> Published</span>
                                             <div class="message-item__main-content">
                                                 <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
                                                 <p class="message-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -883,6 +905,7 @@
 
                                     <div class="message-item">
                                         <div class="message-item__head">
+                                            <span class="message-status message-status--unpublished"><i class="icon-exclamation-sign"></i> Unpublished</span>
                                             <div class="message-item__main-content">
                                                 <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
                                                 <p class="message-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 

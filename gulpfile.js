@@ -193,8 +193,8 @@ gulp.task('js_libs', function() {
             PATH.js_libs.in + 'jquery.js',
             PATH.js_libs.in + 'popper.js',
             PATH.js_libs.in + 'bootstrap.js',
-            //PATH.js_libs.in + 'bootstrap-select.js',
-            PATH.js_libs.in + 'jstree.min.js'
+            PATH.js_libs.in + 'jstree.min.js',
+            PATH.js_libs.in + 'jquery-ui.js'
         ])
         .pipe(concat('libs.js'))
         .pipe(changed(PATH.js_libs.out))

@@ -2,6 +2,8 @@
 @import "theme/font-awesome/scss/font-awesome.scss";
 @import "theme/font-awesome2/scss/fontawesome.scss";
 
+@import "theme/jqueryUI/jquery-ui.scss";
+
 @import "theme/abstract/variables.scss";
 @import "theme/abstract/mixin.scss";
 @import "theme/base/base.scss";
@@ -15,6 +17,7 @@
 @import "theme/components/button.scss";
 @import "theme/components/form.scss";
 @import "theme/components/pagination.scss";
+@import "theme/components/range-slider.scss";
 @import "theme/components/toggle-switch.scss";
 @import "theme/components/filters-panel.scss";
 @import "theme/components/category.scss";

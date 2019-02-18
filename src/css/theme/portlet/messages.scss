@@ -201,7 +201,7 @@
         @media (max-width: 1280px) {
             flex: 100%;
             display: flex;
-            margin: 0.5rem 0;
+            margin-top: 0.5rem;
 
             .category {
                 flex: 1;
@@ -254,6 +254,7 @@
         display: flex;
         justify-content: space-between;
         align-items: baseline;
+        margin-top: 0.5rem;
 
         @media (max-width: 1280px) {
             flex-wrap: wrap;
@@ -347,7 +348,7 @@
 
 .label-success {
     background-color: $thirdlyColor;
-    border-color: $primaryBorderColor;
+    border-color: transparent;
     color: WHITE;
 }
 
@@ -361,9 +362,35 @@
     color: $thirdlyColor;
 }
 
+#slider-range {
+    @include margin(15px, 8px, null, 5px);
+}
+
 @media (max-width: 992px) {
     .panel-open-mb {
         max-height: 100vh;
         overflow-y: hidden;
+    }
+}
+
+.message-status {   
+    position: absolute;
+    top: -25px;
+    right: 0;
+
+    @media (max-width: 992px) {
+        right: 55px;
+    }
+
+    &--new {
+        color: $thirdlyColor;
+    }
+
+    &--unpublished {
+        color: $dangerColor;
+    }
+
+    &--published {
+        color: $sucessColor;
     }
 }
