@@ -14,7 +14,7 @@
                             <ul class="main-nav__list">
                             {% for item in navItems %}
                                 <li class="main-nav__item">
-                                    <a class="main-nav__link {% if pageId == item.navActiveItem %}active{% endif %}" href="#">{{ item.title }}</a>
+                                    <a class="main-nav__link {% if pageId == item.navActiveItem %}active{% endif %}" href="{{ item.link }}">{{ item.title }}</a>
                                 </li>
                             {% endfor %}
                             </ul>

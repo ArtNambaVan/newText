@@ -72,3 +72,29 @@ body {
 .jstree-default .jstree-themeicon {
     display: none;
 }
+
+.container {
+    @media (min-width: 1600px) {
+        max-width: 1360px;
+    }
+
+    @media (min-width: 1800px) {
+        max-width: 1500px;
+    }
+}
+
+.cims-alert {
+    background-color: rgba($secondaryColor, 0.5);
+    border: 1px solid $primaryColor;
+    text-align: center;
+    padding: 5px;
+
+    p {
+        margin: 0;
+    }
+
+}
+
+.bold {
+    font-weight: bold;
+}

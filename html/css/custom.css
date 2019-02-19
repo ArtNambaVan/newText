@@ -7386,6 +7386,25 @@ body {
 .jstree-default .jstree-themeicon {
   display: none; }
 
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1360px; } }
+
+@media (min-width: 1800px) {
+  .container {
+    max-width: 1500px; } }
+
+.cims-alert {
+  background-color: rgba(205, 226, 241, 0.5);
+  border: 1px solid #012b5b;
+  text-align: center;
+  padding: 5px; }
+  .cims-alert p {
+    margin: 0; }
+
+.bold {
+  font-weight: bold; }
+
 .cims .header {
   margin-top: 0;
   padding-top: 15px;
@@ -8694,3 +8713,51 @@ body {
     color: #ed1d25; }
   .message-status--published {
     color: #0c7e06; }
+
+.card-row {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: row wrap; }
+
+.card {
+  padding-top: 3rem;
+  padding-right: 2rem;
+  padding-bottom: 3rem;
+  padding-left: 2rem;
+  box-shadow: 1px 5px 15px #CCC;
+  width: 250px;
+  height: auto;
+  border-radius: 6px;
+  margin: 1em;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s;
+  border: 1px solid #012b5b;
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap; }
+  .card:hover {
+    transform: translateY(-0.5rem) scale(1.03);
+    text-decoration: none; }
+  .card:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    outline: none; }
+  .card__img {
+    max-width: 100%;
+    margin-bottom: 2.5rem;
+    min-width: 5rem; }
+  .card__title {
+    font-size: 24px;
+    margin-top: auto;
+    margin-bottom: 1rem; }
+  .card__btn {
+    display: inline-block;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #012b5b;
+    padding: 5px 25px;
+    text-transform: uppercase;
+    white-space: nowrap; }

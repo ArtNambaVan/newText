@@ -1,0 +1,65 @@
+@import "../abstract/variables";
+
+.card-row {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+}
+
+.card {
+    @include padding(3rem, 2rem, 3rem, 2rem);
+
+    box-shadow: 1px 5px 15px #CCC;
+    width: 250px;
+    height: auto;
+    border-radius: 6px;
+    margin: 1em;
+    overflow: hidden;
+    position: relative;
+    //flex: auto;
+
+    
+
+    transition: transform 0.2s;
+
+    border: 1px solid $primaryColor;
+
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+
+    &:hover {
+        transform: translateY(-0.5rem) scale(1.03);
+        text-decoration: none;
+    }
+
+    &:active {
+        transform: translateY(-0.1rem);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        outline: none;
+    }
+
+    &__img {
+        max-width: 100%;
+        margin-bottom: 2.5rem;
+        min-width: 5rem;
+    }
+
+    &__title {
+        font-size: 24px;
+        margin-top: auto;
+        margin-bottom: 1rem;
+    }
+
+    &__btn {
+        display: inline-block;
+        margin: 0 auto;
+        color: #fff;
+        background-color: #012b5b;
+        padding: 5px 25px;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+}

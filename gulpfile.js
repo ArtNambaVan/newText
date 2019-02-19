@@ -86,8 +86,9 @@ const SYNC_CONFIG = {
     browser: "chrome",
     server : {
       baseDir : PATH.dest,
-      //index : 'promotion-rules.html'
-      index : 'index.html'
+      //index : 'organization-selection.html'
+      //index : 'index.html'
+      index : 'message-editor.html'
     },
     open   : true,
     notify : false
