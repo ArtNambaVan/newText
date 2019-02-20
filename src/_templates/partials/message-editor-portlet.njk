@@ -23,8 +23,126 @@
                                     Copy message
                                 </a>
                             </div>
+                        </div>   
+                    </div>
+                    
+                    <div class="cims-container">
+                        <div class="cims-container-left">
+                            <form>
+                                <div class="edit-group">
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Date:</span>
+                                        <div class="edit-group__controll">
+                                            <div class="select-container select-container--icon-right">
+                                                <input type="text" autocomplete="off" class="filter-category__control datepicker-input dropdown-toggle" 
+                                                id="q" data-toggle="dropdown" readonly value="01.01.2019 12:32">
+                                                <i class="icon-calendar"></i>
+                                                {% include "./datepickerFull.njk" %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Views:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text">
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Source:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text" placeholder="Source">
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Type:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text">
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="edit-group">
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Url:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text" placeholder="http://example.com">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="edit-group">
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Original:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text">
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Translate:</span>
+                                        <label class="toggle-switch">
+                                            <input class="toggle-switch-check" type="checkbox" checked/>
+                                            <span aria-hidden="true" class="toggle-switch-bar">
+                                                <span class="toggle-switch-handle"></span>
+                                            </span>
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Comment:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text" placeholder="Comment">
+                                        </div>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Author:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text">
+                                        </div>
+                                        <label class="custom-checkbox" placeholder="Author">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h3>Message</h3>
+                                    <div class="edit-group">
+                                        <div class="edit-group__item">
+                                            <span class="edit-group__label">Original Title:</span>
+                                            <div class="edit-group__controll">
+                                                <input type="text" placeholder="http://example.com">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
                         </div>
 
-                        
+                        <div class="cims-container-right">
+
+                        </div>
                     </div>
                 </div>

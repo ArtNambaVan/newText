@@ -34,6 +34,10 @@
         font-size: 12px;
     }
 
+    .inline[type="text"] {
+        //width: auto;
+    }
+
     .select-container > select {
         -webkit-appearance: none;
         -moz-appearance: none;

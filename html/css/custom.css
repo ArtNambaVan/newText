@@ -7794,6 +7794,9 @@ body {
   vertical-align: text-bottom;
   font-size: 12px; }
 
+.cims .toggle-switch-bar .toggle-switch-handle {
+  min-width: auto; }
+
 .cims .toggle-switch-check:empty ~ .toggle-switch-bar {
   height: 14px;
   line-height: 14px; }
@@ -8138,13 +8141,15 @@ body {
     position: absolute;
     opacity: 0;
     cursor: pointer; }
-    .custom-checkbox input:checked ~ span::before {
+    .custom-checkbox input:checked ~ .mark-icon::before {
       content: '\F14A'; }
-  .custom-checkbox span {
+    .custom-checkbox input:checked ~ .thumbtack {
+      color: #012b5b; }
+  .custom-checkbox .mark-icon {
     position: relative;
     display: inline-block;
     margin-left: 15px; }
-    .custom-checkbox span:before {
+    .custom-checkbox .mark-icon:before {
       content: '\F096';
       display: inline-block;
       font-family: FontAwesome;
@@ -8156,6 +8161,11 @@ body {
       padding-right: 4px;
       font-size: 1rem;
       color: #e98f18; }
+
+.thumbtack {
+  padding: 3px 5px;
+  display: inline-block;
+  color: #e98f18; }
 
 .tonality-popup {
   position: absolute;
@@ -8761,3 +8771,38 @@ body {
     padding: 5px 25px;
     text-transform: uppercase;
     white-space: nowrap; }
+
+.cims-container {
+  display: flex;
+  font-size: 12px; }
+  .cims-container-left {
+    flex: 1 0 60%;
+    padding-right: 15px; }
+  .cims-container-right {
+    flex: 1 0 40%;
+    background-color: wheat; }
+
+.edit-group {
+  display: flex;
+  margin: 0 -10px;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .edit-group__item {
+    margin: 5px 10px;
+    display: flex;
+    min-width: 240px; }
+    .edit-group__item .toggle-switch {
+      padding-top: 4px; }
+    .edit-group__item:only-of-type {
+      width: 100%; }
+      .edit-group__item:only-of-type .edit-group__controll {
+        max-width: none;
+        width: 100%;
+        margin-right: 19px; }
+  .edit-group__label {
+    display: inline-block;
+    min-width: 60px;
+    text-align: right;
+    padding: 3px; }
+  .edit-group__controll {
+    width: 160px; }

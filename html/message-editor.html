@@ -105,9 +105,547 @@
                                     Copy message
                                 </a>
                             </div>
+                        </div>   
+                    </div>
+                    
+                    <div class="cims-container">
+                        <div class="cims-container-left">
+                            <form>
+                                <div class="edit-group">
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Date:</span>
+                                        <div class="edit-group__controll">
+                                            <div class="select-container select-container--icon-right">
+                                                <input type="text" autocomplete="off" class="filter-category__control datepicker-input dropdown-toggle" 
+                                                id="q" data-toggle="dropdown" readonly value="01.01.2019 12:32">
+                                                <i class="icon-calendar"></i>
+                                                        <!-- Datepicker starts -->
+                                                        <div class="dropdown-menu datepicker" aria-labelledby="q">
+                                                            <div class="controls">
+                                                                <ul class="period">
+                                                                    <li class="period__item period__item--active">Day</li>
+                                                                    <li class="period__item">Week</li>
+                                                                    <li class="period__item">Month</li>
+                                                                    <li class="period__item">Quarter</li>
+                                                                    <li class="period__item">Year</li>
+                                                                </ul>
+                                                                <ul class="range">
+                                                                    <li class="range__item range__item--active">Last 7 days</li>
+                                                                    <li class="range__item">Last 14 days</li>
+                                                                    <li class="range__item">Last 30 days</li>
+                                                                    <li class="range__item">Last Month</li>
+                                                                    <li class="range__item">Last Quarter</li>
+                                                                    <li class="range__item">Last Year</li>
+                                                                    <li class="range__item">All Time</li>
+                                                                    <li class="range__item">Custom Range</li>
+                                                                </ul>
+                                                                <div class="custom-range"> 
+                                                                    <input class="custom-range__input" type="text">
+                                                                    <input class="custom-range__input" type="text">
+                                                                </div>
+                                                                <div class="custom-range"> 
+                                                                    <button class="apply-btn" type="submit">Apply</button>
+                                                                    <button class="cancel-btn">Cancel</button>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="calendar calendar-weeks">
+                                                                <!-- WEEKS -->
+                                                                <div class="calendar__title">Start</div>
+                                                                <div class="calendar__header">
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-left"></i>
+                                                                    </button>
+                                                                    <div class="calendar-select">
+                                                                        <select>
+                                                                            <option value="0">Jan</option>
+                                                                            <option value="1">Feb</option>
+                                                                            <option value="2">Mar</option>
+                                                                            <option value="3">Apr</option>
+                                                                            <option value="4">May</option>
+                                                                            <option value="5">Jun</option>
+                                                                            <option value="6">Jul</option>
+                                                                            <option value="7">Aug</option>
+                                                                            <option value="8">Sep</option>
+                                                                            <option value="9">Oct</option>
+                                                                            <option value="10">Nov</option>
+                                                                            <option value="11">Dec</option>
+                                                                        </select>
+                                                                        <select class="year-select">
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2017">2017</option>
+                                                                            <option value="2018">2018</option>
+                                                                            <option value="2019">2019</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-right"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="calendar-table">
+                                                                    <div class="calendar-table__row week"> 
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Su</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Mo</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Tu</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">We</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Th</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Fr</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Sa</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                                                                                    
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable active">  
+                                                                            <div class="calendar-table__value-wrapper">
+                                                                                <div class="calendar-table__value unavailable">28</div>
+                                                                                <div class="calendar-table__value unavailable">29</div>
+                                                                                <div class="calendar-table__value unavailable">30</div>
+                                                                                <div class="calendar-table__value unavailable">31</div>
+                                                                                <div class="calendar-table__value">1</div>
+                                                                                <div class="calendar-table__value">2</div>
+                                                                                <div class="calendar-table__value">3</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">4</div>
+                                                                                <div class="calendar-table__value">5</div>
+                                                                                <div class="calendar-table__value">6</div>
+                                                                                <div class="calendar-table__value">7</div>
+                                                                                <div class="calendar-table__value">8</div>
+                                                                                <div class="calendar-table__value">9</div>
+                                                                                <div class="calendar-table__value">10</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">11</div>
+                                                                                <div class="calendar-table__value">12</div>
+                                                                                <div class="calendar-table__value">13</div>
+                                                                                <div class="calendar-table__value">14</div>
+                                                                                <div class="calendar-table__value">15</div>
+                                                                                <div class="calendar-table__value">16</div>
+                                                                                <div class="calendar-table__value">17</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">18</div>
+                                                                                <div class="calendar-table__value">19</div>
+                                                                                <div class="calendar-table__value">20</div>
+                                                                                <div class="calendar-table__value">21</div>
+                                                                                <div class="calendar-table__value">22</div>
+                                                                                <div class="calendar-table__value">23</div>
+                                                                                <div class="calendar-table__value">24</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">25</div>
+                                                                                <div class="calendar-table__value">26</div>
+                                                                                <div class="calendar-table__value">27</div>
+                                                                                <div class="calendar-table__value">28</div>
+                                                                                <div class="calendar-table__value">29</div>
+                                                                                <div class="calendar-table__value">30</div>
+                                                                                <div class="calendar-table__value unavailable">1</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value unavailable">2</div>
+                                                                                <div class="calendar-table__value unavailable">3</div>
+                                                                                <div class="calendar-table__value unavailable">4</div>
+                                                                                <div class="calendar-table__value unavailable">5</div>
+                                                                                <div class="calendar-table__value unavailable">6</div>
+                                                                                <div class="calendar-table__value unavailable">7</div>
+                                                                                <div class="calendar-table__value unavailable">8</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- WEEKS END -->
+                                                            </div>
+                                                            <div class="calendar calendar-months">
+                                                                <!-- MONTHS -->
+                                                                <div class="calendar__title">Start</div>
+                                                                <div class="calendar__header">
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-left"></i>
+                                                                    </button>
+                                                                    <div class="calendar-select">
+                                                                        <select class="year-select">
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2017">2017</option>
+                                                                            <option value="2018">2018</option>
+                                                                            <option value="2019">2019</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-right"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="calendar-table">                                                        
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Jan</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Feb</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Mar</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Apr</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">May</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Jun</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable active">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Jul</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Aug</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Sep</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Oct</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Nov</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Dec</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- MONTHS END-->
+                                                            </div>
+                                                            <div class="calendar calendar-quarters">
+                                                                <!-- QUARTERS -->
+                                                                <div class="calendar__title">Start</div>
+                                                                <div class="calendar__header">
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-left"></i>
+                                                                    </button>
+                                                                    <div class="calendar-select">
+                                                                        <select class="year-select">
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2017">2017</option>
+                                                                            <option value="2018">2018</option>
+                                                                            <option value="2019">2019</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-right"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="calendar-table">                                                        
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable active">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Q1
+                                                                                    <span class="months">Jan, Feb, Mar</span>
+                                                                                </div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Q2
+                                                                                    <span class="months">Apr, May, Jun</span>
+                                                                                </div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Q3
+                                                                                    <span class="months">Jul, Aug, Sep</span>
+                                                                                </div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Q4
+                                                                                    <span class="months">Oct, Nov, Dec</span>
+                                                                                </div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- QUARTERS END -->
+                                                            </div>
+                                                            <div class="calendar calendar-years">
+                                                                <!-- YEAR -->
+                                                                <div class="calendar__title">Start</div>
+                                                                <div class="calendar__header">
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-left"></i>
+                                                                    </button>
+                                                                    <div class="calendar-select">
+                                                                        <select class="year-select">
+                                                                            <option value="2014 - 2022">2014 - 2022</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-right"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="calendar-table">                                                        
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">2014</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">2015</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">2016</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">2017</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">2018</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable active">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">2019</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value unavailable">2020</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value unavailable">2021</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value unavailable">2022</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <!-- YEAR END -->
+                                                            </div>
+                                                        </div>
+                                                        <!--Datepicker ends-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Views:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text">
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Source:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text" placeholder="Source">
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Type:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text">
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="edit-group">
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Url:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text" placeholder="http://example.com">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="edit-group">
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Original:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text">
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Translate:</span>
+                                        <label class="toggle-switch">
+                                            <input class="toggle-switch-check" type="checkbox" checked/>
+                                            <span aria-hidden="true" class="toggle-switch-bar">
+                                                <span class="toggle-switch-handle"></span>
+                                            </span>
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Comment:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text" placeholder="Comment">
+                                        </div>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Author:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text">
+                                        </div>
+                                        <label class="custom-checkbox" placeholder="Author">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h3>Message</h3>
+                                    <div class="edit-group">
+                                        <div class="edit-group__item">
+                                            <span class="edit-group__label">Original Title:</span>
+                                            <div class="edit-group__controll">
+                                                <input type="text" placeholder="http://example.com">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
                         </div>
 
-                        
+                        <div class="cims-container-right">
+
+                        </div>
                     </div>
                 </div>                
             </div>

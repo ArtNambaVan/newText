@@ -1,0 +1,55 @@
+.cims-container {
+    
+    display: flex;
+    font-size: 12px;
+
+    &-left {
+        flex: 1 0 60%;
+        padding-right: 15px;
+    }
+
+    &-right {
+        flex: 1 0 40%;
+        background-color: wheat;
+    }
+}
+
+.edit-group {
+    display: flex;
+    margin: 0 -10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &__item {
+        margin: 5px 10px;
+        //flex: 1;
+        display: flex;
+        min-width: 240px;
+        //width: 250px;
+
+        .toggle-switch {
+            padding-top: 4px;
+        }
+
+        &:only-of-type {
+            width: 100%;
+
+            .edit-group__controll {
+                max-width: none;
+                width: 100%;
+                margin-right: 19px;
+            }
+        }
+    }
+
+    &__label {
+        display: inline-block;
+        min-width: 60px;
+        text-align: right;
+        padding: 3px;
+    }
+
+    &__controll {
+        width: 160px;
+    }
+}
