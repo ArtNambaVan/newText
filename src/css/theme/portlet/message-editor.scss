@@ -4,28 +4,27 @@
     font-size: 12px;
 
     &-left {
-        flex: 1 0 60%;
+        flex: 1 0 59%;
         padding-right: 15px;
     }
 
     &-right {
-        flex: 1 0 40%;
-        background-color: wheat;
+        flex: 1 0 39%;
+        //background-color: wheat;
+        padding-left: 15px;
     }
 }
 
 .edit-group {
     display: flex;
-    margin: 0 -10px;
+    //margin: 0 -10px;
     flex-wrap: wrap;
     justify-content: space-between;
 
     &__item {
-        margin: 5px 10px;
-        //flex: 1;
+        margin: 7px 0px;
         display: flex;
-        min-width: 240px;
-        //width: 250px;
+        min-width: 260px;
 
         .toggle-switch {
             padding-top: 4px;
@@ -37,19 +36,36 @@
             .edit-group__controll {
                 max-width: none;
                 width: 100%;
-                margin-right: 19px;
+                //margin-right: 19px;
             }
         }
     }
 
     &__label {
         display: inline-block;
-        min-width: 60px;
+        min-width: 80px;
         text-align: right;
         padding: 3px;
     }
 
+    &__controll + .custom-checkbox {
+        margin-left: -19px;
+    }
+
     &__controll {
         width: 160px;
+        margin-right: 19px;
+    }
+}
+
+.message-editor {
+
+    & + & {
+        margin-top: 1rem;
+    }
+
+    &__content {
+        margin-top: 0.7rem;
+        margin-right: 19px;
     }
 }

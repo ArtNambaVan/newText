@@ -132,3 +132,23 @@
         }
     }
 }
+
+.tags-categories,
+.rating-categories {
+    padding: 0 1rem;
+    
+    & > p {
+        text-transform: uppercase;
+        margin: 0.4rem 0;
+    }
+}
+
+.tags-categories {
+    flex: 0.7 1 0%;
+}
+
+.rating-categories {
+    flex: 1.2 1 0%;
+}
+
+

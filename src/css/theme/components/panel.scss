@@ -1,0 +1,6 @@
+.panel {
+    @include padding(null, 10px, 5px, 10px);
+    background-color: transparent;
+    border-color: black;
+    border-radius: 2px;
+}

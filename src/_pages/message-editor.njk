@@ -10,3 +10,17 @@
             </div>
 
 {% endblock %}
+
+{% block scripts %} 
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=l0le4m191ikjvehuiivqirv7tfnxqnhch7j44esv8i45tkgx"></script>
+    <script>
+    tinymce.init({
+        selector: '#mytextarea'
+    });
+
+    tinymce.init({
+        selector: '#mytextarea2'
+    });
+    
+    </script>
+{% endblock %}

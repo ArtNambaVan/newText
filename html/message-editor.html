@@ -566,7 +566,15 @@
                                     <div class="edit-group__item">
                                         <span class="edit-group__label">Type:</span>
                                         <div class="edit-group__controll">
-                                            <input type="text">
+                                            <div class="select-container">
+                                                <select class="filter-category__control">
+                                                    <option>Url</option> 
+                                                    <option>Text</option> 
+                                                    <option>File</option> 
+                                                    <option>External Video</option> 
+                                                    <option>Image</option> 
+                                                </select>
+                                            </div>
                                         </div>
                                         <label class="custom-checkbox">
                                             <input type="checkbox">
@@ -588,7 +596,18 @@
                                     <div class="edit-group__item">
                                         <span class="edit-group__label">Original:</span>
                                         <div class="edit-group__controll">
-                                            <input type="text">
+                                            <div class="select-container">
+                                                <select class="filter-category__control">
+                                                    <option>English</option> 
+                                                    <option>German</option> 
+                                                    <option>Chinese</option> 
+                                                    <option>French</option> 
+                                                    <option>Italian</option> 
+                                                    <option>Portoguese</option> 
+                                                    <option>Russian</option> 
+                                                    <option>Spanish</option> 
+                                                </select>
+                                            </div>
                                         </div>
                                         <label class="custom-checkbox">
                                             <input type="checkbox">
@@ -597,16 +616,20 @@
                                     </div>
                                     <div class="edit-group__item">
                                         <span class="edit-group__label">Translate:</span>
-                                        <label class="toggle-switch">
-                                            <input class="toggle-switch-check" type="checkbox" checked/>
-                                            <span aria-hidden="true" class="toggle-switch-bar">
-                                                <span class="toggle-switch-handle"></span>
-                                            </span>
-                                        </label>
-                                        <label class="custom-checkbox">
+                                        
+                                        <div class="edit-group__controll">
+                                            <label class="toggle-switch">
+                                                <input class="toggle-switch-check" type="checkbox" checked/>
+                                                <span aria-hidden="true" class="toggle-switch-bar">
+                                                    <span class="toggle-switch-handle"></span>
+                                                </span>
+                                            </label>
+                                            <label class="custom-checkbox">
                                             <input type="checkbox">
                                             <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
                                         </label>
+                                        </div>
+                                        
                                     </div>
                                     <div class="edit-group__item">
                                         <span class="edit-group__label">Comment:</span>
@@ -626,25 +649,159 @@
                                     </div>
                                 </div>
 
-                                <div>
-                                    <h3>Message</h3>
+                                <div class="message-editor">
+                                    <h3>message</h3>
                                     <div class="edit-group">
                                         <div class="edit-group__item">
                                             <span class="edit-group__label">Original Title:</span>
                                             <div class="edit-group__controll">
-                                                <input type="text" placeholder="http://example.com">
+                                                <input type="text">
+                                            </div>
+                                            <label class="custom-checkbox" placeholder="Author">
+                                                <input type="checkbox">
+                                                <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="message-editor__content">
+                                        <textarea id="mytextarea"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="message-editor">
+                                    <h3>translation</h3>
+                                    <div class="edit-group">
+                                        <div class="edit-group__item">
+                                            <span class="edit-group__label">Translate to:</span>
+                                            <div class="edit-group__controll">
+                                                <div class="select-container">
+                                                    <select class="filter-category__control">
+                                                        <option>English</option> 
+                                                        <option>German</option> 
+                                                        <option>Chinese</option> 
+                                                        <option>French</option> 
+                                                        <option>Italian</option> 
+                                                        <option>Portoguese</option> 
+                                                        <option>Russian</option> 
+                                                        <option>Spanish</option> 
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="edit-group">
+                                        <div class="edit-group__item">
+                                            <span class="edit-group__label">Title:</span>
+                                            <div class="edit-group__controll">
+                                                <input type="text">
+                                            </div>
+                                            <label class="custom-checkbox" placeholder="Author">
+                                                <input type="checkbox">
+                                                <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="message-editor__content">
+                                        <textarea id="mytextarea2"></textarea>
+                                    </div>
                                 </div>
                             </form>
-
-
-
                         </div>
 
-                        <div class="cims-container-right">
+                        <div class="vertical-divider"></div>
 
+                        <div class="cims-container-right">
+                            <div class="panel">
+                                <a class="filter-category__head collapse-icon" aria-controls="textFilterBody"
+                                aria-expanded="true" data-toggle="collapse" href="#textFilterBody" id="textFilter" role="tab">
+                                    <span class="filter-category__title">selected categories</span>
+                                    <span class="collapse-icon-closed">
+                                        <i class="icon-chevron-down"></i>
+                                    </span>
+                                    <span class="collapse-icon-open">
+                                        <i class="icon-chevron-up"></i>
+                                    </span>
+                                </a>
+                                <div class="collapse show" aria-labelledby="textFilter" id="textFilterBody" role="tabpanel">
+                                    <div class="cims-container">
+                                        <div class="tags-categories">
+                                            <p>tags</p>
+                                            <ul class="category">
+                                                <li class="category__item category__item--unrating">
+                                                    <span class="category__delete">&#10006;</span>
+                                                    <span class="category__name">China</span>
+                                                </li>
+                                                <li class="category__item category__item--unrating">
+                                                    <span class="category__delete">&#10006;</span>
+                                                    <span class="category__name">Germany</span>
+                                                </li>
+                                                <li class="category__item category__item--unrating">
+                                                    <span class="category__delete">&#10006;</span>
+                                                    <span class="category__name">Engine Noise</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rating-categories">
+                                            <p>rating</p>
+                                            <ul class="category">
+                                                <li class="category__item category__item--rating">
+                                                    <span class="category__delete">&#10006;</span>
+                                                    <span class="category__name">Engine Noise</span>
+                                                    <div class="category__value">
+                                                        <label class="category__indicator category__indicator--positive category__indicator--progress-25" for="searchCategory"></label>
+                                                        <input id="searchCategory" type="hidden">
+                                                    </div>
+                                                </li>
+                                                <li class="category__item category__item--rating">
+                                                    <span class="category__delete">&#10006;</span>
+                                                    <span class="category__name">Engine Noise</span>
+                                                    <div class="category__value">
+                                                        <label class="category__indicator category__indicator--positive category__indicator--progress-25" for="searchCategory"></label>
+                                                        <input id="searchCategory" type="hidden">
+                                                    </div>
+                                                </li>
+                                                <li class="category__item category__item--rating">
+                                                    <span class="category__delete">&#10006;</span>
+                                                    <span class="category__name">Powertrain</span>
+                                                    <div class="category__value">
+                                                        <a href="#" class="btn-link add-tonality">
+                                                            <i class="icon-plus-sign-alt"></i>
+                                                            Add Tonality
+                                                        </a>
+                                                    </div>
+                                                    <div class="tonality-popup collapse">
+                                                        <a href="#close" title="Close" class="close"><i class="icon-remove-sign"></i></a>
+                                                        <h4 class="tonality-popup__header"></h4>
+                                                        <span>negative</span>
+                                                        <div class="tonality-popup__group">
+                                                            <span class="tonality-popup__btn tonality-popup__btn--negative-25">25%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--negative-50">50%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--negative-75">75%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--negative-100">100%</span>
+                                                        </div>
+                                                        <span>neutral</span>
+                                                        <div class="tonality-popup__group">
+                                                            <span class="tonality-popup__btn tonality-popup__btn--neutral-25">25%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--neutral-50">50%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--neutral-75">75%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--neutral-100">100%</span>
+                                                        </div>
+                                                        <span>positive</span>
+                                                        <div class="tonality-popup__group">
+                                                            <span class="tonality-popup__btn tonality-popup__btn--positive-25">25%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--positive-50">50%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--positive-75">75%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--positive-100">100%</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>                
@@ -663,6 +820,18 @@
 
 
     <!-- SCRIPTS -->
-     <script src="js/main.js"></script>
+ 
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=l0le4m191ikjvehuiivqirv7tfnxqnhch7j44esv8i45tkgx"></script>
+    <script>
+    tinymce.init({
+        selector: '#mytextarea'
+    });
+
+    tinymce.init({
+        selector: '#mytextarea2'
+    });
+    
+    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
