@@ -10,9 +10,12 @@
 
     &-right {
         flex: 1 0 39%;
-        //background-color: wheat;
         padding-left: 15px;
     }
+}
+
+.messages-settings {
+    padding-left: 65px;
 }
 
 .edit-group {
@@ -30,7 +33,7 @@
             padding-top: 4px;
         }
 
-        &:only-of-type {
+        &:only-of-type:not(&--small) {
             width: 100%;
 
             .edit-group__controll {
@@ -38,6 +41,10 @@
                 width: 100%;
                 //margin-right: 19px;
             }
+        }
+
+        &--small {
+            width: auto
         }
     }
 
@@ -67,5 +74,49 @@
     &__content {
         margin-top: 0.7rem;
         margin-right: 19px;
+    }
+}
+
+.recently-used {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+        text-align: center;
+        width: 25%;
+        min-width: 120px;
+        padding: 15px 0;
+        cursor: pointer;
+        color: $primaryColor;
+        border-radius: 3px;
+        transition: all 0.2s;
+
+        &:hover {
+            background-color: $secondaryColor;
+        }
+    }
+}
+
+
+
+.shortcuts {
+    counter-reset: myCounter;
+
+    &__item {
+        list-style: none;
+
+        &::before {
+            counter-increment: myCounter;
+            content:counter(myCounter);
+            display: inline-block;
+            text-align: center;
+            margin: 2px 5px;
+            font-weight: bold;
+        }
+    }
+
+    &__add {
+        color: $thirdlyColor;
     }
 }

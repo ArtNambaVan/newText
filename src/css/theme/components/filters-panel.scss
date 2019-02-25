@@ -222,6 +222,10 @@
             @media (max-width: 576px) {
                 padding: 0 1rem;
             }
+
+            &__item {
+                color: $primaryColor    ;
+            }
         }
     }
 

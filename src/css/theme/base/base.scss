@@ -35,9 +35,7 @@ body {
         margin-bottom: 0;
     }
 
-    a {
-        color: $primaryColor;
-    }
+    
 
     main {
         flex-grow: 1;
@@ -51,12 +49,16 @@ body {
 
     .container-fluid {
         
-
         @media (min-width: 1281px) {
             padding-left: 40px;
             padding-right: 40px;
         }
     }
+}
+
+a,
+a:hover {
+    color: $primaryColor;
 }
 
 #wrapper {
@@ -97,4 +99,17 @@ body {
 
 .bold {
     font-weight: bold;
+}
+
+.link-icon {
+    display: inline-block;
+    margin-right: 0.5rem;
+
+    span {
+        color: $thirdlyColor;
+    }
+}
+
+.link-group {
+    margin: 0.5rem 0;
 }

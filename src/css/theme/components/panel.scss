@@ -1,6 +1,23 @@
 .panel {
-    @include padding(null, 10px, 5px, 10px);
+    @include padding(null, 10px, null, 10px);
     background-color: transparent;
-    border-color: black;
+    border-color: #000;
     border-radius: 2px;
+
+    &__head,
+    &__head:hover {
+        color: $primaryColor;
+        text-decoration: none;
+        position: relative;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    &__title {
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: inline-block;
+        padding-top: 5px;
+    }
 }

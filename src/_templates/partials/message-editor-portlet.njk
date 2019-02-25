@@ -123,9 +123,10 @@
                                                 </span>
                                             </label>
                                             <label class="custom-checkbox">
-                                            <input type="checkbox">
-                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
-                                        </label>
+                                                <input type="checkbox">
+                                                <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                            </label>
+                                            
                                         </div>
                                         
                                     </div>
@@ -170,7 +171,7 @@
                                 <div class="message-editor">
                                     <h3>translation</h3>
                                     <div class="edit-group">
-                                        <div class="edit-group__item">
+                                        <div class="edit-group__item edit-group__item--small">
                                             <span class="edit-group__label">Translate to:</span>
                                             <div class="edit-group__controll">
                                                 <div class="select-container">
@@ -186,6 +187,10 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <a href="#" class="link-icon">
+                                                <span><i class="fas fa-book-open"></i></span>
+                                                Translate now
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="edit-group">
@@ -212,9 +217,9 @@
 
                         <div class="cims-container-right">
                             <div class="panel">
-                                <a class="filter-category__head collapse-icon" aria-controls="textFilterBody"
+                                <a class="panel__head collapse-icon" aria-controls="textFilterBody"
                                 aria-expanded="true" data-toggle="collapse" href="#textFilterBody" id="textFilter" role="tab">
-                                    <span class="filter-category__title">selected categories</span>
+                                    <span class="panel__title">selected categories</span>
                                     <span class="collapse-icon-closed">
                                         <i class="icon-chevron-down"></i>
                                     </span>
@@ -228,16 +233,32 @@
                                             <p>tags</p>
                                             <ul class="category">
                                                 <li class="category__item category__item--unrating">
-                                                    <span class="category__delete">&#10006;</span>
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                                    </label>
                                                     <span class="category__name">China</span>
+                                                    <span class="category__type"><i class="icon-tag"></i></span>
+                                                    <span class="category__delete">&#10006;</span>
                                                 </li>
                                                 <li class="category__item category__item--unrating">
-                                                    <span class="category__delete">&#10006;</span>
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                                    </label>
                                                     <span class="category__name">Germany</span>
-                                                </li>
-                                                <li class="category__item category__item--unrating">
+                                                    <span class="category__type"><i class="icon-tag"></i></span>
                                                     <span class="category__delete">&#10006;</span>
+                                                </li>
+
+                                                <li class="category__item category__item--unrating">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                                    </label>
                                                     <span class="category__name">Engine Noise</span>
+                                                    <span class="category__type"><i class="icon-tag"></i></span>
+                                                    <span class="category__delete">&#10006;</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -245,24 +266,39 @@
                                             <p>rating</p>
                                             <ul class="category">
                                                 <li class="category__item category__item--rating">
-                                                    <span class="category__delete">&#10006;</span>
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                                    </label>
                                                     <span class="category__name">Engine Noise</span>
+                                                    <span class="category__type"><i class="icon-star"></i></span>
+                                                    <span class="category__delete">&#10006;</span>
                                                     <div class="category__value">
                                                         <label class="category__indicator category__indicator--positive category__indicator--progress-25" for="searchCategory"></label>
                                                         <input id="searchCategory" type="hidden">
                                                     </div>
                                                 </li>
                                                 <li class="category__item category__item--rating">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                                    </label>
+                                                    <span class="category__name">Engine Noise with somthing else</span>
+                                                    <span class="category__type"><i class="icon-star"></i></span>
                                                     <span class="category__delete">&#10006;</span>
-                                                    <span class="category__name">Engine Noise</span>
                                                     <div class="category__value">
                                                         <label class="category__indicator category__indicator--positive category__indicator--progress-25" for="searchCategory"></label>
                                                         <input id="searchCategory" type="hidden">
                                                     </div>
                                                 </li>
                                                 <li class="category__item category__item--rating">
-                                                    <span class="category__delete">&#10006;</span>
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                                    </label>
                                                     <span class="category__name">Powertrain</span>
+                                                    <span class="category__type"><i class="icon-star"></i></span>
+                                                    <span class="category__delete">&#10006;</span>
                                                     <div class="category__value">
                                                         <a href="#" class="btn-link add-tonality">
                                                             <i class="icon-plus-sign-alt"></i>
@@ -298,6 +334,113 @@
                                             </ul>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="panel">
+                                <a class="panel__head collapse-icon" aria-controls="recentlyUsedBody"
+                                aria-expanded="true" data-toggle="collapse" href="#recentlyUsedBody" id="recentlyUsed" role="tab">
+                                    <span class="panel__title">recently used (all suggestions)</span>
+                                    <span class="collapse-icon-closed">
+                                        <i class="icon-chevron-down"></i>
+                                    </span>
+                                    <span class="collapse-icon-open">
+                                        <i class="icon-chevron-up"></i>
+                                    </span>
+                                </a>
+                                <div class="collapse show" aria-labelledby="recentlyUsed" id="recentlyUsedBody" role="tabpanel">
+                                        <ul class="recently-used">
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                        </ul>
+                                </div>
+                            </div>
+
+                            <div class="panel">
+                                <a class="panel__head collapse-icon" aria-controls="categoriesBody"
+                                aria-expanded="true" data-toggle="collapse" href="#categoriesBody" id="categories" role="tab">
+                                    <span class="panel__title">categories</span>
+                                    <span class="collapse-icon-closed">
+                                        <i class="icon-chevron-down"></i>
+                                    </span>
+                                    <span class="collapse-icon-open">
+                                        <i class="icon-chevron-up"></i>
+                                    </span>
+                                </a>
+                                <div class="collapse show" aria-labelledby="categories" id="categoriesBody" role="tabpanel">
+                                    <input type="text" placeholder="Search categogies">
+                                    <div class="link-group">
+                                        <a href="#" class="link-icon">
+                                            <span><i class="fas fa-expand-arrows-alt"></i></span>
+                                            Expand all
+                                        </a>
+                                        <a href="#" class="link-icon">
+                                            <span><i class="icon-envelope"></i></span>
+                                            Collapse all
+                                        </a>
+                                    </div>
+                                    <div id="jsTreeCategory">
+                                    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel">
+                                <a class="panel__head collapse-icon" aria-controls="shortcutsBody"
+                                aria-expanded="true" data-toggle="collapse" href="#shortcutsBody" id="shortcuts" role="tab">
+                                    <span class="panel__title">shortcuts</span>
+                                    <span class="collapse-icon-closed">
+                                        <i class="icon-chevron-down"></i>
+                                    </span>
+                                    <span class="collapse-icon-open">
+                                        <i class="icon-chevron-up"></i>
+                                    </span>
+                                </a>
+                                <div class="collapse show" aria-labelledby="shortcuts" id="shortcutsBody" role="tabpanel">
+                                    <ol class="shortcuts">
+                                        <li class="shortcuts__item">
+                                            <span class="category__name">Land Rover</span>
+                                            <span class="category__type"><i class="icon-tag"></i></span>
+                                            <span class="category__delete">&#10006;</span>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <span class="category__name">Acceleration</span>
+                                            <span class="category__type"><i class="icon-star"></i></span>
+                                            <span class="category__delete">&#10006;</span>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <span class="category__name">Power Loss</span>
+                                            <span class="category__type"><i class="icon-star"></i></span>
+                                            <span class="category__delete">&#10006;</span>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <span class="category__name">India</span>
+                                            <span class="category__type"><i class="icon-tag"></i></span>
+                                            <span class="category__delete">&#10006;</span>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <span class="category__name">Engine Noise with somthing else</span>
+                                            <span class="category__type"><i class="icon-star"></i></span>
+                                            <span class="category__delete">&#10006;</span>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <span class="category__name">Engine Noise with somthing else</span>
+                                            <span class="category__type"><i class="icon-star"></i></span>
+                                            <span class="category__delete">&#10006;</span>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <a class="shortcuts__add" href="#"><i class="fas fa-list-ol"></i></a>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <a class="shortcuts__add" href="#"><i class="fas fa-list-ol"></i></a>
+                                        </li>
+                                    </ol>
                                 </div>
                             </div>
                         </div>

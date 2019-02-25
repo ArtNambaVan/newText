@@ -188,9 +188,13 @@
         .category {
             padding-bottom: 0.5rem;
 
-            &__name {
+            &__item {
                 color: $colorGray;
             }
+
+            // &__name {
+            //     color: $colorGray;
+            // }
 
             & + .category {
                 padding-top: 1rem;
