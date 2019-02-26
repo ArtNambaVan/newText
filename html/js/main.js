@@ -90,6 +90,52 @@ $( document ).ready(function() {
         }
     });
 
+    $('.vertical-divider').mousedown(function(e) {
+        console.log(e.pageX)
+    })
+
+        var container = $('#container'),
+            left = $('#left'),
+            right = $('#right'),
+            handle = $('#handle');
+
+        var leftFlex = Number( left.css('flex-grow').replace(/ .*/,''));
+        var rightFlex = Number( right.css('flex-grow').replace(/ .*/,''));
+
+        isResizing = false
+        handle.on('mousedown', function (e) {
+            lastDownX = e.clientX;
+            isResizing = true
+
+            container.addClass('active')
+
+            $(document).on('mousemove', function (e) {
+
+                if (!isResizing) return
+                totalFlex = rightFlex + leftFlex; // get total flex
+                var onePX = 1 / (container.width() / totalFlex); //calculate size of 1px 
+                var offsetRight = (e.clientX - container.offset().left);
+    
+                leftFlex =  offsetRight * onePX;
+                rightFlex =  container.width() * onePX - leftFlex;
+                left.css('flex', ((leftFlex)) + ' 1 0%');
+                right.css('flex', ((rightFlex)) + ' 1 0%');
+        
+            }).on('mouseup', function (e) {
+                // stop resizing
+                isResizing = false;
+                $(document).off( "mousemove");
+                container.removeClass('active')
+            });
+
+        });
+        
+    
+        $('#jsTreeCategory').on('changed.jstree', function (e, data) {
+            $(".jstree-anchor").append('<a class="link-icon" href="#"><span><i class="icon-plus-sign-alt"></i></span> Add category</a>');
+        })
+
+
     $('#source').jstree({
 		'core' : {
 			'data' : [
@@ -220,5 +266,7 @@ $( document ).ready(function() {
             }
 			]
 		}
-	});
+    });
+    
+    
 });

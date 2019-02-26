@@ -3,24 +3,40 @@
     display: flex;
     font-size: 12px;
 
+    @media (max-width: 992px) {
+        flex-wrap: wrap;
+    }
+
     &-left {
-        flex: 1 0 59%;
+        flex: 1;
         padding-right: 15px;
+        overflow: hidden;
+
+        @media (max-width: 992px) {
+            padding: 0;
+        }
     }
 
     &-right {
-        flex: 1 0 39%;
+        flex: 0.7;
         padding-left: 15px;
+        overflow: hidden;
+        @media (max-width: 992px) {
+            flex: auto !important;
+            padding: 0;
+            padding-right: 15px;
+        }
     }
 }
 
-.messages-settings {
-    padding-left: 65px;
+.message-editor-portlet {
+    .messages-settings {
+        padding-left: 65px;
+    }
 }
 
 .edit-group {
     display: flex;
-    //margin: 0 -10px;
     flex-wrap: wrap;
     justify-content: space-between;
 
@@ -39,7 +55,6 @@
             .edit-group__controll {
                 max-width: none;
                 width: 100%;
-                //margin-right: 19px;
             }
         }
 
@@ -119,4 +134,17 @@
     &__add {
         color: $thirdlyColor;
     }
+}
+
+.jstree-anchor .link-icon {
+    position: absolute;
+    color: $primaryColor;
+    right: -80px;
+    top: 20px;
+    display: none;
+    border: 1px solid #000;
+    padding: 1px 5px;
+    z-index: 2;
+    background-color: $colorWhite;
+    font-weight: normal;
 }

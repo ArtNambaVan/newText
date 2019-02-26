@@ -1,33 +1,31 @@
-                <div class="portlet-body">
-                    <div class="">
-                        <div class="messages-settings">
-                            <div class="messages-settings__item">
-                                id:
-                                <span>23132123</span>
-                            </div>
-                            <div class="messages-settings__item">
-                                <a href="#" class="link-icon">
-                                    <span><i class="icon-plus"></i></i></span>
-                                    Save & Close
-                                </a>
-                            </div>
-                            <div class="messages-settings__item">
-                                <a href="#" class="link-icon">
-                                    <span><i class="icon-chevron-right"></i></span>
-                                    Save & Next
-                                </a>
-                            </div>
-                            <div class="messages-settings__item">
-                                <a href="#" class="link-icon">
-                                    <span><i class="icon-ok"></i></span>
-                                    Copy message
-                                </a>
-                            </div>
-                        </div>   
-                    </div>
+                <div class="message-editor-portlet">
+                    <div class="messages-settings">
+                        <div class="messages-settings__item">
+                            id:
+                            <span>23132123</span>
+                        </div>
+                        <div class="messages-settings__item">
+                            <a href="#" class="link-icon">
+                                <span><i class="icon-plus"></i></i></span>
+                                Save & Close
+                            </a>
+                        </div>
+                        <div class="messages-settings__item">
+                            <a href="#" class="link-icon">
+                                <span><i class="icon-chevron-right"></i></span>
+                                Save & Next
+                            </a>
+                        </div>
+                        <div class="messages-settings__item">
+                            <a href="#" class="link-icon">
+                                <span><i class="icon-ok"></i></span>
+                                Copy message
+                            </a>
+                        </div>
+                    </div>   
                     
-                    <div class="cims-container">
-                        <div class="cims-container-left">
+                    <div class="cims-container reflex-container" id="container">
+                        <div class="cims-container-left reflex-element" id="left">
                             <form>
                                 <div class="edit-group">
                                     <div class="edit-group__item">
@@ -213,9 +211,9 @@
                             </form>
                         </div>
 
-                        <div class="vertical-divider"></div>
+                        <div class="vertical-divider" id="handle"></div>
 
-                        <div class="cims-container-right">
+                        <div class="cims-container-right reflex-element" id="right">
                             <div class="panel">
                                 <a class="panel__head collapse-icon" aria-controls="textFilterBody"
                                 aria-expanded="true" data-toggle="collapse" href="#textFilterBody" id="textFilter" role="tab">
@@ -381,7 +379,7 @@
                                             Expand all
                                         </a>
                                         <a href="#" class="link-icon">
-                                            <span><i class="icon-envelope"></i></span>
+                                            <span><i class="fas fa-compress-arrows-alt"></i></span>
                                             Collapse all
                                         </a>
                                     </div>
