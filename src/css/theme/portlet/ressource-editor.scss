@@ -1,0 +1,20 @@
+.ressource-editor {
+    display: flex;
+}
+
+.ressource-control {
+    flex: 0 0 350px;
+
+    &__title {
+        font-size: 24px;
+        color: $primaryColor;
+
+        span {
+            font-weight: bold;
+        }
+    }
+}
+
+.ressource-table {
+    flex: 1;
+}

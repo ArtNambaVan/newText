@@ -88,7 +88,8 @@ const SYNC_CONFIG = {
       baseDir : PATH.dest,
       //index : 'organization-selection.html'
       //index : 'index.html'
-      index : 'message-editor.html'
+      //index : 'message-editor.html'
+      index : 'ressource-editor.html'
     },
     open   : true,
     notify : false

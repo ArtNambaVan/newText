@@ -6,6 +6,10 @@
     font-size: 12px;
 }
 
+.jsTree-lg {
+    max-height: 300px;
+}
+
 .jstree-default .jstree-themeicon {
     display: none;
 }
@@ -14,16 +18,21 @@
     background-color: transparent;
 }
 
-.jstree-rating::after {
-    content: "R";
-    display: inline-block;
-    margin-left: 4px;
-    color: rgba($colorGray,0.75);
-    font-weight: bold;
-}
-
 .jstree-anchor {
     position: relative;
+
+    &::after {
+        content: "\F02B";
+        font-family: FontAwesome;
+        display: inline-block;
+        margin-left: 4px;
+        color: rgba(#000,0.75);
+        font-weight: bold;
+    }
+}
+
+.jstree-rating::after {
+    content: "\F005";
 }
 
 .jstree-default .jstree-clicked {

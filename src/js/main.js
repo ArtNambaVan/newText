@@ -4,7 +4,7 @@ $( document ).ready(function() {
     var filtersBtn = $('.filters-panel__btn');
     var filtersPanel = $('.filters-panel');
 
-    filtersPanel.hasClass('active') ? $('#wrapper').addClass('panel-open-mb') : $('#wrapper').removeClass('panel-open-mb');
+    // category popup
 
     $('.category__value').find('a').on('click', function(e) {
         e.preventDefault();
@@ -28,6 +28,9 @@ $( document ).ready(function() {
         $('#popup').removeClass('show')
     })
 
+    // Filters panel
+    filtersPanel.hasClass('active') ? $('#wrapper').addClass('panel-open-mb') : $('#wrapper').removeClass('panel-open-mb');
+
     filtersBtn.on('click', function() {
         if (filtersPanel.hasClass('active') ) {
             filtersPanel.removeClass('active');
@@ -38,6 +41,8 @@ $( document ).ready(function() {
         }
 
     });
+
+    // DATEPICKER
 
     $('.datepicker').on('click', function (e) {
         var target = $(e.target);
@@ -63,7 +68,8 @@ $( document ).ready(function() {
         });
     });
 
-    
+    // SLIDER
+
     $( "#slider-range" ).slider({
         range: true,
         min: 0,
@@ -90,50 +96,51 @@ $( document ).ready(function() {
         }
     });
 
-    $('.vertical-divider').mousedown(function(e) {
-        console.log(e.pageX)
-    })
 
-        var container = $('#container'),
-            left = $('#left'),
-            right = $('#right'),
-            handle = $('#handle');
 
-        var leftFlex = Number( left.css('flex-grow').replace(/ .*/,''));
-        var rightFlex = Number( right.css('flex-grow').replace(/ .*/,''));
+    // below this line part for resizing container
 
-        isResizing = false
-        handle.on('mousedown', function (e) {
-            lastDownX = e.clientX;
-            isResizing = true
+    var reflexContainer = $('.reflex-container'),
+        reflexElementLeft = reflexContainer.find('> .reflex-element--left'),
+        reflexElementRight = reflexContainer.find('> .reflex-element--right')
+        handle = reflexContainer.find('> .vertical-divider')
+        ;
 
-            container.addClass('active')
+    var leftFlex = Number( reflexElementLeft.css('flex-grow').replace(/ .*/,''));
+    var rightFlex = Number( reflexElementRight.css('flex-grow').replace(/ .*/,''));
 
-            $(document).on('mousemove', function (e) {
+    isResizing = false
+    handle.on('mousedown', function (e) {
+        lastDownX = e.clientX;
+        isResizing = true
 
-                if (!isResizing) return
-                totalFlex = rightFlex + leftFlex; // get total flex
-                var onePX = 1 / (container.width() / totalFlex); //calculate size of 1px 
-                var offsetRight = (e.clientX - container.offset().left);
+        reflexContainer.addClass('active')
+
+        $(document).on('mousemove', function (e) {
+
+            if (!isResizing) return
+            totalFlex = rightFlex + leftFlex; // get total flex
+            var onePX = 1 / (reflexContainer.width() / totalFlex); //calculate size of 1px for 1 flex-grow
+            var offsetRight = (e.clientX - reflexContainer.offset().left); // subtract from the position of the cursor left indent of the container
+
+            leftFlex =  offsetRight * onePX;  
+            rightFlex =  reflexContainer.width() * onePX - leftFlex;
+            reflexElementLeft.css('flex', ((leftFlex)) + ' 1 0%');
+            reflexElementRight.css('flex', ((rightFlex)) + ' 1 0%');
     
-                leftFlex =  offsetRight * onePX;
-                rightFlex =  container.width() * onePX - leftFlex;
-                left.css('flex', ((leftFlex)) + ' 1 0%');
-                right.css('flex', ((rightFlex)) + ' 1 0%');
-        
-            }).on('mouseup', function (e) {
-                // stop resizing
-                isResizing = false;
-                $(document).off( "mousemove");
-                container.removeClass('active')
-            });
-
+        }).on('mouseup', function (e) {
+            // stop resizing
+            isResizing = false;
+            $(document).off( "mousemove");
+            reflexContainer.removeClass('active')
         });
-        
+    });
     
-        $('#jsTreeCategory').on('changed.jstree', function (e, data) {
-            $(".jstree-anchor").append('<a class="link-icon" href="#"><span><i class="icon-plus-sign-alt"></i></span> Add category</a>');
-        })
+    // DON'T COPY CODE BELOW THIS LINE (THIS FOR LOCAL JSTREE)
+
+    $('#jsTreeCategory').on('changed.jstree', function (e, data) {
+        $(".jstree-anchor").append('<a class="link-icon" href="#"><span><i class="icon-plus-sign-alt"></i></span> Add category</a>');
+    })
 
 
     $('#source').jstree({

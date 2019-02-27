@@ -126,9 +126,22 @@
     }
 }
 
+.tags-categories {
+    flex: 0.7 1 0%;
+}
+
+.rating-categories {
+    flex: 1.2 1 0%;
+    position: relative;
+}
+
 .tags-categories,
 .rating-categories {
     padding: 0 0.5rem;
+
+    @media (max-width: 992px) {
+        flex: auto;
+    }
     
     & > p {
         text-transform: uppercase;
@@ -136,12 +149,6 @@
     }
 }
 
-.tags-categories {
-    flex: 0.7 1 0%;
-}
 
-.rating-categories {
-    flex: 1.2 1 0%;
-}
 
 

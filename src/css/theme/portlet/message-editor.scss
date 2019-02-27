@@ -14,17 +14,24 @@
 
         @media (max-width: 992px) {
             padding: 0;
+            flex: auto !important;
         }
     }
 
     &-right {
-        flex: 0.7;
+        flex: 0.6;
         padding-left: 15px;
         overflow: hidden;
         @media (max-width: 992px) {
             flex: auto !important;
             padding: 0;
             padding-right: 15px;
+            margin-top: 1rem;
+            //overflow: visible;
+        }
+
+        .tonality-popup {
+            bottom: -5rem;
         }
     }
 }
@@ -44,6 +51,10 @@
         margin: 7px 0px;
         display: flex;
         min-width: 260px;
+
+        @media (max-width: 576px) {
+            width: 100%;
+        }
 
         .toggle-switch {
             padding-top: 4px;
@@ -77,18 +88,31 @@
     &__controll {
         width: 160px;
         margin-right: 19px;
+
+        @media (max-width: 576px) {
+            width: 100%;
+        }
     }
 }
 
 .message-editor {
 
-    & + & {
-        margin-top: 1rem;
-    }
+    
 
     &__content {
         margin-top: 0.7rem;
         margin-right: 19px;
+    }
+
+    &__title {
+        margin-top: 1rem;
+        padding-top: 0.5rem;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-right: 19px;
+        border-top: 1px solid #eee;
     }
 }
 
@@ -101,6 +125,7 @@
         text-align: center;
         width: 25%;
         min-width: 120px;
+        max-width: 150px;
         padding: 15px 0;
         cursor: pointer;
         color: $primaryColor;
@@ -112,8 +137,6 @@
         }
     }
 }
-
-
 
 .shortcuts {
     counter-reset: myCounter;
