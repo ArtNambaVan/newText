@@ -68,6 +68,8 @@ $( document ).ready(function() {
         });
     });
 
+    
+
     // SLIDER
 
     $( "#slider-range" ).slider({
@@ -106,9 +108,11 @@ $( document ).ready(function() {
         handle = reflexContainer.find('> .vertical-divider')
         ;
 
-    var leftFlex = Number( reflexElementLeft.css('flex-grow').replace(/ .*/,''));
-    var rightFlex = Number( reflexElementRight.css('flex-grow').replace(/ .*/,''));
-
+    if (reflexElementLeft.length && reflexElementRight.length) {
+        console.log(reflexElementLeft, reflexElementRight)
+        var leftFlex = Number( reflexElementLeft.css('flex-grow').replace(/ .*/,''));
+        var rightFlex = Number( reflexElementRight.css('flex-grow').replace(/ .*/,''));
+    }
     isResizing = false
     handle.on('mousedown', function (e) {
         lastDownX = e.clientX;
@@ -135,6 +139,15 @@ $( document ).ready(function() {
             reflexContainer.removeClass('active')
         });
     });
+
+
+    // ressource
+
+    // $('.have-children').on('click', function(e) {
+    //     console.log(e.target)
+    //     $(this).toggleClass('tree-collapse');
+    //     $(this).next().slideToggle(400)
+    // })
     
     // DON'T COPY CODE BELOW THIS LINE (THIS FOR LOCAL JSTREE)
 

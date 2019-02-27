@@ -8548,12 +8548,14 @@ a:hover {
   display: flex;
   align-items: center;
   height: 46px;
-  position: relative; }
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s; }
+  .table-tree__item:hover {
+    background-color: rgba(205, 226, 241, 0.5); }
 
 .table-tree__item.have-children .table-tree__condition {
-  border-radius: 50%;
-  border: 1px solid;
-  width: 28px; }
+  display: block; }
 
 .table-tree__item.have-children > .table-tree__condition .show-icon {
   display: none; }
@@ -8592,26 +8594,30 @@ a:hover {
 .table-tree__children > .table-tree__container:last-child {
   background: transparent; }
 
-.table-tree__children > .table-tree__container:last-child > .table-tree__item {
-  background: transparent; }
-  .table-tree__children > .table-tree__container:last-child > .table-tree__item::before {
-    background-image: url(../images/line4.png);
-    background-size: 8px 30px;
-    background-position: left -5px;
-    background-repeat: no-repeat; }
+.table-tree__children > .table-tree__container:last-child > .table-tree__item::before {
+  background-image: url(../images/line4.png);
+  background-size: 8px 30px;
+  background-position: left -5px;
+  background-repeat: no-repeat; }
 
 .table-tree__condition {
-  margin: 8px;
-  width: 0;
+  margin-left: 8px;
+  border-radius: 50%;
+  border: 1px solid;
+  width: 28px;
   height: 28px;
   position: relative;
-  background-color: white; }
+  background-color: white;
+  display: none; }
   .table-tree__condition span {
     position: absolute;
     top: 50%;
     left: 50%;
     font-size: 26px;
     transform: translate(-50%, -50%); }
+
+.table-tree__name {
+  margin-left: 10px; }
 
 .table-tree__controls {
   margin-left: auto;
