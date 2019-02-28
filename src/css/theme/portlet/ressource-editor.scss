@@ -4,6 +4,7 @@
 
 .ressource-control {
     flex: 0 0 350px;
+    padding-right: 15px;
 
     &__title {
         font-size: 24px;
@@ -13,8 +14,54 @@
             font-weight: bold;
         }
     }
+    
 }
 
 .ressource-table {
     flex: 1;
+    padding-left: 15px;
+}
+
+.ressource-list {
+    list-style-type: none;
+    font-size: 14px;
+
+    &__item {
+        
+        & + & {
+            border-top: 1px dashed gray;
+        }
+    }
+
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2px 0;
+    }
+
+    &__footer {
+        //display: flex;
+    }
+
+    &__name {
+        //display: inline-block;
+        width: 60%;
+        word-break: break-word;
+    }
+
+    &__btn {
+        //display: inline-block;
+        padding: 2px 5px;
+        color: $primaryColor;
+        font-weight: bold;
+        transition: all 0.2s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $primaryColor;
+            //font-weight: normal;
+            color: white;
+        }
+    }
 }

@@ -7651,6 +7651,28 @@ a:hover {
   .cims .btn-container--center {
     justify-content: space-around; }
 
+.cims-btn {
+  padding: 2px 7px;
+  min-width: 68px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.25s; }
+  .cims-btn:focus {
+    outline: none; }
+  .cims-btn--primary {
+    color: #fff;
+    background-color: #012b5b;
+    border: 1px solid #012b5b; }
+  .cims-btn--default {
+    color: #012b5b;
+    border: 1px solid #012b5b; }
+    .cims-btn--default:active {
+      color: #fff;
+      background-color: #012b5b; }
+
 .cims .form-control {
   min-height: auto;
   border-radius: 0;
@@ -7766,6 +7788,13 @@ a:hover {
       color: #e98f18; }
   .page-pagination__results {
     padding: 0.5rem 0.75rem; }
+  .page-pagination--block .page-pagination__link {
+    background-color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd; }
+  .page-pagination--block .page-pagination__item + .page-pagination__item {
+    margin-left: 0; }
 
 .slider-value {
   display: flex;
@@ -8538,21 +8567,23 @@ a:hover {
   border: 1px solid #aaa;
   border-radius: 4px;
   box-shadow: 0px 3px 8px #CCC;
-  color: #012b5b;
-  margin-top: 10px; }
+  color: #012b5b; }
+  .table-tree__wrapper + .table-tree__wrapper {
+    margin-top: 10px; }
 
 .table-tree__container {
   position: relative; }
 
 .table-tree__item {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  height: 46px;
+  min-height: 46px;
   position: relative;
-  cursor: pointer;
-  transition: all 0.3s; }
-  .table-tree__item:hover {
-    background-color: rgba(205, 226, 241, 0.5); }
+  padding: 9px 0; }
+  .table-tree__item .collapse-icon,
+  .table-tree__item .show-icon {
+    display: none; }
 
 .table-tree__item.have-children .table-tree__condition {
   display: block; }
@@ -8580,10 +8611,12 @@ a:hover {
   background-image: url(../images/line2.png);
   background-repeat: no-repeat;
   background-position: left 50%;
-  background-size: 8px;
+  background-size: 8px 1px;
   width: 100%;
   height: 100%;
   position: absolute;
+  left: 0;
+  top: 0;
   z-index: -1; }
 
 .table-tree__children > .table-tree__container {
@@ -8608,7 +8641,8 @@ a:hover {
   height: 28px;
   position: relative;
   background-color: white;
-  display: none; }
+  display: none;
+  cursor: pointer; }
   .table-tree__condition span {
     position: absolute;
     top: 50%;
@@ -8617,11 +8651,14 @@ a:hover {
     transform: translate(-50%, -50%); }
 
 .table-tree__name {
-  margin-left: 10px; }
+  margin-left: 10px;
+  margin-right: auto; }
 
 .table-tree__controls {
-  margin-left: auto;
+  margin-left: 30px;
   margin-right: 200px; }
+  .table-tree__controls button + button {
+    margin-left: 45px; }
 
 .table-tree__btn {
   background: none;
@@ -8632,8 +8669,6 @@ a:hover {
     color: #012b5b; }
   .table-tree__btn:active, .table-tree__btn:focus {
     outline: none; }
-  .table-tree__btn + .table-tree__btn {
-    margin-left: 50px; }
   .table-tree__btn span {
     margin-right: 3px; }
   .table-tree__btn:nth-child(1) span {
@@ -8649,9 +8684,18 @@ a:hover {
   .table-tree__btn:nth-child(3) span {
     color: #e98f18; }
 
-.collapse-icon,
-.show-icon {
-  display: none; }
+.collapse-link {
+  display: inline-block; }
+  .collapse-link:hover {
+    text-decoration: none; }
+  .collapse-link .collapse-icon-closed {
+    display: none; }
+  .collapse-link .collapse-icon-open {
+    display: block; }
+  .collapse-link.collapsed .collapse-icon-closed {
+    display: block; }
+  .collapse-link.collapsed .collapse-icon-open {
+    display: none; }
 
 .messages-portlet {
   display: flex;
@@ -9097,7 +9141,8 @@ a:hover {
   display: flex; }
 
 .ressource-control {
-  flex: 0 0 350px; }
+  flex: 0 0 350px;
+  padding-right: 15px; }
   .ressource-control__title {
     font-size: 24px;
     color: #012b5b; }
@@ -9105,4 +9150,28 @@ a:hover {
       font-weight: bold; }
 
 .ressource-table {
-  flex: 1; }
+  flex: 1;
+  padding-left: 15px; }
+
+.ressource-list {
+  list-style-type: none;
+  font-size: 14px; }
+  .ressource-list__item + .ressource-list__item {
+    border-top: 1px dashed gray; }
+  .ressource-list__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 0; }
+  .ressource-list__name {
+    width: 60%;
+    word-break: break-word; }
+  .ressource-list__btn {
+    padding: 2px 5px;
+    color: #012b5b;
+    font-weight: bold;
+    transition: all 0.2s;
+    cursor: pointer; }
+    .ressource-list__btn:hover {
+      background-color: #012b5b;
+      color: white; }

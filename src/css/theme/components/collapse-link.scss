@@ -1,0 +1,25 @@
+.collapse-link {
+    display: inline-block;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    .collapse-icon-closed {
+        display: none;
+    }
+
+    .collapse-icon-open {
+        display: block;
+    }
+
+    &.collapsed {
+        .collapse-icon-closed {
+            display: block;
+        }
+    
+        .collapse-icon-open {
+            display: none;
+        }
+    }
+}

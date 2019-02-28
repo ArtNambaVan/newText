@@ -30,3 +30,34 @@
         }
     }
 }
+
+.cims-btn {
+    padding: 2px 7px;
+    min-width: 68px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.25s;
+
+    &:focus {
+        outline: none;
+    }
+
+    &--primary {
+        color: $colorWhite;
+        background-color: $primaryColor;
+        border: 1px solid $primaryColor;
+    }
+
+    &--default {
+        color: $primaryColor;
+        border: 1px solid $primaryColor;
+
+        &:active {
+            color: $colorWhite;
+            background-color: $primaryColor;
+        }
+    }
+}

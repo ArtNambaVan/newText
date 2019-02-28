@@ -143,11 +143,14 @@ $( document ).ready(function() {
 
     // ressource
 
-    // $('.have-children').on('click', function(e) {
-    //     console.log(e.target)
-    //     $(this).toggleClass('tree-collapse');
-    //     $(this).next().slideToggle(400)
-    // })
+    $('.table-tree__condition').on('click', function(e) {
+        $(this).parent().toggleClass('tree-collapse');
+        $(this).parent().next().slideToggle(400)
+    })
+
+    $('.table-tree__btn:nth-child(2)').on('click', function(e) {
+        $(this).closest('.table-tree__item').find('.table-tree__name').attr( 'contenteditable', 'true' ).focus();
+    })
     
     // DON'T COPY CODE BELOW THIS LINE (THIS FOR LOCAL JSTREE)
 

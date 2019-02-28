@@ -82,10 +82,83 @@
                     <div class="ressource-editor">
                         <div class="ressource-control">
                             <h2 class="ressource-control__title">Ressources: <span>Socialmedia</span></h2>
+
+                            <div class="page-pagination page-pagination--block">
+                                <ul class="page-pagination__list">
+                                    <li class="page-pagination__item">
+                                        <a class="page-pagination__link" href="#1" role="button">
+                                            <i class="fas fa-step-backward"></i>
+                                        </a>
+                                    </li>
+                                    <li class="page-pagination__item">
+                                        <a class="page-pagination__link" href="#1" role="button">
+                                            <i class="fas fa-backward"></i>
+                                        </a>
+                                    </li>
+                                    <li class="page-pagination__item">
+                                        <a class="page-pagination__link" href="#1" role="button">
+                                            <i class="fas fa-caret-left"></i>
+                                        </a>
+                                    </li>
+                                    <li class="page-pagination__item">
+                                        <a class="page-pagination__link" href="#1" role="button">
+                                            <i class="fas fa-caret-right"></i>
+                                        </a>
+                                    </li>
+                                    <li class="page-pagination__item">
+                                        <a class="page-pagination__link" href="#1" role="button">
+                                            <i class="fas fa-forward"></i>
+                                        </a>
+                                    </li>
+                                    <li class="page-pagination__item">
+                                        <a class="page-pagination__link" href="#1" role="button">
+                                            <i class="fas fa-step-forward"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <ul class="ressource-list">
+                                <li class="ressource-list__item">
+                                    <div class="ressource-list__body">
+                                        <div class="ressource-list__name">cebook.com</div>
+                                        <button class="cims-btn ressource-list__btn">Edit</button>
+                                        <button class="cims-btn ressource-list__btn">Integrate</button>
+                                    </div>
+                                    
+                                </li>
+                                <li class="ressource-list__item">
+                                    <div class="ressource-list__body">
+                                        <div class="ressource-list__name">cebook.com/dasdas/czxcz</div>
+                                        <button class="cims-btn ressource-list__btn">Edit</button>
+                                        <button class="cims-btn ressource-list__btn">Integrate</button>
+                                    </div>
+                                </li>
+                                <li class="ressource-list__item">
+                                    <div class="ressource-list__body">
+                                        <div class="ressource-list__name">cebook.com</div>
+                                        <button class="cims-btn ressource-list__btn">Edit</button>
+                                        <button class="cims-btn ressource-list__btn">Integrate</button>
+                                    </div>
+                                </li>
+                            </ul>
+
                         </div>
 
                         <div class="ressource-table">
-                            <div class="table-tree">
+                            <div class="table-tree" id="table-tree">
+                                <div class="table-tree__condition">
+                                    <a href="#table-tree" class="collapse-link">
+                                        <span class="collapse-icon-closed">
+                                            expand all 
+                                            <i class="icon-chevron-down"></i>
+                                        </span>
+                                        <span class="collapse-icon-open">
+                                            collapse all
+                                            <i class="icon-chevron-up"></i>
+                                        </span>
+                                    </a>
+                                </div>
                                 <div class="table-tree__wrapper">
                                     <div class="table-tree__container">
                                         <div class="table-tree__item have-children">
@@ -103,16 +176,17 @@
 
                                         <div class="table-tree__children">
                                             <div class="table-tree__container">
-                                                <div class="table-tree__item have-children">
+                                                <div class="table-tree__item have-children active">
                                                     <div class="table-tree__condition">
                                                         <span class="collapse-icon">-</span>
                                                         <span class="show-icon">+</span>
                                                     </div>
                                                     <div class="table-tree__name">All ressources</div>
                                                     <div class="table-tree__controls">
-                                                        <button class="table-tree__btn"><span class="add">+</span>Add new</button>
-                                                        <button class="table-tree__btn"><span><i class="far fa-edit"></i></span>Edit</button>
-                                                        <button class="table-tree__btn"><span><i class="far fa-trash-alt"></i></span>Delete</button>
+                                                        
+
+                                                        <button class="cims-btn cims-btn--primary">Save</button>
+                                                        <button class="cims-btn cims-btn--default">Cancel</button>
                                                     </div>
                                                 </div>
 
