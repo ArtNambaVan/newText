@@ -25,7 +25,7 @@
         }
     }
 
-    [type="text"],
+    [type="text"]:not(.el-input__inner),
     select {
         padding: 0.2rem;
         height: 25px;

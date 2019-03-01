@@ -149,7 +149,41 @@ $( document ).ready(function() {
     })
 
     $('.table-tree__btn:nth-child(2)').on('click', function(e) {
-        $(this).closest('.table-tree__item').find('.table-tree__name').attr( 'contenteditable', 'true' ).focus();
+        var item = $(this).closest('.table-tree__item');
+        item .addClass('active').find('.table-tree__name').attr( 'contenteditable', 'true' ).focus();
+    })
+
+    $('#collapseAll').on('click', function(e) {
+        var parentItems = $('.table-tree').find('.table-tree__item.have-children');
+        parentItems.each(function(e) {
+            if (!$(this).hasClass('tree-collapse')) {
+                $(this).addClass('tree-collapse')
+                .next().slideToggle(400)
+            }
+        })
+    })
+
+    $('#expandAll').on('click', function(e) {
+        var parentItems = $('.table-tree').find('.table-tree__item.have-children');
+        parentItems.each(function(e) {
+            if ($(this).hasClass('tree-collapse')) {
+                $(this).removeClass('tree-collapse')
+                .next().slideToggle(400)
+            }
+        })
+        
+    })
+
+    $('.ressource-list__item').find('.ressource-list__btn:nth-of-type(1)').on('click', function(e) {
+        var name = $(this).prev();
+        $(this).toggleClass('active');
+        console.log(name)
+        if (name.attr( 'contenteditable' )) {
+            name.removeAttr( 'contenteditable', 'false' )
+        } else {
+            name.prop( 'contenteditable', 'true').focus();
+            console.log('das')
+        }
     })
     
     // DON'T COPY CODE BELOW THIS LINE (THIS FOR LOCAL JSTREE)

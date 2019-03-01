@@ -89,7 +89,8 @@ const SYNC_CONFIG = {
       //index : 'organization-selection.html'
       //index : 'index.html'
       //index : 'message-editor.html'
-      index : 'ressource-editor.html'
+      //index : 'ressource-editor.html'
+      index : 'categories-editor.html'
     },
     open   : true,
     notify : false
