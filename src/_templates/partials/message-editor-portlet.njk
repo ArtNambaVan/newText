@@ -1,0 +1,446 @@
+                <div class="message-editor-portlet">
+                    <div class="messages-settings">
+                        <div class="messages-settings__item">
+                            id:
+                            <span>23132123</span>
+                        </div>
+                        <div class="messages-settings__item">
+                            <a href="#" class="link-icon">
+                                <span><i class="icon-plus"></i></i></span>
+                                Save & Close
+                            </a>
+                        </div>
+                        <div class="messages-settings__item">
+                            <a href="#" class="link-icon">
+                                <span><i class="icon-chevron-right"></i></span>
+                                Save & Next
+                            </a>
+                        </div>
+                        <div class="messages-settings__item">
+                            <a href="#" class="link-icon">
+                                <span><i class="icon-ok"></i></span>
+                                Copy message
+                            </a>
+                        </div>
+                    </div>   
+                    
+                    <div class="cims-container reflex-container">
+                        <div class="cims-container-left reflex-element--left">
+                            <form>
+                                <div class="edit-group">
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Date:</span>
+                                        <div class="edit-group__controll">
+                                            <div class="select-container select-container--icon-right">
+                                                <input type="text" autocomplete="off" class="filter-category__control datepicker-input dropdown-toggle" 
+                                                id="q" data-toggle="dropdown" readonly value="01.01.2019 12:32">
+                                                <i class="icon-calendar"></i>
+                                                {% include "./datepickerFull.njk" %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Views:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text">
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Source:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text" placeholder="Source">
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Type:</span>
+                                        <div class="edit-group__controll">
+                                            <div class="select-container">
+                                                <select class="filter-category__control">
+                                                    <option>Url</option> 
+                                                    <option>Text</option> 
+                                                    <option>File</option> 
+                                                    <option>External Video</option> 
+                                                    <option>Image</option> 
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="edit-group">
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Url:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text" placeholder="http://example.com">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="edit-group">
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Original:</span>
+                                        <div class="edit-group__controll">
+                                            <div class="select-container">
+                                                <select class="filter-category__control">
+                                                    <option>English</option> 
+                                                    <option>German</option> 
+                                                    <option>Chinese</option> 
+                                                    <option>French</option> 
+                                                    <option>Italian</option> 
+                                                    <option>Portoguese</option> 
+                                                    <option>Russian</option> 
+                                                    <option>Spanish</option> 
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Translate:</span>
+                                        
+                                        <div class="edit-group__controll">
+                                            <label class="toggle-switch">
+                                                <input class="toggle-switch-check" type="checkbox" checked/>
+                                                <span aria-hidden="true" class="toggle-switch-bar">
+                                                    <span class="toggle-switch-handle"></span>
+                                                </span>
+                                            </label>
+                                            <label class="custom-checkbox">
+                                                <input type="checkbox">
+                                                <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                            </label>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Comment:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text" placeholder="Comment">
+                                        </div>
+                                    </div>
+                                    <div class="edit-group__item">
+                                        <span class="edit-group__label">Author:</span>
+                                        <div class="edit-group__controll">
+                                            <input type="text">
+                                        </div>
+                                        <label class="custom-checkbox" placeholder="Author">
+                                            <input type="checkbox">
+                                            <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="message-editor">
+                                    <h3 class="message-editor__title">message</h3>
+                                    <div class="edit-group">
+                                        <div class="edit-group__item">
+                                            <span class="edit-group__label">Original Title:</span>
+                                            <div class="edit-group__controll">
+                                                <input type="text">
+                                            </div>
+                                            <label class="custom-checkbox" placeholder="Author">
+                                                <input type="checkbox">
+                                                <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="message-editor__content">
+                                        <textarea id="mytextarea"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="message-editor">
+                                    <h3 class="message-editor__title">translation</h3>
+                                    <div class="edit-group">
+                                        <div class="edit-group__item edit-group__item--small">
+                                            <span class="edit-group__label">Translate to:</span>
+                                            <div class="edit-group__controll">
+                                                <div class="select-container">
+                                                    <select class="filter-category__control">
+                                                        <option>English</option> 
+                                                        <option>German</option> 
+                                                        <option>Chinese</option> 
+                                                        <option>French</option> 
+                                                        <option>Italian</option> 
+                                                        <option>Portoguese</option> 
+                                                        <option>Russian</option> 
+                                                        <option>Spanish</option> 
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="link-icon">
+                                                <span><i class="fas fa-book-open"></i></span>
+                                                Translate now
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="edit-group">
+                                        <div class="edit-group__item">
+                                            <span class="edit-group__label">Title:</span>
+                                            <div class="edit-group__controll">
+                                                <input type="text">
+                                            </div>
+                                            <label class="custom-checkbox" placeholder="Author">
+                                                <input type="checkbox">
+                                                <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="message-editor__content">
+                                        <textarea id="mytextarea2"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="vertical-divider" id="handle"></div>
+
+                        <div class="cims-container-right reflex-element--right" id="right">
+                            <div class="panel">
+                                <a class="panel__head collapse-icon" aria-controls="textFilterBody"
+                                aria-expanded="true" data-toggle="collapse" href="#textFilterBody" id="textFilter" role="tab">
+                                    <span class="panel__title">selected categories</span>
+                                    <span class="collapse-icon-closed">
+                                        <i class="icon-chevron-down"></i>
+                                    </span>
+                                    <span class="collapse-icon-open">
+                                        <i class="icon-chevron-up"></i>
+                                    </span>
+                                </a>
+                                <div class="collapse show" aria-labelledby="textFilter" id="textFilterBody" role="tabpanel">
+                                    <div class="cims-container">
+                                        <div class="tags-categories">
+                                            <p>tags</p>
+                                            <ul class="category">
+                                                <li class="category__item category__item--unrating">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                                    </label>
+                                                    <span class="category__name">China</span>
+                                                    <span class="category__type"><i class="icon-tag"></i></span>
+                                                    <span class="category__delete">&#10006;</span>
+                                                </li>
+                                                <li class="category__item category__item--unrating">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                                    </label>
+                                                    <span class="category__name">Germany</span>
+                                                    <span class="category__type"><i class="icon-tag"></i></span>
+                                                    <span class="category__delete">&#10006;</span>
+                                                </li>
+
+                                                <li class="category__item category__item--unrating">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                                    </label>
+                                                    <span class="category__name">Engine Noise</span>
+                                                    <span class="category__type"><i class="icon-tag"></i></span>
+                                                    <span class="category__delete">&#10006;</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rating-categories">
+                                            <p>rating</p>
+                                            <ul class="category">
+                                                <li class="category__item category__item--rating">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                                    </label>
+                                                    <span class="category__name">Engine Noise</span>
+                                                    <span class="category__type"><i class="icon-star"></i></span>
+                                                    <span class="category__delete">&#10006;</span>
+                                                    <div class="category__value">
+                                                        <label class="category__indicator category__indicator--positive category__indicator--progress-25" for="searchCategory"></label>
+                                                        <input id="searchCategory" type="hidden">
+                                                    </div>
+                                                </li>
+                                                <li class="category__item category__item--rating">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                                    </label>
+                                                    <span class="category__name">Engine Noise with somthing else</span>
+                                                    <span class="category__type"><i class="icon-star"></i></span>
+                                                    <span class="category__delete">&#10006;</span>
+                                                    <div class="category__value">
+                                                        <label class="category__indicator category__indicator--positive category__indicator--progress-25" for="searchCategory"></label>
+                                                        <input id="searchCategory" type="hidden">
+                                                    </div>
+                                                </li>
+                                                <li class="category__item category__item--rating">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
+                                                    </label>
+                                                    <span class="category__name">Powertrain</span>
+                                                    <span class="category__type"><i class="icon-star"></i></span>
+                                                    <span class="category__delete">&#10006;</span>
+                                                    <div class="category__value">
+                                                        <a href="#" class="btn-link add-tonality">
+                                                            <i class="icon-plus-sign-alt"></i>
+                                                            Add Tonality
+                                                        </a>
+                                                    </div>
+                                                    <div class="tonality-popup collapse">
+                                                        <a href="#close" title="Close" class="close"><i class="icon-remove-sign"></i></a>
+                                                        <h4 class="tonality-popup__header"></h4>
+                                                        <span>negative</span>
+                                                        <div class="tonality-popup__group">
+                                                            <span class="tonality-popup__btn tonality-popup__btn--negative-25">25%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--negative-50">50%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--negative-75">75%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--negative-100">100%</span>
+                                                        </div>
+                                                        <span>neutral</span>
+                                                        <div class="tonality-popup__group">
+                                                            <span class="tonality-popup__btn tonality-popup__btn--neutral-25">25%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--neutral-50">50%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--neutral-75">75%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--neutral-100">100%</span>
+                                                        </div>
+                                                        <span>positive</span>
+                                                        <div class="tonality-popup__group">
+                                                            <span class="tonality-popup__btn tonality-popup__btn--positive-25">25%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--positive-50">50%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--positive-75">75%</span>
+                                                            <span class="tonality-popup__btn tonality-popup__btn--positive-100">100%</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel">
+                                <a class="panel__head collapse-icon" aria-controls="recentlyUsedBody"
+                                aria-expanded="true" data-toggle="collapse" href="#recentlyUsedBody" id="recentlyUsed" role="tab">
+                                    <span class="panel__title">recently used (all suggestions)</span>
+                                    <span class="collapse-icon-closed">
+                                        <i class="icon-chevron-down"></i>
+                                    </span>
+                                    <span class="collapse-icon-open">
+                                        <i class="icon-chevron-up"></i>
+                                    </span>
+                                </a>
+                                <div class="collapse show" aria-labelledby="recentlyUsed" id="recentlyUsedBody" role="tabpanel">
+                                        <ul class="recently-used">
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                            <li class="recently-used__item">Land Rover</li>
+                                        </ul>
+                                </div>
+                            </div>
+
+                            <div class="panel">
+                                <a class="panel__head collapse-icon" aria-controls="categoriesBody"
+                                aria-expanded="true" data-toggle="collapse" href="#categoriesBody" id="categories" role="tab">
+                                    <span class="panel__title">categories</span>
+                                    <span class="collapse-icon-closed">
+                                        <i class="icon-chevron-down"></i>
+                                    </span>
+                                    <span class="collapse-icon-open">
+                                        <i class="icon-chevron-up"></i>
+                                    </span>
+                                </a>
+                                <div class="collapse show" aria-labelledby="categories" id="categoriesBody" role="tabpanel">
+                                    <input type="text" placeholder="Search categogies">
+                                    <div class="link-group">
+                                        <a href="#" class="link-icon">
+                                            <span><i class="fas fa-expand-arrows-alt"></i></span>
+                                            Expand all
+                                        </a>
+                                        <a href="#" class="link-icon">
+                                            <span><i class="fas fa-compress-arrows-alt"></i></span>
+                                            Collapse all
+                                        </a>
+                                    </div>
+                                    <div id="jsTreeCategory" class="jsTree-lg">
+                                    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel">
+                                <a class="panel__head collapse-icon" aria-controls="shortcutsBody"
+                                aria-expanded="true" data-toggle="collapse" href="#shortcutsBody" id="shortcuts" role="tab">
+                                    <span class="panel__title">shortcuts</span>
+                                    <span class="collapse-icon-closed">
+                                        <i class="icon-chevron-down"></i>
+                                    </span>
+                                    <span class="collapse-icon-open">
+                                        <i class="icon-chevron-up"></i>
+                                    </span>
+                                </a>
+                                <div class="collapse show" aria-labelledby="shortcuts" id="shortcutsBody" role="tabpanel">
+                                    <ol class="shortcuts">
+                                        <li class="shortcuts__item">
+                                            <span class="category__name">Land Rover</span>
+                                            <span class="category__type"><i class="icon-tag"></i></span>
+                                            <span class="category__delete">&#10006;</span>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <span class="category__name">Acceleration</span>
+                                            <span class="category__type"><i class="icon-star"></i></span>
+                                            <span class="category__delete">&#10006;</span>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <span class="category__name">Power Loss</span>
+                                            <span class="category__type"><i class="icon-star"></i></span>
+                                            <span class="category__delete">&#10006;</span>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <span class="category__name">India</span>
+                                            <span class="category__type"><i class="icon-tag"></i></span>
+                                            <span class="category__delete">&#10006;</span>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <span class="category__name">Engine Noise with somthing else</span>
+                                            <span class="category__type"><i class="icon-star"></i></span>
+                                            <span class="category__delete">&#10006;</span>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <span class="category__name">Engine Noise with somthing else</span>
+                                            <span class="category__type"><i class="icon-star"></i></span>
+                                            <span class="category__delete">&#10006;</span>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <a class="shortcuts__add" href="#"><i class="fas fa-list-ol"></i></a>
+                                        </li>
+                                        <li class="shortcuts__item">
+                                            <a class="shortcuts__add" href="#"><i class="fas fa-list-ol"></i></a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

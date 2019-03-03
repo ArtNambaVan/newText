@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <title>Categories editor</title>
+    <link rel="stylesheet" href="css/libs/clay.css"> 
+    
+
+    <link rel="stylesheet" href="css/libs/main.css">
+     <link rel="stylesheet" href="css/libs/treeJS.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/libs.js"></script>
+    
+
+</head>
+
+<body>
+
+    <div class="cims" id="wrapper">
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="main-nav navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="main-logo">
+                        <img class="main-logo__img" src="images/cims-logo2.png" alt="CIMS logo">
+                        
+                    </div>
+                    <div class="navbar-collapse collapse main-nav__navigation" id="navbarSupportedContent">
+                        <div class="main-nav__section main-nav__section--left">
+                            
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link active" href="organization-selection.html">Home</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="index.html">Messages</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="#">Analysis</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="#">Reports</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="#">Newsletter</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="main-nav__section main-nav__section--right">
+
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link" href="#">New Message</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <div class="dropdown">
+                                        <span><a class="main-nav__link" href="#">Administrator</a></span>
+                                    </div>
+                                    <div class="dropdown-menu">
+                                        <ul>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link" href="#">Sign Out</a>
+                                </li>
+                            </ul>
+                        
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+
+            <div class="container-fluid">
+                <div class="categorie-editor">
+                    <div class="table-tree__link-container">
+                        <h2 class="categorie-editor__title">
+                            Categories
+                        </h2>
+                        <a href="#table-tree" class="collapse-link" id="expandAll">
+                            <span id="expandAll">
+                                expand all 
+                                <i class="icon-chevron-down"></i>
+                            </span>
+                        </a>
+                        <a href="#table-tree" class="collapse-link" id="collapseAll">
+                            <span>
+                                collapse all
+                                <i class="icon-chevron-up"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="source-table">
+                        <div class="table-tree" id="table-tree">
+                            <div class="table-tree__wrapper">
+                                <div class="table-tree__container">
+                                    <div class="table-tree__item have-children">
+                                        <div class="table-tree__condition">
+                                            <span class="collapse-icon">-</span>
+                                            <span class="show-icon">+</span>
+                                        </div>
+                                        <div class="table-tree__name">All ressources</div>
+                                        <div class="table-tree__controls">
+                                            <button class="table-tree__btn"><span class="add">+</span>Add new</button>
+                                            <button class="table-tree__btn"><span><i class="far fa-edit"></i></span>Edit</button>
+                                            <button class="table-tree__btn"><span><i class="far fa-trash-alt"></i></span>Delete</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="table-tree__children">
+                                        <div class="table-tree__container">
+                                            <div class="table-tree__item">
+                                                <div class="table-tree__condition">
+                                                    <span class="collapse-icon">-</span>
+                                                    <span class="show-icon">+</span>
+                                                </div>
+                                                <div class="table-tree__name">All ressources</div>
+                                                <div class="table-tree__controls">
+                                                    <button class="table-tree__btn"><span class="add">+</span>Add new</button>
+                                                    <button class="table-tree__btn"><span><i class="far fa-edit"></i></span>Edit</button>
+                                                    <button class="table-tree__btn"><span><i class="far fa-trash-alt"></i></span>Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-tree__container">
+                                            <div class="table-tree__item have-children">
+                                                <div class="table-tree__condition">
+                                                    <span class="collapse-icon">-</span>
+                                                    <span class="show-icon">+</span>
+                                                </div>
+                                                <div class="table-tree__name">All ressources</div>
+                                                <div class="table-tree__controls">
+                                                    <button class="table-tree__btn"><span class="add">+</span>Add new</button>
+                                                    <button class="table-tree__btn"><span><i class="far fa-edit"></i></span>Edit</button>
+                                                    <button class="table-tree__btn"><span><i class="far fa-trash-alt"></i></span>Delete</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="table-tree__children">
+                                                <div class="table-tree__container">
+                                                    <div class="table-tree__item active">
+                                                        <div class="table-tree__condition">
+                                                            <span class="collapse-icon">-</span>
+                                                            <span class="show-icon">+</span>
+                                                        </div>
+                                                        <div class="table-tree__name" contenteditable>All ressources</div>
+                                                        <div class="table-tree__category">
+
+                                                            <span>Category type:</span>
+                                                            <div class="custom-control custom-control-inline custom-radio-circle">
+                                                                <input type="radio" id="categoryRating" name="category-type" value="Rating" class="custom-control-input radio-item">
+                                                                <label class="custom-control-label" for="categoryRating">Rating</label>
+                                                            </div>
+                                                            <div class="custom-control custom-control-inline custom-radio-circle">
+                                                                <input type="radio" id="categoryTagging" name="category-type" value="Rating" class="custom-control-input radio-item">
+                                                                <label class="custom-control-label" for="categoryTagging">Tagging</label>
+                                                            </div>
+
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input required" id="personalDataTermsCheckbox" name="personalDataTermsAccepted" value="true" required="">
+                                                                <label class="custom-control-label" for="personalDataTermsCheckbox">
+                                                                    TOP</label>
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div class="table-tree__controls">
+                                                            <button class="cims-btn cims-btn--primary">Save</button>
+                                                            <button class="cims-btn cims-btn--default">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="table-tree__wrapper">
+                                <div class="table-tree__container">
+                                    <div class="table-tree__item">
+                                        <div class="table-tree__condition">
+                                            <span class="collapse-icon">-</span>
+                                            <span class="show-icon">+</span>
+                                        </div>
+                                        <div class="table-tree__name">All ressources</div>
+                                        <div class="table-tree__controls">
+                                            <button class="table-tree__btn"><span class="add">+</span>Add new</button>
+                                            <button class="table-tree__btn"><span><i class="far fa-edit"></i></span>Edit</button>
+                                            <button class="table-tree__btn"><span><i class="far fa-trash-alt"></i></span>Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="table-tree__wrapper">
+                                <div class="table-tree__container">
+                                    <div class="table-tree__item have-children">
+                                        <div class="table-tree__condition">
+                                            <span class="collapse-icon">-</span>
+                                            <span class="show-icon">+</span>
+                                        </div>
+                                        <div class="table-tree__name">All ressources</div>
+                                        <div class="table-tree__controls">
+                                            <button class="table-tree__btn"><span class="add">+</span>Add new</button>
+                                            <button class="table-tree__btn"><span><i class="far fa-edit"></i></span>Edit</button>
+                                            <button class="table-tree__btn"><span><i class="far fa-trash-alt"></i></span>Delete</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="table-tree__children">
+                                        <div class="table-tree__container">
+                                            <div class="table-tree__item">
+                                                <div class="table-tree__condition">
+                                                    <span class="collapse-icon">-</span>
+                                                    <span class="show-icon">+</span>
+                                                </div>
+                                                <div class="table-tree__name">All ressources</div>
+                                                <div class="table-tree__controls">
+                                                    <button class="table-tree__btn"><span class="add">+</span>Add new</button>
+                                                    <button class="table-tree__btn"><span><i class="far fa-edit"></i></span>Edit</button>
+                                                    <button class="table-tree__btn"><span><i class="far fa-trash-alt"></i></span>Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-tree__container">
+                                            <div class="table-tree__item have-children">
+                                                <div class="table-tree__condition">
+                                                    <span class="collapse-icon">-</span>
+                                                    <span class="show-icon">+</span>
+                                                </div>
+                                                <div class="table-tree__name">All ressources</div>
+                                                <div class="table-tree__controls">
+                                                    <button class="table-tree__btn"><span class="add">+</span>Add new</button>
+                                                    <button class="table-tree__btn"><span><i class="far fa-edit"></i></span>Edit</button>
+                                                    <button class="table-tree__btn"><span><i class="far fa-trash-alt"></i></span>Delete</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="table-tree__children">
+                                                <div class="table-tree__container">
+                                                    <div class="table-tree__item">
+                                                        <div class="table-tree__condition">
+                                                            <span class="collapse-icon">-</span>
+                                                            <span class="show-icon">+</span>
+                                                        </div>
+                                                        <div class="table-tree__name">All ressources</div>
+                                                        <div class="table-tree__controls">
+                                                            <button class="table-tree__btn"><span class="add">+</span>Add new</button>
+                                                            <button class="table-tree__btn"><span><i class="far fa-edit"></i></span>Edit</button>
+                                                            <button class="table-tree__btn"><span><i class="far fa-trash-alt"></i></span>Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="footer__copyright">© Copyright 2018 Consline AG</p>
+            </div>
+        </footer>
+        
+    </div>
+
+
+    <!-- SCRIPTS -->
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

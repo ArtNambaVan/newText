@@ -7,6 +7,10 @@
         font-size: 12px;
     }
 
+    .toggle-switch-bar .toggle-switch-handle {
+        min-width: auto;
+    }
+
     .toggle-switch-check {
         &:empty ~ .toggle-switch-bar {
             //width: 25px;

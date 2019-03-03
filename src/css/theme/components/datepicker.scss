@@ -15,16 +15,29 @@
 
         &.show {
             display: flex;
+            @media (max-width: 576px) {
+                display: block;
+            }
         }
     }
 
     .controls {
         @include margin(4px, 4px, 4px, 4px);
+
+        @media (max-width: 576px) {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     .period {
         display: flex;
         list-style-type: none;
+
+        @media (max-width: 576px) {
+            order: 10;
+            margin-top: 10px;
+        }
 
         &__item {
             @include padding(5px, 9.6px, 5px, 9.6px);
@@ -57,6 +70,10 @@
         flex-direction: column;
         margin-top: 10px;
 
+        @media (max-width: 576px) {
+            margin: 0;
+        }
+
         &__item {
             @include padding(4px, 9px, 4px, 9px);
 
@@ -83,7 +100,9 @@
 
         &__input {
             @include margin(null, 3px, null, 3px);
-
+            
+            min-width: 50px;
+            width: 50px;
             flex: 1;
             border-radius: 4px;
             border: 1px solid $borderColor;
@@ -203,6 +222,10 @@
             justify-content: space-around;
             flex-direction: column;
             border: 1px solid $liteGray;
+
+            @media (max-width: 576px) {
+                height: 185px;
+            }
 
             &__row {
                 display: flex;

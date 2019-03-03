@@ -3,8 +3,8 @@ $( document ).ready(function() {
     var $tonalityPopup = $('.tonality-popup');
     var filtersBtn = $('.filters-panel__btn');
     var filtersPanel = $('.filters-panel');
-    var closePanel = $('#panelClose');
-    var openPanel = "filters-panel--open";
+
+    // category popup
 
     $('.category__value').find('a').on('click', function(e) {
         e.preventDefault();
@@ -20,10 +20,6 @@ $( document ).ready(function() {
         $(this).closest($tonalityPopup).removeClass('show');
     })
 
-    $('li.dropdown.mega-dropdown a').on('click', function (event) {
-        $(this).parent().toggleClass('open');
-    });
-
     $('.open-jstree').on('click', function(e) {
         $('#popup').addClass('show');
     })
@@ -32,34 +28,29 @@ $( document ).ready(function() {
         $('#popup').removeClass('show')
     })
 
-
-    // $(function () {
-    //     $('.datepicker').dropdown();
-    //     $('.datepicker').click(function (e) {
-    //         e.stopPropagation();
-    //         return false;
-    //     });
-    // });
+    // Filters panel
+    filtersPanel.hasClass('active') ? $('#wrapper').addClass('panel-open-mb') : $('#wrapper').removeClass('panel-open-mb');
 
     filtersBtn.on('click', function() {
-        filtersPanel.hasClass('active') ? filtersPanel.removeClass('active') : filtersPanel.addClass('active');
+        if (filtersPanel.hasClass('active') ) {
+            filtersPanel.removeClass('active');
+            $('#wrapper').removeClass('panel-open-mb')
+        } else {
+            filtersPanel.addClass('active');
+            $('#wrapper').addClass('panel-open-mb');
+        }
+
     });
 
-    function hideOverflowMobile() {
-        $('#wrapper').addClass('mobile-hidden');
-    }
-
+    // DATEPICKER
 
     $('.datepicker').on('click', function (e) {
         var target = $(e.target);
-        console.log(target.index(), target.parent().children().length - 1)
-
         if (target.hasClass('range__item') && target.index() !== target.parent().children().length - 1) {
             return true;
         } else {
             return false
         }
-
     });
 
     $('.period').each(function() {
@@ -77,6 +68,23 @@ $( document ).ready(function() {
         });
     });
 
+    
+
+    // SLIDER
+
+    $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 100000,
+        values: [ 0, 100000 ],
+        step: 500,
+        slide: function( event, ui ) {
+          $( "#amount1" ).val(ui.values[ 0 ] );
+          $( "#amount2" ).val(ui.values[ 1 ] );
+        }
+      });
+      $( "#amount1" ).val($( "#slider-range" ).slider( "values", 0 ));
+      $( "#amount2" ).val($( "#slider-range" ).slider( "values", 1 ));
 
 
     $('#source').on('click', function (e) {
@@ -89,6 +97,101 @@ $( document ).ready(function() {
             return false;
         }
     });
+
+
+
+    // below this line part for resizing container
+
+    var reflexContainer = $('.reflex-container'),
+        reflexElementLeft = reflexContainer.find('> .reflex-element--left'),
+        reflexElementRight = reflexContainer.find('> .reflex-element--right')
+        handle = reflexContainer.find('> .vertical-divider')
+        ;
+
+    if (reflexElementLeft.length && reflexElementRight.length) {
+        console.log(reflexElementLeft, reflexElementRight)
+        var leftFlex = Number( reflexElementLeft.css('flex-grow').replace(/ .*/,''));
+        var rightFlex = Number( reflexElementRight.css('flex-grow').replace(/ .*/,''));
+    }
+    isResizing = false
+    handle.on('mousedown', function (e) {
+        lastDownX = e.clientX;
+        isResizing = true
+
+        reflexContainer.addClass('active')
+
+        $(document).on('mousemove', function (e) {
+
+            if (!isResizing) return
+            totalFlex = rightFlex + leftFlex; // get total flex
+            var onePX = 1 / (reflexContainer.width() / totalFlex); //calculate size of 1px for 1 flex-grow
+            var offsetRight = (e.clientX - reflexContainer.offset().left); // subtract from the position of the cursor left indent of the container
+
+            leftFlex =  offsetRight * onePX;  
+            rightFlex =  reflexContainer.width() * onePX - leftFlex;
+            reflexElementLeft.css('flex', ((leftFlex)) + ' 1 0%');
+            reflexElementRight.css('flex', ((rightFlex)) + ' 1 0%');
+    
+        }).on('mouseup', function (e) {
+            // stop resizing
+            isResizing = false;
+            $(document).off( "mousemove");
+            reflexContainer.removeClass('active')
+        });
+    });
+
+
+    // ressource
+
+    $('.table-tree__condition').on('click', function(e) {
+        $(this).parent().toggleClass('tree-collapse');
+        $(this).parent().next().slideToggle(400)
+    })
+
+    $('.table-tree__btn:nth-child(2)').on('click', function(e) {
+        var item = $(this).closest('.table-tree__item');
+        item .addClass('active').find('.table-tree__name').attr( 'contenteditable', 'true' ).focus();
+    })
+
+    $('#collapseAll').on('click', function(e) {
+        var parentItems = $('.table-tree').find('.table-tree__item.have-children');
+        parentItems.each(function(e) {
+            if (!$(this).hasClass('tree-collapse')) {
+                $(this).addClass('tree-collapse')
+                .next().slideToggle(400)
+            }
+        })
+    })
+
+    $('#expandAll').on('click', function(e) {
+        var parentItems = $('.table-tree').find('.table-tree__item.have-children');
+        parentItems.each(function(e) {
+            if ($(this).hasClass('tree-collapse')) {
+                $(this).removeClass('tree-collapse')
+                .next().slideToggle(400)
+            }
+        })
+        
+    })
+
+    $('.ressource-list__item').find('.ressource-list__btn:nth-of-type(1)').on('click', function(e) {
+        var name = $(this).prev();
+        $(this).toggleClass('active');
+        console.log(name)
+        if (name.attr( 'contenteditable' )) {
+            name.removeAttr( 'contenteditable', 'false' )
+        } else {
+            name.prop( 'contenteditable', 'true').focus();
+            console.log('das')
+        }
+    })
+    
+    // DON'T COPY CODE BELOW THIS LINE (THIS FOR LOCAL JSTREE)
+
+    $('#jsTreeCategory').on('changed.jstree', function (e, data) {
+        $(".jstree-anchor").append('<a class="link-icon" href="#"><span><i class="icon-plus-sign-alt"></i></span> Add category</a>');
+    })
+
 
     $('#source').jstree({
 		'core' : {
@@ -220,7 +323,7 @@ $( document ).ready(function() {
             }
 			]
 		}
-	});
-
+    });
+    
     
 });

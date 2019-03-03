@@ -39,10 +39,10 @@
                             
                             <ul class="main-nav__list">
                                 <li class="main-nav__item">
-                                    <a class="main-nav__link " href="#">Home</a>
+                                    <a class="main-nav__link " href="organization-selection.html">Home</a>
                                 </li>
                                 <li class="main-nav__item">
-                                    <a class="main-nav__link active" href="#">Messages</a>
+                                    <a class="main-nav__link active" href="index.html">Messages</a>
                                 </li>
                                 <li class="main-nav__item">
                                     <a class="main-nav__link " href="#">Analysis</a>
@@ -64,6 +64,7 @@
                                     <a class="main-nav__link" href="#">New Message</a>
                                 </li>
                                 <li class="main-nav__item">
+<<<<<<< HEAD
                                     <div class="header-dropdown">
                                         <span data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle" data-display="static">
                                             <a data-cq-component="link" href="#" target="_self" class="main-nav__link">Administrator</a>
@@ -83,6 +84,17 @@
                                             </ul>
                                         </div>
 
+=======
+                                    <div class="dropdown">
+                                        <span><a class="main-nav__link" href="#">Administrator</a></span>
+                                    </div>
+                                    <div class="dropdown-menu">
+                                        <ul>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                        </ul>
+>>>>>>> 42c20648bdfd277af3e56a07f9eceb711fcb86dd
                                     </div>
                                 </li>
                                 <li class="main-nav__item">
@@ -94,10 +106,12 @@
                     </div>
                 </nav>
             </div>
-        </header>        <main>
+        </header>
+        <main>
+
+
             <div class="container-fluid">
                 <div class="portlet-body">
-
                     <div class="messages-portlet">
                         <!-- FILTERS-PANEL START -->
                         <div class="filters-panel active" id="filtersPanel">
@@ -117,7 +131,12 @@
                                 <form>
                                     <!-- SEARCH & FILTER STARTS -->
                                     <div class="filter-category">
-                                        <div class="filter-category__title">search & filter</div>
+                                        <div class="filter-category__title">search & filter
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="icon-question-sign"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm tooltip"></span>
+                                            </span>
+                                        </div>
                                         <div class="filter-category__body">
                                             <div class="[ row no-gutters ] filter-category__item">
                                                 <div class="col-8 offset-3">
@@ -147,6 +166,10 @@
                                         <a class="filter-category__head collapse-icon" aria-controls="textFilterBody"
                                         aria-expanded="true" data-toggle="collapse" href="#textFilterBody" id="textFilter" role="tab">
                                             <span class="filter-category__title">text & period filter</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="icon-question-sign"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm tooltip"></span>
+                                            </span>
                                             <span class="collapse-icon-closed">
                                                 <i class="icon-chevron-down"></i>
                                             </span>
@@ -587,7 +610,6 @@
                                                         </div>
                                                         <!--Datepicker ends-->
                                                     </div>
-                                                    
                                                 </div>
                                             </div>
 
@@ -610,6 +632,10 @@
                                         <a class="filter-category__head collapse-icon" aria-controls="extendedTextSearchBody"
                                             aria-expanded="true" data-toggle="collapse" href="#extendedTextSearchBody" id="extendedTextSearch" role="tab">
                                             <span class="filter-category__title">extended text search</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="icon-question-sign"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm another tooltip"></span>
+                                            </span>
                                             <span class="collapse-icon-closed">
                                                 <i class="icon-chevron-down"></i>
                                             </span>
@@ -750,6 +776,10 @@
                                         <a class="filter-category__head collapse-icon" aria-controls="categoryFilterBody"
                                             aria-expanded="true" data-toggle="collapse" href="#categoryFilterBody" id="categoryFilter" role="tab">
                                             <span class="filter-category__title">category filter</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="icon-question-sign"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm another tooltip"></span>
+                                            </span>
                                             <span class="collapse-icon-closed">
                                                 <i class="icon-chevron-down"></i>
                                             </span>
@@ -794,14 +824,17 @@
                                                     <ul class="category">
                                                         <li class="category__item category__item--unrating">
                                                             <span class="category__delete">&#10006;</span>
+                                                            <span class="category__type"><i class="icon-tag"></i></span>
                                                             <span class="category__name">China</span>
                                                         </li>
                                                         <li class="category__item category__item--unrating">
                                                             <span class="category__delete">&#10006;</span>
+                                                            <span class="category__type"><i class="icon-tag"></i></span>
                                                             <span class="category__name">Germany</span>
                                                         </li>
                                                         <li class="category__item category__item--rating">
                                                             <span class="category__delete">&#10006;</span>
+                                                            <span class="category__type"><i class="icon-star"></i></span>
                                                             <span class="category__name">Engine Noise</span>
                                                             <div class="category__value">
                                                                 <label class="category__indicator category__indicator--positive category__indicator--progress-25" for="searchCategory"></label>
@@ -948,6 +981,10 @@
                                         <a class="filter-category__head collapse-icon" aria-controls="adminFilterBody"
                                         aria-expanded="true" data-toggle="collapse" href="#adminFilterBody" id="adminFilter" role="tab">
                                             <span class="filter-category__title">admin filter</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="icon-question-sign"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm another tooltip"></span>
+                                            </span>
                                             <span class="collapse-icon-closed">
                                                 <i class="icon-chevron-down"></i>
                                             </span>
@@ -1881,6 +1918,10 @@
                                         <a class="filter-category__head collapse-icon" aria-controls="miscellanousFilterBody"
                                         aria-expanded="true" data-toggle="collapse" href="#miscellanousFilterBody" id="miscellanousFilter" role="tab">
                                             <span class="filter-category__title">miscellanous filter</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="icon-question-sign"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm another tooltip"></span>
+                                            </span>
                                             <span class="collapse-icon-closed">
                                                 <i class="icon-chevron-down"></i>
                                             </span>
@@ -1890,6 +1931,22 @@
                                         </a>
 
                                         <div class="filter-category__body collapse show" aria-labelledby="miscellanousFilter" id="miscellanousFilterBody" role="tabpanel">
+                                            
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Status:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <div class="select-container">
+                                                        <select class="filter-category__control">
+                                                            <option>New Message</option>
+                                                            <option>Unpublished</option>
+                                                            <option>Published</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <div class="[ row no-gutters ] filter-category__item">
                                                 <div class="col-3">
@@ -1900,7 +1957,7 @@
                                                     <div class="select-container">
                                                         <input type="text" autocomplete="off" class="filter-category__control dropdown-toggle" data-toggle="dropdown"
                                                         readonly value="Source" id="source-input" data-toggle="dropdown">
-                                                        <div class="dropdown-menu datepicker" id="source" aria-labelledby="source-input">
+                                                        <div class="dropdown-menu dropdown-tree" id="source" aria-labelledby="source-input">
 
                                                         </div>
                                                     </div>
@@ -1913,7 +1970,11 @@
                                                 </div>
                                                 
                                                 <div class="col-8">
-                                                    <input type="text" class="filter-category__control" placeholder=">=">
+                                                    <div id="slider-range"></div>
+                                                    <div class="slider-value">
+                                                        <input type="text" id="amount1" readonly>
+                                                        <input type="text" id="amount2" readonly>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1937,113 +1998,110 @@
 
 
                         <div class="messages">
-                            <!-- TEST -->
-                            <div class="test">
-                                <div class="messages-settings">
-                                    <div class="messages-settings__item">
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="test"/>
-                                            <span>Mark all messages</span>
-                                        </label>
-                                    </div>
-                                    <div class="messages-settings__item">
-                                        <a href="#" class="link-icon">
-                                            <span><i class="icon-envelope"></i></span>
-                                            Add marked to newsletter
-                                        </a>
-                                    </div>
-                                    <div class="messages-settings__item">
-                                        <a href="#" class="link-icon">
-                                            <span><i class="icon-download-alt"></i></span>
-                                            Export filtered
-                                        </a>
-                                    </div>
-                                    <div class="messages-settings__item">
-                                        <a href="#" class="link-icon">
-                                            <span><i class="icon-ok"></i></span>
-                                            Publish marked
-                                        </a>
-                                    </div>
-                                    <div class="messages-settings__item">
-                                        <a href="#" class="link-icon">
-                                            <span><i class="icon-trash"></i></span>
-                                            Delete marked
-                                        </a>
-                                    </div>
-                                    <div class="messages-settings__item">
-                                        <label class="toggle-switch">
-                                            <input class="toggle-switch-check" type="checkbox" checked/>
-                                            <span aria-hidden="true" class="toggle-switch-bar">
-                                                <span class="toggle-switch-handle" data-label-on="Show Translation" data-label-off="Show Translation"></span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <div class="messages-settings__item">
-                                        <label class="toggle-switch">
-                                            <input class="toggle-switch-check" type="checkbox"/>
-                                            <span aria-hidden="true" class="toggle-switch-bar">
-                                                <span class="toggle-switch-handle" data-label-on="Show HTML source" data-label-off="Show HTML source"></span>
-                                            </span>
-                                        </label>
-                                    </div>
+                            <div class="messages-settings">
+                                <div class="messages-settings__item">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="test"/>
+                                        <span class="mark-icon">Mark all messages</span>
+                                    </label>
                                 </div>
+                                <div class="messages-settings__item">
+                                    <a href="#" class="link-icon">
+                                        <span><i class="icon-envelope"></i></span>
+                                        Add marked to newsletter
+                                    </a>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <a href="#" class="link-icon">
+                                        <span><i class="icon-download-alt"></i></span>
+                                        Export filtered
+                                    </a>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <a href="#" class="link-icon">
+                                        <span><i class="icon-ok"></i></span>
+                                        Publish marked
+                                    </a>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <a href="#" class="link-icon">
+                                        <span><i class="icon-trash"></i></span>
+                                        Delete marked
+                                    </a>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <label class="toggle-switch">
+                                        <input class="toggle-switch-check" type="checkbox" checked/>
+                                        <span aria-hidden="true" class="toggle-switch-bar">
+                                            <span class="toggle-switch-handle" data-label-on="Show Translation" data-label-off="Show Translation"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <label class="toggle-switch">
+                                        <input class="toggle-switch-check" type="checkbox"/>
+                                        <span aria-hidden="true" class="toggle-switch-bar">
+                                            <span class="toggle-switch-handle" data-label-on="Show HTML source" data-label-off="Show HTML source"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
 
-                                <div class="messages-settings">
-                                    <div class="page-pagination">
-                                        <ul class="page-pagination__list">
-                                            <li class="page-pagination__item">
-                                                <a class="page-pagination__link" href="#1" role="button">
-                                                    <i class="icon-step-backward" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li class="page-pagination__item">
-                                                <a class="page-pagination__link" href="#1" role="button">
-                                                    <i class="icon-chevron-left"></i>
-                                                </a>
-                                            </li>
-                                            <li class="active page-pagination__item"><a class="page-pagination__link" href="#1">1</a></li>
-                                            <li class="page-pagination__item"><a class="page-pagination__link" href="#1">2</a></li>
-                                            <li class="page-pagination__item"><a class="page-pagination__link" href="#1">3</a></li>
-                                            <li class="page-pagination__item"><a class="page-pagination__link" href="#1">4423423</a></li>
-                                            <li class="page-pagination__item"><a class="page-pagination__link" href="#1">44234</a></li>
-                                            <li class="page-pagination__item">
-                                                <a class="page-pagination__link" href="#1" role="button">
-                                                    <i class="icon-chevron-right" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li class="page-pagination__item">
-                                                <a class="page-pagination__link" href="#1" role="button">
-                                                    <i class="icon-step-forward" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <div class="page-pagination__results">Page 1 of 31 (1.013 messages in total)</div>
-                                        <div class="select-container">
-                                            <select class="filter-category__control">
-                                                <option>10 per page</option>
-                                                <option selected>20 per page</option>
-                                                <option>30 per page</option>
-                                                <option>50 per page</option>
-                                                <option>100 per page</option>   
-                                            </select>
-                                        </div>
-                                    </div>
-
+                            <div class="messages-settings">
+                                <div class="page-pagination">
+                                    <ul class="page-pagination__list">
+                                        <li class="page-pagination__item">
+                                            <a class="page-pagination__link" href="#1" role="button">
+                                                <i class="icon-step-backward" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="page-pagination__item">
+                                            <a class="page-pagination__link" href="#1" role="button">
+                                                <i class="icon-chevron-left"></i>
+                                            </a>
+                                        </li>
+                                        <li class="active page-pagination__item"><a class="page-pagination__link" href="#1">1</a></li>
+                                        <li class="page-pagination__item"><a class="page-pagination__link" href="#1">2</a></li>
+                                        <li class="page-pagination__item"><a class="page-pagination__link" href="#1">3</a></li>
+                                        <li class="page-pagination__item"><a class="page-pagination__link" href="#1">4423423</a></li>
+                                        <li class="page-pagination__item"><a class="page-pagination__link" href="#1">44234</a></li>
+                                        <li class="page-pagination__item">
+                                            <a class="page-pagination__link" href="#1" role="button">
+                                                <i class="icon-chevron-right" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="page-pagination__item">
+                                            <a class="page-pagination__link" href="#1" role="button">
+                                                <i class="icon-step-forward" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="page-pagination__results">Page 1 of 31 (1.013 messages in total)</div>
                                     <div class="select-container">
-                                        <select>
-                                            <option>Sort by date (descending)</option>
-                                            <option>Sort by date (ascending)</option>
-                                            <option>Sort by views (descending)</option>
-                                            <option>Sort by views (ascending)</option>
+                                        <select class="filter-category__control">
+                                            <option>10 per page</option>
+                                            <option selected>20 per page</option>
+                                            <option>30 per page</option>
+                                            <option>50 per page</option>
+                                            <option>100 per page</option>   
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="select-container">
+                                    <select>
+                                        <option>Sort by date (descending)</option>
+                                        <option>Sort by date (ascending)</option>
+                                        <option>Sort by views (descending)</option>
+                                        <option>Sort by views (ascending)</option>
+                                    </select>
+                                </div>
                             </div>
-                            <!-- TEST ENDS -->
 
                                 <div class="messages-container">
                                     <div class="message-item">
                                         <div class="message-item__head">
+                                            <span class="message-status message-status--new"><i class="icon-sun"></i> New</span>
                                             <div class="message-item__main-content">
                                                 <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
                                                 <p class="message-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -2070,20 +2128,24 @@
                                             <div class="message-item__rating">
                                                 <ul class="category category--unrating">
                                                     <li class="category__item">
+                                                        <span class="category__type"><i class="icon-tag"></i></span>
                                                         <span class="category__name">China</span>
                                                     </li>
                                                     <li class="category__item">
+                                                    <span class="category__type"><i class="icon-tag"></i></span>
                                                         <span class="category__name">Germany</span>
                                                     </li>
                                                 </ul>   
                                                 <ul class="category category--rating">
                                                     <li class="category__item">
+                                                        <span class="category__type"><i class="icon-star"></i></span>
                                                         <span class="category__name">Engine Noise</span>
                                                         <div class="category__value">
                                                             <span class="category__indicator category__indicator--positive category__indicator--progress-25"></span>
                                                         </div>
                                                     </li>
                                                     <li class="category__item">
+                                                        <span class="category__type"><i class="icon-star"></i></span>
                                                         <span class="category__name">Powertrain</span>
                                                         <div class="category__value">
                                                             <span class="category__indicator category__indicator--negative category__indicator--progress-75"></span>
@@ -2095,7 +2157,7 @@
                                         <div class="message-item__footer">
                                             <ul class="message-information">
                                                 <li class="message-information__item">
-                                                    <a class="message-information__name message-information__name--url-name" href="#">google.com</a>
+                                                    <span class="message-information__name message-information__name--url-name" href="#">google.com</span>
                                                 </li>
                                                 <li class="message-information__item">
                                                     <a class="message-information__name message-information__name--url-link" href="#">URL</a>
@@ -2109,30 +2171,21 @@
                                             </ul>
 
                                             <ul class="message-information">
-                                                <li class="message-information__item">
-                                                    <a href="#" class="link-icon">
-                                                        <span><i class="icon-trash"></i></span>
-                                                        Edit
-                                                    </a>
-                                                </li>
+                                                
                                                 <li class="message-information__item">
                                                     <a href="#" class="link-icon">
                                                         <span><i class="icon-trash"></i></span>
                                                         History
                                                     </a>
                                                 </li>
-                                                <li class="message-information__item">
-                                                    <label class="custom-checkbox">
-                                                        <input type="checkbox" name="test"/>
-                                                        <span>Marked</span>
-                                                    </label>
-                                                </li>
+                                                
                                             </ul>
                                         </div>
                                     </div>
 
                                     <div class="message-item">
                                         <div class="message-item__head">
+                                            <span class="message-status message-status--published"><i class="icon-check"></i> Published</span>
                                             <div class="message-item__main-content">
                                                 <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
                                                 <p class="message-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -2159,20 +2212,24 @@
                                             <div class="message-item__rating">
                                                 <ul class="category category--unrating">
                                                     <li class="category__item">
+                                                        <span class="category__type"><i class="icon-tag"></i></span>
                                                         <span class="category__name">China</span>
                                                     </li>
                                                     <li class="category__item">
+                                                        <span class="category__type"><i class="icon-tag"></i></span>
                                                         <span class="category__name">Germany</span>
                                                     </li>
                                                 </ul>   
                                                 <ul class="category category--rating">
                                                     <li class="category__item">
+                                                        <span class="category__type"><i class="icon-star"></i></span>
                                                         <span class="category__name">Engine Noise</span>
                                                         <div class="category__value">
                                                             <span class="category__indicator category__indicator--positive category__indicator--progress-25"></span>
                                                         </div>
                                                     </li>
                                                     <li class="category__item">
+                                                        <span class="category__type"><i class="icon-star"></i></span>
                                                         <span class="category__name">Powertrain</span>
                                                         <div class="category__value">
                                                             <span class="category__indicator category__indicator--negative category__indicator--progress-75"></span>
@@ -2184,7 +2241,7 @@
                                         <div class="message-item__footer">
                                             <ul class="message-information">
                                                 <li class="message-information__item">
-                                                    <a class="message-information__name message-information__name--url-name" href="#">google.com</a>
+                                                    <span class="message-information__name message-information__name--url-name" href="#">google.com</span>
                                                 </li>
                                                 <li class="message-information__item">
                                                     <a class="message-information__name message-information__name--url-link" href="#">URL</a>
@@ -2196,11 +2253,22 @@
                                                     <span class="message-information__name message-information__name--views">251</span>
                                                 </li>
                                             </ul>
+                                            <ul class="message-information">
+                                                
+                                                <li class="message-information__item">
+                                                    <a href="#" class="link-icon">
+                                                        <span><i class="icon-trash"></i></span>
+                                                        History
+                                                    </a>
+                                                </li>
+                                                
+                                            </ul>
                                         </div>
                                     </div>
 
                                     <div class="message-item">
                                         <div class="message-item__head">
+                                            <span class="message-status message-status--unpublished"><i class="icon-exclamation-sign"></i> Unpublished</span>
                                             <div class="message-item__main-content">
                                                 <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
                                                 <p class="message-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -2227,20 +2295,24 @@
                                             <div class="message-item__rating">
                                                 <ul class="category category--unrating">
                                                     <li class="category__item">
+                                                        <span class="category__type"><i class="icon-tag"></i></span>
                                                         <span class="category__name">China</span>
                                                     </li>
                                                     <li class="category__item">
+                                                        <span class="category__type"><i class="icon-tag"></i></span>
                                                         <span class="category__name">Germany</span>
                                                     </li>
                                                 </ul>   
                                                 <ul class="category category--rating">
                                                     <li class="category__item">
+                                                        <span class="category__type"><i class="icon-star"></i></span>
                                                         <span class="category__name">Engine Noise</span>
                                                         <div class="category__value">
                                                             <span class="category__indicator category__indicator--positive category__indicator--progress-25"></span>
                                                         </div>
                                                     </li>
                                                     <li class="category__item">
+                                                        <span class="category__type"><i class="icon-star"></i></span>
                                                         <span class="category__name">Powertrain</span>
                                                         <div class="category__value">
                                                             <span class="category__indicator category__indicator--negative category__indicator--progress-75"></span>
@@ -2252,7 +2324,7 @@
                                         <div class="message-item__footer">
                                             <ul class="message-information">
                                                 <li class="message-information__item">
-                                                    <a class="message-information__name message-information__name--url-name" href="#">google.com</a>
+                                                    <span class="message-information__name message-information__name--url-name" href="#">google.com</span>
                                                 </li>
                                                 <li class="message-information__item">
                                                     <a class="message-information__name message-information__name--url-link" href="#">URL</a>
@@ -2263,6 +2335,16 @@
                                                 <li class="message-information__item">
                                                     <span class="message-information__name message-information__name--views">251</span>
                                                 </li>
+                                            </ul>
+                                            <ul class="message-information">
+                                                
+                                                <li class="message-information__item">
+                                                    <a href="#" class="link-icon">
+                                                        <span><i class="icon-trash"></i></span>
+                                                        History
+                                                    </a>
+                                                </li>
+                                                
                                             </ul>
                                         </div>
                                     </div>
@@ -2270,7 +2352,10 @@
                             
                         </div>
                     </div>
-                </div>            </div>
+                </div>                
+            </div>
+
+
         </main>
 
         <footer class="footer">
@@ -2278,10 +2363,12 @@
                 <p class="footer__copyright">© Copyright 2018 Consline AG</p>
             </div>
         </footer>
+        
     </div>
 
 
     <!-- SCRIPTS -->
-     <script src="js/main.js"></script>
+    
+    <script src="js/main.js"></script>
 </body>
 </html>

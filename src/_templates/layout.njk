@@ -29,18 +29,24 @@
 
     <div class="cims" id="wrapper">
         {% include "partials/header.njk" %}
+
         <main>
-            <div class="container-fluid">
-                {% include "partials/messages.njk" %}
-            </div>
+
+            {% block content %}
+
+            {% endblock %}
+
         </main>
 
         {% include "partials/footer.njk" %}
+        
     </div>
 
 
     <!-- SCRIPTS -->
-    {% block scripts %} {% endblock scripts %}
+    {% block scripts %}
+    
+    {% endblock %}
     <script src="js/main.js"></script>
 </body>
 </html>

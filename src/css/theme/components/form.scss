@@ -25,13 +25,17 @@
         }
     }
 
-    [type="text"],
+    [type="text"]:not(.el-input__inner),
     select {
         padding: 0.2rem;
         height: 25px;
         width: 100%;
         border: 1px solid $primaryColor;
         font-size: 12px;
+    }
+
+    .inline[type="text"] {
+        //width: auto;
     }
 
     .select-container > select {

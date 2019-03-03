@@ -2,23 +2,28 @@
     "navItems" : [
         {
             "title" : "Home",
-            "navActiveItem" : 0
+            "navActiveItem" : 0,
+            "link" : "organization-selection.html"
         },
         {
             "title" : "Messages",
-            "navActiveItem" : 1
+            "navActiveItem" : 1,
+            "link" : "index.html"
         },
         {
             "title" : "Analysis",
-            "navActiveItem" : 2
+            "navActiveItem" : 2,
+            "link" : "#"
         },
         {
             "title" : "Reports",
-            "navActiveItem" : 3
+            "navActiveItem" : 3,
+            "link" : "#"
         },
         {
             "title" : "Newsletter",
-            "navActiveItem" : 4
+            "navActiveItem" : 4,
+            "link" : "#"
         }
     ]
 }

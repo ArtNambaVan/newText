@@ -1,0 +1,88 @@
+.ressource-editor {
+    display: flex;
+}
+
+.ressource-control {
+    flex: 0 0 400px;
+    padding-right: 15px;
+
+    .page-pagination {
+        justify-content: center;
+    }
+
+    &__title {
+        margin-top: 2.5rem;
+        font-size: 24px;
+        color: $primaryColor;
+        text-align: center;
+
+        span {
+            font-weight: bold;
+        }
+    }
+    
+}
+
+.ressource-table {
+    flex: 1;
+    padding-left: 15px;
+    
+}
+
+.ressource-list {
+    margin-top: 1rem;
+    list-style-type: none;
+    font-size: 14px;
+    background-color: $colorWhite;
+
+    &__item {
+        & + & {
+            border-top: 1px dashed gray;
+        }
+
+    }
+
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2px 5px;
+    }
+
+    &__footer {
+        display: flex;
+        border: 2px solid $primaryColor;
+        padding: 2px 5px;
+        align-items: center;
+    }
+
+    &__name {
+        //display: inline-block;
+        width: 60%;
+        word-break: break-all;
+        flex: 1;
+    }
+
+    &__btn {
+        //display: inline-block;
+        padding: 2px 5px;
+        color: $primaryColor;
+        transition: all 0.2s;
+        cursor: pointer;
+        transition: all .25s ease;
+
+        &:hover {
+            border: 1px solid $primaryColor;
+        }
+
+        &.active {
+            background-color: $primaryColor;
+            //font-weight: normal;
+            color: white;
+        }
+    }
+
+    &__select {
+        flex: 1;
+    }
+}

@@ -86,8 +86,11 @@ const SYNC_CONFIG = {
     browser: "chrome",
     server : {
       baseDir : PATH.dest,
-      //index : 'promotion-rules.html'
-      index : 'index.html'
+      //index : 'organization-selection.html'
+      //index : 'index.html'
+      //index : 'message-editor.html'
+      //index : 'ressource-editor.html'
+      index : 'categories-editor.html'
     },
     open   : true,
     notify : false
@@ -193,8 +196,8 @@ gulp.task('js_libs', function() {
             PATH.js_libs.in + 'jquery.js',
             PATH.js_libs.in + 'popper.js',
             PATH.js_libs.in + 'bootstrap.js',
-            //PATH.js_libs.in + 'bootstrap-select.js',
-            PATH.js_libs.in + 'jstree.min.js'
+            PATH.js_libs.in + 'jstree.min.js',
+            PATH.js_libs.in + 'jquery-ui.js'
         ])
         .pipe(concat('libs.js'))
         .pipe(changed(PATH.js_libs.out))

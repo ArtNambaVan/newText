@@ -23,9 +23,7 @@
         display: inline-block;
 
         &__img {
-            //width: 125px;
             height: 45px;
-            //transform: scale(-1,1) rotate(-30deg);
         }
 
         &__name {
@@ -59,13 +57,19 @@
 
             @media (max-width: 991px) {
                 position: absolute;
+                overflow-y: auto;
+                max-height: calc(100vh - 90px);
                 top: 100%;
                 width: 100%;
                 left: 0;
-                background-color: $primaryColor;
+                background-color: $colorWhite;
                 z-index: 20;
+<<<<<<< HEAD
                 max-height: calc(100vh - 90px);
                 overflow-y: auto;
+=======
+                box-shadow: 0 11px 19px rgba(0, 0, 0, 0.3);
+>>>>>>> 42c20648bdfd277af3e56a07f9eceb711fcb86dd
             }
         }
 
@@ -84,9 +88,11 @@
             @media (max-width: 991px) {
                 display: block;
                 padding: 0;
+                border-top: 1px solid $primaryColor;
+                margin: 0;
 
                 & + & {
-                    border-top: 1px solif $colorWhite;
+                    border-top: 1px solif $primaryColor;
                 }
             }
 
@@ -96,10 +102,6 @@
 
             .active {
                 color: rgb(0, 164, 211);
-
-                @media (max-width: 991px) {
-                    display: none;
-                }
             }
         }
 
@@ -110,8 +112,7 @@
 
             @media (max-width: 991px) {
                 display: block;
-                padding: 1rem 2rem;
-                color: $colorWhite;
+                padding: 0.6rem 2rem;
             }
         }
     }
@@ -129,6 +130,9 @@
         &--right {
             margin-left: auto;
             font-size: 14px;
+            @media (max-width: 991px) {
+                font-size: 18px;
+            }
         }
     }
 }

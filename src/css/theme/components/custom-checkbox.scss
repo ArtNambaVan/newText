@@ -14,22 +14,41 @@
         opacity: 0;
         cursor: pointer;
 
-        &:checked ~ span {
-            &::before {
+        &:checked {
+            & ~ .mark-icon::before {
                 content: '\F14A';
+            }
+
+            & ~ .thumbtack {
+                color: $primaryColor;
             }
         }
     }
 
-    span:before {
-        content: '\F096';
+    .mark-icon {
+        position: relative;
         display: inline-block;
-        font-family: FontAwesome;
-        width: 15px;
-        height: 15px;
-        padding-right: 4px;
-        font-size: 1rem;
-        color: $thirdlyColor;
+        margin-left: 15px;
+
+        &:before {
+            content: '\F096';
+            display: inline-block;
+            font-family: FontAwesome;
+            position: absolute;
+            top: -2.7px;
+            left: -15px;
+            width: 15px;
+            height: 15px;
+            padding-right: 4px;
+            font-size: 1rem;
+            color: $thirdlyColor;
+        }
     }
 
+}
+
+.thumbtack {
+    padding: 3px 5px;
+    display: inline-block;
+    color: $thirdlyColor;
 }

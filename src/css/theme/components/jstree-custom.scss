@@ -6,6 +6,10 @@
     font-size: 12px;
 }
 
+.jsTree-lg {
+    max-height: 300px;
+}
+
 .jstree-default .jstree-themeicon {
     display: none;
 }
@@ -14,12 +18,33 @@
     background-color: transparent;
 }
 
+.jstree-anchor {
+    position: relative;
+
+    &::after {
+        content: "\F02B";
+        font-family: FontAwesome;
+        display: inline-block;
+        margin-left: 4px;
+        color: rgba(#000,0.75);
+        font-weight: bold;
+    }
+}
+
 .jstree-rating::after {
-    content: "R";
-    display: inline-block;
-    margin-left: 4px;
-    color: rgba($colorGray,0.75);
+    content: "\F005";
+}
+
+.jstree-default .jstree-clicked {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    color: $thirdlyColor;
     font-weight: bold;
+
+    .link-icon {
+        display: block;
+    }
 }
 
 .category-popup {
@@ -32,6 +57,18 @@
     left:30%;
     height: 70vh;
     z-index: 1100;
+    
+    @media (max-width: 992px) {
+        left: 10%;
+        width: 80%;
+        top: 120px;
+        height: calc(95vh - 120px);
+    }
+}
+
+.dropdown-tree {
+    width: 100%;
+    max-width: none;
 }
 
 .category-popup .jstree {

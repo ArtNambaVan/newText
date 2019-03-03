@@ -14,7 +14,7 @@
                             <ul class="main-nav__list">
                             {% for item in navItems %}
                                 <li class="main-nav__item">
-                                    <a class="main-nav__link {% if pageId == item.navActiveItem %}active{% endif %}" href="#">{{ item.title }}</a>
+                                    <a class="main-nav__link {% if pageId == item.navActiveItem %}active{% endif %}" href="{{ item.link }}">{{ item.title }}</a>
                                 </li>
                             {% endfor %}
                             </ul>
@@ -28,6 +28,7 @@
                                     <a class="main-nav__link" href="#">New Message</a>
                                 </li>
                                 <li class="main-nav__item">
+<<<<<<< HEAD
                                     <div class="header-dropdown">
                                         <span data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle" data-display="static">
                                             <a data-cq-component="link" href="#" target="_self" class="main-nav__link">Administrator</a>
@@ -47,6 +48,17 @@
                                             </ul>
                                         </div>
 
+=======
+                                    <div class="dropdown">
+                                        <span><a class="main-nav__link" href="#">Administrator</a></span>
+                                    </div>
+                                    <div class="dropdown-menu">
+                                        <ul>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                        </ul>
+>>>>>>> 42c20648bdfd277af3e56a07f9eceb711fcb86dd
                                     </div>
                                 </li>
                                 <li class="main-nav__item">

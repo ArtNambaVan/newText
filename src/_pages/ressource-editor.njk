@@ -1,0 +1,12 @@
+{% set title = "Source editor" %}
+{% block styles %} <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">  {% endblock styles %}
+{% set pageId = 0 %}
+{% extends "layout.njk" %}
+
+{% block content %}
+            <div class="container-fluid">
+                {% include "partials/ressource-editor-portlet.njk" %}
+
+            </div>
+
+{% endblock content %}
