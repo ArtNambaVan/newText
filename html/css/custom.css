@@ -7742,14 +7742,6 @@ a:hover {
   .cims .form-group--right {
     text-align: right; }
 
-.cims [type="text"]:not(.el-input__inner):not(.form-control),
-.cims select {
-  padding: 0.2rem;
-  height: 25px;
-  width: 100%;
-  border: 1px solid #012b5b;
-  font-size: 12px; }
-
 .cims .select-container > select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -7810,6 +7802,13 @@ a:hover {
   opacity: 0.5;
   color: #AAA;
   background: #F5F5F5; }
+
+.cims-input, .cims-select {
+  padding: 0.2rem;
+  height: 25px;
+  width: 100%;
+  border: 1px solid #012b5b;
+  font-size: 12px; }
 
 .custom-control .custom-control-input:focus ~ .custom-control-label::before {
   box-shadow: none; }

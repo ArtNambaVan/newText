@@ -38,7 +38,7 @@
                                         <span class="edit-group__label">Date:</span>
                                         <div class="edit-group__controll">
                                             <div class="select-container select-container--icon-right">
-                                                <input type="text" autocomplete="off" class="filter-category__control datepicker-input dropdown-toggle" 
+                                                <input type="text" autocomplete="off" class="cims-input filter-category__control datepicker-input dropdown-toggle" 
                                                 id="q" data-toggle="dropdown" readonly value="01.01.2019 12:32">
                                                 <i class="icon-calendar"></i>
                                                 {% include "./datepickerFull.njk" %}
@@ -48,7 +48,7 @@
                                     <div class="edit-group__item">
                                         <span class="edit-group__label">Views:</span>
                                         <div class="edit-group__controll">
-                                            <input type="text">
+                                            <input type="text" class="cims-input">
                                         </div>
                                         <label class="custom-checkbox">
                                             <input type="checkbox">
@@ -58,7 +58,7 @@
                                     <div class="edit-group__item">
                                         <span class="edit-group__label">Source:</span>
                                         <div class="edit-group__controll">
-                                            <input type="text" placeholder="Source">
+                                            <input class="cims-input" type="text" placeholder="Source">
                                         </div>
                                         <label class="custom-checkbox">
                                             <input type="checkbox">
@@ -69,7 +69,7 @@
                                         <span class="edit-group__label">Type:</span>
                                         <div class="edit-group__controll">
                                             <div class="select-container">
-                                                <select class="filter-category__control">
+                                                <select class="cims-select filter-category__control">
                                                     <option>Url</option> 
                                                     <option>Text</option> 
                                                     <option>File</option> 
@@ -89,7 +89,7 @@
                                     <div class="edit-group__item">
                                         <span class="edit-group__label">Url:</span>
                                         <div class="edit-group__controll">
-                                            <input type="text" placeholder="http://example.com">
+                                            <input class="cims-input" type="text" placeholder="http://example.com">
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@
                                         <span class="edit-group__label">Original:</span>
                                         <div class="edit-group__controll">
                                             <div class="select-container">
-                                                <select class="filter-category__control">
+                                                <select class="cims-select filter-category__control">
                                                     <option>English</option> 
                                                     <option>German</option> 
                                                     <option>Chinese</option> 
@@ -137,13 +137,13 @@
                                     <div class="edit-group__item">
                                         <span class="edit-group__label">Comment:</span>
                                         <div class="edit-group__controll">
-                                            <input type="text" placeholder="Comment">
+                                            <input class="cims-input" type="text" placeholder="Comment">
                                         </div>
                                     </div>
                                     <div class="edit-group__item">
                                         <span class="edit-group__label">Author:</span>
                                         <div class="edit-group__controll">
-                                            <input type="text">
+                                            <input class="cims-input" type="text">
                                         </div>
                                         <label class="custom-checkbox" placeholder="Author">
                                             <input type="checkbox">
@@ -158,10 +158,10 @@
                                         <div class="edit-group__item">
                                             <span class="edit-group__label">Original Title:</span>
                                             <div class="edit-group__controll">
-                                                <input type="text">
+                                                <input class="cims-input" type="text">
                                             </div>
                                             <label class="custom-checkbox" placeholder="Author">
-                                                <input type="checkbox">
+                                                <input class="cims-input" type="checkbox">
                                                 <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
                                             </label>
                                         </div>
@@ -179,7 +179,7 @@
                                             <span class="edit-group__label">Translate to:</span>
                                             <div class="edit-group__controll">
                                                 <div class="select-container">
-                                                    <select class="filter-category__control">
+                                                    <select class="cims-select filter-category__control">
                                                         <option>English</option> 
                                                         <option>German</option> 
                                                         <option>Chinese</option> 
@@ -201,7 +201,7 @@
                                         <div class="edit-group__item">
                                             <span class="edit-group__label">Title:</span>
                                             <div class="edit-group__controll">
-                                                <input type="text">
+                                                <input class="cims-input" type="text">
                                             </div>
                                             <label class="custom-checkbox" placeholder="Author">
                                                 <input type="checkbox">
@@ -378,7 +378,7 @@
                                     </span>
                                 </a>
                                 <div class="collapse show" aria-labelledby="categories" id="categoriesBody" role="tabpanel">
-                                    <input type="text" placeholder="Search categogies">
+                                    <input class="cims-input" type="text" placeholder="Search categogies">
                                     <div class="link-group">
                                         <a href="#" class="link-icon">
                                             <span><i class="fas fa-expand-arrows-alt"></i></span>

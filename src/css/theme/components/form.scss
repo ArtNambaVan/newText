@@ -25,18 +25,14 @@
         }
     }
 
-    [type="text"]:not(.el-input__inner):not(.form-control),
-    select {
-        padding: 0.2rem;
-        height: 25px;
-        width: 100%;
-        border: 1px solid $primaryColor;
-        font-size: 12px;
-    }
-
-    .inline[type="text"] {
-        //width: auto;
-    }
+    // [type="text"]:not(.el-input__inner):not(.form-control),
+    // select {
+    //     padding: 0.2rem;
+    //     height: 25px;
+    //     width: 100%;
+    //     border: 1px solid $primaryColor;
+    //     font-size: 12px;
+    // }
 
     .select-container > select {
         -webkit-appearance: none;
@@ -119,6 +115,14 @@
         color:#AAA;
         background:#F5F5F5;
     }
+}
+
+.cims-input, .cims-select {
+    padding: 0.2rem;
+    height: 25px;
+    width: 100%;
+    border: 1px solid $primaryColor;
+    font-size: 12px;
 }
 
 .custom-control .custom-control-input:focus ~ .custom-control-label::before {
