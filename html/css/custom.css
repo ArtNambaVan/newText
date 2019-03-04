@@ -7355,7 +7355,8 @@ body {
   .cims .page-link:focus {
     box-shadow: none; }
   .cims h2 {
-    font-size: 24px; }
+    font-size: 24px;
+    color: #012b5b; }
   .cims dl,
   .cims ol,
   .cims ul,
@@ -7461,21 +7462,14 @@ a:hover {
     @media (max-width: 991px) {
       .cims .main-nav__navigation {
         position: absolute;
-        overflow-y: auto;
-        max-height: calc(100vh - 90px);
         top: 100%;
         width: 100%;
         left: 0;
-<<<<<<< HEAD
-        background-color: #012b5b;
-        z-index: 20;
-        max-height: calc(100vh - 90px);
-        overflow-y: auto; } }
-=======
         background-color: #fff;
         z-index: 20;
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
         box-shadow: 0 11px 19px rgba(0, 0, 0, 0.3); } }
->>>>>>> 42c20648bdfd277af3e56a07f9eceb711fcb86dd
   .cims .main-nav__list {
     list-style-type: none; }
     @media (max-width: 991px) {
@@ -7483,7 +7477,8 @@ a:hover {
         width: 100%; } }
   .cims .main-nav__item {
     display: inline-block;
-    margin-left: 1rem; }
+    margin-left: 1rem;
+    overflow: hidden; }
     @media (max-width: 991px) {
       .cims .main-nav__item {
         display: block;
@@ -7528,7 +7523,8 @@ a:hover {
     .header-dropdown__inner {
       position: static !important;
       padding: 0;
-      background-color: transparent; } }
+      background-color: transparent;
+      border: none; } }
 
 .header-submenu {
   list-style-type: none;
@@ -7543,13 +7539,18 @@ a:hover {
       flex-direction: column; } }
   .header-submenu__item {
     margin-right: 2rem; }
+    @media (max-width: 991px) {
+      .header-submenu__item {
+        margin: 0;
+        border-top: 1px solid #012b5b; } }
   .header-submenu__link {
-    color: #012b5b; }
+    color: #012b5b;
+    display: inline-block; }
     @media (max-width: 991px) {
       .header-submenu__link {
         display: block;
         padding: 1rem 2rem;
-        color: #fff; } }
+        color: #012b5b; } }
     .header-submenu__link.active {
       color: #e98f18; }
 
@@ -7674,6 +7675,17 @@ a:hover {
   .tooltip-cims:hover .tooltip-cims__text::after {
     visibility: visible; }
 
+.info-box {
+  display: inline-block;
+  padding: 2px 0 2px 0; }
+  .info-box::before {
+    content: "\f05a";
+    font-family: FontAwesome;
+    display: inline-block;
+    color: #e98f18;
+    margin-right: 5px;
+    font-size: 16px; }
+
 .cims .btn-link, .cims .btn-link:link, .cims .btn-link:hover, .cims .btn-link:focus {
   color: #012b5b;
   box-shadow: none; }
@@ -7730,7 +7742,7 @@ a:hover {
   .cims .form-group--right {
     text-align: right; }
 
-.cims [type="text"]:not(.el-input__inner),
+.cims [type="text"]:not(.el-input__inner):not(.form-control),
 .cims select {
   padding: 0.2rem;
   height: 25px;
@@ -8248,7 +8260,7 @@ a:hover {
 
 .custom-control label {
   font-size: 14px;
-  line-height: 1.6; }
+  line-height: 1.8; }
 
 .custom-radio-circle .custom-control-label::before {
   border-radius: 50%;
@@ -8292,8 +8304,8 @@ a:hover {
 
 .custom-checkbox .custom-control-label::before {
   background: none;
-  border: 2px solid #aaa;
-  margin-right: 2px; }
+  border: 1px solid #aaa;
+  margin-right: 5px; }
 
 .custom-checkbox {
   position: relative;
@@ -9312,3 +9324,35 @@ a:hover {
 .categorie-editor__title {
   color: #012b5b;
   margin-left: 5rem; }
+
+.organisation-settings {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem; }
+  .organisation-settings + .organisation-settings {
+    border-top: 1px solid #aaa; }
+  .organisation-settings__container {
+    max-width: 50%;
+    font-size: 14px;
+    color: #012b5b; }
+    @media (max-width: 991px) {
+      .organisation-settings__container {
+        max-width: none; } }
+    .organisation-settings__container .el-select {
+      width: 100%; }
+    .organisation-settings__container .cims-btn {
+      padding: 10px 20px; }
+    .organisation-settings__container .form-control {
+      border-radius: 4px; }
+    .organisation-settings__container p {
+      margin-bottom: 0; }
+    .organisation-settings__container form + form {
+      margin-top: 4rem; }
+  .organisation-settings__text {
+    padding-top: 10px;
+    display: inline-block; }
+
+.organisation-group {
+  margin-bottom: 0.5rem; }
+
+.select-img {
+  max-height: 100%; }

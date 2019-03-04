@@ -3,27 +3,29 @@
         {
             "title" : "Home",
             "navActiveItem" : 0,
-            "link" : "organization-selection.html"
+            "link" : "organisation-selection.html"
         },
         {
             "title" : "Messages",
             "navActiveItem" : 1,
             "link" : "index.html"
+        }
+    ],
+    "subNav" : [
+        {
+            "title" : "Categories",
+            "navActiveItem" : 0,
+            "link" : "categories-editor.html"
         },
         {
-            "title" : "Analysis",
+            "title" : "Resources",
+            "navActiveItem" : 1,
+            "link" : "ressource-editor.html"
+        },
+        {
+            "title" : "Organisation Settings",
             "navActiveItem" : 2,
-            "link" : "#"
-        },
-        {
-            "title" : "Reports",
-            "navActiveItem" : 3,
-            "link" : "#"
-        },
-        {
-            "title" : "Newsletter",
-            "navActiveItem" : 4,
-            "link" : "#"
+            "link" : "organisation-settings.html"
         }
     ]
 }

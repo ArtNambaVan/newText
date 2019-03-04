@@ -40,4 +40,19 @@
         visibility: visible;
     }
   }
+
+.info-box {
+    display: inline-block;
+    padding: 2px 0 2px 0;
+
+    &::before {
+        content: "\f05a";
+        //font-size: 14px;
+        font-family: FontAwesome;
+        display: inline-block;
+        color: $thirdlyColor;
+        margin-right: 5px;
+        font-size: 16px;
+    }
+}
   

@@ -25,40 +25,25 @@
 
                             <ul class="main-nav__list">
                                 <li class="main-nav__item">
-                                    <a class="main-nav__link" href="#">New Message</a>
+                                    <a class="main-nav__link {% if editor == true %}active{% endif %}" href="message-editor.html">New Message</a>
                                 </li>
                                 <li class="main-nav__item">
-<<<<<<< HEAD
                                     <div class="header-dropdown">
                                         <span data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle" data-display="static">
-                                            <a data-cq-component="link" href="#" target="_self" class="main-nav__link">Administrator</a>
+                                            <a data-cq-component="link" href="#" target="_self" class="main-nav__link {% if admin == true %}active{% endif %}">Administrator</a>
                                         </span>
-                                        
+
                                         <div class="header-dropdown__inner dropdown-menu" role="menu">
                                             <ul class="header-submenu">
-                                                <li class="header-submenu__item">
-                                                    <a href="#" class="header-submenu__link">Categories</a>
-                                                </li>
-                                                <li class="header-submenu__item">
-                                                    <a href="#" class="header-submenu__link">Resources</a>
-                                                </li>
-                                                <li class="header-submenu__item">
-                                                    <a href="#" class="header-submenu__link">Organisation Settings</a>
-                                                </li>                                                
+                                                {% for item in subNav %}
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link {% if pageIdSub == item.navActiveItem %}active{% endif %}" href="{{ item.link }}">{{ item.title }}</a>
+                                                    </li>
+                                                {% endfor %}
+
                                             </ul>
                                         </div>
 
-=======
-                                    <div class="dropdown">
-                                        <span><a class="main-nav__link" href="#">Administrator</a></span>
-                                    </div>
-                                    <div class="dropdown-menu">
-                                        <ul>
-                                            <li>1</li>
-                                            <li>2</li>
-                                            <li>3</li>
-                                        </ul>
->>>>>>> 42c20648bdfd277af3e56a07f9eceb711fcb86dd
                                     </div>
                                 </li>
                                 <li class="main-nav__item">

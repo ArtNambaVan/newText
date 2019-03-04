@@ -1,0 +1,51 @@
+.organisation-settings {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+
+    & + & {
+        border-top: 1px solid $primaryBorderColor;
+    }
+    &__container {
+        max-width: 50%;
+        font-size: 14px;
+        color: $primaryColor;
+
+        @media (max-width: 991px) {
+            max-width: none;
+        }
+
+        .el-select {
+            width: 100%;
+        }
+
+        .cims-btn {
+            padding: 10px 20px;
+        }
+
+        .form-control {
+            border-radius: 4px;
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+
+        form + form {
+            margin-top: 4rem;
+        }
+    }
+
+    &__text {
+        padding-top: 10px;
+        display: inline-block;
+    }
+
+}
+
+.organisation-group {
+    margin-bottom: 0.5rem;
+}
+
+.select-img {
+    max-height: 100%;
+}

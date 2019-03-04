@@ -70,7 +70,7 @@
 .custom-control {
     label {
         font-size: 14px;
-        line-height: 1.6;
+        line-height: 1.8;
     }
     
 }
@@ -129,6 +129,6 @@
 
 .custom-checkbox .custom-control-label::before {
     background: none;
-    border: 2px solid $primaryBorderColor;
-    margin-right: 2px;
+    border: 1px solid $primaryBorderColor;
+    margin-right: 5px;
 }

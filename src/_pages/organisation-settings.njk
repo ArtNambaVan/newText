@@ -1,0 +1,51 @@
+{% set title = "Source editor" %}
+{% block styles %} <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">{% endblock styles %}
+
+{% block scriptsHead %} 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+{% endblock scriptsHead %}
+{% set pageIdSub = 2 %}
+{% set admin = true %}
+{% extends "layout.njk" %}
+
+{% block content %}
+            <div class="container" id="app">
+                {% include "partials/organisation-settings-portlet.njk" %}
+
+            </div>
+
+{% endblock content %}
+
+{% block scripts %} 
+    <script type="text/babel">
+        var Main = {
+          data() {
+            return {
+              options: [{
+                value: 'Option1',
+                label: 'Option11'
+              }, {
+                value: 'Option2',
+                label: 'Option22'
+              }, {
+                value: 'Option3',
+                label: 'Option33'
+              }, {
+                value: 'Option4',
+                label: 'Option44'
+              }, {
+                value: 'Option5',
+                label: 'Option55'
+              }],
+              value: ''
+            }
+          }
+        }
+      var Ctor = Vue.extend(Main)
+      new Ctor().$mount('#app')
+
+</script>
+{% endblock %}

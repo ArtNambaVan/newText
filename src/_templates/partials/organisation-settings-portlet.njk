@@ -1,0 +1,241 @@
+                <div class="organisation-settings">
+                    <div class="organisation-settings__container">
+                        <form>
+                            <h2>Organisations settings</h2>
+
+                            <div class="organisation-group">
+                                <template>
+                                <el-select v-model="value" placeholder="Select">
+                                    <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                                    <img src="images/skoda-cims.jpg" class="select-img"> 
+                                    </el-option>
+                                </el-select>
+                                </template>
+                            </div>
+
+                            <div class="row organisation-group">
+                                <div class="col-6">
+                                    <span class="organisation-settings__text">Name:</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="organisation-settings__text">CIMS</span>
+                                </div>
+                            </div>
+                            <div class="row organisation-group">
+                                <div class="col-6"><span class="organisation-settings__text">Type:</span></div>
+                                <div class="col-6"><span class="organisation-settings__text">regular-organisation</span></div>
+                            </div>
+                            <div class="row organisation-group">
+                                <div class="col-6"><span class="organisation-settings__text">Category:</span></div>
+                                <div class="col-6">
+                                    <template>
+                                    <el-select v-model="value" placeholder="Select">
+                                        <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                        </el-option>
+                                    </el-select>
+                                    </template>
+                                </div>
+                            </div>
+                            <div class="row organisation-group">
+                                <div class="col-6"><span class="organisation-settings__text">Resource:</span></div>
+                                <div class="col-6">
+                                    <template>
+                                    <el-select v-model="value" placeholder="Select">
+                                        <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                        
+                                        </el-option>
+                                    </el-select>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <div class="row organisation-group">
+                                <div class="col-6"><span class="organisation-settings__text">Expiration Days:</span></div>
+                                <div class="col-6">
+                                    <template>
+                                    <el-select v-model="value" placeholder="Select">
+                                        <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                        
+                                        </el-option>
+                                    </el-select>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <div class="row organisation-group">
+                                <div class="col-6"><span class="organisation-settings__text">Expiration Days:</span></div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" >
+                                </div>
+                            </div>
+
+                            <button class="cims-btn cims-btn--primary">Save</button>
+                        </form>
+                    </div>
+                
+                </div>
+
+                <div class="organisation-settings">
+                    <div class="organisation-settings__container">
+                        <form>
+                            <div class="row organisation-group">
+                                <div class="col-6"><span class="organisation-settings__text">New Root-Category:</span></div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" >
+                                </div>
+                            </div>
+                            <div class="row organisation-group">
+                                <div class="col-6"><span class="organisation-settings__text">New Root-Resource-Category:</span></div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" >
+                                </div>
+                            </div>
+                            <div class="row organisation-group">
+                                <div class="col-6"><span class="organisation-settings__text">New Resource-Expriration Days:</span></div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" >
+                                </div>
+                            </div>
+
+                            <button class="cims-btn cims-btn--primary">Add new Categories</button>
+                        </form>
+
+                        <form>
+                            <h2>Redirect settings</h2>
+                            <div class="info-box">Please insert the default landing page for multi-organization users.</div>
+                            <div class="row organisation-group">
+                                <div class="col-12">
+                                    <input type="text" class="form-control" placeholder="/home">
+                                </div>
+                            </div>
+                            <button class="cims-btn cims-btn--primary">Save Default Login Redirect</button>
+                        </form>
+                    </div>
+                
+                </div>
+
+                <div class="organisation-settings">
+                    <div class="organisation-settings__container">
+                        <form>
+                            <h2>Indexing</h2>
+                            <div class="row organisation-group">
+                                <div class="col-6">
+                                    <template>
+                                    <el-select v-model="value" placeholder="Select">
+                                        <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">                     
+                                        </el-option>
+                                    </el-select>
+                                    </template>
+                                </div>
+                                <div class="col-6">
+                                    <div class="info-box">Messages: 734552</div>
+                                </div>
+                            </div>
+                            <div class="organisation-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input required" id="fastIndexing" name="indexing" value="true" required="">
+                                    <label class="custom-control-label" for="fastIndexing">fast indexing (avoid status editing of messages)</label>
+                                </div>
+                            </div>
+                            <div class="organisation-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input required" id="indexUncategorized" name="indexing" value="true" required="">
+                                    <label class="custom-control-label" for="indexUncategorized">index uncategorized</label>
+                                </div>
+                            </div>  
+                            <div class="row organisation-group">
+                                <div class="col-6"><span class="organisation-settings__text">Start date:</span></div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" >
+                                </div>
+                            </div>
+
+                            <button class="cims-btn cims-btn--primary">Start</button>
+                        </form>
+
+                        <form>
+                            <h2>Delete</h2>
+                            <div class="row organisation-group">
+                                <div class="col-6">
+                                    <template>
+                                    <el-select v-model="value" placeholder="Select">
+                                        <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                        
+                                        </el-option>
+                                    </el-select>
+                                    </template>
+                                </div>
+                                <div class="col-6">
+                                    <div class="info-box">Messages: 734552</div>
+                                </div>
+                            </div>
+                            <div class="organisation-group">
+                                <div class="custom-control custom-radio-circle">
+                                    <input type="radio" id="delete1" name="deleteOrganization" value="Rating" class="custom-control-input radio-item">
+                                    <label class="custom-control-label" for="delete1">Delete complete organisation (including all messages, categories and sources)</label>
+                                </div>
+                            </div> 
+                            <div class="organisation-group">
+                                <div class="custom-control custom-radio-circle">
+                                    <input type="radio" id="delete2" name="deleteOrganization" value="Rating" class="custom-control-input radio-item">
+                                    <label class="custom-control-label" for="delete2">Deavtivate or Reactive organisation (Assets will remail in the Database)</label>
+                                </div>
+                            </div>
+                            <div class="organisation-group">
+                                <div class="custom-control custom-radio-circle">
+                                    <input type="radio" id="delete3" name="deleteOrganization" value="Rating" class="custom-control-input radio-item">
+                                    <label class="custom-control-label" for="delete3">Delete only messages in the following timeframe</label>
+                                </div>
+                            </div>
+                            <div class="row organisation-group">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            Strart date:
+                                        </div>
+                                        <div class="col-7">
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            End date:
+                                        </div>
+                                        <div class="col-7">
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="cims-btn cims-btn--primary">Start</button>
+                        </form>
+                    </div>
+                
+                </div>
+

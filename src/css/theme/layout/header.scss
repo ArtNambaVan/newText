@@ -57,19 +57,14 @@
 
             @media (max-width: 991px) {
                 position: absolute;
-                overflow-y: auto;
-                max-height: calc(100vh - 90px);
                 top: 100%;
                 width: 100%;
                 left: 0;
                 background-color: $colorWhite;
                 z-index: 20;
-<<<<<<< HEAD
                 max-height: calc(100vh - 90px);
                 overflow-y: auto;
-=======
                 box-shadow: 0 11px 19px rgba(0, 0, 0, 0.3);
->>>>>>> 42c20648bdfd277af3e56a07f9eceb711fcb86dd
             }
         }
 
@@ -84,6 +79,7 @@
         &__item {
             display: inline-block;
             margin-left: 1rem;
+            overflow: hidden;
 
             @media (max-width: 991px) {
                 display: block;
@@ -150,6 +146,7 @@
             position: static !important;
             padding: 0;
             background-color: transparent;
+            border: none;
         }
     }
 }
@@ -166,21 +163,27 @@
         padding-left: 15px;
         flex-direction: column;
         
+        
     }
 
     &__item {
         margin-right: 2rem;
 
+        @media (max-width: 991px) {
+            margin: 0;
+            border-top: 1px solid $primaryColor;
+        }
         
     }
 
     &__link {
         color: $primaryColor;
+        display: inline-block;
 
         @media (max-width: 991px) {
             display: block;
             padding: 1rem 2rem;
-            color: #fff;
+            color: $primaryColor;
         }
 
         &.active {
