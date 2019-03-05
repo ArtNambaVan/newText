@@ -1,0 +1,24 @@
+.modal-dialog.modal-sm {
+    max-width: 500px;
+    top: 20%;
+
+    .modal-title {
+        text-align: center;
+    }
+
+    .modal-body {
+        font-size: 18px;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
+    .cims-btn {
+        font-size: 14px;
+    }
+
+    .modal-footer {
+        justify-content: space-between;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}

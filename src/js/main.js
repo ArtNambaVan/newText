@@ -42,6 +42,18 @@ $( document ).ready(function() {
 
     });
 
+    // MESSAGE HISTORY
+
+    $('.message-item__history .close').on('click', function(e) {
+        e.preventDefault()
+        $(this).parent().slideUp(500);
+    })
+
+    $('.link-history').on('click', function(e) {
+        e.preventDefault()
+        $(this).closest('.message-item').find('.message-item__history').slideToggle(500);
+    })
+
     // DATEPICKER
 
     $('.datepicker').on('click', function (e) {
@@ -56,7 +68,6 @@ $( document ).ready(function() {
     $('.period').each(function() {
         $(this).find('li').each(function(i) {
             $(this).click(function(){
-                console.log($(this).index())
                 if ($(this).index() === 0) {
                     $(this).addClass('period__item--active').siblings().removeClass('period__item--active')
                     .closest('.datepicker').find('.calendar').removeClass('active')
@@ -109,7 +120,6 @@ $( document ).ready(function() {
         ;
 
     if (reflexElementLeft.length && reflexElementRight.length) {
-        console.log(reflexElementLeft, reflexElementRight)
         var leftFlex = Number( reflexElementLeft.css('flex-grow').replace(/ .*/,''));
         var rightFlex = Number( reflexElementRight.css('flex-grow').replace(/ .*/,''));
     }
@@ -177,12 +187,10 @@ $( document ).ready(function() {
     $('.ressource-list__item').find('.ressource-list__btn:nth-of-type(1)').on('click', function(e) {
         var name = $(this).prev();
         $(this).toggleClass('active');
-        console.log(name)
         if (name.attr( 'contenteditable' )) {
             name.removeAttr( 'contenteditable', 'false' )
         } else {
             name.prop( 'contenteditable', 'true').focus();
-            console.log('das')
         }
     })
     

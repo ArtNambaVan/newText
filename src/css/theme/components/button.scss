@@ -60,4 +60,16 @@
             background-color: $primaryColor;
         }
     }
+
+    &--danger {
+        color: $colorWhite;
+        background-color: $dangerColor;
+        border: 1px solid $dangerColor;
+    }
+
+    &--success {
+        color: $colorWhite;
+        background-color: $sucessColor;
+        border: 1px solid $sucessColor;
+    }
 }

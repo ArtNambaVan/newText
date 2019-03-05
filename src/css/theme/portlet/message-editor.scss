@@ -5,6 +5,7 @@
 
     @media (max-width: 992px) {
         flex-wrap: wrap;
+        overflow: visible;
     }
 
     &-left {
@@ -15,6 +16,7 @@
         @media (max-width: 992px) {
             padding: 0;
             flex: auto !important;
+            overflow: visible;
         }
     }
 
@@ -27,7 +29,7 @@
             padding: 0;
             padding-right: 15px;
             margin-top: 1rem;
-            //overflow: visible;
+            overflow: visible;
         }
 
         .tonality-popup {
@@ -51,6 +53,7 @@
         margin: 7px 0px;
         display: flex;
         min-width: 260px;
+        position: relative;
 
         @media (max-width: 576px) {
             width: 100%;

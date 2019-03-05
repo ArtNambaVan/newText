@@ -118,7 +118,12 @@
                     
                     <div class="cims-container reflex-container">
                         <div class="cims-container-left reflex-element--left">
-                        
+                            <div class="notifications">
+                                <div class="alert alert-success" >test message</div>
+                                <div class="alert alert-danger" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+                                <div class="alert alert-info" >test</div>
+                            </div>
                             <form>
                                 <div class="edit-group">
                                     <div class="edit-group__item">
@@ -554,7 +559,7 @@
                                     </div>
                                     <div class="edit-group__item">
                                         <span class="edit-group__label">Views:</span>
-                                        <div class="edit-group__controll">
+                                        <div class="edit-group__controll error">
                                             <input type="text" class="cims-input">
                                         </div>
                                         <label class="custom-checkbox">
@@ -562,9 +567,9 @@
                                             <span class="thumbtack"><i class="fas fa-thumbtack"></i></span>
                                         </label>
                                     </div>
-                                    <div class="edit-group__item">
+                                    <div class="edit-group__item ">
                                         <span class="edit-group__label">Source:</span>
-                                        <div class="edit-group__controll">
+                                        <div class="edit-group__controll success">
                                             <input class="cims-input" type="text" placeholder="Source">
                                         </div>
                                         <label class="custom-checkbox">
@@ -574,7 +579,7 @@
                                     </div>
                                     <div class="edit-group__item">
                                         <span class="edit-group__label">Type:</span>
-                                        <div class="edit-group__controll">
+                                        <div class="edit-group__controll error">
                                             <div class="select-container">
                                                 <select class="cims-select filter-category__control">
                                                     <option>Url</option> 
@@ -649,7 +654,7 @@
                                     </div>
                                     <div class="edit-group__item">
                                         <span class="edit-group__label">Author:</span>
-                                        <div class="edit-group__controll">
+                                        <div class="edit-group__controll success">
                                             <input class="cims-input" type="text">
                                         </div>
                                         <label class="custom-checkbox" placeholder="Author">
@@ -722,6 +727,30 @@
                                     </div>
                                 </div>
                             </form>
+
+                            <button class="btn btn-primary" data-target="#newSource" data-toggle="modal" type="button">Small Modal</button>
+                            <div aria-labelledby="newSourceLabel" class="fade modal" id="newSource" role="dialog" tabindex="-1">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <div class="modal-title">New source</div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Do you really want to create a new source <span>'facebok.com'</span>?</p>
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <div class="btn-group-item">
+                                                <button class="cims-btn cims-btn--danger" data-dismiss="modal" type="button">Cancel</button>
+                                            </div>
+                                            <div class="btn-group-item">
+                                                <button class="cims-btn cims-btn--success" type="button">Create</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="vertical-divider" id="handle"></div>
