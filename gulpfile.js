@@ -90,7 +90,8 @@ const SYNC_CONFIG = {
       //index : 'index.html'
       //index : 'message-editor.html'
       //index : 'ressource-editor.html'
-      index : 'categories-editor.html'
+      //index : 'categories-editor.html'
+      index : 'message-preferences.html'
     },
     open   : true,
     notify : false
