@@ -1,3 +1,202 @@
-                <div>
-                    test
+                {# <div class="message-preferences">
+                    <div class="row">
+                        <div class="col-lg-2 col-xl-2">
+                            <div class="custom-control custom-radio-circle">
+                                <input type="radio" id="messageType1" name="message-type" class="custom-control-input radio-item">
+                                <label for="messageType1" class="custom-control-label">Message</label>
+                            </div>
+                            <div class="custom-control custom-radio-circle">
+                                <input type="radio" id="messageType2" name="message-type" class="custom-control-input radio-item">
+                                <label for="messageType2" class="custom-control-label">Alert</label>
+                            </div>
+                            <div class="custom-control custom-radio-circle">
+                                <input type="radio" id="messageType3" name="message-type" class="custom-control-input radio-item">
+                                <label for="messageType3" class="custom-control-label">Report</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-xl-3">
+                            Root-Category
+                            <el-tree
+                                :props="props"
+                                :load="loadNode"
+                                lazy
+                                show-checkbox
+                                @check-change="handleCheckChange">
+                            </el-tree>
+                            <button class="cims-btn cims-btn--primary">Add Root Category</button>
+
+                            <div class="selected-root">
+                                <div class="selected-root__item">
+                                    <span class="selected-root__title">Root Category Nr. 1 :</span>
+                                    <span class="selected-root__name">CIMS</span>
+                                    <span class="icon"><i class="fas fa-arrow-alt-circle-down"></i></span>
+                                    <span class="selected-root__remove"><i class="fas fa-times-circle"></i></span>
+                                </div>
+                                <div class="selected-root__item">
+                                    <span class="selected-root__title">Root Category Nr. 2 :</span>
+                                    <span class="selected-root__name">Student</span>
+                                    <span class="icon"><i class="fas fa-arrow-alt-circle-up"></i></span>
+                                    <span class="selected-root__remove"><i class="fas fa-times-circle"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-xl-3">
+                            Root-Resource
+                            <div id="jsTreeCategory2" class="jsTree-full">
+                                        
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-xl-4">
+                            <div class="predefined-filters">
+                                <h3>Predefined Filters</h3>
+                                <p>Selected Category: <span class="bold">CIMS</span></p>
+
+                                <div class="predefined-filters__item">
+                                    <p>Saved Category: <span class="bold">CIMS</span></p>
+                                    <div class="btn-group-col">    
+                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
+                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
+                                    </div>
+                                </div>
+                                <div class="predefined-filters__item">
+                                    <p>Saved Category: <span class="bold">Lorem ipsum dolor sit amet, consectetur</span></p>
+                                    <div class="btn-group-col">    
+                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
+                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
+                                    </div>
+                                </div>
+                                <div class="predefined-filters__item">
+                                    <p>Saved Category: <span class="bold"></span></p>
+                                    <div class="btn-group-col">    
+                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
+                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
+                                    </div>
+                                </div>
+                                <div class="predefined-filters__item">
+                                    <p>Saved Category: <span class="bold"></span></p>
+                                    <div class="btn-group-col">    
+                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
+                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <button class="cims-btn cims-btn--primary" style="margin: auto; display: block;">Save</button> #}
+
+
+
+
+                <div class="message-preferences">
+                    <div class="row">
+                        <div class="col-lg-2 col-xl-2">
+                            <div class="custom-control custom-radio-circle">
+                                <input type="radio" id="messageType1" name="message-type" class="custom-control-input radio-item">
+                                <label for="messageType1" class="custom-control-label">Message</label>
+                            </div>
+                            <div class="custom-control custom-radio-circle">
+                                <input type="radio" id="messageType2" name="message-type" class="custom-control-input radio-item">
+                                <label for="messageType2" class="custom-control-label">Alert</label>
+                            </div>
+                            <div class="custom-control custom-radio-circle">
+                                <input type="radio" id="messageType3" name="message-type" class="custom-control-input radio-item">
+                                <label for="messageType3" class="custom-control-label">Report</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-xl-3">
+                            Root-Category
+                              <div class="block">
+                                <el-tree
+                                :data="data5"
+                                show-checkbox
+                                node-key="id"
+                                default-expand-all
+                                :expand-on-click-node="false">
+                                <span class="custom-tree-node" slot-scope="{ node, data }">
+                                    <span>TEST</span>
+                                    <span>
+                                    <el-button
+                                        type="text"
+                                        size="mini"
+                                        @click="() => append(data)">
+                                        Append
+                                    </el-button>
+                                    <el-button
+                                        type="text"
+                                        size="mini"
+                                        @click="() => remove(node, data)">
+                                        Delete
+                                    </el-button>
+                                    </span>
+                                </span>
+                                </el-tree>
+                            </div>
+                            <button class="cims-btn cims-btn--primary">Add Root Category</button>
+
+                            <div class="selected-root">
+                                <div class="selected-root__item">
+                                    <span class="selected-root__title">Root Category Nr. 1 :</span>
+                                    <span class="selected-root__name">CIMS</span>
+                                    <span class="icon"><i class="fas fa-arrow-alt-circle-down"></i></span>
+                                    <span class="selected-root__remove"><i class="fas fa-times-circle"></i></span>
+                                </div>
+                                <div class="selected-root__item">
+                                    <span class="selected-root__title">Root Category Nr. 2 :</span>
+                                    <span class="selected-root__name">Student</span>
+                                    <span class="icon"><i class="fas fa-arrow-alt-circle-up"></i></span>
+                                    <span class="selected-root__remove"><i class="fas fa-times-circle"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-xl-3">
+                            Root-Resource
+                            <el-tree
+                                :data="data4"
+                                show-checkbox
+                                node-key="id"
+                                default-expand-all
+                                :expand-on-click-node="false">
+                                <span class="custom-tree-node" slot-scope="{ node, data }">
+                                    <span>{{ node.label }}</span>
+                                </span>
+                                </el-tree>
+                        </div>
+                        <div class="col-lg-12 col-xl-4">
+                            <div class="predefined-filters">
+                                <h3>Predefined Filters</h3>
+                                <p>Selected Category: <span class="bold">CIMS</span></p>
+
+                                <div class="predefined-filters__item">
+                                    <p>Saved Category: <span class="bold">CIMS</span></p>
+                                    <div class="btn-group-col">    
+                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
+                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
+                                    </div>
+                                </div>
+                                <div class="predefined-filters__item">
+                                    <p>Saved Category: <span class="bold">Lorem ipsum dolor sit amet, consectetur</span></p>
+                                    <div class="btn-group-col">    
+                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
+                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
+                                    </div>
+                                </div>
+                                <div class="predefined-filters__item">
+                                    <p>Saved Category: <span class="bold"></span></p>
+                                    <div class="btn-group-col">    
+                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
+                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
+                                    </div>
+                                </div>
+                                <div class="predefined-filters__item">
+                                    <p>Saved Category: <span class="bold"></span></p>
+                                    <div class="btn-group-col">    
+                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
+                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="cims-btn cims-btn--primary" style="margin: auto; display: block;">Save</button>

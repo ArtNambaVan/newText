@@ -1,0 +1,39 @@
+.message-preferences {
+    font-size: 14px;
+}
+
+.predefined-filters {
+    &__item {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        & + & {
+            border-top: 1px solid $primaryColor;
+        }
+    }
+
+    &__title {
+
+    }
+}
+
+.selected-root {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    &__item {
+
+        & + & {
+            margin-top: 0.5rem;
+        }
+    }
+
+    span {
+        display: inline-block;
+        padding: 0.25rem 0.15rem 0 0;
+    }
+}
+
+.el-tree + * {
+    margin-top: 0.5rem;
+}

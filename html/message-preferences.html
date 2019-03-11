@@ -7,14 +7,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Source editor</title>
+    <title>Message preferences</title>
     <link rel="stylesheet" href="css/libs/clay.css"> 
 
     <link rel="stylesheet" href="css/libs/main.css">
-     
+ <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
     <link rel="stylesheet" href="css/libs/treeJS.css">
     <link rel="stylesheet" href="css/custom.css">
     <script src="js/libs.js"></script>
+
+ 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     
 
@@ -88,10 +93,124 @@
         </header>
         <main>
 
-            <div class="container-fluid">
-                <div class="message-preference">
-                    
+            <div class="container-fluid" id="app">
+                
+
+
+
+
+                <div class="message-preferences">
+                    <div class="row">
+                        <div class="col-lg-2 col-xl-2">
+                            <div class="custom-control custom-radio-circle">
+                                <input type="radio" id="messageType1" name="message-type" class="custom-control-input radio-item">
+                                <label for="messageType1" class="custom-control-label">Message</label>
+                            </div>
+                            <div class="custom-control custom-radio-circle">
+                                <input type="radio" id="messageType2" name="message-type" class="custom-control-input radio-item">
+                                <label for="messageType2" class="custom-control-label">Alert</label>
+                            </div>
+                            <div class="custom-control custom-radio-circle">
+                                <input type="radio" id="messageType3" name="message-type" class="custom-control-input radio-item">
+                                <label for="messageType3" class="custom-control-label">Report</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-xl-3">
+                            Root-Category
+                              <div class="block">
+                                <el-tree
+                                :data="data5"
+                                show-checkbox
+                                node-key="id"
+                                default-expand-all
+                                :expand-on-click-node="false">
+                                <span class="custom-tree-node" slot-scope="{ node, data }">
+                                    <span>TEST</span>
+                                    <span>
+                                    <el-button
+                                        type="text"
+                                        size="mini"
+                                        @click="() => append(data)">
+                                        Append
+                                    </el-button>
+                                    <el-button
+                                        type="text"
+                                        size="mini"
+                                        @click="() => remove(node, data)">
+                                        Delete
+                                    </el-button>
+                                    </span>
+                                </span>
+                                </el-tree>
+                            </div>
+                            <button class="cims-btn cims-btn--primary">Add Root Category</button>
+
+                            <div class="selected-root">
+                                <div class="selected-root__item">
+                                    <span class="selected-root__title">Root Category Nr. 1 :</span>
+                                    <span class="selected-root__name">CIMS</span>
+                                    <span class="icon"><i class="fas fa-arrow-alt-circle-down"></i></span>
+                                    <span class="selected-root__remove"><i class="fas fa-times-circle"></i></span>
+                                </div>
+                                <div class="selected-root__item">
+                                    <span class="selected-root__title">Root Category Nr. 2 :</span>
+                                    <span class="selected-root__name">Student</span>
+                                    <span class="icon"><i class="fas fa-arrow-alt-circle-up"></i></span>
+                                    <span class="selected-root__remove"><i class="fas fa-times-circle"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-xl-3">
+                            Root-Resource
+                            <el-tree
+                                :data="data4"
+                                show-checkbox
+                                node-key="id"
+                                default-expand-all
+                                :expand-on-click-node="false">
+                                <span class="custom-tree-node" slot-scope="{ node, data }">
+                                    <span></span>
+                                </span>
+                                </el-tree>
+                        </div>
+                        <div class="col-lg-12 col-xl-4">
+                            <div class="predefined-filters">
+                                <h3>Predefined Filters</h3>
+                                <p>Selected Category: <span class="bold">CIMS</span></p>
+
+                                <div class="predefined-filters__item">
+                                    <p>Saved Category: <span class="bold">CIMS</span></p>
+                                    <div class="btn-group-col">    
+                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
+                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
+                                    </div>
+                                </div>
+                                <div class="predefined-filters__item">
+                                    <p>Saved Category: <span class="bold">Lorem ipsum dolor sit amet, consectetur</span></p>
+                                    <div class="btn-group-col">    
+                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
+                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
+                                    </div>
+                                </div>
+                                <div class="predefined-filters__item">
+                                    <p>Saved Category: <span class="bold"></span></p>
+                                    <div class="btn-group-col">    
+                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
+                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
+                                    </div>
+                                </div>
+                                <div class="predefined-filters__item">
+                                    <p>Saved Category: <span class="bold"></span></p>
+                                    <div class="btn-group-col">    
+                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
+                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <button class="cims-btn cims-btn--primary" style="margin: auto; display: block;">Save</button>
             </div>
 
 
@@ -107,7 +226,85 @@
 
 
     <!-- SCRIPTS -->
-    
+ 
+    <script type="text/babel">
+        let id = 1000;
+
+  var Main = {
+    data() {
+      const data = [{
+        id: 1,
+        label: 'Level one 1',
+        children: [{
+          id: 4,
+          label: 'Level two 1-1',
+          children: [{
+            id: 9,
+            label: 'Level three 1-1-1'
+          }, {
+            id: 10,
+            label: 'Level three 1-1-2'
+          }]
+        }]
+      }, {
+        id: 2,
+        label: 'Level one 2',
+        children: [{
+          id: 5,
+          label: 'Level two 2-1'
+        }, {
+          id: 6,
+          label: 'Level two 2-2'
+        }]
+      }, {
+        id: 3,
+        label: 'Level one 3',
+        children: [{
+          id: 7,
+          label: 'Level two 3-1'
+        }, {
+          id: 8,
+          label: 'Level two 3-2'
+        }]
+      }];
+      return {
+        data4: JSON.parse(JSON.stringify(data)),
+        data5: JSON.parse(JSON.stringify(data))
+      }
+    },
+
+    methods: {
+      append(data) {
+        const newChild = { id: id++, label: 'testtest', children: [] };
+        if (!data.children) {
+          this.$set(data, 'children', []);
+        }
+        data.children.push(newChild);
+      },
+
+      remove(node, data) {
+        const parent = node.parent;
+        const children = parent.data.children || parent.data;
+        const index = children.findIndex(d => d.id === data.id);
+        children.splice(index, 1);
+      },
+
+      renderContent(h, { node, data, store }) {
+        return (
+          <span class="custom-tree-node">
+            <span>{node.label}</span>
+            <span>
+              <el-button size="mini" type="text" on-click={ () => this.append(data) }>Append</el-button>
+              <el-button size="mini" type="text" on-click={ () => this.remove(node, data) }>Delete</el-button>
+            </span>
+          </span>);
+      }
+    }
+  };
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app')
+
+</script>
     <script src="js/main.js"></script>
 </body>
 </html>

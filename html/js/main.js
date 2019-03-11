@@ -197,7 +197,7 @@ $( document ).ready(function() {
     // DON'T COPY CODE BELOW THIS LINE (THIS FOR LOCAL JSTREE)
 
     $('#jsTreeCategory').on('changed.jstree', function (e, data) {
-        $(".jstree-anchor").append('<a class="link-icon" href="#"><span><i class="icon-plus-sign-alt"></i></span> Add category</a>');
+        $(this).find(".jstree-anchor").append('<a class="link-icon" href="#"><span><i class="icon-plus-sign-alt"></i></span> Add category</a>');
     })
 
 
@@ -276,6 +276,62 @@ $( document ).ready(function() {
                          },
 
                          { "text" : "Child node 2"
+                         },
+
+                         { "text" : "Child node 3"
+                         },
+
+                         { "text" : "Child node 4"
+                         },
+
+                         { "text" : "Child node 5",
+                            "a_attr" : {
+                                "class" : "jstree-rating"
+                            },
+                         },
+
+						{ "text" : "Child node 6"}
+					]
+                },
+                {
+					"text" : "second root node",
+					"state" : { "opened" : true },
+					"children" : [
+						{
+							"text" : "Child node 1",
+							"state" : { "opened" : true },
+                            "icon" : "jstree-file",
+                            "children" : [
+                                {
+                                    "text" : "Child node 11"
+                                },
+                                { "text" : "Child node 22"}
+                            ]
+						},
+						{ "text" : "Child node 2"}
+					]
+				}
+			]
+		}
+    });
+
+    $('#jsTreeCategory1').jstree({
+		'core' : {
+			'data' : [
+				{
+					"text" : "first root node",
+                    "state" : { "opened" : true },
+                    "a_attr" : {
+                        "class" : "jstree-rating"
+                    },
+					"children" : [
+                        { "text" : "Child node 1",
+                            "a_attr" : {
+                                "class" : "jstree-rating"
+                            },
+                         },
+
+                         { "text" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
                          },
 
                          { "text" : "Child node 3"

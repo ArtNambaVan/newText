@@ -73,3 +73,13 @@
         border: 1px solid $sucessColor;
     }
 }
+
+.btn-group-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    & > * + * {
+        margin-top: 0.5rem;
+    }
+}

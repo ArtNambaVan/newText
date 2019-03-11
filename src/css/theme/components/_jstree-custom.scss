@@ -4,10 +4,20 @@
     max-height: 170px;
     overflow-y: auto;
     font-size: 12px;
+
+    & + * {
+        margin-top: 0.5rem;
+    }
 }
 
 .jsTree-lg {
     max-height: 300px;
+}
+
+.jsTree-full {
+    max-height: none;
+    overflow-y: visible;
+    overflow-x: auto;
 }
 
 .jstree-default .jstree-themeicon {
