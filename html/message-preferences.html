@@ -99,24 +99,39 @@
 
 
 
+                
+
+
+
+
+
+
+
+
+            <!-- FIRST -->                
+
+            
+
+
+            <!-- SECOND -->
+
+                        <form>
+                <div class="custom-control custom-control-inline custom-radio-circle">
+                    <input type="radio" id="messageType1" name="message-type" class="custom-control-input radio-item">
+                    <label for="messageType1" class="custom-control-label">Message</label>
+                </div>
+                <div class="custom-control custom-control-inline custom-radio-circle">
+                    <input type="radio" id="messageType2" name="message-type" class="custom-control-input radio-item">
+                    <label for="messageType2" class="custom-control-label">Alert</label>
+                </div>
+                <div class="custom-control custom-control-inline custom-radio-circle">
+                    <input type="radio" id="messageType3" name="message-type" class="custom-control-input radio-item">
+                    <label for="messageType3" class="custom-control-label">Report</label>
+                </div>
                 <div class="message-preferences">
-                    <div class="row">
-                        <div class="col-lg-2 col-xl-2">
-                            <div class="custom-control custom-radio-circle">
-                                <input type="radio" id="messageType1" name="message-type" class="custom-control-input radio-item">
-                                <label for="messageType1" class="custom-control-label">Message</label>
-                            </div>
-                            <div class="custom-control custom-radio-circle">
-                                <input type="radio" id="messageType2" name="message-type" class="custom-control-input radio-item">
-                                <label for="messageType2" class="custom-control-label">Alert</label>
-                            </div>
-                            <div class="custom-control custom-radio-circle">
-                                <input type="radio" id="messageType3" name="message-type" class="custom-control-input radio-item">
-                                <label for="messageType3" class="custom-control-label">Report</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 col-xl-3">
-                            Root-Category
+                        
+                        <div class="message-preferences__item">
+                            <div class="message-preferences__title">Root-Category</div>
                               <div class="block">
                                 <el-tree
                                 :data="data5"
@@ -125,92 +140,287 @@
                                 default-expand-all
                                 :expand-on-click-node="false">
                                 <span class="custom-tree-node" slot-scope="{ node, data }">
-                                    <span>TEST</span>
+                                    <span> {{node.label + " test"}} </span>
                                     <span>
                                     <el-button
                                         type="text"
                                         size="mini"
-                                        @click="() => append(data)">
-                                        Append
-                                    </el-button>
-                                    <el-button
-                                        type="text"
-                                        size="mini"
-                                        @click="() => remove(node, data)">
-                                        Delete
+                                        class="static"
+                                        @click="() => addRoot(data)">
+                                        Add Root Category
                                     </el-button>
                                     </span>
                                 </span>
                                 </el-tree>
                             </div>
-                            <button class="cims-btn cims-btn--primary">Add Root Category</button>
+                        </div>
 
-                            <div class="selected-root">
-                                <div class="selected-root__item">
-                                    <span class="selected-root__title">Root Category Nr. 1 :</span>
-                                    <span class="selected-root__name">CIMS</span>
-                                    <span class="icon"><i class="fas fa-arrow-alt-circle-down"></i></span>
-                                    <span class="selected-root__remove"><i class="fas fa-times-circle"></i></span>
+                        <div class="message-preferences__item">
+                            <div class="message-preferences__title">Root-Resource</div>
+                            
+                            <el-tree
+                            :data="data4"
+                            show-checkbox
+                            node-key="id"
+                            default-expand-all
+                            :expand-on-click-node="false">
+                            <span class="custom-tree-node" slot-scope="{ node, data }">
+                                <span>  {{node.label}}  </span>
+                                <span>
+                                    <el-button
+                                        type="text"
+                                        size="mini"
+                                        class="static"
+                                        @click="() => addRoot(data)">
+                                        Add Root Category
+                                    </el-button>
+                                </span>
+                            </span>
+                            </el-tree>
+                        </div>
+
+                        <div class="message-preferences__item">
+                            <div class="new-tree">
+                                <div>
+                                    <div class="message-preferences__title">Category</div>
+                                    <div class="selected-root">
+                                        <div class="selected-root__item">
+                                            <span class="selected-root__title">Root Category Nr. 1 :</span>
+                                            <span class="selected-root__name">CIMS</span>
+                                            <el-button
+                                                type="text"
+                                                size="mini">
+                                                <i class="fas fa-arrow-alt-circle-down"></i>
+                                            </el-button>
+                                            <el-button
+                                                type="text"
+                                                size="mini">
+                                                <i class="fas fa-times-circle"></i>
+                                            </el-button>
+                                        </div>
+                                        <div class="selected-root__item">
+                                            <span class="selected-root__title">Root Category Nr. 2 :</span>
+                                            <span class="selected-root__name">Student</span>
+                                            <el-button
+                                                type="text"
+                                                size="mini">
+                                                <i class="fas fa-arrow-alt-circle-up"></i>
+                                            </el-button>
+                                            <el-button
+                                                type="text"
+                                                size="mini">
+                                                <i class="fas fa-times-circle"></i>
+                                            </el-button>
+                                        </div>
+                                    </div>
+                                    <button class="cims-btn cims-btn--primary" data-target="#categoryModal" data-toggle="modal" type="button">Edit</button>
+                                    <div aria-labelledby="newSourceLabel" class="fade modal" id="categoryModal" role="dialog" tabindex="-1">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="modal-title">Category</div>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <el-tree
+                                                    :data="data5"
+                                                    show-checkbox
+                                                    node-key="id"
+                                                    default-expand-all
+                                                    :expand-on-click-node="false">
+                                                    <span class="custom-tree-node" slot-scope="{ node, data }">
+                                                        <span>  {{node.label}}  </span>
+                                                        <span>
+                                                            <el-button
+                                                                type="text"
+                                                                size="mini"
+                                                                @click="() => append(data)">
+                                                                Append
+                                                            </el-button>
+                                                            <el-button
+                                                                type="text"
+                                                                size="mini"
+                                                                @click="() => remove(node, data)">
+                                                                Delete
+                                                            </el-button>
+                                                        </span>
+                                                    </span>
+                                                    </el-tree>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <div class="btn-group-item">
+                                                        <button class="cims-btn cims-btn--default" data-dismiss="modal" type="button">Cancel</button>
+                                                    </div>
+                                                    <div class="btn-group-item">
+                                                        <button class="cims-btn cims-btn--primary" type="button">Save</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="selected-root__item">
-                                    <span class="selected-root__title">Root Category Nr. 2 :</span>
-                                    <span class="selected-root__name">Student</span>
-                                    <span class="icon"><i class="fas fa-arrow-alt-circle-up"></i></span>
-                                    <span class="selected-root__remove"><i class="fas fa-times-circle"></i></span>
+                                <div>
+                                    <div class="message-preferences__title">Resource</div>
+                                    <div class="selected-root">
+                                        <div class="selected-root__item">
+                                            <span class="selected-root__title">Root Resource Nr. 1 :</span>
+                                            <span class="selected-root__name">All resources</span>
+                                            <el-button
+                                                type="text"
+                                                size="mini">
+                                                <i class="fas fa-arrow-alt-circle-down"></i>
+                                            </el-button>
+                                            <el-button
+                                                type="text"
+                                                size="mini">
+                                                <i class="fas fa-times-circle"></i>
+                                            </el-button>
+                                        </div>
+                                        <div class="selected-root__item">
+                                            <span class="selected-root__title">Root Resource Nr. 2 :</span>
+                                            <span class="selected-root__name">Consline AG</span>
+                                            <el-button
+                                                type="text"
+                                                size="mini">
+                                                <i class="fas fa-arrow-alt-circle-up"></i>
+                                            </el-button>
+                                            <el-button
+                                                type="text"
+                                                size="mini">
+                                                <i class="fas fa-times-circle"></i>
+                                            </el-button>
+                                        </div>
+                                    </div>
+                                    <button class="cims-btn cims-btn--primary" data-target="#resourceModal" data-toggle="modal" type="button">Edit</button>
+                                    <div aria-labelledby="newSourceLabel" class="fade modal" id="resourceModal" role="dialog" tabindex="-1">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="modal-title">Resource</div>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <el-tree
+                                                    :data="data5"
+                                                    node-key="id"
+                                                    default-expand-all
+                                                    :expand-on-click-node="false">
+                                                    <span class="custom-tree-node" slot-scope="{ node, data }">
+                                                        <span>  {{node.label}}  </span>
+                                                        <span>
+                                                            <el-button
+                                                                type="text"
+                                                                size="mini"
+                                                                @click="() => append(data)">
+                                                                Append
+                                                            </el-button>
+                                                            <el-button
+                                                                type="text"
+                                                                size="mini"
+                                                                @click="() => remove(node, data)">
+                                                                Delete
+                                                            </el-button>
+                                                        </span>
+                                                    </span>
+                                                    </el-tree>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <div class="btn-group-item">
+                                                        <button class="cims-btn cims-btn--default" data-dismiss="modal" type="button">Cancel</button>
+                                                    </div>
+                                                    <div class="btn-group-item">
+                                                        <button class="cims-btn cims-btn--primary" type="button">Save</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-5 col-xl-3">
-                            Root-Resource
-                            <el-tree
-                                :data="data4"
-                                show-checkbox
-                                node-key="id"
-                                default-expand-all
-                                :expand-on-click-node="false">
-                                <span class="custom-tree-node" slot-scope="{ node, data }">
-                                    <span></span>
-                                </span>
-                                </el-tree>
-                        </div>
-                        <div class="col-lg-12 col-xl-4">
+
+                        <div class="message-preferences__item">
                             <div class="predefined-filters">
                                 <h3>Predefined Filters</h3>
-                                <p>Selected Category: <span class="bold">CIMS</span></p>
+                                <p>Saved Category:</p>
 
                                 <div class="predefined-filters__item">
-                                    <p>Saved Category: <span class="bold">CIMS</span></p>
-                                    <div class="btn-group-col">    
-                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
-                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
-                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a class="breadcrumb-link" href="#1" title="Home">
+                                                <span class="breadcrumb-text-truncate">Home</span>
+                                            </a>
+                                        </li>
+                                        <li class="breadcrumb-item">
+                                            <a class="breadcrumb-link" href="#1" title="Components">
+                                                <span class="breadcrumb-text-truncate">Components</span>
+                                            </a>
+                                        </li>
+                                        <li class="breadcrumb-item">
+                                            <a class="breadcrumb-link" href="#1" title="Breadcrumbs and Paginations">
+                                                <span class="breadcrumb-text-truncate">Breadcrumbs and Paginations</span>
+                                            </a>
+                                        </li>
+                                        <li class="breadcrumb-item">
+                                            <a class="breadcrumb-link" href="#1" title="Page">
+                                                <span class="breadcrumb-text-truncate">Page</span>
+                                            </a>
+                                        </li>
+                                        <li class="breadcrumb-item">
+                                            <a class="breadcrumb-link" href="#1" title="reReallyTryingToCoverAllOur">
+                                                <span class="breadcrumb-text-truncate"></span>
+                                            </a>
+                                        </li>
+                                        <li class="active breadcrumb-item">
+                                            <span class="breadcrumb-text-truncate" title="Active">Active</span>
+                                        </li>
+                                    </ol>
                                 </div>
                                 <div class="predefined-filters__item">
-                                    <p>Saved Category: <span class="bold">Lorem ipsum dolor sit amet, consectetur</span></p>
-                                    <div class="btn-group-col">    
-                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
-                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
-                                    </div>
+                                    <ul class="filters-list">
+                                        <li class="root">
+                                            <span>Cims2</span>
+                                            <ul>
+                                                <li class="root">
+                                                    <span>Test1</span>
+                                                    <ul>
+                                                        <li><span>Test11</span></li>
+                                                        <li><span>Test12</span></li>
+                                                        <li><span>Test13</span></li>
+                                                    </ul>
+                                                </li>
+                                                <li>Test2</li>
+                                                <li>Test3</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <div class="predefined-filters__item">
-                                    <p>Saved Category: <span class="bold"></span></p>
-                                    <div class="btn-group-col">    
-                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
-                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
-                                    </div>
+                                    <ul class="filters-list">
+                                        <li class="root">
+                                            <span>Cims3</span>
+                                            <ul>
+                                                <li class="root">
+                                                    <span>Test1</span>
+                                                    <ul>
+                                                        <li><span>Test11</span></li>
+                                                        <li><span>Test12</span></li>
+                                                        <li><span>Test13</span></li>
+                                                    </ul>
+                                                </li>
+                                                <li>Test2</li>
+                                                <li>Test3</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="predefined-filters__item">
-                                    <p>Saved Category: <span class="bold"></span></p>
-                                    <div class="btn-group-col">    
-                                        <button class="cims-btn cims-btn--primary">Saved Predefined Filter 1</button>
-                                        <button class="cims-btn cims-btn--primary">Reset Predefined Filter 1</button>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>                    
                         </div>
-                    </div>
                 </div>
-                <button class="cims-btn cims-btn--primary" style="margin: auto; display: block;">Save</button>
+                <button class="cims-btn cims-btn--primary" style="margin: auto; display: block; margin-top: 1rem">Save</button>
+            </form>
             </div>
 
 
@@ -269,12 +479,14 @@
       }];
       return {
         data4: JSON.parse(JSON.stringify(data)),
-        data5: JSON.parse(JSON.stringify(data))
+        data5: JSON.parse(JSON.stringify(data)),
+        data6: [data[0]]
       }
     },
 
     methods: {
       append(data) {
+        console.log(data)
         const newChild = { id: id++, label: 'testtest', children: [] };
         if (!data.children) {
           this.$set(data, 'children', []);

@@ -1,5 +1,24 @@
 .message-preferences {
-    font-size: 14px;
+    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+        margin-top: 1rem;
+        padding: 0 15px;
+        border-left: 1px solid #eff2f6;
+        border-right: 1px solid #eff2f6;
+        flex: 1 0 33%;
+        flex: auto;
+
+        & + & {
+            border-left: none;
+        }
+    }
+
+    &__title {
+        //text-align: center;
+    }
 }
 
 .predefined-filters {
@@ -22,18 +41,88 @@
     margin-bottom: 0.5rem;
 
     &__item {
-
-        & + & {
-            margin-top: 0.5rem;
-        }
+        display: flex;
+        align-items: center;
     }
 
     span {
         display: inline-block;
         padding: 0.25rem 0.15rem 0 0;
     }
+
+    &__name {
+        margin-right: auto;
+    }
 }
 
 .el-tree + * {
     margin-top: 0.5rem;
+}
+
+.static {
+    display: none;
+}
+
+.el-checkbox.is-checked ~ .custom-tree-node .static {
+    display: inline-block;
+}
+
+.custom-tree-node {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    //adding-right: 8px;
+  }
+
+  .new-tree {
+      display: flex;
+
+      & > * {
+          flex: 1;
+      }
+  }
+
+
+.filters-list {
+    margin-left: 15px;
+    
+    ul {
+        padding-left: 15px;
+    }
+
+    span {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .root {
+        & > span::after {
+            content: '\f055';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 10px;
+            color: $primaryColor;
+        }
+
+        &.open > span::after {
+            content: '\f056';
+        }
+
+        & > ul {
+            display: none;
+        }
+
+        &.open > ul {
+            display: block;
+        }
+    }
+}
+
+.new-tree {
+    & > div + div {
+        margin-left: 15px;
+    }
 }

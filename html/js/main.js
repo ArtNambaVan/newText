@@ -193,6 +193,10 @@ $( document ).ready(function() {
             name.prop( 'contenteditable', 'true').focus();
         }
     })
+
+    $('.root span').on('click', function(e) {
+        $(this).parent().toggleClass('open')
+    })
     
     // DON'T COPY CODE BELOW THIS LINE (THIS FOR LOCAL JSTREE)
 

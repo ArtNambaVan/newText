@@ -1853,10 +1853,6 @@
     .modal-body.dialog-iframe-bd {
       overflow: hidden; }
   
-  @media only screen and (min-width: 768px) {
-    .modal-dialog {
-      max-width: none; } }
-  
   .modal-dialog.modal-dialog-sm {
     max-width: 500px; }
   

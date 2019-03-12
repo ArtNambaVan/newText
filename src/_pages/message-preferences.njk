@@ -63,12 +63,14 @@
       }];
       return {
         data4: JSON.parse(JSON.stringify(data)),
-        data5: JSON.parse(JSON.stringify(data))
+        data5: JSON.parse(JSON.stringify(data)),
+        data6: [data[0]]
       }
     },
 
     methods: {
       append(data) {
+        console.log(data)
         const newChild = { id: id++, label: 'testtest', children: [] };
         if (!data.children) {
           this.$set(data, 'children', []);
