@@ -16,7 +16,7 @@
 
         &:checked {
             & ~ .mark-icon::before {
-                content: '\F14A';
+                content: '\f14a';
             }
 
             & ~ .thumbtack {
@@ -31,9 +31,9 @@
         margin-left: 15px;
 
         &:before {
-            content: '\F096';
+            content: '\f0c8';
             display: inline-block;
-            font-family: FontAwesome;
+            font-family: 'Font Awesome 5 Free';
             position: absolute;
             top: -2.7px;
             left: -15px;

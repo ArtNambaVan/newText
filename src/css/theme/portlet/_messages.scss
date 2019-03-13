@@ -329,23 +329,27 @@
         &--url-name {
             &::before {
                 content: "\f015";
-                font-family: FontAwesome;
+                font-family: "Font Awesome 5 Free";
+                font-weight: bold;
             }
         }
 
         &--url-link::before {
-            content: "\f0ac";
-            font-family: FontAwesome;
+            content: "\f0c1";
+            font-family:  "Font Awesome 5 Free";
+            font-weight: bold;
         }
 
         &--time::before {
             content: "\f073";
-            font-family: FontAwesome;
+            font-family:  "Font Awesome 5 Free";
+            //font-weight: bold;
         }
 
         &--views::before {
-            content: "\f0c0";
-            font-family: FontAwesome;
+            content: "\f500";
+            font-family:  "Font Awesome 5 Free";
+            font-weight: bold;
         }
     }
 }

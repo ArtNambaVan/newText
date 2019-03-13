@@ -8,9 +8,9 @@
         padding: 0 15px;
         border-left: 1px solid #eff2f6;
         border-right: 1px solid #eff2f6;
-        flex: 1 0 33%;
-        flex: auto;
-
+        flex: 1 0 50%;
+        max-width: 100%;
+        //flex: auto;
         & + & {
             border-left: none;
         }
@@ -19,20 +19,73 @@
     &__title {
         //text-align: center;
     }
+
+    p {
+        margin: 0;
+    }
+}
+
+.trees-block {
+    display: flex;
+}
+
+.trees-item {
+    flex: 1;
+    overflow: hidden;
+    overflow-x: auto;
+
+    & + & {
+        border-left: 1px solid #eff2f6;
+        margin-left: 0.5rem;
+        padding-left: 0.5rem;
+    }
+
+    .el-tree-node.is-expanded>.el-tree-node__children {
+        overflow: visible
+    }
+}
+
+.cims .predefined-filters {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
 }
 
 .predefined-filters {
-    &__item {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
+    list-style-type: none;
 
+    &__item {
         & + & {
-            border-top: 1px solid $primaryColor;
+            margin-top: 0.5rem;
+        }
+    }
+}
+
+.predefined-filter {
+
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    background-color: transparent;
+    border-radius: .25rem;
+    
+
+    &__item {
+        margin-right: .5em;
+        position: relative;
+
+        & + &::before {
+            content: '>';
+            display: inline-block;
+            padding-right: 0.5em;
         }
     }
 
-    &__title {
+    &__remove {
+        margin-left: 25px;
+    }
 
+    &__text {
+        font-weight: bold;
     }
 }
 
@@ -124,5 +177,14 @@
 .new-tree {
     & > div + div {
         margin-left: 15px;
+    }
+}
+
+.el-button--text {
+    color: $primaryColor;
+
+    &:hover,
+    &:focus {
+        color: lighten($primaryColor,20%);
     }
 }

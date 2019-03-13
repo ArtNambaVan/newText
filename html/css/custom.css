@@ -8423,7 +8423,7 @@ a:hover {
     opacity: 0;
     cursor: pointer; }
     .custom-checkbox input:checked ~ .mark-icon::before {
-      content: '\F14A'; }
+      content: '\f14a'; }
     .custom-checkbox input:checked ~ .thumbtack {
       color: #012b5b; }
   .custom-checkbox .mark-icon {
@@ -8431,9 +8431,9 @@ a:hover {
     display: inline-block;
     margin-left: 15px; }
     .custom-checkbox .mark-icon:before {
-      content: '\F096';
+      content: '\f0c8';
       display: inline-block;
-      font-family: FontAwesome;
+      font-family: 'Font Awesome 5 Free';
       position: absolute;
       top: -2.7px;
       left: -15px;
@@ -9151,16 +9151,19 @@ a:hover {
       text-decoration: none; }
     .message-information .message-information__name--url-name::before {
       content: "\f015";
-      font-family: FontAwesome; }
+      font-family: "Font Awesome 5 Free";
+      font-weight: bold; }
     .message-information .message-information__name--url-link::before {
-      content: "\f0ac";
-      font-family: FontAwesome; }
+      content: "\f0c1";
+      font-family: "Font Awesome 5 Free";
+      font-weight: bold; }
     .message-information .message-information__name--time::before {
       content: "\f073";
-      font-family: FontAwesome; }
+      font-family: "Font Awesome 5 Free"; }
     .message-information .message-information__name--views::before {
-      content: "\f0c0";
-      font-family: FontAwesome; }
+      content: "\f500";
+      font-family: "Font Awesome 5 Free";
+      font-weight: bold; }
 
 .label-success {
   background-color: #e98f18;
@@ -9517,16 +9520,53 @@ a:hover {
     padding: 0 15px;
     border-left: 1px solid #eff2f6;
     border-right: 1px solid #eff2f6;
-    flex: 1 0 33%;
-    flex: auto; }
+    flex: 1 0 50%;
+    max-width: 100%; }
     .message-preferences__item + .message-preferences__item {
       border-left: none; }
+  .message-preferences p {
+    margin: 0; }
 
-.predefined-filters__item {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem; }
+.trees-block {
+  display: flex; }
+
+.trees-item {
+  flex: 1;
+  overflow: hidden;
+  overflow-x: auto; }
+  .trees-item + .trees-item {
+    border-left: 1px solid #eff2f6;
+    margin-left: 0.5rem;
+    padding-left: 0.5rem; }
+  .trees-item .el-tree-node.is-expanded > .el-tree-node__children {
+    overflow: visible; }
+
+.cims .predefined-filters {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem; }
+
+.predefined-filters {
+  list-style-type: none; }
   .predefined-filters__item + .predefined-filters__item {
-    border-top: 1px solid #012b5b; }
+    margin-top: 0.5rem; }
+
+.predefined-filter {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  background-color: transparent;
+  border-radius: .25rem; }
+  .predefined-filter__item {
+    margin-right: .5em;
+    position: relative; }
+    .predefined-filter__item + .predefined-filter__item::before {
+      content: '>';
+      display: inline-block;
+      padding-right: 0.5em; }
+  .predefined-filter__remove {
+    margin-left: 25px; }
+  .predefined-filter__text {
+    font-weight: bold; }
 
 .selected-root {
   margin-top: 0.5rem;
@@ -9584,3 +9624,8 @@ a:hover {
 
 .new-tree > div + div {
   margin-left: 15px; }
+
+.el-button--text {
+  color: #012b5b; }
+  .el-button--text:hover, .el-button--text:focus {
+    color: #025bc0; }
