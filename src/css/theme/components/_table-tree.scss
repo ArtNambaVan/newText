@@ -28,6 +28,7 @@
 
     &__container {
         position: relative;
+        background-color: $colorWhite;
     }
 
     &__item {
@@ -98,12 +99,12 @@
         background-repeat: no-repeat;
         background-position: left 50%;
         background-size: 8px 1px;
-        width: 100%;
+        width: 8px;
         height: 100%;
         position: absolute;
         left: 0;
         top: 0;
-        z-index: -1;
+        z-index: 1;
     }
 
     &__children > &__container {

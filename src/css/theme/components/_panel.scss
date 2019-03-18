@@ -1,6 +1,6 @@
 .panel {
     @include padding(null, 10px, null, 10px);
-    background-color: transparent;
+    background-color: $colorWhite;
     border-color: #000;
     border-radius: 2px;
 

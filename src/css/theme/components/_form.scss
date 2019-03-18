@@ -25,14 +25,6 @@
         }
     }
 
-    // [type="text"]:not(.el-input__inner):not(.form-control),
-    // select {
-    //     padding: 0.2rem;
-    //     height: 25px;
-    //     width: 100%;
-    //     border: 1px solid $primaryColor;
-    //     font-size: 12px;
-    // }
 
     .select-container > select {
         -webkit-appearance: none;
@@ -46,6 +38,7 @@
 
     .select-container {
         position: relative;
+        background-color: $colorWhite;
 
         & > input {
             background-color: transparent;
@@ -60,7 +53,7 @@
             right: 6px;
             top: 8px;
             border: 7px solid transparent;
-            border-top: 10px solid $primaryColor;
+            border-top: 10px solid $colorInputborder;
             // z-index: 1;
         }
 
@@ -71,7 +64,7 @@
             right: 25px;
             height: 25px;
             width: 1px;
-            background-color: $primaryColor;
+            background-color: $colorInputborder;
             // z-index: -1;
         }
 
@@ -121,10 +114,11 @@
     padding: 0.2rem;
     height: 25px;
     width: 100%;
-    border: 1px solid $primaryColor;
+    border: 1px solid $colorInputborder;
     font-size: 12px;
     position: relative;
     z-index: 2;
+    background-color: $colorWhite;
 }
 
 .custom-control .custom-control-input:focus ~ .custom-control-label::before {

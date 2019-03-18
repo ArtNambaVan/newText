@@ -6,10 +6,12 @@
         padding-top: 15px;
         padding-bottom: 25px;
         border-bottom: 1px solid $primaryColor;
-        background-color: $colorWhite;
         position: relative;
         height: 90px;
         z-index: 10;
+        background-color: $colorHeaderBG;
+        color: $colorHeaderText;
+
 
         @media (max-width: 991px) {
             position: fixed;
@@ -27,7 +29,7 @@
         }
 
         &__name {
-            color: $primaryColor;
+            color: $colorLogoText;
             font-size: 1.7rem;
             vertical-align: bottom;
             display: inline-block;
@@ -60,7 +62,7 @@
                 top: 100%;
                 width: 100%;
                 left: 0;
-                background-color: $colorWhite;
+                background-color: $colorHeaderBG;
                 z-index: 20;
                 max-height: calc(100vh - 90px);
                 overflow-y: auto;
@@ -97,14 +99,20 @@
             }
 
             .active {
-                color: rgb(0, 164, 211);
+                color: $colorHeaderActiveText;
             }
         }
 
         &__link {
             display: inline-block;
-            color: $primaryColor;
+            color: currentColor;
             text-transform: uppercase;
+            transition: color 200ms ease-out;
+            text-decoration: none;
+
+            &:hover {
+                color: $colorHeaderActiveText;
+            }
 
             @media (max-width: 991px) {
                 display: block;
@@ -139,8 +147,15 @@
         top: 100% !important;
         width: 100%;
         left: 0;
+        background-color: $colorHeaderBG;
         max-width: none;
         transform: translate(0) !important;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-right: none;
+        border-left: none;
+        margin-top: 0;
+        color: $colorHeaderText;
 
         @media (max-width: 991px) {
             position: static !important;
@@ -177,13 +192,21 @@
     }
 
     &__link {
-        color: $primaryColor;
+        color: currentColor;
         display: inline-block;
+        text-decoration: none;
+        transition: color 200ms ease-out;
+        text-transform: uppercase;
+
+        &:hover {
+            color: $colorHeaderActiveText;
+            text-decoration: none;
+        }
 
         @media (max-width: 991px) {
             display: block;
             padding: 1rem 2rem;
-            color: $primaryColor;
+            //color: $primaryColor;
         }
 
         &.active {

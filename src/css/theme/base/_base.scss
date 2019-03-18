@@ -19,6 +19,8 @@ body {
     font-family: Helvetica, Arial, "Helvetica Neue", sans-serif;
     padding-top: 0;
     flex: 1;
+    background-color: $colorAppBG;
+    color: $colorAppText;
 
     .page-link:focus {
         box-shadow: none;
@@ -65,6 +67,7 @@ body {
 a,
 a:hover {
     color: $primaryColor;
+    color: $colorTextLink;
 }
 
 #wrapper {
