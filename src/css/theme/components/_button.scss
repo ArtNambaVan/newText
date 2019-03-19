@@ -48,12 +48,22 @@
     &--primary {
         color: $colorWhite;
         background-color: $primaryColor;
-        border: 1px solid $primaryColor;
+        border-color: $primaryColor;
+
+        &:hover {
+            background-color: lighten($primaryColor,10% );
+            border-color: lighten($primaryColor,10% );
+        }
+
+        &:active {
+            background-color: darken($primaryColor,2% );
+            border-color: darken($primaryColor,2% );
+        } 
     }
 
     &--default {
         color: $primaryColor;
-        border: 1px solid $primaryColor;
+        border-color: $primaryColor;
 
         &:active {
             color: $colorWhite;

@@ -11,11 +11,9 @@
     background-color: $colorFiltersPanelBG;
 
     @media (max-width: 991px ) {
-        
         position: static;
         z-index: 22;
-        overflow-y: auto;
-        
+        overflow-y: auto; 
     }
 
     &__body {
@@ -25,7 +23,6 @@
         display: none;
 
         @media (max-width: 991px ) {
-            //
             border: none;
         }
     }
@@ -199,7 +196,7 @@
     }
 
     &__title {
-        color: #000;
+        color: $colorAppText;
         text-transform: uppercase;
         letter-spacing: 1px;
     }

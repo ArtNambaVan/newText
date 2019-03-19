@@ -18,14 +18,8 @@
     margin: 1em;
     overflow: hidden;
     position: relative;
-    //flex: auto;
-
-    
-
     transition: transform 0.2s;
-
     border: 1px solid $primaryColor;
-
     display: flex;
     align-items: center;
     flex-flow: column wrap;
@@ -57,7 +51,7 @@
         display: inline-block;
         margin: 0 auto;
         color: #fff;
-        background-color: #012b5b;
+        background-color: $primaryColor;
         padding: 5px 25px;
         text-transform: uppercase;
         white-space: nowrap;

@@ -43,7 +43,25 @@ body {
         margin-bottom: 0;
     }
 
-    
+    .caret {
+        border: none;
+        height: auto;
+        width: auto;
+        margin: 0;
+        
+        &:after {
+            content: '';
+            border-top: 0.3em dashed;
+            display: inline-block;
+            height: 0;
+            margin-left: 4px;
+            vertical-align: middle;
+            width: 0;
+            border-top: 0.3em solid \9;
+            border-left: 0.3em solid transparent;
+            border-right: 0.3em solid transparent;
+        }
+    }
 
     main {
         flex-grow: 1;
