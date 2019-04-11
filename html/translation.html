@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>translation</title>
+    <link rel="stylesheet" href="css/libs/clay.css"> 
+
+    <link rel="stylesheet" href="css/libs/main.css">
+ <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">      
+    <link rel="stylesheet" href="css/libs/treeJS.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/libs.js"></script>
+
+    
+
+</head>
+
+<body>
+
+    <div class="cims" id="wrapper">
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="main-nav navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="main-logo">
+                        <img class="main-logo__img" src="images/logoCims.png" alt="CIMS logo">
+                        <span class="main-logo__name">CIMS</span>
+                    </div>
+                    <div class="navbar-collapse collapse main-nav__navigation" id="navbarSupportedContent">
+                        <div class="main-nav__section main-nav__section--left">
+                            
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="organisation-selection.html">Home</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="index.html">Messages</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="main-nav__section main-nav__section--right">
+
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="message-editor.html">New Message</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <div class="header-dropdown">
+                                        <span data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle" data-display="static">
+                                            <a data-cq-component="link" href="#" target="_self" class="main-nav__link caret active">Administrator</a>
+                                        </span>
+
+                                        <div class="header-dropdown__inner dropdown-menu" role="menu">
+                                            <ul class="header-submenu">
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="categories-editor.html">Categories</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="ressource-editor.html">Resources</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link active" href="organisation-settings.html">Organisation Settings</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="translation.html">Translation</a>
+                                                    </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link" href="#">Sign Out</a>
+                                </li>
+                            </ul>
+                        
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+
+            <div class="container">
+                <div class="translation">
+                    <div class="translation__container">
+                        <h2>Translation</h2>
+                        <div class="translation__item">
+                            <span>Translate language</span>
+                            <div class="el-select"><!----><div class="el-input el-input--suffix"><!----><input type="text" readonly="readonly" autocomplete="off" placeholder="Select" class="el-input__inner"><!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!----><!----><!----></span><!----></span><!----></div></div>
+                        </div>
+                        <div class="translation__item">
+                            <span>Static text</span>
+                            <div role="switch" class="el-switch is-checked" aria-checked="true"><input type="checkbox" name="" true-value="true" class="el-switch__input"><!----><span class="el-switch__core" style="width: 40px;"></span><!----></div>
+                            <span>Text for Cat/Res</span>
+                        </div>
+                        <button class="cims-btn cims-btn--primary">Save</button>
+                    </div>
+                    
+
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Text_Key</th>
+                                <th>English</th>
+                                <th>Translate language</th>
+                                <th>Key Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><i class="fas fa-trash-alt"></i></td>
+                            </tr>
+                            <tr>
+                                <td>2018-07-10 14:06:55</td>
+                                <td>Vitor Bassi</td>
+                                <td>Message update</td>
+                                <td>Message update</td>
+                                <td><i class="fas fa-trash-alt"></i></td>
+                            </tr>
+                            <tr>
+                                <td>2018-07-10 14:08:58</td>
+                                <td>Vitor Bassi</td>
+                                <td>Message update</td>
+                                <td>Sed ut perspiciatis, unde omnis iste</td>
+                                <td><i class="fas fa-trash-alt"></i></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>New user</td>
+                                <td>
+                                    <div class="select-container">
+                                        <select class="cims-select">
+                                            <option>Open</option>
+                                            <option>In Progress</option>
+                                            <option>Resolved</option>
+                                            <option>Reopened</option>
+                                            <option>Closed</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="text" class="cims-input">
+                                    <button class="cims-btn cims-btn--primary">Save</button>
+                                </td>
+                                <td><i class="fas fa-trash-alt"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+
+
+        </main>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="footer__copyright">© Copyright 2018 Consline AG</p>
+            </div>
+        </footer>
+        
+    </div>
+
+
+    <!-- SCRIPTS -->
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

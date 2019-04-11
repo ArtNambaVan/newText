@@ -32,6 +32,7 @@
 @import "theme/components/reflex";
 @import "theme/components/table-tree";
 @import "theme/components/collapse-link";
+@import "theme/components/loader";
 
 @import "theme/portlet/messages";
 @import "theme/portlet/organization-selection";
@@ -40,3 +41,6 @@
 @import "theme/portlet/categorie-editor";
 @import "theme/portlet/organisation-settings";
 @import "theme/portlet/message-preferences";
+@import "theme/portlet/translation";
+
+@import "theme/portlet/index";

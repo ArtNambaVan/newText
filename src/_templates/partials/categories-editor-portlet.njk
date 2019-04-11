@@ -88,6 +88,13 @@
                                                                     TOP</label>
                                                             </div>
 
+                                                            <div class="custom-control custom-control-inline custom-checkbox">
+                                                                <label class="custom-control-label">
+                                                                    <input type="checkbox" class="custom-control-input required" id="personalDataTermsCheckbox" value="true" required="">
+                                                                    <span class="test"></span>
+                                                                TOP</label>
+                                                            </div>
+
 
                                                         </div>
                                                         <div class="table-tree__controls">
@@ -100,6 +107,8 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="loader loader-center"></div>
                             </div>
 
                             <div class="table-tree__wrapper">
@@ -186,3 +195,105 @@
                         </div>
                     </div>
                 </div>
+
+
+
+<div id="table-tree" class="table-tree">
+    <div class="table-tree__wrapper">
+            <div role="tree" class="el-tree filter-tree el-tree--highlight-current">
+                <div role="treeitem" tabindex="-1" aria-disabled="true" draggable="false" class="el-tree-node is-current">
+                    <div class="el-tree-node__content" style="padding-left: 0px;">
+                        <span class="el-tree-node__expand-icon el-icon-caret-right"></span>
+                        <span class="el-tree__wrapper"><!----> 
+                            <div class="table-tree__item active">
+                                <div class="table-tree__name">
+                                    <input type="text">
+                                </div>
+                                <div class="table-tree__category">
+                                    <span>Category type:</span> 
+                                    <div role="radiogroup" class="el-radio-group">
+                                        <div class="">
+                                            <label role="radio" aria-checked="true" tabindex="0" class="el-radio  is-checked">
+                                            <span class="el-radio__input is-checked"><span class="el-radio__inner"></span>
+                                            <input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="true"></span>
+                                            <span class="el-radio__label">Rating<!----></span></label>
+                                        </div>
+                                        <div class="">
+                                            <label role="radio" tabindex="-1" class="el-radio ">
+                                            <span class="el-radio__input"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="false"></span>
+                                            <span class="el-radio__label">Tagging<!----></span></label>
+                                        </div>
+                                    </div> 
+                                        <div><label role="checkbox" class="el-checkbox  required">
+                                            <span aria-checked="mixed" class="el-checkbox__input is-checked"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="true" class="el-checkbox__original" value=""></span>
+                                            <span class="el-checkbox__label">TOP<!----></span></label>
+                                        </div>
+                                </div> 
+                                        <div class="table-tree__controls"><button class="cims-btn cims-btn--primary">Save</button> 
+                                        <button class="cims-btn cims-btn--default">Cancel</button>
+                                        </div>
+                                </div>
+                        </span>
+                    </div>
+                </div><!---->
+
+                <div class="el-tree__drop-indicator" style="display: none;"></div>
+            </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+ <div id="table-tree" class="table-tree">
+    <div class="table-tree__wrapper">
+            <div role="tree" class="el-tree filter-tree el-tree--highlight-current">
+                <div role="treeitem" tabindex="-1" aria-disabled="true" draggable="false" class="el-tree-node is-current">
+                    <div class="el-tree-node__content" style="padding-left: 0px;">
+                        <span class="el-tree-node__expand-icon el-icon-caret-right"></span>
+                        <span class="el-tree__wrapper"><!----> 
+                            <div class="table-tree__item active">
+                                <div class="table-tree__name">
+                                    <input type="text">
+                                </div>
+                                <div class="table-tree__category">
+                                    <span>Category type:</span> 
+                                    <div role="radiogroup" class="el-radio-group table-tree__category">
+                                        <div class="custom-control custom-control-inline custom-radio-circle">
+                                            <label role="radio" aria-checked="true" tabindex="0" class="el-radio custom-control-input radio-item is-checked">
+                                            <span class="el-radio__input is-checked"><span class="el-radio__inner"></span>
+                                            <input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="true"></span>
+                                            <span class="el-radio__label">Rating<!----></span></label>
+                                        </div>
+                                        <div class="custom-control custom-control-inline custom-radio-circle">
+                                            <label role="radio" tabindex="-1" class="el-radio custom-control-input radio-item">
+                                            <span class="el-radio__input"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="false"></span>
+                                            <span class="el-radio__label">Tagging<!----></span></label>
+                                        </div>
+                                    </div> 
+                                        <div><label role="checkbox" class="el-checkbox custom-control custom-control-inline custom-checkbox custom-control-input required">
+                                            <span aria-checked="mixed" class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="true" class="el-checkbox__original" value=""></span>
+                                            <span class="el-checkbox__label">TOP<!----></span></label></div>
+                                </div> 
+                                        <div class="table-tree__controls"><button class="cims-btn cims-btn--primary">Save</button> 
+                                        <button class="cims-btn cims-btn--default">Cancel</button>
+                                        </div>
+                                </div>
+                        </span>
+                    </div>
+                </div><!---->
+
+                <div class="el-tree__drop-indicator" style="display: none;"></div>
+            </div>
+    </div>
+</div>
+
+
+                
+            

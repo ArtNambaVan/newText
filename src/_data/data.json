@@ -26,6 +26,11 @@
             "title" : "Organisation Settings",
             "navActiveItem" : 2,
             "link" : "organisation-settings.html"
+        },
+        {
+            "title" : "Translation",
+            "navActiveItem" : 3,
+            "link" : "translation.html"
         }
     ]
 }
