@@ -1,14 +1,265 @@
 {% set title = "translation" %}
 {% block styles %} <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">  {% endblock styles %}
-{% set pageIdSub = 2 %}
-{% set admin = true %}
 
+{% block scriptsHead %} 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+{% endblock scriptsHead %}
+{% set pageIdSub = 3 %}
+{% set admin = true %}
 {% extends "layout.njk" %}
 
 {% block content %}
-            <div class="container">
+            <div class="container-fluid" id="app">
                 {% include "partials/translation-portlet.njk" %}
 
             </div>
 
 {% endblock content %}
+
+{% block scripts %} 
+    <script type="text/babel">
+        var Main = {
+          data() {
+            return {
+              options: [{
+                value: 'Option1',
+                label: 'Aston-Martin-CIMS'
+              }, {
+                value: 'Option2',
+                label: 'Audi-DC-CIMS'
+              }, {
+                value: 'Option3',
+                label: 'Auto-CIMS'
+              }, {
+                value: 'Option4',
+                label: 'Automotive'
+              }, {
+                value: 'Option5',
+                label: 'Bosch-CIMS'
+              }],
+              value: '',
+              value3: true,
+              tableData:  [{
+                text_key: "diagram_percentage",
+                eng_value: "Column Chart (Percentage)",
+                eng_input: "Column Chart (Percentage)",
+                ger_input: "Säulendiagramm (Prozentual)",
+                chi_input: "百分比图表",
+                fra_input: "Graphique en pourcentage",
+                ita_input: "Diagramma percentali",
+                por_input: "Gráfico em porcentagem",
+                rus_input: "Процентная диаграмма",
+                spa_input: "grafico de porcentaje"
+              }, {
+                text_key: "default_filter_label",
+                eng_value: "(No stored filter)",
+                eng_input: "(No stored filter)",
+                ger_input: "(Kein gespeicherter Filter)",
+                chi_input: "(默认设置)",
+                fra_input: "(défaut)",
+                ita_input: "(standard)",
+                por_input: "(standard)",
+                rus_input: "(Стандарт)",
+                spa_input: "(Estándar)"
+              }, {
+                text_key: "ticker_worldwide_shorttext",
+                eng_value: "Access and analysis according to the specific demand for information and benchmark of individual companies or departments.",
+                eng_input: "Access and analysis according to the specific demand for information and benchmark of individual companies or departments.",
+                ger_input: "Zugriff und Analyse nach dem spezifischen Informations- und Benchmark bedarf einzelner Unternehmen oder Fachbereiche.",
+                chi_input: "在您指定的领域，根据您的需求，为您提供量身定制的信息收集及数据分析服务。",
+                fra_input: "Accès et analyse selon les requêtes d'informations et de benchmarks de sociétés ou de départements particuliers",
+                ita_input: "Accesso e analisi in riferimento alla domanda specifica per informazioni e benchmark di singole imprese o dipartimenti",
+                por_input: "Acesso a informação detalhada e análises precisas de Benchmark, de cada empresa ou segmento.",
+                rus_input: "Доступ и анализ информации и бенчмарка для компаний или отделов в соответствии с их индивидуальными требованиями",
+                spa_input: "Acceso a información oportuna y análisis de benchmark precisos; ya sea de compañías o departamentos específicos."
+              }, {
+                text_key: "messages_add_newgroup",
+                eng_value: "Add new group",
+                eng_input: "Add new group",
+                ger_input: "Neue Gruppe hinzufügen",
+                chi_input: "添加新分组",
+                fra_input: "Ajouter nouveau groupe",
+                ita_input: "Aggiungi nuovo gruppo",
+                por_input: "Adicionar novo grupo",
+                rus_input: "Добавить новую группу",
+                spa_input: "Añadir nuevo grupo"
+              },{
+                text_key: "",
+                eng_value: "",
+                eng_input: "",
+                ger_input: "",
+                chi_input: "",
+                fra_input: "",
+                ita_input: "",
+                por_input: "",
+                rus_input: "",
+                spa_input: ""
+              }],
+
+              tableData2:  [{
+                text_key: "category_id5285",
+                eng_value: "1.0",
+                eng_input: "1.0",
+                ger_input: "1.0",
+                chi_input: "1.0",
+                fra_input: "1.0",
+                ita_input: "1.0",
+                por_input: "1.0",
+                rus_input: "1.0",
+                spa_input: "1.0"
+              }, {
+                text_key: "category_id9353",
+                eng_value: "1.0 TSI",
+                eng_input: "1.0 TSI",
+                ger_input: "1.0 TSI",
+                chi_input: "1.0 TSI",
+                fra_input: "1.0 TSI",
+                ita_input: "1.0 TSI",
+                por_input: "1.0 TSI",
+                rus_input: "1.0 TSI",
+                spa_input: "1.0 TSI"
+              }, {
+                text_key: "category_id5582",
+                eng_value: "1.2 TDI",
+                eng_input: "1.2 TDI",
+                ger_input: "1.2 TDI",
+                chi_input: "1.2 TDI",
+                fra_input: "1.2 TDI",
+                ita_input: "1.2 TDI",
+                por_input: "1.2 TDI",
+                rus_input: "1.2 TDI",
+                spa_input: "1.2 TDI"
+              }, {
+                text_key: "category_id2263",
+                eng_value: "1.2 TSI",
+                eng_input: "1.2 TSI",
+                ger_input: "1.2 TSI",
+                chi_input: "1.2 TSI",
+                fra_input: "1.2 TSI",
+                ita_input: "1.2 TSI",
+                por_input: "1.2 TSI",
+                rus_input: "1.2 TSI",
+                spa_input: "1.2 TSI"
+              }],
+
+              tableData3:  [{
+                text_key: "category_id102",
+                eng_value: "Allgemeine Nachrichten",
+                eng_input: "Allgemeine Nachrichten",
+                ger_input: "",
+                chi_input: "",
+                fra_input: "",
+                ita_input: "",
+                por_input: "",
+                rus_input: "",
+                spa_input: ""
+              }, {
+                text_key: "category_id103",
+                eng_value: "Cash & Carry",
+                eng_input: "Cash & Carry",
+                ger_input: "",
+                chi_input: "",
+                fra_input: "",
+                ita_input: "",
+                por_input: "",
+                rus_input: "",
+                spa_input: ""
+              }, {
+                text_key: "category_id104",
+                eng_value: "Europa",
+                eng_input: "Europa",
+                ger_input: "",
+                chi_input: "",
+                fra_input: "",
+                ita_input: "",
+                por_input: "",
+                rus_input: "",
+                spa_input: ""
+              }, {
+                text_key: "category_id101",
+                eng_value: "Indien",
+                eng_input: "Indien",
+                ger_input: "",
+                chi_input: "",
+                fra_input: "",
+                ita_input: "",
+                por_input: "",
+                rus_input: "",
+                spa_input: ""
+              }],
+
+              tableData4:  [{
+                text_key: "tooltip_id1",
+                eng_value: "Hello",
+                eng_input: "Hello",
+                ger_input: "qweqwe",
+                chi_input: "dafdsfa",
+                fra_input: "zxcvzxcv",
+                ita_input: "qerqwer",
+                por_input: "fasdfa",
+                rus_input: "vxcvxcv",
+                spa_input: "sdgsdgsg"
+              }, {
+                text_key: "tooltip_id2",
+                eng_value: "Lorem ipsum dolor sit amet",
+                eng_input: "Lorem ipsum dolor sit amet",
+                ger_input: "Lorem ipsum dolor sit amet",
+                chi_input: "Lorem ipsum dolor sit amet",
+                fra_input: "Lorem ipsum dolor sit amet",
+                ita_input: "Lorem ipsum dolor sit amet",
+                por_input: "Lorem ipsum dolor sit amet",
+                rus_input: "Lorem ipsum dolor sit amet",
+                spa_input: "Lorem ipsum dolor sit amet"
+              }, {
+                text_key: "tooltip_id3",
+                eng_value: "Sed ut perspiciatis unde omnis",
+                eng_input: "Sed ut perspiciatis unde omnis",
+                ger_input: "Sed ut perspiciatis unde omnis",
+                chi_input: "Sed ut perspiciatis unde omnis",
+                fra_input: "Sed ut perspiciatis unde omnis",
+                ita_input: "Sed ut perspiciatis unde omnis",
+                por_input: "Sed ut perspiciatis unde omnis",
+                rus_input: "Sed ut perspiciatis unde omnis",
+                spa_input: "Sed ut perspiciatis unde omnis"
+              }, {
+                text_key: "tooltip_id4",
+                eng_value: "But I must explain to you how all this mistaken idea",
+                eng_input: "But I must explain to you how all this mistaken idea",
+                ger_input: "But I must explain to you how all this mistaken idea",
+                chi_input: "But I must explain to you how all this mistaken idea",
+                fra_input: "But I must explain to you how all this mistaken idea",
+                ita_input: "But I must explain to you how all this mistaken idea",
+                por_input: "But I must explain to you how all this mistaken idea",
+                rus_input: "But I must explain to you how all this mistaken idea",
+                spa_input: "But I must explain to you how all this mistaken idea"
+              }, {
+                text_key: "",
+                eng_value: "",
+                eng_input: "",
+                ger_input: "",
+                chi_input: "",
+                fra_input: "",
+                ita_input: "",
+                por_input: "",
+                rus_input: "",
+                spa_input: ""
+              }]
+            }
+          },
+          methods: {
+            submitUpload() {
+              this.$refs.upload.submit();
+            },
+            test(s) {
+              console.log(s)
+            }
+          }
+        }
+      var Ctor = Vue.extend(Main)
+      new Ctor().$mount('#app')
+
+</script>
+{% endblock %}

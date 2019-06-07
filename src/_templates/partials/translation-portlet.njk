@@ -1,73 +1,499 @@
                 <div class="translation">
                     <div class="translation__container">
                         <h2>Translation</h2>
-                        <div class="translation__item">
-                            <span>Translate language</span>
-                            <div class="el-select"><!----><div class="el-input el-input--suffix"><!----><input type="text" readonly="readonly" autocomplete="off" placeholder="Select" class="el-input__inner"><!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!----><!----><!----></span><!----></span><!----></div></div>
-                        </div>
-                        <div class="translation__item">
-                            <span>Static text</span>
-                            <div role="switch" class="el-switch is-checked" aria-checked="true"><input type="checkbox" name="" true-value="true" class="el-switch__input"><!----><span class="el-switch__core" style="width: 40px;"></span><!----></div>
-                            <span>Text for Cat/Res</span>
-                        </div>
-                        <button class="cims-btn cims-btn--primary">Save</button>
                     </div>
+
+                    <template>
+                        <el-tabs type="card" @tab-click="handleClick">
+                            <el-tab-pane label="Static text">
+                                <el-table
+                                :data="tableData"
+                                style="width: 100%"
+                                :row-class-name="tableRowClassName">
+                                    <el-table-column
+                                        prop="text_key"
+                                        label="Text-Key"
+                                        width="200"
+                                        >
+                                        <span v-if="scope.row.text_key != ''" slot-scope="scope">
+                                            {% raw %} {{scope.row.text_key}} {% endraw %} 
+                                        </span>
+                                        <template v-else slot-scope="scope">
+                                            <el-input v-model="scope.row.text_key"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="eng_value"
+                                        label="English"
+                                        width="270">
+                                        <span v-if="scope.row.eng_value != ''" slot-scope="scope">
+                                            {% raw %} {{scope.row.eng_value}} {% endraw %} 
+                                        </span>
+                                        <template v-else slot-scope="scope">
+                                            <el-input v-model="scope.row.eng_value"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="eng_input"
+                                        label="English">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.eng_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="ger-input"
+                                        label="German">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.ger_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="chi-input"
+                                        label="Chinese">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.chi_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="fra-input"
+                                        label="French">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.fra_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="ita-input"
+                                        label="Italian">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.ita_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="por-input"
+                                        label="Portoguese">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.por_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="rus-input"
+                                        label="Russian">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.rus_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="spa-input"
+                                        label="Spanish">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.spa_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="spa-input"
+                                        label="Key Description">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.key_desc"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="spa-input"
+                                        label=""
+                                        width="25px">
+                                        <template slot-scope="scope">
+                                            <span class="delete"><i class="fas fa-trash-alt"></i></span>
+                                        </template>
+                                    </el-table-column>
+                                </el-table>
+
+                                <button class="cims-btn cims-btn--primary">Save</button>
+                            </el-tab-pane>
+                            <el-tab-pane label="Categories">
+                                <div class="translation__container">
+                                    <div class="translation__item">
+                                        <span>Organization</span>
+                                        <template>
+                                        <el-select v-model="value" placeholder="Select">
+                                            <el-option
+                                            v-for="item in options"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                            </el-option>
+                                        </el-select>
+                                        </template>
+                                    </div>
+                                    <div class="translation__item">
+                                        <p>Upload Manual</p>
+                                        <el-upload
+                                            class="upload-demo"
+                                            ref="upload"
+                                            action="https://jsonplaceholder.typicode.com/posts/"
+                                            :auto-upload="false">
+            
+                                                <el-button slot="trigger" class="cims-btn cims-btn--default">Choose file</el-button>
+                                                <el-button style="margin-left: auto;" @click="submitUpload" class="cims-btn cims-btn--primary">Upload</el-button>
+
+                                            <div class="el-upload__tip" slot="tip">jpg/png files with a size less than 500kb</div>
+                                        </el-upload>
+                                    </div>
+                                </div>
+                                <el-table
+                                :data="tableData2"
+                                style="width: 100%"
+                                :row-class-name="tableRowClassName">
+                                    <el-table-column
+                                        prop="text_key"
+                                        label="Text-Key"
+                                        width="200"
+                                        >
+                                        <span v-if="scope.row.text_key != ''" slot-scope="scope">
+                                            {% raw %} {{scope.row.text_key}} {% endraw %} 
+                                        </span>
+                                        <template v-else slot-scope="scope">
+                                            <el-input v-model="scope.row.text_key"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="eng_value"
+                                        label="English"
+                                        width="270">
+                                        <span v-if="scope.row.eng_value != ''" slot-scope="scope">
+                                            {% raw %} {{scope.row.eng_value}} {% endraw %} 
+                                        </span>
+                                        <template v-else slot-scope="scope">
+                                            <el-input v-model="scope.row.eng_value"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="eng_input"
+                                        label="English">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.eng_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="ger-input"
+                                        label="German">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.ger_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="chi-input"
+                                        label="Chinese">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.chi_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="fra-input"
+                                        label="French">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.fra_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="ita-input"
+                                        label="Italian">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.ita_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="por-input"
+                                        label="Portoguese">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.por_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="rus-input"
+                                        label="Russian">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.rus_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="spa-input"
+                                        label="Spanish">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.spa_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="spa-input"
+                                        label="Key Description">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.key_desc"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="spa-input"
+                                        label=""
+                                        width="25px">
+                                        <template slot-scope="scope">
+                                            <span class="delete"><i class="fas fa-trash-alt"></i></span>
+                                        </template>
+                                    </el-table-column>
+                                </el-table>
+
+                                <button class="cims-btn cims-btn--primary">Save</button>
+                            </el-tab-pane>
+                            <el-tab-pane label="Sources">
+                                <div class="translation__container">
+                                    <div class="translation__item">
+                                        <span>Organization</span>
+                                        <template>
+                                        <el-select v-model="value" placeholder="Select">
+                                            <el-option
+                                            v-for="item in options"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                            </el-option>
+                                        </el-select>
+                                        </template>
+                                    </div>
+                                    <div class="translation__item">
+                                        <p>Upload Manual</p>
+                                        <el-upload
+                                            class="upload-demo"
+                                            ref="upload"
+                                            action="https://jsonplaceholder.typicode.com/posts/"
+                                            :auto-upload="false">
+            
+                                                <el-button slot="trigger" class="cims-btn cims-btn--default">Choose file</el-button>
+                                                <el-button style="margin-left: auto;" @click="submitUpload" class="cims-btn cims-btn--primary">Upload</el-button>
+
+                                            <div class="el-upload__tip" slot="tip">jpg/png files with a size less than 500kb</div>
+                                        </el-upload>
+                                    </div>
+                                </div>
+                                <el-table
+                                :data="tableData3"
+                                style="width: 100%"
+                                :row-class-name="tableRowClassName">
+                                    <el-table-column
+                                        prop="text_key"
+                                        label="Text-Key"
+                                        width="200"
+                                        >
+                                        <span v-if="scope.row.text_key != ''" slot-scope="scope">
+                                            {% raw %} {{scope.row.text_key}} {% endraw %} 
+                                        </span>
+                                        <template v-else slot-scope="scope">
+                                            <el-input v-model="scope.row.text_key"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="eng_value"
+                                        label="English"
+                                        width="270">
+                                        <span v-if="scope.row.eng_value != ''" slot-scope="scope">
+                                            {% raw %} {{scope.row.eng_value}} {% endraw %} 
+                                        </span>
+                                        <template v-else slot-scope="scope">
+                                            <el-input v-model="scope.row.eng_value"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="eng_input"
+                                        label="English">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.eng_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="ger-input"
+                                        label="German">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.ger_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="chi-input"
+                                        label="Chinese">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.chi_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="fra-input"
+                                        label="French">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.fra_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="ita-input"
+                                        label="Italian">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.ita_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="por-input"
+                                        label="Portoguese">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.por_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="rus-input"
+                                        label="Russian">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.rus_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="spa-input"
+                                        label="Spanish">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.spa_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="spa-input"
+                                        label="Key Description">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.key_desc"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="spa-input"
+                                        label=""
+                                        width="25px">
+                                        <template slot-scope="scope">
+                                            <span class="delete"><i class="fas fa-trash-alt"></i></span>
+                                        </template>
+                                    </el-table-column>
+                                </el-table>
+
+                                <button class="cims-btn cims-btn--primary">Save</button>
+                            </el-tab-pane>
+                            <el-tab-pane label="Tooltips">
+                                <div class="translation__container">
+                                    <div class="translation__item">
+                                        <span>Organization</span>
+                                        <template>
+                                        <el-select v-model="value" placeholder="Select">
+                                            <el-option
+                                            v-for="item in options"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                            </el-option>
+                                        </el-select>
+                                        </template>
+                                    </div>
+                                </div>
+                                <el-table
+                                :data="tableData4"
+                                style="width: 100%"
+                                :row-class-name="tableRowClassName">
+                                    <el-table-column
+                                        prop="text_key"
+                                        label="Text-Key"
+                                        width="200"
+                                        >
+                                        <span v-if="scope.row.text_key != ''" slot-scope="scope">
+                                            {% raw %} {{scope.row.text_key}} {% endraw %} 
+                                        </span>
+                                        <template v-else slot-scope="scope">
+                                            <el-input v-model="scope.row.text_key"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="eng_value"
+                                        label="English"
+                                        width="270">
+                                        <span v-if="scope.row.eng_value != ''" slot-scope="scope">
+                                            {% raw %} {{scope.row.eng_value}} {% endraw %} 
+                                        </span>
+                                        <template v-else slot-scope="scope">
+                                            <el-input v-model="scope.row.eng_value"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="eng_input"
+                                        label="English">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.eng_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="ger-input"
+                                        label="German">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.ger_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="chi-input"
+                                        label="Chinese">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.chi_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="fra-input"
+                                        label="French">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.fra_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="ita-input"
+                                        label="Italian">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.ita_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="por-input"
+                                        label="Portoguese">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.por_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="rus-input"
+                                        label="Russian">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.rus_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="spa-input"
+                                        label="Spanish">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.spa_input"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="spa-input"
+                                        label="Key Description">
+                                        <template slot-scope="scope">
+                                            <el-input v-model="scope.row.key_desc"></el-input>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="spa-input"
+                                        label=""
+                                        width="25px">
+                                        <template slot-scope="scope">
+                                            <span class="delete"><i class="fas fa-trash-alt"></i></span>
+                                        </template>
+                                    </el-table-column>
+                                </el-table>
+
+                                <button class="cims-btn cims-btn--primary">Save</button>
+                            </el-tab-pane>
+                        </el-tabs>
+                    </template>
                     
 
 
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Text_Key</th>
-                                <th>English</th>
-                                <th>Translate language</th>
-                                <th>Key Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><i class="fas fa-trash-alt"></i></td>
-                            </tr>
-                            <tr>
-                                <td>2018-07-10 14:06:55</td>
-                                <td>Vitor Bassi</td>
-                                <td>Message update</td>
-                                <td>Message update</td>
-                                <td><i class="fas fa-trash-alt"></i></td>
-                            </tr>
-                            <tr>
-                                <td>2018-07-10 14:08:58</td>
-                                <td>Vitor Bassi</td>
-                                <td>Message update</td>
-                                <td>Sed ut perspiciatis, unde omnis iste</td>
-                                <td><i class="fas fa-trash-alt"></i></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>New user</td>
-                                <td>
-                                    <div class="select-container">
-                                        <select class="cims-select">
-                                            <option>Open</option>
-                                            <option>In Progress</option>
-                                            <option>Resolved</option>
-                                            <option>Reopened</option>
-                                            <option>Closed</option>
-                                        </select>
-                                    </div>
-                                </td>
-                                <td>
-                                    <input type="text" class="cims-input">
-                                    <button class="cims-btn cims-btn--primary">Save</button>
-                                </td>
-                                <td><i class="fas fa-trash-alt"></i></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-
+                    
                 </div>

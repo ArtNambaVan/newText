@@ -1,0 +1,162 @@
+.el-radio-button__inner {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+.slider-range-views {
+    display: flex;
+    justify-content: space-between;
+}
+
+.el-range-editor.el-input__inner,
+.el-date-editor.el-input,
+.el-date-editor .el-input__inner {
+    width: 100%;
+    height: 25px;
+    background-color: transparent;
+    border-color: $primaryColor;
+    border-radius: 0;
+    padding: 0.2rem;
+}
+
+.el-date-editor {
+    cursor: pointer;
+}
+
+.select-container--icon-right {
+    .el-icon-date {
+        order: 5;
+        margin-left: auto;
+        margin-right: 14px;
+        color: #333;
+    }
+}
+
+.select-container {
+    .el-select {
+        display: block;
+    }
+
+    .el-input__inner {
+        width: 100%;
+        height: 25px;
+        background-color: transparent;
+        border-radius: 0;
+        border-color: $primaryColor;
+        padding: 0.2rem;
+        font-size: 12px;
+    }
+
+    .el-input__suffix-inner {
+        display: none;
+    }
+}
+
+.input-container {
+    .el-input__inner {
+        height: 25px;
+        line-height: 25px;
+        font-size: 12px;
+        padding: 0.2rem;
+        border-color: $primaryColor;
+        border-radius: 0;
+    }
+}
+
+.el-date-editor .el-range-input {
+    width: 35%;
+    font-size: 12px;
+}
+
+.el-date-editor .el-range__icon,
+.el-date-editor .el-input__icon,
+.el-date-editor .el-range-separator,
+.el-date-editor .el-range__close-icon {
+    line-height: 18px;
+}
+
+.el-date-range-picker {
+    width: 450px;
+}
+
+.el-date-range-picker.has-sidebar {
+    width: 575px;
+
+    @media (max-width: 575px) {
+        width: 320px;
+    }
+}
+
+.el-date-range-picker__content {
+    padding: 9px;
+}
+
+.el-date-range-picker .el-picker-panel__body {
+    min-width: auto;
+
+    @media (max-width: 575px) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.el-date-range-picker__content.is-right .el-date-range-picker__header div {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.el-date-range-picker__content {
+    @media (max-width: 575px) {
+        width: 100%;
+    }
+}
+
+.el-month-table td {
+    text-align: center;
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+.el-month-table td div {
+    padding: 6px 0;
+}
+
+.el-month-table td.start-date div {
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+
+.el-month-table td.end-date div {
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+.el-month-table td.in-range div, .el-month-table td.in-range div:hover {
+    background-color: #f2f6fc;
+}
+
+.el-month-table td.end-date .cell, 
+.el-month-table td.start-date .cell {
+    border-radius: 18px;
+    background-color: $primaryColor;
+    color: #fff;
+}
+
+.el-year-table td .cell {
+    border-radius: 18px;
+}
+
+.el-year-table td .cell:hover {
+    background-color: #f2f6fc;
+}
+
+.el-year-table td.current:not(.disabled) .cell {
+    background-color: $primaryColor;
+    color: $colorWhite;
+}
+
+@media (max-width: 575px) {
+    .el-date-range-picker {
+        width: 320px;
+    }
+}

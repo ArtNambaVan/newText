@@ -73,6 +73,9 @@
                                                     <li class="header-submenu__item">
                                                         <a class="header-submenu__link " href="translation.html">Translation</a>
                                                     </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="rules.html">Rules</a>
+                                                    </li>
 
                                             </ul>
                                         </div>
@@ -134,7 +137,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-1">
-                                                    
+                                                    <div class="col-1">
+                                                        <div class="open-icon" aria-expanded="true" v-on:click="openSavedFiltersList">
+                                                            <i class="fas fa-cog"></i>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -779,7 +786,7 @@
                                                         <input type="text" class="cims-input filter-category__control disabled" placeholder="Search title or message">
                                                     </div>
                                                     <div class="col-1">
-                                                        <div class="open-jstree" class="tree-heading">
+                                                        <div class="open-icon" class="tree-heading">
                                                             <i class="fas fa-folder"></i>
                                                         </div>
                                                     </div>
@@ -2087,6 +2094,7 @@
                                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                
 
                                                 <div class="message-item__translation">
                                                     <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
@@ -2448,7 +2456,12 @@
                                                         History
                                                     </a>
                                                 </li>
-                                                
+                                                <li class="message-information__item">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox" name="test"/>
+                                                        <span>Marked</span>
+                                                    </label>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>

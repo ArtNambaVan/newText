@@ -1,5 +1,84 @@
+.translation {
+    font-size: 14px;
+
+    .cims-input {
+        max-width: 250px;
+        min-width: 150px;
+    }
+
+    .el-switch {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+.translation__container {
+    max-width: 500px;
+    padding-left: 100px;
+}
+
 .translation__item {
-    span {
-        padding: 5px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & > span {
+        margin-right: 2rem;
+    }
+}
+
+.table-striped {
+    tbody tr:nth-of-type(odd) td,
+    .table-striped tbody tr:nth-of-type(odd) th {
+        background-color: $secondaryColor;
+    }
+}
+
+.delete {
+    cursor: pointer;
+
+    &:hover {
+        color: $thirdlyColor;
+    }
+}
+
+.upload-demo {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    .el-upload__tip,
+    .el-upload-list {
+        width: 100%;
+    }
+}
+
+.el-table {
+    font-size: 12px;
+    margin-bottom: 1rem;
+
+    .el-input__inner {
+        padding: 0.2rem;
+        height: 25px;
+        width: 100%;
+        border: 1px solid #012b5b;
+        font-size: 12px;
+        position: relative;
+        z-index: 2;
+        background-color: #fff;
+        -webkit-transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    td {
+        padding: 5px 0;
+    }
+
+    .cell {
+        padding-right: 4px;
+        padding-left: 4px;
     }
 }

@@ -1,0 +1,122 @@
+
+                <div class="assignment-rule">
+                    <div class="assignment-rule__container">
+                        <h2>Category:</h2>
+
+                        <input type="text" class="cims-input filter-category__control" placeholder="Search title or message">
+                        <div class="table-tree" id="table-tree">
+                            <div class="table-tree__wrapper">
+                                <el-tree
+                                        class="filter-tree"
+                                        :data="data5"
+                                        :props="categoryTreeProps"
+                                        default-expand-all
+                                        highlight-current
+                                        :expand-on-click-node="false"
+                                        ref="treeCategories">
+                                            <div class="el-tree__wrapper" slot-scope="{ node, data }">
+                                                <div class="table-tree__item " >
+                                                    <div class="table-tree__name">{% raw %} {{ node.label }} {% endraw %}</div>
+                                                    <ul class="rules-list">
+                                                        <li class="rules-list__item">
+                                                            <span class="rules-list__link" v-on:click="openCategoryPopup()">1</span>
+                                                        </li>
+                                                        <li class="rules-list__item">
+                                                            <span class="rules-list__link" v-on:click="openCategoryPopup()">2</span>
+                                                        </li>
+                                                        <li class="rules-list__item">
+                                                            <span class="rules-list__link" v-on:click="openCategoryPopup()">3</span>
+                                                        </li>
+                                                        <li class="rules-list__item">
+                                                            <span class="rules-list__link" v-on:click="openCategoryPopup()">4</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                </el-tree>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="assignment-rule__container">
+                        <h2>Rules:</h2>
+                        <div class="assignment-rule__list">
+                            <ol class="bullet">
+                                <li v-for="(rule, index) in currentCat[0].items" class="assignment-rule__item">
+                                    <span v-if="index != Object.keys(currentCat[0].items).length" class="category__name"> {% raw %} {{ rule }} {% endraw %}</span>
+                                    <button v-if="index != Object.keys(currentCat[0].items).length" class="cims-btn cims-btn--default" v-on:click="openCategoryPopup()">Edit</button>
+                                    <span v-if="index != Object.keys(currentCat[0].items).length" class="delete-category" v-on:click="deleteRule(index)"><i class="fas fa-times-circle"></i></span>
+                                </li>
+                            </ol>
+                            <button class="cims-btn cims-btn--default">Add new</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="cims-btn cims-btn--primary" style="margin: auto; display: block; margin-top: 1rem">Save</button>
+                <a href="javascript:void(0)" class="btn-link" value="save" v-on:click="openFilterDlg">
+                                <i class="fas fa-save"></i>
+                                Save filter hhh
+                            </a>
+
+<div class="col-1">
+                                        <div class="open-icon" aria-expanded="true" v-on:click="openFilterListDlg">
+                                            <i class="fas fa-cog"></i>
+                                        </div>
+                                    </div>
+
+            <el-dialog :visible.sync="dlgCategoryVisible">
+                <h2>Assigned rules:</h2>
+
+                <ol class="bullet">
+                    <li v-for="(rule, index) in currentCat[0].items" class="assignment-rule__item">
+                        <span class="category__name"> {% raw %} {{ rule }} {% endraw %}</span>
+                        <span class="delete-category"><i class="fas fa-times-circle"></i></span>
+                    </li>
+                </ol>
+
+                <button class="cims-btn cims-btn--default">Save</button>
+            </el-dialog>
+
+            <el-dialog :visible.sync="dlgFilterVisible" custom-class="save-filter-dialog">
+                <h2>Save new filter</h2>
+                <p>
+                    Please note: Entering an email adress is optional. If you enter an email adress you will receive a notification if the specified filter conditions are met by a newly added message.
+                </p>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-md-4 col-form-label">Filter name</label>
+                    <div class="col-sm-8 col-md-8">
+                    <input type="text" class="cims-input" placeholder="Name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-md-4 col-form-label">Email</label>
+                    <div class="col-sm-8 col-md-8">
+                        <input type="email" class="cims-input" placeholder="Email">
+                    </div>
+                </div>
+                <template>
+                    <el-checkbox>Set as default filter</el-checkbox>
+                </template>
+
+                <span slot="footer" class="dialog-footer">
+                    <el-button @click="dlgFilterVisible = false">Cancel</el-button>
+                    <el-button type="primary" @click="dlgFilterVisible = false">Confirm</el-button>
+                </span>
+            </el-dialog>
+
+            <el-dialog :visible.sync="dlgSavedFiltersList" custom-class="save-filter-dialog">
+                <h2>Delete saved filter</h2>
+                <ol class="bullet">
+                    <li v-for="(rule, index) in currentCat[0].items">
+                        <span v-if="index != Object.keys(currentCat[0].items).length"> test</span>
+                        <span class="delete-category ml-auto"><i class="fas fa-times-circle"></i></span>
+                    </li>
+                </ol>
+                <span slot="footer" class="dialog-footer">
+                    <el-button @click="dlgSavedFiltersList = false">Cancel</el-button>
+                    <el-button type="primary" @click="dlgSavedFiltersList = false">Confirm</el-button>
+                </span>
+            </el-dialog>
+
+
+

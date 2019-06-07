@@ -1,0 +1,177 @@
+{% set title = "Rules" %}
+{% set pageIdSub = 4 %}
+{% set admin = true %}
+{% extends "layout.njk" %}
+
+{% block styles %} <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">{% endblock styles %}
+
+{% block scriptsHead %} 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+
+{% endblock scriptsHead %}
+
+{% block content %}
+            <div class="container-fluid" id="app">
+                {% include "partials/rules-portlet.njk" %}
+
+            </div>
+
+{% endblock content %}
+
+{% block scripts %} 
+    <script type="text/babel">
+        let id = 1000;
+
+  var Main = {
+    data() {
+      const data = [{
+        id: 1,
+        label: 'Level one 1',
+        children: [{
+          id: 4,
+          label: 'Level two 1-1',
+          children: [{
+            id: 9,
+            label: 'Level three 1-1-1'
+          }, {
+            id: 10,
+            label: 'Level three 1-1-2'
+          }]
+        }]
+      }];
+      return {
+        data4: JSON.parse(JSON.stringify(data)),
+        data5: JSON.parse(JSON.stringify(data)),
+        data6: [data[0]],
+        dlgCategoryVisible: false,
+        dlgRulesVisible: false,
+        catBlocks: ['test1', 'test23'],
+        dlgFilterVisible: false,
+        dlgSavedFiltersList: false,
+        rules: [
+          {
+            id: 0,
+            title: '',
+            items: ['rule1', 'rule2']
+          }
+        ],
+
+        currentCat: [
+          {
+            id: '',
+            title: '',
+            items: ['rule1', 'rule2', 'rule3', 'rule4'],
+            isActive: false
+          }
+        ]
+      }
+    },
+
+    methods: {
+      append(data) {
+        console.log(data)
+        const newChild = { id: id++, label: 'testtest', children: [] };
+        if (!data.children) {
+          this.$set(data, 'children', []);
+        }
+        data.children.push(newChild);
+      },
+
+      openFilterDlg: function() {
+          this.dlgFilterVisible = true;
+      },
+
+      openFilterListDlg: function() {
+          this.dlgSavedFiltersList = true;
+      },
+
+      remove(node, data) {
+        const parent = node.parent;
+        const children = parent.data.children || parent.data;
+        const index = children.findIndex(d => d.id === data.id);
+        children.splice(index, 1);
+      },
+
+      renderContent(h, { node, data, store }) {
+        return (
+          <span class="custom-tree-node">
+            <span>{node.label}</span>
+            <span>
+              <el-button size="mini" type="text" on-click={ () => this.append(data) }>Append</el-button>
+              <el-button size="mini" type="text" on-click={ () => this.remove(node, data) }>Delete</el-button>
+            </span>
+          </span>);
+      },
+
+      openCategoryPopup() {
+        this.dlgCategoryVisible = true;
+      },
+
+      openRulesPopup(item, index) {
+        this.dlgRulesVisible = true;
+
+        for (let i = 0; i < this.rules.length; i ++) {
+          if ( this.rules[i].id !== index ) {
+            this.rules.push({
+              id: index,
+              title: item,
+              items: []
+            })
+          }
+        }
+        
+        this.currentCat[0].id = index;
+        this.currentCat[0].title = this.rules[index].title;
+        this.currentCat[0].items = this.rules[index].items;
+        console.log(this.currentCat[0].id, index)
+        
+      },
+
+      showSelectCategory(item, index) {
+        this.currentCat[0].id = index;
+        this.currentCat[0].title = this.rules[index].title;
+        this.currentCat[0].items = this.rules[index].items;
+      },
+
+      getCategories() {
+          let arr = [];
+          for (let i = 0; i < this.catBlocks.length; i++) {
+              let cat = this.catBlocks[i];
+                  arr.push(cat);
+          }
+          return arr;
+      },
+
+      selectCategory(data, node) {
+        var that = this;
+        that.catBlocks.push(node.label)
+      },
+
+      deleteCategory: function(index) {
+        this.catBlocks.splice(index, 1);
+      },
+
+      deleteRule: function(index) {
+        this.currentCat[0].items.splice(index, 1);
+      },
+
+      addRule: function(data, node) {
+        let that = this;
+        that.currentCat[0].items.push(node.label)
+      }
+    }
+  };
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app')
+
+</script>
+{% endblock %}
+
+
+
+
+

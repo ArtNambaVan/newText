@@ -1,4 +1,7 @@
-//@import "theme/fonts";
+@import "theme/portlet/index";
+@import "theme/lib/index";
+
+// @import "theme/fonts";
 @import "theme/font-awesome/scss/font-awesome";
 @import "theme/font-awesome2/scss/fontawesome";
 
@@ -11,7 +14,7 @@
 @import "theme/layout/header";
 @import "theme/layout/footer";
 
-//@import "theme/components/tree-js";
+// @import "theme/components/tree-js";
 @import "theme/components/jstree-custom";
 @import "theme/components/notification";
 @import "theme/components/modal";
@@ -33,6 +36,8 @@
 @import "theme/components/table-tree";
 @import "theme/components/collapse-link";
 @import "theme/components/loader";
+@import "theme/components/custom-element-ui";
+@import "theme/components/file";
 
 @import "theme/portlet/messages";
 @import "theme/portlet/organization-selection";
@@ -42,5 +47,8 @@
 @import "theme/portlet/organisation-settings";
 @import "theme/portlet/message-preferences";
 @import "theme/portlet/translation";
+@import "theme/portlet/rules";
+@import "theme/spacing";
 
-@import "theme/portlet/index";
+
+// @import "theme/old_cims";

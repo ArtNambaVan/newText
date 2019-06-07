@@ -149,6 +149,17 @@
     }
 }
 
+.filter-category-popup {
+    display: flex;
 
+    &__tree {
+        width: auto;
+        flex: 1;
+        padding-right: 15px;
+    }
 
-
+    &__selected {
+        width: 250px;
+        padding-left: 15px;
+    }
+}

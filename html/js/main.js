@@ -15,6 +15,10 @@ $( document ).ready(function() {
         $tonalityPopup.find('.tonality-popup__header').text($popupHeading)
     });
 
+   $('.addPanel').on('click', function(e) {
+    $( ".spacing__panel" ).append( '<div class="panel">panel</div>' );
+   })
+
     $tonalityPopup.find('.close').on('click', function(e) {
         e.preventDefault();
         $(this).closest($tonalityPopup).removeClass('show');

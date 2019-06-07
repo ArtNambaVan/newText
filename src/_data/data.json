@@ -31,6 +31,11 @@
             "title" : "Translation",
             "navActiveItem" : 3,
             "link" : "translation.html"
+        },
+        {
+            "title" : "Rules",
+            "navActiveItem" : 3,
+            "link" : "rules.html"
         }
     ]
 }

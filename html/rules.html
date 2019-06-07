@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rules</title>
+    <link rel="stylesheet" href="css/libs/clay.css"> 
+
+    <link rel="stylesheet" href="css/libs/main.css">
+ <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
+    <link rel="stylesheet" href="css/libs/treeJS.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/libs.js"></script>
+
+ 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+
+    
+
+</head>
+
+<body>
+
+    <div class="cims" id="wrapper">
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="main-nav navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="main-logo">
+                        <img class="main-logo__img" src="images/logoCims.png" alt="CIMS logo">
+                        <span class="main-logo__name">CIMS</span>
+                    </div>
+                    <div class="navbar-collapse collapse main-nav__navigation" id="navbarSupportedContent">
+                        <div class="main-nav__section main-nav__section--left">
+                            
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="organisation-selection.html">Home</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="index.html">Messages</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="main-nav__section main-nav__section--right">
+
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="message-editor.html">New Message</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <div class="header-dropdown">
+                                        <span data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle" data-display="static">
+                                            <a data-cq-component="link" href="#" target="_self" class="main-nav__link caret active">Administrator</a>
+                                        </span>
+
+                                        <div class="header-dropdown__inner dropdown-menu" role="menu">
+                                            <ul class="header-submenu">
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="categories-editor.html">Categories</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="ressource-editor.html">Resources</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="organisation-settings.html">Organisation Settings</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="translation.html">Translation</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="rules.html">Rules</a>
+                                                    </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link" href="#">Sign Out</a>
+                                </li>
+                            </ul>
+                        
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+
+            <div class="container-fluid" id="app">
+
+                <div class="assignment-rule">
+                    <div class="assignment-rule__container">
+                        <h2>Category:</h2>
+
+                        <input type="text" class="cims-input filter-category__control" placeholder="Search title or message">
+                        <div class="table-tree" id="table-tree">
+                            <div class="table-tree__wrapper">
+                                <el-tree
+                                        class="filter-tree"
+                                        :data="data5"
+                                        :props="categoryTreeProps"
+                                        default-expand-all
+                                        highlight-current
+                                        :expand-on-click-node="false"
+                                        ref="treeCategories">
+                                            <div class="el-tree__wrapper" slot-scope="{ node, data }">
+                                                <div class="table-tree__item " >
+                                                    <div class="table-tree__name"> {{ node.label }} </div>
+                                                    <ul class="rules-list">
+                                                        <li class="rules-list__item">
+                                                            <span class="rules-list__link" v-on:click="openCategoryPopup()">1</span>
+                                                        </li>
+                                                        <li class="rules-list__item">
+                                                            <span class="rules-list__link" v-on:click="openCategoryPopup()">2</span>
+                                                        </li>
+                                                        <li class="rules-list__item">
+                                                            <span class="rules-list__link" v-on:click="openCategoryPopup()">3</span>
+                                                        </li>
+                                                        <li class="rules-list__item">
+                                                            <span class="rules-list__link" v-on:click="openCategoryPopup()">4</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                </el-tree>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="assignment-rule__container">
+                        <h2>Rules:</h2>
+                        <div class="assignment-rule__list">
+                            <ol class="bullet">
+                                <li v-for="(rule, index) in currentCat[0].items" class="assignment-rule__item">
+                                    <span v-if="index != Object.keys(currentCat[0].items).length" class="category__name">  {{ rule }} </span>
+                                    <button v-if="index != Object.keys(currentCat[0].items).length" class="cims-btn cims-btn--default" v-on:click="openCategoryPopup()">Edit</button>
+                                    <span v-if="index != Object.keys(currentCat[0].items).length" class="delete-category" v-on:click="deleteRule(index)"><i class="fas fa-times-circle"></i></span>
+                                </li>
+                            </ol>
+                            <button class="cims-btn cims-btn--default">Add new</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="cims-btn cims-btn--primary" style="margin: auto; display: block; margin-top: 1rem">Save</button>
+                <a href="javascript:void(0)" class="btn-link" value="save" v-on:click="openFilterDlg">
+                                <i class="fas fa-save"></i>
+                                Save filter hhh
+                            </a>
+
+<div class="col-1">
+                                        <div class="open-icon" aria-expanded="true" v-on:click="openFilterListDlg">
+                                            <i class="fas fa-cog"></i>
+                                        </div>
+                                    </div>
+
+            <el-dialog :visible.sync="dlgCategoryVisible">
+                <h2>Assigned rules:</h2>
+
+                <ol class="bullet">
+                    <li v-for="(rule, index) in currentCat[0].items" class="assignment-rule__item">
+                        <span class="category__name">  {{ rule }} </span>
+                        <span class="delete-category"><i class="fas fa-times-circle"></i></span>
+                    </li>
+                </ol>
+
+                <button class="cims-btn cims-btn--default">Save</button>
+            </el-dialog>
+
+            <el-dialog :visible.sync="dlgFilterVisible" custom-class="save-filter-dialog">
+                <h2>Save new filter</h2>
+                <p>
+                    Please note: Entering an email adress is optional. If you enter an email adress you will receive a notification if the specified filter conditions are met by a newly added message.
+                </p>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-md-4 col-form-label">Filter name</label>
+                    <div class="col-sm-8 col-md-8">
+                    <input type="text" class="cims-input" placeholder="Name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-md-4 col-form-label">Email</label>
+                    <div class="col-sm-8 col-md-8">
+                        <input type="email" class="cims-input" placeholder="Email">
+                    </div>
+                </div>
+                <template>
+                    <el-checkbox>Set as default filter</el-checkbox>
+                </template>
+
+                <span slot="footer" class="dialog-footer">
+                    <el-button @click="dlgFilterVisible = false">Cancel</el-button>
+                    <el-button type="primary" @click="dlgFilterVisible = false">Confirm</el-button>
+                </span>
+            </el-dialog>
+
+            <el-dialog :visible.sync="dlgSavedFiltersList" custom-class="save-filter-dialog">
+                <h2>Delete saved filter</h2>
+                <ol class="bullet">
+                    <li v-for="(rule, index) in currentCat[0].items">
+                        <span v-if="index != Object.keys(currentCat[0].items).length"> test</span>
+                        <span class="delete-category ml-auto"><i class="fas fa-times-circle"></i></span>
+                    </li>
+                </ol>
+                <span slot="footer" class="dialog-footer">
+                    <el-button @click="dlgSavedFiltersList = false">Cancel</el-button>
+                    <el-button type="primary" @click="dlgSavedFiltersList = false">Confirm</el-button>
+                </span>
+            </el-dialog>
+
+
+
+
+            </div>
+
+
+        </main>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="footer__copyright">© Copyright 2018 Consline AG</p>
+            </div>
+        </footer>
+        
+    </div>
+
+
+    <!-- SCRIPTS -->
+ 
+    <script type="text/babel">
+        let id = 1000;
+
+  var Main = {
+    data() {
+      const data = [{
+        id: 1,
+        label: 'Level one 1',
+        children: [{
+          id: 4,
+          label: 'Level two 1-1',
+          children: [{
+            id: 9,
+            label: 'Level three 1-1-1'
+          }, {
+            id: 10,
+            label: 'Level three 1-1-2'
+          }]
+        }]
+      }];
+      return {
+        data4: JSON.parse(JSON.stringify(data)),
+        data5: JSON.parse(JSON.stringify(data)),
+        data6: [data[0]],
+        dlgCategoryVisible: false,
+        dlgRulesVisible: false,
+        catBlocks: ['test1', 'test23'],
+        dlgFilterVisible: false,
+        dlgSavedFiltersList: false,
+        rules: [
+          {
+            id: 0,
+            title: '',
+            items: ['rule1', 'rule2']
+          }
+        ],
+
+        currentCat: [
+          {
+            id: '',
+            title: '',
+            items: ['rule1', 'rule2', 'rule3', 'rule4'],
+            isActive: false
+          }
+        ]
+      }
+    },
+
+    methods: {
+      append(data) {
+        console.log(data)
+        const newChild = { id: id++, label: 'testtest', children: [] };
+        if (!data.children) {
+          this.$set(data, 'children', []);
+        }
+        data.children.push(newChild);
+      },
+
+      openFilterDlg: function() {
+          this.dlgFilterVisible = true;
+      },
+
+      openFilterListDlg: function() {
+          this.dlgSavedFiltersList = true;
+      },
+
+      remove(node, data) {
+        const parent = node.parent;
+        const children = parent.data.children || parent.data;
+        const index = children.findIndex(d => d.id === data.id);
+        children.splice(index, 1);
+      },
+
+      renderContent(h, { node, data, store }) {
+        return (
+          <span class="custom-tree-node">
+            <span>{node.label}</span>
+            <span>
+              <el-button size="mini" type="text" on-click={ () => this.append(data) }>Append</el-button>
+              <el-button size="mini" type="text" on-click={ () => this.remove(node, data) }>Delete</el-button>
+            </span>
+          </span>);
+      },
+
+      openCategoryPopup() {
+        this.dlgCategoryVisible = true;
+      },
+
+      openRulesPopup(item, index) {
+        this.dlgRulesVisible = true;
+
+        for (let i = 0; i < this.rules.length; i ++) {
+          if ( this.rules[i].id !== index ) {
+            this.rules.push({
+              id: index,
+              title: item,
+              items: []
+            })
+          }
+        }
+        
+        this.currentCat[0].id = index;
+        this.currentCat[0].title = this.rules[index].title;
+        this.currentCat[0].items = this.rules[index].items;
+        console.log(this.currentCat[0].id, index)
+        
+      },
+
+      showSelectCategory(item, index) {
+        this.currentCat[0].id = index;
+        this.currentCat[0].title = this.rules[index].title;
+        this.currentCat[0].items = this.rules[index].items;
+      },
+
+      getCategories() {
+          let arr = [];
+          for (let i = 0; i < this.catBlocks.length; i++) {
+              let cat = this.catBlocks[i];
+                  arr.push(cat);
+          }
+          return arr;
+      },
+
+      selectCategory(data, node) {
+        var that = this;
+        that.catBlocks.push(node.label)
+      },
+
+      deleteCategory: function(index) {
+        this.catBlocks.splice(index, 1);
+      },
+
+      deleteRule: function(index) {
+        this.currentCat[0].items.splice(index, 1);
+      },
+
+      addRule: function(data, node) {
+        let that = this;
+        that.currentCat[0].items.push(node.label)
+      }
+    }
+  };
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app')
+
+</script>
+    <script src="js/main.js"></script>
+</body>
+</html>

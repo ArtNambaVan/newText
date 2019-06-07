@@ -1,0 +1,11 @@
+{
+  "layoutTemplateId": "2_columns_ii",
+  "themeId": "cimsthemeblue_WAR_cimsthemeblue",
+  "privatePages": [
+    {
+      "friendlyURL": "/private-page-tim",
+      "name": "Private Page tim1",
+      "title": "Private Page tim1"
+    }
+  ]
+}

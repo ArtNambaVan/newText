@@ -1,113 +1,133 @@
 @import "../abstract/variables";
 
-.cims {
-    .form-control {
-        min-height: auto;
-        border-radius: 0;
-        height: auto;
-        padding: 5px;
+.form-control {
+    min-height: auto;
+    border-radius: 0;
+    height: auto;
+    padding: 5px;
 
-        &:focus {
-            box-shadow: none;
-            border-color: $primaryColor;
-        }
+    &:focus {
+        box-shadow: none;
+        border-color: $primaryColor;
+    }
+}
+
+
+
+.form-group {
+    margin-bottom: 0;
+    align-items: center;
+
+    & + & {
+        margin-top: 1rem;
     }
 
-    .form-group {
-        margin-bottom: 0;
+    &--right {
+        text-align: right;
+    }
+}
 
-        & + & {
-            margin-top: 1rem;
-        }
+.select-container > select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    padding-right: 2rem;
+    cursor: pointer;
 
-        &--right {
-            text-align: right;
-        }
+    &:invalid {
+        color: #C0C4CC;
     }
 
-
-    .select-container > select {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        background-color: transparent;
-        padding-right: 2rem;
+    option {
         color: $primaryColor;
+    }
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #C0C4CC;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #C0C4CC;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #C0C4CC;
+  }
+
+.select-container {
+    position: relative;
+    background-color: $colorWhite;
+
+    & > input {
+        background-color: transparent;
         cursor: pointer;
+        color: transparent;
+        text-shadow: 0 0 0 #000;
     }
 
-    .select-container {
-        position: relative;
-        background-color: $colorWhite;
+    &::before {
+        content: "";
+        position: absolute;
+        right: 6px;
+        top: 8px;
+        border: 7px solid transparent;
+        border-top: 10px solid $colorInputborder;
+        // z-index: 1;
+    }
 
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 25px;
+        height: 25px;
+        width: 1px;
+        background-color: $colorInputborder;
+        // z-index: -1;
+    }
+
+    &--icon-right {
         & > input {
-            background-color: transparent;
-            cursor: pointer;
-            color: transparent;
-            text-shadow: 0 0 0 #000;
+            padding-right: 40px;
         }
 
-        &::before {
-            content: "";
+        & > i {
             position: absolute;
-            right: 6px;
-            top: 8px;
-            border: 7px solid transparent;
-            border-top: 10px solid $colorInputborder;
-            // z-index: 1;
-        }
-
-        &::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            right: 25px;
-            height: 25px;
-            width: 1px;
-            background-color: $colorInputborder;
+            top: 5px;
+            right: 22px;
             // z-index: -1;
         }
 
-        &--icon-right {
-            & > input {
-                padding-right: 40px;
-            }
-
-            & > i {
-                position: absolute;
-                top: 5px;
-                right: 22px;
-                // z-index: -1;
-            }
-
-            &::after {
-                right: 45px;
-            }
+        &::after {
+            right: 45px;
         }
     }
+}
 
-    .collapse-icon {
-        & .collapse-icon-closed,
-        & .collapse-icon-open {
-            top: 0;
-            right: 0.9rem;
-        }
+.collapse-icon {
+    & .collapse-icon-closed,
+    & .collapse-icon-open {
+        top: 0;
+        right: 0.9rem;
     }
+}
 
-    select::-ms-expand {
-        display: none;
-    }
+select::-ms-expand {
+    display: none;
+}
 
-    input.disabled {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        pointer-events: none;
-        opacity: 0.5;
-        color:#AAA;
-        background:#F5F5F5;
-    }
+input.disabled {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.5;
+    color:#AAA;
+    background:#F5F5F5;
 }
 
 .cims-input, .cims-select {
@@ -123,7 +143,6 @@
 .custom-control .custom-control-input:focus ~ .custom-control-label::before {
     box-shadow: none;
 }
-
 
 .test {
     position: relative;
@@ -149,7 +168,6 @@
         float: left;
         position: relative;
         border-radius: 0.25rem;
-
     }
 
     &::after {

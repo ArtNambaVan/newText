@@ -1,0 +1,36 @@
+.spacing {
+    display: flex;
+
+    &__panel {
+        width: 300px;
+        background-color: aqua;
+    }
+
+    &__messagess {
+        background-color: bisque;
+        flex: 1;
+        position: relative;
+    }
+}
+
+.settings {
+    background-color: orangered;
+}
+
+.messagess-section {
+    color: black;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    overflow-y: auto;
+    height: calc(100% - 144px);
+}
+
+.message {
+    padding: 20px;
+    background-color: greenyellow;
+
+    & + & {
+        margin-top: 1rem;
+    }
+}

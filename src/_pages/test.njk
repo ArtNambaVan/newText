@@ -1,0 +1,336 @@
+{% set title = "Test" %}
+{% set pageIdSub = 5 %}
+{% set admin = true %}
+{% extends "layout.njk" %}
+
+{# {% block styles %} <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">{% endblock styles %} #}
+
+{% block scriptsHead %} 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+
+{% endblock scriptsHead %}
+
+{% block content %}
+            <div class="container-fluid" id="Root">
+                {% include "partials/test-portlet.njk" %}
+
+            </div>
+
+{% endblock content %}
+
+{% block scripts %} 
+<script>
+    new Vue({
+        el: '#Root',
+        components: {
+        },
+
+        data: function () {
+
+            const data = [{
+              id: 1,
+              label: 'Level one 1',
+              children: [{
+                id: 4,
+                label: 'Level two 1-1',
+                children: [{
+                  id: 9,
+                  label: 'Level three 1-1-1'
+                }, {
+                  id: 10,
+                  label: 'Level three 1-1-2'
+                }]
+              }]
+            }, {
+              id: 2,
+              label: 'Level one 2',
+              children: [{
+                id: 5,
+                label: 'Level two 2-1'
+              }, {
+                id: 6,
+                label: 'Level two 2-2'
+              }]
+            }, {
+              id: 3,
+              label: 'Level one 3',
+              children: [{
+                id: 7,
+                label: 'Level two 3-1'
+              }, {
+                id: 8,
+                label: 'Level two 3-2'
+              }]
+            }];
+            return {
+               categoryTree: JSON.parse(JSON.stringify(data)),
+
+
+                cimsStatuses:[],
+                workflowStatuses:[],
+                tonalityScale:[],
+                fieldNames:[],
+                filterName: '',
+                filter: {
+                    statusId: 0,
+                    keywords:'',
+                    extendedKeywords:[
+                        {
+                            fieldName:'',
+                            keyword:'',
+                            containsCond:true
+                        }
+                    ],
+                    views:[0,100],
+                    source: {
+                        id: 0,
+                        name: ''
+                    },
+                    categoryBlocks:[
+
+                    ],
+                    dateInRange:['', ''],
+                    userIds:[],
+                    feedId: 0,
+                    workflowStatusId:0,
+                    dateChangeRange: ['',''],
+                    dateCreateRange: ['','']
+                },
+                appliedFilter: null,
+                viewsMin:0,
+                viewsMax:100,
+
+                pageNo:1,
+                pageSize:20,
+                pageSizeOptions:[10,20,30,50,100],
+
+                messageSorting:null,
+                messageSortingOptions:[],
+
+                messageCount:0,
+                messageList:[],
+
+                showTranslation:true,
+                showHtmlSource:false,
+
+                plainSources: [],
+                sourceTree:[],
+                sourceTreeProps: {
+                    children: 'children',
+                    label: 'name'
+                },
+
+                plainCategories: [],
+                categoryTreeProps: {
+                    children: 'children',
+                    label: 'name'
+                },
+
+                dlgFilterVisible: false,
+                dlgSavedFiltersList: false,
+                dlgTonalityVisible:false,
+                dlgTonality: {
+                    categoryId: null,
+                    categoryName: null,
+                    tonalityType: null,
+                    tonality: null,
+                    afterSelect: null
+                },
+
+                categorySearchResult: '',
+                plainCategory: {
+                    selectedCategory: null,
+                    categoryBlockIndex: null,
+                    afterSelect: null
+                },
+                dlgCategoryVisible:false,
+                dlgCategorySearchText:'',
+                dlgCategory: {
+                    selectedCategory: null,
+                    categoryBlockIndex: null,
+                    afterSelect: null
+                },
+                baseHref: '',
+                savedUserFilters:[],
+                selectedUserFilter: '',
+                users:[],
+                feeds:[],
+                //complex datepicker stuff
+                isPanelActive: true
+            };
+        },
+        watch: {
+            dlgCategorySearchText(val) {
+                this.$refs.treeCategories.filter(val);
+            }
+        },
+        methods: {
+            openForEdit: function(prmMessageId) {
+                let url = this.calcEditHref(prmMessageId);
+                window.open(url, '_blank', 'height:' + window.innerHeight + ',width:' + window.innerWidth);
+            },
+            doFilterCategoryTree: function(value, data) {
+                if (typeof value !== "string") return true;
+
+                return data.name.toLowerCase().indexOf(value.toLowerCase().trim()) !== -1;
+            },
+            tendedKeyword: function (prmIndex) {
+                if (prmIndex < (this.filter.extendedKeywords.length - 1) ) {
+                    this.filter.extendedKeywords.splice(prmIndex, 0, this.getExtendedKeywordEmpty());
+                } else {
+                    this.filter.extendedKeywords.push(this.getExtendedKeywordEmpty());
+                }
+            },
+            removeExtendedKeyword: function (prmIndex) {
+                if (prmIndex == 0 && this.filter.extendedKeywords.length == 1) {
+                    this.filter.extendedKeywords = [this.getExtendedKeywordEmpty()];
+                } else {
+                    this.filter.extendedKeywords.splice(prmIndex, 1);
+                }
+            },
+            addCategoryBlock: function (prmIndex) {
+                if (prmIndex < (this.filter.categoryBlocks.length - 1) ) {
+                    this.filter.categoryBlocks.splice(prmIndex, 0, this.getCategoryBlockEmpty());
+                } else {
+                    this.filter.categoryBlocks.push(this.getCategoryBlockEmpty());
+                }
+            },
+            removeCategoryBlock: function (prmIndex) {
+                if (prmIndex == 0 && this.filter.categoryBlocks.length == 1) {
+                    this.filter.categoryBlocks = [this.getCategoryBlockEmpty()];
+                } else {
+                    this.filter.categoryBlocks.splice(prmIndex, 1);
+                }
+            },
+            removeFilterCategory: function (catBlockIndex, prmCatId) {
+                if (catBlockIndex >= 0 && catBlockIndex < this.filter.categoryBlocks.length) {
+                    let index = this.findCategoryIndex(catBlockIndex, prmCatId);
+                    if (index >= 0 && index < this.filter.categoryBlocks[catBlockIndex].categories.length) {
+                        this.filter.categoryBlocks[catBlockIndex].categories.splice(index, 1);
+                    }
+                }
+            },
+            selectCategory: function (catBlockIndex) {
+                this.dlgCategory.categoryBlockIndex = catBlockIndex;
+                this.dlgCategorySearchText = '';
+                this.dlgCategory.selectedCategory = null;
+
+                var thisObj = this;
+                this.dlgCategory.afterSelect = function () {
+                    if (!thisObj.dlgCategory.selectedCategory) {
+                        return;
+                    }
+
+                    if (thisObj.findCategoryIndex(thisObj.dlgCategory.categoryBlockIndex, thisObj.dlgCategory.selectedCategory.id) >= 0) {
+                        return;
+                    }
+
+                    thisObj.filter.categoryBlocks[ thisObj.dlgCategory.categoryBlockIndex ].categories.push({
+                        id: thisObj.dlgCategory.selectedCategory.id,
+                        name: thisObj.dlgCategory.selectedCategory.name,
+                        ratingCategory: thisObj.dlgCategory.selectedCategory.ratingCategory
+                    })
+                    // TODO
+                };
+
+                this.dlgCategoryVisible = true;
+            },
+            getFilterCategories: function(prmCatBlockIndex, prmRating) {
+                let ares = [];
+                for (let i = 0; i < this.filter.categoryBlocks[prmCatBlockIndex].categories.length; i++) {
+                    let cat = this.filter.categoryBlocks[prmCatBlockIndex].categories[i];
+                    if (cat.ratingCategory == prmRating) {
+                        ares.push(cat);
+                    }
+                }
+                return ares;
+            },
+            findCategoryIndex: function(prmCatBlockIndex, prmCategoryId) {
+                for (let i = 0; i < this.filter.categoryBlocks[prmCatBlockIndex].categories.length; i++) {
+                    let cat = this.filter.categoryBlocks[prmCatBlockIndex].categories[i];
+                    if (cat.id == prmCategoryId) {
+                        return i;
+                    }
+                }
+                return -1;
+            },
+            selectPlainCategory(cat) {
+                this.categorySearchResult = '';
+                this.plainCategory.selectedCategory = cat;
+
+                var thisObj = this;
+                if (!thisObj.plainCategory.selectedCategory ||
+                    thisObj.findCategoryIndex(thisObj.plainCategory.categoryBlockIndex, thisObj.plainCategory.selectedCategory.id) >= 0) {
+                    return;
+                } else {
+                    thisObj.filter.categoryBlocks[ thisObj.plainCategory.categoryBlockIndex ].categories.push({
+                        id: thisObj.plainCategory.selectedCategory.id,
+                        name: thisObj.plainCategory.selectedCategory.name,
+                        ratingCategory: thisObj.plainCategory.selectedCategory.ratingCategory
+                    });
+                }
+            },
+            setCategoryBlockIndex: function (catBlockIndex) {
+                this.plainCategory.categoryBlockIndex = catBlockIndex;
+            },
+            categorySearch(queryString, cb) {
+                var cats = this.plainCategories;
+                var results = queryString ? cats.filter(this.categoryFilter(queryString)) : cats;
+                cb(results);
+            },
+            categoryFilter(queryString) {
+                return (cat) => {
+                    return (cat.name.toLowerCase().includes(queryString.toLowerCase()));
+                };
+            },
+            
+            onCategoryNodeClick: function (node, prm1, prmTree) {
+                this.dlgCategory.selectedCategory = prm1.data;
+                this.dlgCategoryVisible = false;
+                if (this.dlgCategory.afterSelect) {
+                    this.dlgCategory.afterSelect();
+                }
+            },
+            onSourceNodeClick: function (node, prm1, prmTree) {
+                this.filter.source = prm1.data;
+                this.$refs.dropdownSource.classList.remove('show');
+            },
+            openFilterDlg: function() {
+                this.dlgFilterVisible = true;
+            },
+            openFilterListDlg: function() {
+                this.dlgSavedFiltersList = true;
+            },
+            testFunc: function(e) {
+                let currentEl;
+                //console.log(e)
+                if (e.type === "click") {
+                    currentEl = e.target;
+                } else {
+                    currentEl = e;
+                }
+
+                let parent = currentEl.parentElement;
+                
+                if (parent.classList.contains("portlet-body")) {
+                    return
+                }
+                console.log(parent.parentElement)
+                {# console.log(e.type)
+                console.log(e.target.classList.contains("test-btn")) #}
+
+                this.testFunc(parent)
+            }
+        }
+    });
+</script>
+{% endblock %}
+
+
+
+
+

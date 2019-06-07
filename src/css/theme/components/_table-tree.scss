@@ -1,3 +1,5 @@
+//@import "../abstract/variables";
+
 .table-tree {
     .el-tree-node__content {
         height: auto;
@@ -139,7 +141,7 @@
         width: 28px;
         height: 28px;
         position: relative;
-        background-color: white;
+        background-color: $colorWhite;
         display: none;
         cursor: pointer;
 
@@ -159,7 +161,7 @@
 
     &__category {
         display: flex;
-        margin-right: 85px;
+        margin: auto;
         font-size: 14px;
         align-items: center;
 
@@ -175,6 +177,10 @@
 
         button + button {
             margin-left: 45px;
+        }
+
+        @media (max-width: 1366px) {
+            margin-right: 30px
         }
     }
 
@@ -204,7 +210,7 @@
                 width: 22px;
                 height: 22px;
                 line-height: 22px;
-                color: white;
+                color: $colorWhite;
                 background: $primaryColor;
                 border-radius: 50%;
             }
@@ -222,6 +228,7 @@
             }
         }
     }
+
     .el-tree-node__expand-icon {
         margin-left: 8px;
         color: $primaryColor;
@@ -262,6 +269,7 @@
         border-radius: 50%;
         border: 1px solid;
         width: 28px;
+        min-width: 28px;
         height: 28px;
         position: relative;
         background-color: white;
@@ -275,7 +283,7 @@
     .el-tree-node {
         &__children > .el-tree-node > .el-tree-node__content {
             position: relative;
-            padding: 0 !important;
+            padding-left: 0 !important;
         }
 
         &__children > .el-tree-node:last-child > .el-tree-node__content {
@@ -323,10 +331,6 @@
         }
     }
 
-    .el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content {
-        background: transparent;
-    }
-
     .el-radio-group > div {
         display: inline-block;
 
@@ -362,3 +366,6 @@
     display: block;
 }
 
+.el-tree-node.is-expanded > .el-tree-node__children {
+    overflow: visible;
+}

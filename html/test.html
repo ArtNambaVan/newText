@@ -1,0 +1,2417 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test</title>
+    <link rel="stylesheet" href="css/libs/clay.css"> 
+
+    <link rel="stylesheet" href="css/libs/main.css">
+     
+    <link rel="stylesheet" href="css/libs/treeJS.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/libs.js"></script>
+
+ 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+
+    
+
+</head>
+
+<body>
+
+    <div class="cims" id="wrapper">
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="main-nav navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="main-logo">
+                        <img class="main-logo__img" src="images/logoCims.png" alt="CIMS logo">
+                        <span class="main-logo__name">CIMS</span>
+                    </div>
+                    <div class="navbar-collapse collapse main-nav__navigation" id="navbarSupportedContent">
+                        <div class="main-nav__section main-nav__section--left">
+                            
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="organisation-selection.html">Home</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="index.html">Messages</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="main-nav__section main-nav__section--right">
+
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="message-editor.html">New Message</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <div class="header-dropdown">
+                                        <span data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle" data-display="static">
+                                            <a data-cq-component="link" href="#" target="_self" class="main-nav__link caret active">Administrator</a>
+                                        </span>
+
+                                        <div class="header-dropdown__inner dropdown-menu" role="menu">
+                                            <ul class="header-submenu">
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="categories-editor.html">Categories</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="ressource-editor.html">Resources</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="organisation-settings.html">Organisation Settings</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="translation.html">Translation</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="rules.html">Rules</a>
+                                                    </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link" href="#">Sign Out</a>
+                                </li>
+                            </ul>
+                        
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+
+            <div class="container-fluid" id="Root">
+                <div class="portlet-body">
+                    <div class="messages-portlet">
+                        <!-- FILTERS-PANEL START -->
+                        
+                        <div class="filters-panel active" id="filtersPanel">
+                            <div class="filters-panel__btn active" id="filtersBtn">
+                                <span>Show filters</span>
+                                <span class="collapse-icon-closed">
+                                    <i class="fas fa-chevron-left"></i>
+                                </span>
+                                <span class="collapse-icon-open">
+                                    <i class="fas fa-chevron-right"></i>
+                                </span>
+                                <span class="search-mobile">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </div>
+                            <div class="filters-panel__body">
+                            
+                                <form>
+                                    <!-- SEARCH & FILTER STARTS -->
+                                    <div class="filter-category">
+                                        <div class="filter-category__title">search & filter
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="fas fa-question-circle"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm tooltip"></span>
+                                            </span>
+                                        </div>
+                                        <div class="filter-category__body">
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-8 offset-3">
+                                                    <div class="select-container">
+                                                        <select class="cims-select filter-category__control" required>
+                                                            <option value="" disabled selected hidden>Select saved filter</option>
+                                                            <option value="1">Lorem1</option>
+                                                            <option value="2">Lorem2</option>
+                                                            <option value="3">Lorem3</option>
+                                                            <option value="4">Lorem4</option>
+                                                            <option value="5">Lorem5</option>   
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1">
+                                                    <div class="col-1">
+                                                        <div class="open-icon" aria-expanded="true">
+                                                            <i class="fas fa-cog"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- SEARCH & FILTER END -->
+
+                                    <!-- TEXT & PERIOD FILTER STARTS -->
+                                    <div class="filter-category">
+                                        <a class="filter-category__head collapse-icon" aria-controls="textFilterBody"
+                                        aria-expanded="true" data-toggle="collapse" href="#textFilterBody" id="textFilter" role="tab">
+                                            <span class="filter-category__title">text & period filter</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="fas fa-question-circle"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm tooltip"></span>
+                                            </span>
+                                            <span class="collapse-icon-closed">
+                                                <i class="fas fa-chevron-down"></i>
+                                            </span>
+                                            <span class="collapse-icon-open">
+                                                <i class="fas fa-chevron-up"></i>
+                                            </span>
+                                        </a>
+                                        <div class="filter-category__body collapse show" aria-labelledby="textFilter" id="textFilterBody" role="tabpanel">
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Posted:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <div class="select-container select-container--icon-right">
+                                                        <el-date-picker
+                                                            type="daterange"
+                                                            language="en"
+                                                            start-placeholder="Start date"
+                                                            end-placeholder="End date"
+                                                            :default-time="['00:00:00', '23:59:59']"
+                                                            >
+                                                        </el-date-picker>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Text Search:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <input type="text" class="cims-input filter-category__control" placeholder="Search title or message">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- TEXT & PERIOD FILTER END -->
+
+                                    <!-- EXTENDED TEXT SEARCH START -->
+                                    <div class="filter-category">
+
+                                        <a class="filter-category__head collapse-icon" aria-controls="extendedTextSearchBody"
+                                            aria-expanded="true" data-toggle="collapse" href="#extendedTextSearchBody" id="extendedTextSearch" role="tab">
+                                            <span class="filter-category__title">extended text search</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="fas fa-question-circle"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm another tooltip"></span>
+                                            </span>
+                                            <span class="collapse-icon-closed">
+                                                <i class="fas fa-chevron-down"></i>
+                                            </span>
+                                            <span class="collapse-icon-open">
+                                                <i class="fas fa-chevron-up"></i>
+                                            </span>
+                                        </a>
+                                        
+                                        <div class="filter-category__body collapse show" aria-labelledby="extendedTextSearch" id="extendedTextSearchBody" role="tabpanel"> 
+                                            <div class="filter-category__section">
+                                                <div class="[ row no-gutters ]  filter-category__item">
+                                                    <div class="col-3">
+                                                        <label class="filter-category__label">Field:</label>
+                                                    </div>
+                                                    
+                                                    <div class="col-8">
+                                                        <div class="select-container">
+                                                            <select class="cims-select filter-category__control">
+                                                                <option>Lorem1</option>
+                                                                <option>Lorem2</option>
+                                                                <option>Lorem3</option>
+                                                                <option>Lorem4</option>
+                                                                <option>Lorem5</option>   
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="[ row no-gutters ] filter-category__item">         
+                                                    <div class="col-8 offset-3">
+                                                        <div class="radio-group">
+                                                            <div class="custom-radio">
+                                                                <input id="ext1" name="ext" type="radio" checked/>
+                                                                <label for="ext1">Contains</label>
+                                                            </div>
+                                                            <div class="custom-radio">
+                                                                <input id="ext2" name="ext" type="radio"/>
+                                                                <label for="ext2">Not Contains</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="[ row no-gutters ]  filter-category__item">
+                                                    <div class="col-3">
+                                                        <label class="filter-category__label">Search Term:</label>
+                                                    </div>
+                                                    
+                                                    <div class="col-8">
+                                                        <input type="text" class="cims-input filter-category__control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="filter-category__item category-control category-control--minus">
+                                                    <a href="#" class="btn-link filter-btn">
+                                                        <i class="fas fa-plus-square"></i>
+                                                        <i class="fas fa-minus-square"></i>
+                                                        Remove Extended Group 
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="filter-category__section">
+                                                <div class="filter-category__item">
+                                                    <div class="radio-group radio-group--main">
+                                                        <div class="custom-radio">
+                                                            <input id="ext3" name="ext2" type="radio" checked/>
+                                                            <label for="ext3">And</label>
+                                                        </div>
+                                                        <div class="custom-radio">
+                                                            <input id="ext4" name="ext2" type="radio"/>
+                                                            <label for="ext4">Or</label>
+                                                        </div>
+                                                        <div class="custom-radio">
+                                                            <input id="ext5" name="ext2" type="radio"/>
+                                                            <label for="ext5">Exclude</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="[ row no-gutters ]  filter-category__item">
+                                                    <div class="col-3">
+                                                        <label class="filter-category__label">Field:</label>
+                                                    </div>
+                                                    
+                                                    <div class="col-8">
+                                                        <div class="select-container">
+                                                            <select class="cims-select filter-category__control">
+                                                                <option>Lorem1</option>
+                                                                <option>Lorem2</option>
+                                                                <option>Lorem3</option>
+                                                                <option>Lorem4</option>
+                                                                <option>Lorem5</option>   
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="[ row no-gutters ] filter-category__item">         
+                                                    <div class="col-8 offset-3">
+                                                        <div class="radio-group">
+                                                            <div class="custom-radio">
+                                                                <input id="ext6" name="ext3" type="radio" checked/>
+                                                                <label for="ext6">Contains</label>
+                                                            </div>
+                                                            <div class="custom-radio">
+                                                                <input id="ext7" name="ext3" type="radio"/>
+                                                                <label for="ext7">Not Contains</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="[ row no-gutters ]  filter-category__item">
+                                                    <div class="col-3">
+                                                        <label class="filter-category__label">Search Term:</label>
+                                                    </div>
+                                                    
+                                                    <div class="col-8">
+                                                        <input type="text" class="cims-input filter-category__control">
+                                                    </div>
+                                                </div>
+                                                <div class="filter-category__item category-control category-control--plus">
+                                                    <a href="#" class="btn-link filter-btn">
+                                                        <i class="fas fa-plus-square"></i>
+                                                        <i class="fas fa-minus-square"></i>
+                                                        Add Extended Group 
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- EXTENDED TEXT SEARCH END -->
+
+                                    <!-- CATEGORY FILTER START -->
+                                    <div class="filter-category">
+
+                                        <a class="filter-category__head collapse-icon" aria-controls="categoryFilterBody"
+                                            aria-expanded="true" data-toggle="collapse" href="#categoryFilterBody" id="categoryFilter" role="tab">
+                                            <span class="filter-category__title">category filter</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="fas fa-question-circle"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm another tooltip"></span>
+                                            </span>
+                                            <span class="collapse-icon-closed">
+                                                <i class="fas fa-chevron-down"></i>
+                                            </span>
+                                            <span class="collapse-icon-open">
+                                                <i class="fas fa-chevron-up"></i>
+                                            </span>
+                                        </a>
+                                        
+                                        <div class="filter-category__body collapse show" aria-labelledby="categoryFilter" id="categoryFilterBody" role="tabpanel"> 
+                                            <div class="filter-category__section">
+                                                <div class="[ row no-gutters ]  filter-category__item">
+                                                    <div class="col-3">
+                                                        <label class="filter-category__label">Category:</label>
+                                                    </div>
+                                                    
+                                                    <div class="col-8">
+                                                        <input type="text" class="cims-input filter-category__control disabled" placeholder="Search title or message">
+                                                    </div>
+                                                    <div class="col-1">
+                                            <div class="open-icon" aria-expanded="true"
+                                                 class="tree-heading"  role="tab" v-on:click="selectCategory(1)">
+                                                <i class="fas fa-folder"></i>
+                                            </div>
+                                        </div>
+                                                </div>
+
+                                                <div class="[ row no-gutters ] filter-category__item">         
+                                                    <div class="col-8 offset-3">
+                                                        <div class="radio-group">
+                                                            <div class="custom-radio">
+                                                                <input id="cat1" name="cat" type="radio" checked/>
+                                                                <label for="cat1">And</label>
+                                                            </div>
+                                                            <div class="custom-radio">
+                                                                <input id="cat2" name="cat" type="radio"/>
+                                                                <label for="cat2">Or</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="filter-category__item">
+                                                    <ul class="category">
+                                                        <li class="category__item category__item--unrating">
+                                                            <span class="category__delete">&#10006;</span>
+                                                            <span class="category__type"><i class="icon-tag"></i></span>
+                                                            <span class="category__name">China</span>
+                                                        </li>
+                                                        <li class="category__item category__item--unrating">
+                                                            <span class="category__delete">&#10006;</span>
+                                                            <span class="category__type"><i class="icon-tag"></i></span>
+                                                            <span class="category__name">Germany</span>
+                                                        </li>
+                                                        <li class="category__item category__item--rating">
+                                                            <span class="category__delete">&#10006;</span>
+                                                            <span class="category__type"><i class="icon-star"></i></span>
+                                                            <span class="category__name">Engine Noise</span>
+                                                            <div class="category__value">
+                                                                <label class="category__indicator category__indicator--positive category__indicator--progress-25" for="searchCategory"></label>
+                                                                <input id="searchCategory" type="hidden">
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="category-popup collapse" id="popup">
+                                                        <a href="javascript:void(0)" title="Close" class="close"><i class="fas fa-times-circle"></i></a>
+                                                        <a href="javascript:void(0)" title="expand all">expand all</a>
+                                                        <a href="javascript:void(0)" title="collapse all">collapse all</a>
+                                                        <input type="text" class="cims-input filter-category__control disabled" placeholder="Search title or message">
+                                                        <div role="tabpanel">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="filter-category__item category-control category-control--minus">
+                                                    <a href="#" class="btn-link filter-btn">
+                                                        <i class="fas fa-plus-square"></i>
+                                                        <i class="fas fa-minus-square"></i>
+                                                        Remove Filter Group 
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="filter-category__section">
+                                                <div class="filter-category__item">
+                                                    <div class="radio-group radio-group--main">
+                                                        <div class="custom-radio">
+                                                            <input id="cat3" name="cat2" type="radio" checked/>
+                                                            <label for="cat3">And</label>
+                                                        </div>
+                                                        <div class="custom-radio">
+                                                            <input id="cat4" name="cat2" type="radio"/>
+                                                            <label for="cat4">Or</label>
+                                                        </div>
+                                                        <div class="custom-radio">
+                                                            <input id="cat5" name="cat2" type="radio"/>
+                                                            <label for="cat5">Exclude</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="[ row no-gutters ]  filter-category__item">
+                                                    <div class="col-3">
+                                                        <label class="filter-category__label">Category:</label>
+                                                    </div>
+                                                    
+                                                    <div class="col-8">
+                                                        <input type="text" class="cims-input filter-category__control disabled" placeholder="Search title or message">
+                                                        <div aria-labelledby="categoryNameHeading2" class="panel-collapse collapse" id="categoryNameBody2" role="tabpanel">
+                                                            <div id="jsTreeCategory2">
+                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <div class="open-jstree" aria-controls="categoryNameBody2" aria-expanded="true"
+                                                        class="tree-heading" data-toggle="collapse" href="#categoryNameBody2" id="categoryNameHeading2" role="tab">
+                                                            <i class="fas fa-folder"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="[ row no-gutters ] filter-category__item">         
+                                                    <div class="col-8 offset-3">
+                                                        <div class="radio-group">
+                                                            <div class="custom-radio">
+                                                                <input id="cat6" name="cat3" type="radio" checked/>
+                                                                <label for="cat6">And</label>
+                                                            </div>
+                                                            <div class="custom-radio">
+                                                                <input id="cat7" name="cat3" type="radio"/>
+                                                                <label for="cat7">Or</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="filter-category__item">
+                                                    <ul class="category category">
+                                                        <li class="category__item category__item--rating">
+                                                            <span class="category__delete">&#10006;</span>
+                                                            <span class="category__name">Engine Noise</span>
+                                                            <div class="category__value">
+                                                                
+                                                                <label class="category__indicator category__indicator--positive category__indicator--progress-25" for="searchCategory"></label>
+                                                                <input id="searchCategory" type="hidden">
+                                                            </div>
+                                                        </li>
+                                                        <li class="category__item category__item--rating">
+                                                            <span class="category__delete">&#10006;</span>
+                                                            <span class="category__name">Powertrain</span>
+                                                            <div class="category__value">
+                                                                <a href="#" class="btn-link add-tonality">
+                                                                    <i class="fas fa-plus-square"></i>
+                                                                    Add Tonality
+                                                                </a>
+                                                            </div>
+                                                            <div class="tonality-popup collapse">
+                                                                <a href="#close" title="Close" class="close"><i class="fas fa-times-circle"></i></a>
+                                                                <h4 class="tonality-popup__header"></h4>
+                                                                <span>negative</span>
+                                                                <div class="tonality-popup__group">
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--negative-25">25%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--negative-50">50%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--negative-75">75%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--negative-100">100%</span>
+                                                                </div>
+                                                                <span>neutral</span>
+                                                                <div class="tonality-popup__group">
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--neutral-25">25%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--neutral-50">50%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--neutral-75">75%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--neutral-100">100%</span>
+                                                                </div>
+                                                                <span>positive</span>
+                                                                <div class="tonality-popup__group">
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--positive-25">25%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--positive-50">50%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--positive-75">75%</span>
+                                                                    <span class="tonality-popup__btn tonality-popup__btn--positive-100">100%</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="filter-category__item category-control category-control--plus">
+                                                    <a href="#" class="btn-link filter-btn">
+                                                        <i class="fas fa-plus-square"></i>
+                                                        <i class="fas fa-minus-square"></i>
+                                                        Add Filter Group 
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- CATEGORY FILTER END -->
+
+                                    <!-- ADMIN FILTER STARTS -->
+                                    <div class="filter-category">
+                                        <a class="filter-category__head collapse-icon" aria-controls="adminFilterBody"
+                                        aria-expanded="true" data-toggle="collapse" href="#adminFilterBody" id="adminFilter" role="tab">
+                                            <span class="filter-category__title">admin filter</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="fas fa-question-circle"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm another tooltip"></span>
+                                            </span>
+                                            <span class="collapse-icon-closed">
+                                                <i class="fas fa-chevron-down"></i>
+                                            </span>
+                                            <span class="collapse-icon-open">
+                                                <i class="fas fa-chevron-up"></i>
+                                            </span>
+                                        </a>
+                                        <div class="filter-category__body collapse show" aria-labelledby="adminFilter" id="adminFilterBody" role="tabpanel">
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Created:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <div class="select-container select-container--icon-right">
+                                                        <input type="text" autocomplete="off" class="cims-input filter-category__control datepicker-input dropdown-toggle" 
+                                                        id="q" data-toggle="dropdown" readonly value="01.01.2019 - 07.01.2019">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                        <!-- Datepicker starts -->
+                                                        <div class="dropdown-menu datepicker" aria-labelledby="q">
+                                                            <div class="controls">
+                                                                <ul class="period">
+                                                                    <li class="period__item period__item--active">Day</li>
+                                                                    <li class="period__item">Week</li>
+                                                                    <li class="period__item">Month</li>
+                                                                    <li class="period__item">Quarter</li>
+                                                                    <li class="period__item">Year</li>
+                                                                </ul>
+                                                                <ul class="range">
+                                                                    <li class="range__item range__item--active">Last 7 days</li>
+                                                                    <li class="range__item">Last 14 days</li>
+                                                                    <li class="range__item">Last 30 days</li>
+                                                                    <li class="range__item">Last Month</li>
+                                                                    <li class="range__item">Last Quarter</li>
+                                                                    <li class="range__item">Last Year</li>
+                                                                    <li class="range__item">All Time</li>
+                                                                    <li class="range__item">Custom Range</li>
+                                                                </ul>
+                                                                <div class="custom-range"> 
+                                                                    <input class="custom-range__input" type="text">
+                                                                    <input class="custom-range__input" type="text">
+                                                                </div>
+                                                                <div class="custom-range"> 
+                                                                    <button class="apply-btn" type="submit">Apply</button>
+                                                                    <button class="cancel-btn">Cancel</button>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="calendar calendar-weeks">
+                                                                <!-- WEEKS -->
+                                                                <div class="calendar__title">Start</div>
+                                                                <div class="calendar__header">
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-left"></i>
+                                                                    </button>
+                                                                    <div class="calendar-select">
+                                                                        <select>
+                                                                            <option value="0">Jan</option>
+                                                                            <option value="1">Feb</option>
+                                                                            <option value="2">Mar</option>
+                                                                            <option value="3">Apr</option>
+                                                                            <option value="4">May</option>
+                                                                            <option value="5">Jun</option>
+                                                                            <option value="6">Jul</option>
+                                                                            <option value="7">Aug</option>
+                                                                            <option value="8">Sep</option>
+                                                                            <option value="9">Oct</option>
+                                                                            <option value="10">Nov</option>
+                                                                            <option value="11">Dec</option>
+                                                                        </select>
+                                                                        <select class="year-select">
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2017">2017</option>
+                                                                            <option value="2018">2018</option>
+                                                                            <option value="2019">2019</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-right"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="calendar-table">
+                                                                    <div class="calendar-table__row week"> 
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Su</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Mo</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Tu</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">We</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Th</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Fr</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Sa</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                                                                                    
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable active">  
+                                                                            <div class="calendar-table__value-wrapper">
+                                                                                <div class="calendar-table__value unavailable">28</div>
+                                                                                <div class="calendar-table__value unavailable">29</div>
+                                                                                <div class="calendar-table__value unavailable">30</div>
+                                                                                <div class="calendar-table__value unavailable">31</div>
+                                                                                <div class="calendar-table__value">1</div>
+                                                                                <div class="calendar-table__value">2</div>
+                                                                                <div class="calendar-table__value">3</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">4</div>
+                                                                                <div class="calendar-table__value">5</div>
+                                                                                <div class="calendar-table__value">6</div>
+                                                                                <div class="calendar-table__value">7</div>
+                                                                                <div class="calendar-table__value">8</div>
+                                                                                <div class="calendar-table__value">9</div>
+                                                                                <div class="calendar-table__value">10</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">11</div>
+                                                                                <div class="calendar-table__value">12</div>
+                                                                                <div class="calendar-table__value">13</div>
+                                                                                <div class="calendar-table__value">14</div>
+                                                                                <div class="calendar-table__value">15</div>
+                                                                                <div class="calendar-table__value">16</div>
+                                                                                <div class="calendar-table__value">17</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">18</div>
+                                                                                <div class="calendar-table__value">19</div>
+                                                                                <div class="calendar-table__value">20</div>
+                                                                                <div class="calendar-table__value">21</div>
+                                                                                <div class="calendar-table__value">22</div>
+                                                                                <div class="calendar-table__value">23</div>
+                                                                                <div class="calendar-table__value">24</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">25</div>
+                                                                                <div class="calendar-table__value">26</div>
+                                                                                <div class="calendar-table__value">27</div>
+                                                                                <div class="calendar-table__value">28</div>
+                                                                                <div class="calendar-table__value">29</div>
+                                                                                <div class="calendar-table__value">30</div>
+                                                                                <div class="calendar-table__value unavailable">1</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value unavailable">2</div>
+                                                                                <div class="calendar-table__value unavailable">3</div>
+                                                                                <div class="calendar-table__value unavailable">4</div>
+                                                                                <div class="calendar-table__value unavailable">5</div>
+                                                                                <div class="calendar-table__value unavailable">6</div>
+                                                                                <div class="calendar-table__value unavailable">7</div>
+                                                                                <div class="calendar-table__value unavailable">8</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- WEEKS END -->
+                                                            </div>
+                                                            <div class="calendar calendar-months">
+                                                                <!-- MONTHS -->
+                                                                <div class="calendar__title">Start</div>
+                                                                <div class="calendar__header">
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-left"></i>
+                                                                    </button>
+                                                                    <div class="calendar-select">
+                                                                        <select class="year-select">
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2017">2017</option>
+                                                                            <option value="2018">2018</option>
+                                                                            <option value="2019">2019</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-right"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="calendar-table">                                                        
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Jan</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Feb</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Mar</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Apr</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">May</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Jun</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable active">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Jul</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Aug</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Sep</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Oct</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Nov</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Dec</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- MONTHS END-->
+                                                            </div>
+                                                            <div class="calendar calendar-quarters">
+                                                                <!-- QUARTERS -->
+                                                                <div class="calendar__title">Start</div>
+                                                                <div class="calendar__header">
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-left"></i>
+                                                                    </button>
+                                                                    <div class="calendar-select">
+                                                                        <select class="year-select">
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2017">2017</option>
+                                                                            <option value="2018">2018</option>
+                                                                            <option value="2019">2019</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-right"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="calendar-table">                                                        
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable active">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Q1
+                                                                                    <span class="months">Jan, Feb, Mar</span>
+                                                                                </div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Q2
+                                                                                    <span class="months">Apr, May, Jun</span>
+                                                                                </div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Q3
+                                                                                    <span class="months">Jul, Aug, Sep</span>
+                                                                                </div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Q4
+                                                                                    <span class="months">Oct, Nov, Dec</span>
+                                                                                </div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- QUARTERS END -->
+                                                            </div>
+                                                            <div class="calendar calendar-years">
+                                                                <!-- YEAR -->
+                                                                <div class="calendar__title">Start</div>
+                                                                <div class="calendar__header">
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-left"></i>
+                                                                    </button>
+                                                                    <div class="calendar-select">
+                                                                        <select class="year-select">
+                                                                            <option value="2014 - 2022">2014 - 2022</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-right"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="calendar-table">                                                        
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">2014</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">2015</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">2016</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">2017</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">2018</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable active">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">2019</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value unavailable">2020</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value unavailable">2021</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value unavailable">2022</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <!-- YEAR END -->
+                                                            </div>
+                                                        </div>
+                                                        <!--Datepicker ends-->
+                                                        
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Changed:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <div class="select-container select-container--icon-right">
+                                                        <input type="text" autocomplete="off" class="cims-input filter-category__control datepicker-input dropdown-toggle" 
+                                                        id="q" data-toggle="dropdown" readonly value="01.01.2019 - 07.01.2019">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                        <!-- Datepicker starts -->
+                                                        <div class="dropdown-menu datepicker" aria-labelledby="q">
+                                                            <div class="controls">
+                                                                <ul class="period">
+                                                                    <li class="period__item period__item--active">Day</li>
+                                                                    <li class="period__item">Week</li>
+                                                                    <li class="period__item">Month</li>
+                                                                    <li class="period__item">Quarter</li>
+                                                                    <li class="period__item">Year</li>
+                                                                </ul>
+                                                                <ul class="range">
+                                                                    <li class="range__item range__item--active">Last 7 days</li>
+                                                                    <li class="range__item">Last 14 days</li>
+                                                                    <li class="range__item">Last 30 days</li>
+                                                                    <li class="range__item">Last Month</li>
+                                                                    <li class="range__item">Last Quarter</li>
+                                                                    <li class="range__item">Last Year</li>
+                                                                    <li class="range__item">All Time</li>
+                                                                    <li class="range__item">Custom Range</li>
+                                                                </ul>
+                                                                <div class="custom-range"> 
+                                                                    <input class="custom-range__input" type="text">
+                                                                    <input class="custom-range__input" type="text">
+                                                                </div>
+                                                                <div class="custom-range"> 
+                                                                    <button class="apply-btn" type="submit">Apply</button>
+                                                                    <button class="cancel-btn">Cancel</button>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="calendar calendar-weeks">
+                                                                <!-- WEEKS -->
+                                                                <div class="calendar__title">Start</div>
+                                                                <div class="calendar__header">
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-left"></i>
+                                                                    </button>
+                                                                    <div class="calendar-select">
+                                                                        <select>
+                                                                            <option value="0">Jan</option>
+                                                                            <option value="1">Feb</option>
+                                                                            <option value="2">Mar</option>
+                                                                            <option value="3">Apr</option>
+                                                                            <option value="4">May</option>
+                                                                            <option value="5">Jun</option>
+                                                                            <option value="6">Jul</option>
+                                                                            <option value="7">Aug</option>
+                                                                            <option value="8">Sep</option>
+                                                                            <option value="9">Oct</option>
+                                                                            <option value="10">Nov</option>
+                                                                            <option value="11">Dec</option>
+                                                                        </select>
+                                                                        <select class="year-select">
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2017">2017</option>
+                                                                            <option value="2018">2018</option>
+                                                                            <option value="2019">2019</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-right"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="calendar-table">
+                                                                    <div class="calendar-table__row week"> 
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Su</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Mo</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Tu</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">We</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Th</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Fr</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="calendar-table__col"> 
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">Sa</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                                                                                    
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable active">  
+                                                                            <div class="calendar-table__value-wrapper">
+                                                                                <div class="calendar-table__value unavailable">28</div>
+                                                                                <div class="calendar-table__value unavailable">29</div>
+                                                                                <div class="calendar-table__value unavailable">30</div>
+                                                                                <div class="calendar-table__value unavailable">31</div>
+                                                                                <div class="calendar-table__value">1</div>
+                                                                                <div class="calendar-table__value">2</div>
+                                                                                <div class="calendar-table__value">3</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">4</div>
+                                                                                <div class="calendar-table__value">5</div>
+                                                                                <div class="calendar-table__value">6</div>
+                                                                                <div class="calendar-table__value">7</div>
+                                                                                <div class="calendar-table__value">8</div>
+                                                                                <div class="calendar-table__value">9</div>
+                                                                                <div class="calendar-table__value">10</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">11</div>
+                                                                                <div class="calendar-table__value">12</div>
+                                                                                <div class="calendar-table__value">13</div>
+                                                                                <div class="calendar-table__value">14</div>
+                                                                                <div class="calendar-table__value">15</div>
+                                                                                <div class="calendar-table__value">16</div>
+                                                                                <div class="calendar-table__value">17</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">18</div>
+                                                                                <div class="calendar-table__value">19</div>
+                                                                                <div class="calendar-table__value">20</div>
+                                                                                <div class="calendar-table__value">21</div>
+                                                                                <div class="calendar-table__value">22</div>
+                                                                                <div class="calendar-table__value">23</div>
+                                                                                <div class="calendar-table__value">24</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper"> 
+                                                                                <div class="calendar-table__value">25</div>
+                                                                                <div class="calendar-table__value">26</div>
+                                                                                <div class="calendar-table__value">27</div>
+                                                                                <div class="calendar-table__value">28</div>
+                                                                                <div class="calendar-table__value">29</div>
+                                                                                <div class="calendar-table__value">30</div>
+                                                                                <div class="calendar-table__value unavailable">1</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value unavailable">2</div>
+                                                                                <div class="calendar-table__value unavailable">3</div>
+                                                                                <div class="calendar-table__value unavailable">4</div>
+                                                                                <div class="calendar-table__value unavailable">5</div>
+                                                                                <div class="calendar-table__value unavailable">6</div>
+                                                                                <div class="calendar-table__value unavailable">7</div>
+                                                                                <div class="calendar-table__value unavailable">8</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- WEEKS END -->
+                                                            </div>
+                                                            <div class="calendar calendar-months">
+                                                                <!-- MONTHS -->
+                                                                <div class="calendar__title">Start</div>
+                                                                <div class="calendar__header">
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-left"></i>
+                                                                    </button>
+                                                                    <div class="calendar-select">
+                                                                        <select class="year-select">
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2017">2017</option>
+                                                                            <option value="2018">2018</option>
+                                                                            <option value="2019">2019</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-right"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="calendar-table">                                                        
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Jan</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Feb</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Mar</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Apr</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">May</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Jun</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable active">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Jul</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Aug</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Sep</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Oct</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Nov</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Dec</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- MONTHS END-->
+                                                            </div>
+                                                            <div class="calendar calendar-quarters">
+                                                                <!-- QUARTERS -->
+                                                                <div class="calendar__title">Start</div>
+                                                                <div class="calendar__header">
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-left"></i>
+                                                                    </button>
+                                                                    <div class="calendar-select">
+                                                                        <select class="year-select">
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2017">2017</option>
+                                                                            <option value="2018">2018</option>
+                                                                            <option value="2019">2019</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-right"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="calendar-table">                                                        
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable active">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Q1
+                                                                                    <span class="months">Jan, Feb, Mar</span>
+                                                                                </div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Q2
+                                                                                    <span class="months">Apr, May, Jun</span>
+                                                                                </div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">Q3
+                                                                                    <span class="months">Jul, Aug, Sep</span>
+                                                                                </div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">Q4
+                                                                                    <span class="months">Oct, Nov, Dec</span>
+                                                                                </div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- QUARTERS END -->
+                                                            </div>
+                                                            <div class="calendar calendar-years">
+                                                                <!-- YEAR -->
+                                                                <div class="calendar__title">Start</div>
+                                                                <div class="calendar__header">
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-left"></i>
+                                                                    </button>
+                                                                    <div class="calendar-select">
+                                                                        <select class="year-select">
+                                                                            <option value="2014 - 2022">2014 - 2022</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button class="arrow">
+                                                                        <i class="icon-long-arrow-right"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="calendar-table">                                                        
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">2014</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">2015</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">2016</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value">2017</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">2018</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable active">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value">2019</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="calendar-table__row"> 
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">  
+                                                                                <div class="calendar-table__value unavailable">2020</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value unavailable">2021</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="calendar-table__col clickable">
+                                                                            <div class="calendar-table__value-wrapper">    
+                                                                                <div class="calendar-table__value unavailable">2022</div>  
+                                                                            </div>     
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <!-- YEAR END -->
+                                                            </div>
+                                                        </div>
+                                                        <!--Datepicker ends-->
+                                                        
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <div class="[ row no-gutters ]  filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Msg Status:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <div class="select-container">
+                                                        <select class="cims-select filter-category__control">
+                                                            <option>Unassigned</option>
+                                                            <option>Unpublished</option>
+                                                            <option>Published</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="[ row no-gutters ]  filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Feed:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <div class="select-container">
+                                                        <select class="cims-select filter-category__control">
+                                                            <option>Lorem1</option>
+                                                            <option>Lorem2</option>
+                                                            <option>Lorem3</option>
+                                                            <option>Lorem4</option>
+                                                            <option>Lorem5</option>   
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">User:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <div class="select-container">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ADMIN FILTER END -->
+
+                                    <div class="filter-category">
+                                        <a class="filter-category__head collapse-icon" aria-controls="miscellanousFilterBody"
+                                        aria-expanded="true" data-toggle="collapse" href="#miscellanousFilterBody" id="miscellanousFilter" role="tab">
+                                            <span class="filter-category__title">miscellanous filter</span>
+                                            <span class="tooltip-cims tooltip-cims--right" data-tooltip="I'm small tooltip. Don't kill me!">
+                                                <i class="fas fa-question-circle"></i>
+                                                <span class="tooltip-cims__text" data-tooltip="I'm another tooltip"></span>
+                                            </span>
+                                            <span class="collapse-icon-closed">
+                                                <i class="fas fa-chevron-down"></i>
+                                            </span>
+                                            <span class="collapse-icon-open">
+                                                <i class="fas fa-chevron-up"></i>
+                                            </span>
+                                        </a>
+
+                                        <div class="filter-category__body collapse show" aria-labelledby="miscellanousFilter" id="miscellanousFilterBody" role="tabpanel">
+                                            
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Status:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <div class="select-container">
+                                                        <select class="cims-select filter-category__control">
+                                                            <option>New Message</option>
+                                                            <option>Unpublished</option>
+                                                            <option>Published</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Source:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <div class="select-container">
+                                                        <input type="text" autocomplete="off" class="cims-input filter-category__control dropdown-toggle" data-toggle="dropdown"
+                                                        readonly value="Source" id="source-input" data-toggle="dropdown">
+                                                        <div class="dropdown-menu dropdown-tree" id="source" aria-labelledby="source-input">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="[ row no-gutters ] filter-category__item">
+                                                <div class="col-3">
+                                                    <label class="filter-category__label">Views:</label>
+                                                </div>
+                                                
+                                                <div class="col-8">
+                                                    <div id="slider-range"></div>
+                                                    <div class="slider-value">
+                                                        <input type="text" id="amount1" readonly>
+                                                        <input type="text" id="amount2" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="btn-container btn-container--center">
+                                        <a href="#" class="btn-link" value="reset" id="za">
+                                            <i class="far fa-trash-alt"></i>
+                                            Reset
+                                        </a>
+                                        <a href="#" class="btn-link btn-link--primary" id="az">
+                                            <i class="fas fa-search"></i>
+                                            Submit
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- FILTERS-PANEL ENDS -->
+
+
+                        <div class="messages">
+                            <div class="messages-settings">
+                                <div class="messages-settings__item">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="test"/>
+                                        <span class="mark-icon">Mark all messages</span>
+                                    </label>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <a href="#" class="link-icon">
+                                        <span><i class="fas fa-envelope"></i></span>
+                                        Add marked to newsletter
+                                    </a>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <a href="#" class="link-icon">
+                                        <span><i class="fas fa-download"></i></span>
+                                        Export filtered
+                                    </a>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <a href="#" class="link-icon">
+                                        <span><i class="fas fa-check"></i></span>
+                                        Publish marked
+                                    </a>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <a href="#" class="link-icon">
+                                        <span><i class="far fa-trash-alt"></i></span>
+                                        Delete marked
+                                    </a>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <label class="toggle-switch">
+                                        <input class="toggle-switch-check" type="checkbox" checked/>
+                                        <span aria-hidden="true" class="toggle-switch-bar">
+                                            <span class="toggle-switch-handle" data-label-on="Show Translation" data-label-off="Show Translation"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="messages-settings__item">
+                                    <label class="toggle-switch">
+                                        <input class="toggle-switch-check" type="checkbox"/>
+                                        <span aria-hidden="true" class="toggle-switch-bar">
+                                            <span class="toggle-switch-handle" data-label-on="Show HTML source" data-label-off="Show HTML source"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="test-btn" @click="testFunc">test</button>
+                            <div class="messages-settings">
+                                <div class="page-pagination">
+                                    <ul class="page-pagination__list">
+                                        <li class="page-pagination__item">
+                                            <a class="page-pagination__link" href="#1" role="button">
+                                                <i class="fas fa-step-backward"></i>
+                                            </a>
+                                        </li>
+                                        <li class="page-pagination__item">
+                                            <a class="page-pagination__link" href="#1" role="button">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </a>
+                                        </li>
+                                        <li class="active page-pagination__item"><a class="page-pagination__link" href="#1">1</a></li>
+                                        <li class="page-pagination__item"><a class="page-pagination__link" href="#1">2</a></li>
+                                        <li class="page-pagination__item"><a class="page-pagination__link" href="#1">3</a></li>
+                                        <li class="page-pagination__item"><a class="page-pagination__link" href="#1">4423423</a></li>
+                                        <li class="page-pagination__item"><a class="page-pagination__link" href="#1">44234</a></li>
+                                        <li class="page-pagination__item">
+                                            <a class="page-pagination__link" href="#1" role="button">
+                                                <i class="fas fa-chevron-right"></i>
+                                            </a>
+                                        </li>
+                                        <li class="page-pagination__item">
+                                            <a class="page-pagination__link" href="#1" role="button">
+                                                <i class="fas fa-step-forward"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="page-pagination__results">Page 1 of 31 (1.013 messages in total)</div>
+                                    <div class="select-container">
+                                        <select class="cims-select filter-category__control">
+                                            <option>10 per page</option>
+                                            <option selected>20 per page</option>
+                                            <option>30 per page</option>
+                                            <option>50 per page</option>
+                                            <option>100 per page</option>   
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="select-container">
+                                    <select class="cims-select">
+                                        <option>Sort by date (descending)</option>
+                                        <option>Sort by date (ascending)</option>
+                                        <option>Sort by views (descending)</option>
+                                        <option>Sort by views (ascending)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                                <div class="messages-container">
+                                    <div class="message-item">
+                                        <div class="message-item__head">
+                                            <span class="message-status message-status--new"><i class="icon-sun"></i> New</span>
+                                            <div class="message-item__main-content">
+                                                <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
+                                                <p class="message-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                                                <div class="message-item__translation">
+                                                    <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
+                                                    <p class="message-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                                                    <span class="label label-success">
+                                                        <span class="label-item label-item-expand">translated</span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="message-item__logo">
+                                                <img class="" src="images/message-logo.jpg" alt="message logo">
+                                            </div>
+                                            <div class="message-item__rating">
+                                                <ul class="category category--unrating">
+                                                    <li class="category__item">
+                                                        <span class="category__type"><i class="icon-tag"></i></span>
+                                                        <span class="category__name">China</span>
+                                                    </li>
+                                                    <li class="category__item">
+                                                    <span class="category__type"><i class="icon-tag"></i></span>
+                                                        <span class="category__name">Germany</span>
+                                                    </li>
+                                                </ul>   
+                                                <ul class="category category--rating">
+                                                    <li class="category__item">
+                                                        <span class="category__type"><i class="icon-star"></i></span>
+                                                        <span class="category__name">Engine Noise</span>
+                                                        <div class="category__value">
+                                                            <span class="category__indicator category__indicator--positive category__indicator--progress-25"></span>
+                                                        </div>
+                                                    </li>
+                                                    <li class="category__item">
+                                                        <span class="category__type"><i class="icon-star"></i></span>
+                                                        <span class="category__name">Powertrain</span>
+                                                        <div class="category__value">
+                                                            <span class="category__indicator category__indicator--negative category__indicator--progress-75"></span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="message-item__history">
+                                            <div class="close">
+                                                <i class="fas fa-times"></i>
+                                            </div>
+                                            <form>
+                                                <table class="table message-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Editor</th>
+                                                            <th>Description</th>
+                                                            <th>Comment</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>2018-07-10 10:23:46</td>
+                                                            <td>Alexandre Luc</td>
+                                                            <td>New Message Created</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2018-07-10 14:06:55</td>
+                                                            <td>Vitor Bassi</td>
+                                                            <td>Message update</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2018-07-10 14:08:58</td>
+                                                            <td>Vitor Bassi</td>
+                                                            <td>Message update</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>New user</td>
+                                                            <td>
+                                                                <div class="select-container">
+                                                                    <select class="cims-select">
+                                                                        <option>Open</option>
+                                                                        <option>In Progress</option>
+                                                                        <option>Resolved</option>
+                                                                        <option>Reopened</option>
+                                                                        <option>Closed</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="cims-input">
+                                                                <button class="cims-btn cims-btn--primary">Save</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </form>
+                                        </div>
+                                        <div class="message-item__footer">
+                                            <ul class="message-information">
+                                                <li class="message-information__item">
+                                                    <span class="message-information__name message-information__name--url-name" href="#">google.com</span>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <span class="message-information__name message-information__name--time">31.05.2018 23:59</span>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <span class="message-information__name message-information__name--views">251</span>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <a class="message-information__name message-information__name--url-link" href="#">URL</a>
+                                                </li> 
+                                            </ul>
+
+                                            <ul class="message-information">
+                                                
+                                                <li class="message-information__item">
+                                                    <a href="#" class="link-icon link-history">
+                                                        <span><i class="far fa-trash-alt"></i></span>
+                                                        History
+                                                    </a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-item">
+                                        <div class="message-item__head">
+                                            <span class="message-status message-status--published"><i class="icon-check"></i> Published</span>
+                                            <div class="message-item__main-content">
+                                                <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
+                                                <p class="message-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                                                <div class="message-item__translation">
+                                                    <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
+                                                    <p class="message-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                                                    <span class="label label-success">
+                                                        <span class="label-item label-item-expand">translated</span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="message-item__logo">
+                                                <img class="" src="images/message-logo.jpg" alt="message logo">
+                                            </div>
+                                            <div class="message-item__rating">
+                                                <ul class="category category--unrating">
+                                                    <li class="category__item">
+                                                        <span class="category__type"><i class="icon-tag"></i></span>
+                                                        <span class="category__name">China</span>
+                                                    </li>
+                                                    <li class="category__item">
+                                                        <span class="category__type"><i class="icon-tag"></i></span>
+                                                        <span class="category__name">Germany</span>
+                                                    </li>
+                                                </ul>   
+                                                <ul class="category category--rating">
+                                                    <li class="category__item">
+                                                        <span class="category__type"><i class="icon-star"></i></span>
+                                                        <span class="category__name">Engine Noise</span>
+                                                        <div class="category__value">
+                                                            <span class="category__indicator category__indicator--positive category__indicator--progress-25"></span>
+                                                        </div>
+                                                    </li>
+                                                    <li class="category__item">
+                                                        <span class="category__type"><i class="icon-star"></i></span>
+                                                        <span class="category__name">Powertrain</span>
+                                                        <div class="category__value">
+                                                            <span class="category__indicator category__indicator--negative category__indicator--progress-75"></span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="message-item__history">
+                                            <div class="close">
+                                                <i class="fas fa-times"></i>
+                                            </div>
+                                            <form>
+                                                <table class="table message-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Editor</th>
+                                                            <th>Description</th>
+                                                            <th>Comment</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>2018-07-10 10:23:46</td>
+                                                            <td>Alexandre Luc</td>
+                                                            <td>New Message Created</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2018-07-10 14:06:55</td>
+                                                            <td>Vitor Bassi</td>
+                                                            <td>Message update</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2018-07-10 14:08:58</td>
+                                                            <td>Vitor Bassi</td>
+                                                            <td>Message update</td>
+                                                            <td>Sed ut perspiciatis, unde omnis iste
+                                                             natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit,
+                                                             aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>New user</td>
+                                                            <td>
+                                                                <div class="select-container">
+                                                                    <select class="cims-select">
+                                                                        <option>Open</option>
+                                                                        <option>In Progress</option>
+                                                                        <option>Resolved</option>
+                                                                        <option>Reopened</option>
+                                                                        <option>Closed</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="cims-input">
+                                                                <button class="cims-btn cims-btn--primary">Save</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </form>
+                                        </div>
+                                        <div class="message-item__footer">
+                                            <ul class="message-information">
+                                                <li class="message-information__item">
+                                                    <span class="message-information__name message-information__name--url-name" href="#">google.com</span>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <span class="message-information__name message-information__name--time">31.05.2018 23:59</span>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <span class="message-information__name message-information__name--views">251</span>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <a class="message-information__name message-information__name--url-link" href="#">URL</a>
+                                                </li> 
+                                            </ul>
+                                            <ul class="message-information">
+                                                <li class="message-information__item">
+                                                    <a href="#" class="link-icon">
+                                                        <span><i class="icon-pencil"></i></span>
+                                                        Edit
+                                                    </a>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <a href="#" class="link-icon link-history">
+                                                        <span><i class="far fa-trash-alt"></i></span>
+                                                        History
+                                                    </a>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox" name="test"/>
+                                                        <span>Marked</span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-item">
+                                        <div class="message-item__head">
+                                            <span class="message-status message-status--unpublished"><i class="icon-exclamation-sign"></i> Unpublished</span>
+                                            <div class="message-item__main-content">
+                                                <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
+                                                <p class="message-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                                                <div class="message-item__translation">
+                                                    <h3 class="message-item__heading">lorem ipsum dolor sit amet</h3>
+                                                    <p class="message-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                                                    <span class="label label-success">
+                                                        <span class="label-item label-item-expand">translated</span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="message-item__logo">
+                                                <img class="" src="images/message-logo.jpg" alt="message logo">
+                                            </div>
+                                            <div class="message-item__rating">
+                                                <ul class="category category--unrating">
+                                                    <li class="category__item">
+                                                        <span class="category__type"><i class="icon-tag"></i></span>
+                                                        <span class="category__name">China</span>
+                                                    </li>
+                                                    <li class="category__item">
+                                                        <span class="category__type"><i class="icon-tag"></i></span>
+                                                        <span class="category__name">Germany</span>
+                                                    </li>
+                                                </ul>   
+                                                <ul class="category category--rating">
+                                                    <li class="category__item">
+                                                        <span class="category__type"><i class="icon-star"></i></span>
+                                                        <span class="category__name">Engine Noise</span>
+                                                        <div class="category__value">
+                                                            <span class="category__indicator category__indicator--positive category__indicator--progress-25"></span>
+                                                        </div>
+                                                    </li>
+                                                    <li class="category__item">
+                                                        <span class="category__type"><i class="icon-star"></i></span>
+                                                        <span class="category__name">Powertrain</span>
+                                                        <div class="category__value">
+                                                            <span class="category__indicator category__indicator--negative category__indicator--progress-75"></span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="message-item__footer">
+                                            <ul class="message-information">
+                                                <li class="message-information__item">
+                                                    <span class="message-information__name message-information__name--url-name" href="#">google.com</span>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <span class="message-information__name message-information__name--time">31.05.2018 23:59</span>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <span class="message-information__name message-information__name--views">251</span>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <a class="message-information__name message-information__name--url-link" href="#">URL</a>
+                                                </li> 
+                                            </ul>
+                                            <ul class="message-information">
+                                                
+                                                <li class="message-information__item">
+                                                    <a href="#" class="link-icon">
+                                                        <span><i class="far fa-trash-alt"></i></span>
+                                                        History
+                                                    </a>
+                                                </li>
+                                                <li class="message-information__item">
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox" name="test"/>
+                                                        <span>Marked</span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <el-dialog :visible.sync="dlgCategoryVisible" custom-class="">
+                    <div class="filter-category-popup">
+                        <div class="filter-category-popup__tree">
+                            <el-tree
+                                class="filter-tree table-tree"
+                                :data="categoryTree"
+                                
+                                default-expand-all
+                                :expand-on-click-node="false"
+                                highlight-current
+                                @node-click="onCategoryNodeClick"
+                                ref="treeCategories">
+                                    <span slot-scope="{ node, data }">
+                                        <a href="javascript:void(0)">
+                                            <i class="jstree-icon jstree-themeicon" role="presentation"></i>
+{{ node.label }} 312
+                                        </a>
+                                    </span>
+                            </el-tree>
+                        </div>
+                        <div class="filter-category-popup__selected">
+                            <ul>
+                                <li>test</li>
+                            </ul>
+                        </div>
+                    </div>
+                </el-dialog>
+            </div>
+
+
+        </main>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="footer__copyright">© Copyright 2018 Consline AG</p>
+            </div>
+        </footer>
+        
+    </div>
+
+
+    <!-- SCRIPTS -->
+ 
+<script>
+    new Vue({
+        el: '#Root',
+        components: {
+        },
+
+        data: function () {
+
+            const data = [{
+              id: 1,
+              label: 'Level one 1',
+              children: [{
+                id: 4,
+                label: 'Level two 1-1',
+                children: [{
+                  id: 9,
+                  label: 'Level three 1-1-1'
+                }, {
+                  id: 10,
+                  label: 'Level three 1-1-2'
+                }]
+              }]
+            }, {
+              id: 2,
+              label: 'Level one 2',
+              children: [{
+                id: 5,
+                label: 'Level two 2-1'
+              }, {
+                id: 6,
+                label: 'Level two 2-2'
+              }]
+            }, {
+              id: 3,
+              label: 'Level one 3',
+              children: [{
+                id: 7,
+                label: 'Level two 3-1'
+              }, {
+                id: 8,
+                label: 'Level two 3-2'
+              }]
+            }];
+            return {
+               categoryTree: JSON.parse(JSON.stringify(data)),
+
+
+                cimsStatuses:[],
+                workflowStatuses:[],
+                tonalityScale:[],
+                fieldNames:[],
+                filterName: '',
+                filter: {
+                    statusId: 0,
+                    keywords:'',
+                    extendedKeywords:[
+                        {
+                            fieldName:'',
+                            keyword:'',
+                            containsCond:true
+                        }
+                    ],
+                    views:[0,100],
+                    source: {
+                        id: 0,
+                        name: ''
+                    },
+                    categoryBlocks:[
+
+                    ],
+                    dateInRange:['', ''],
+                    userIds:[],
+                    feedId: 0,
+                    workflowStatusId:0,
+                    dateChangeRange: ['',''],
+                    dateCreateRange: ['','']
+                },
+                appliedFilter: null,
+                viewsMin:0,
+                viewsMax:100,
+
+                pageNo:1,
+                pageSize:20,
+                pageSizeOptions:[10,20,30,50,100],
+
+                messageSorting:null,
+                messageSortingOptions:[],
+
+                messageCount:0,
+                messageList:[],
+
+                showTranslation:true,
+                showHtmlSource:false,
+
+                plainSources: [],
+                sourceTree:[],
+                sourceTreeProps: {
+                    children: 'children',
+                    label: 'name'
+                },
+
+                plainCategories: [],
+                categoryTreeProps: {
+                    children: 'children',
+                    label: 'name'
+                },
+
+                dlgFilterVisible: false,
+                dlgSavedFiltersList: false,
+                dlgTonalityVisible:false,
+                dlgTonality: {
+                    categoryId: null,
+                    categoryName: null,
+                    tonalityType: null,
+                    tonality: null,
+                    afterSelect: null
+                },
+
+                categorySearchResult: '',
+                plainCategory: {
+                    selectedCategory: null,
+                    categoryBlockIndex: null,
+                    afterSelect: null
+                },
+                dlgCategoryVisible:false,
+                dlgCategorySearchText:'',
+                dlgCategory: {
+                    selectedCategory: null,
+                    categoryBlockIndex: null,
+                    afterSelect: null
+                },
+                baseHref: '',
+                savedUserFilters:[],
+                selectedUserFilter: '',
+                users:[],
+                feeds:[],
+                //complex datepicker stuff
+                isPanelActive: true
+            };
+        },
+        watch: {
+            dlgCategorySearchText(val) {
+                this.$refs.treeCategories.filter(val);
+            }
+        },
+        methods: {
+            openForEdit: function(prmMessageId) {
+                let url = this.calcEditHref(prmMessageId);
+                window.open(url, '_blank', 'height:' + window.innerHeight + ',width:' + window.innerWidth);
+            },
+            doFilterCategoryTree: function(value, data) {
+                if (typeof value !== "string") return true;
+
+                return data.name.toLowerCase().indexOf(value.toLowerCase().trim()) !== -1;
+            },
+            tendedKeyword: function (prmIndex) {
+                if (prmIndex < (this.filter.extendedKeywords.length - 1) ) {
+                    this.filter.extendedKeywords.splice(prmIndex, 0, this.getExtendedKeywordEmpty());
+                } else {
+                    this.filter.extendedKeywords.push(this.getExtendedKeywordEmpty());
+                }
+            },
+            removeExtendedKeyword: function (prmIndex) {
+                if (prmIndex == 0 && this.filter.extendedKeywords.length == 1) {
+                    this.filter.extendedKeywords = [this.getExtendedKeywordEmpty()];
+                } else {
+                    this.filter.extendedKeywords.splice(prmIndex, 1);
+                }
+            },
+            addCategoryBlock: function (prmIndex) {
+                if (prmIndex < (this.filter.categoryBlocks.length - 1) ) {
+                    this.filter.categoryBlocks.splice(prmIndex, 0, this.getCategoryBlockEmpty());
+                } else {
+                    this.filter.categoryBlocks.push(this.getCategoryBlockEmpty());
+                }
+            },
+            removeCategoryBlock: function (prmIndex) {
+                if (prmIndex == 0 && this.filter.categoryBlocks.length == 1) {
+                    this.filter.categoryBlocks = [this.getCategoryBlockEmpty()];
+                } else {
+                    this.filter.categoryBlocks.splice(prmIndex, 1);
+                }
+            },
+            removeFilterCategory: function (catBlockIndex, prmCatId) {
+                if (catBlockIndex >= 0 && catBlockIndex < this.filter.categoryBlocks.length) {
+                    let index = this.findCategoryIndex(catBlockIndex, prmCatId);
+                    if (index >= 0 && index < this.filter.categoryBlocks[catBlockIndex].categories.length) {
+                        this.filter.categoryBlocks[catBlockIndex].categories.splice(index, 1);
+                    }
+                }
+            },
+            selectCategory: function (catBlockIndex) {
+                this.dlgCategory.categoryBlockIndex = catBlockIndex;
+                this.dlgCategorySearchText = '';
+                this.dlgCategory.selectedCategory = null;
+
+                var thisObj = this;
+                this.dlgCategory.afterSelect = function () {
+                    if (!thisObj.dlgCategory.selectedCategory) {
+                        return;
+                    }
+
+                    if (thisObj.findCategoryIndex(thisObj.dlgCategory.categoryBlockIndex, thisObj.dlgCategory.selectedCategory.id) >= 0) {
+                        return;
+                    }
+
+                    thisObj.filter.categoryBlocks[ thisObj.dlgCategory.categoryBlockIndex ].categories.push({
+                        id: thisObj.dlgCategory.selectedCategory.id,
+                        name: thisObj.dlgCategory.selectedCategory.name,
+                        ratingCategory: thisObj.dlgCategory.selectedCategory.ratingCategory
+                    })
+                    // TODO
+                };
+
+                this.dlgCategoryVisible = true;
+            },
+            getFilterCategories: function(prmCatBlockIndex, prmRating) {
+                let ares = [];
+                for (let i = 0; i < this.filter.categoryBlocks[prmCatBlockIndex].categories.length; i++) {
+                    let cat = this.filter.categoryBlocks[prmCatBlockIndex].categories[i];
+                    if (cat.ratingCategory == prmRating) {
+                        ares.push(cat);
+                    }
+                }
+                return ares;
+            },
+            findCategoryIndex: function(prmCatBlockIndex, prmCategoryId) {
+                for (let i = 0; i < this.filter.categoryBlocks[prmCatBlockIndex].categories.length; i++) {
+                    let cat = this.filter.categoryBlocks[prmCatBlockIndex].categories[i];
+                    if (cat.id == prmCategoryId) {
+                        return i;
+                    }
+                }
+                return -1;
+            },
+            selectPlainCategory(cat) {
+                this.categorySearchResult = '';
+                this.plainCategory.selectedCategory = cat;
+
+                var thisObj = this;
+                if (!thisObj.plainCategory.selectedCategory ||
+                    thisObj.findCategoryIndex(thisObj.plainCategory.categoryBlockIndex, thisObj.plainCategory.selectedCategory.id) >= 0) {
+                    return;
+                } else {
+                    thisObj.filter.categoryBlocks[ thisObj.plainCategory.categoryBlockIndex ].categories.push({
+                        id: thisObj.plainCategory.selectedCategory.id,
+                        name: thisObj.plainCategory.selectedCategory.name,
+                        ratingCategory: thisObj.plainCategory.selectedCategory.ratingCategory
+                    });
+                }
+            },
+            setCategoryBlockIndex: function (catBlockIndex) {
+                this.plainCategory.categoryBlockIndex = catBlockIndex;
+            },
+            categorySearch(queryString, cb) {
+                var cats = this.plainCategories;
+                var results = queryString ? cats.filter(this.categoryFilter(queryString)) : cats;
+                cb(results);
+            },
+            categoryFilter(queryString) {
+                return (cat) => {
+                    return (cat.name.toLowerCase().includes(queryString.toLowerCase()));
+                };
+            },
+            
+            onCategoryNodeClick: function (node, prm1, prmTree) {
+                this.dlgCategory.selectedCategory = prm1.data;
+                this.dlgCategoryVisible = false;
+                if (this.dlgCategory.afterSelect) {
+                    this.dlgCategory.afterSelect();
+                }
+            },
+            onSourceNodeClick: function (node, prm1, prmTree) {
+                this.filter.source = prm1.data;
+                this.$refs.dropdownSource.classList.remove('show');
+            },
+            openFilterDlg: function() {
+                this.dlgFilterVisible = true;
+            },
+            openFilterListDlg: function() {
+                this.dlgSavedFiltersList = true;
+            },
+            testFunc: function(e) {
+                let currentEl;
+                //console.log(e)
+                if (e.type === "click") {
+                    currentEl = e.target;
+                } else {
+                    currentEl = e;
+                }
+
+                let parent = currentEl.parentElement;
+                
+                if (parent.classList.contains("portlet-body")) {
+                    return
+                }
+                console.log(parent.parentElement)
+                
+
+                this.testFunc(parent)
+            }
+        }
+    });
+</script>
+    <script src="js/main.js"></script>
+</body>
+</html>
