@@ -1,4 +1,4 @@
-@import "../abstract/variables";
+//@import "../abstract/variables";
 
 .jstree {
     max-height: 170px;
@@ -25,6 +25,10 @@
     overflow-x: auto;
 }
 
+.tree-resize {
+    resize: vertical;
+}
+
 .jstree-default .jstree-themeicon {
     display: none;
 }
@@ -35,10 +39,14 @@
 
 .jstree-anchor {
     position: relative;
+    margin-left: 3px;
+    padding: 2px 0;
+    white-space: normal;
 
     &::after {
         content: "\F02B";
-        font-family: FontAwesome;
+        font-family: "Font Awesome 5 Free";
+        font-size: 12px;
         display: inline-block;
         margin-left: 4px;
         color: rgba(#000,0.75);
@@ -48,6 +56,22 @@
 
 .jstree-rating::after {
     content: "\F005";
+    font-family: "Font Awesome 5 Free";
+
+}
+
+.tree-tag::after {
+    content: "\f02b";
+    font-family: "Font Awesome 5 Free";
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.tree-rating::after {
+    content: "\f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: bold;
+    margin-left: 5px;
 }
 
 .jstree-default .jstree-clicked {
@@ -63,21 +87,123 @@
 }
 
 .category-popup {
-    background-color:white;
-    border: 2px solid #aaa;
-    padding:5px 15px;
-    position:fixed;
-    top:15%;
-    width:45%;
-    left:30%;
-    height: 70vh;
-    z-index: 1100;
-    
+    width: 70%;
+    padding-bottom: 6px;
+
+    .el-tree-node__expand-icon {
+        margin-top: 1px;
+    }
+
+    .el-tree-node__content {
+        align-items: flex-start;
+    }
+
+    .el-dialog__header {
+        padding: 0;
+        display: block;
+        padding: 6px 15px 0;
+    }
+
+    .el-dialog__headerbtn {
+        top: 10px;
+    }
+
+    .filter-category-popup {
+        margin-top: 6px;
+        max-height: 500px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        
+    }
+
+    .filter-category-popup__tree--left {
+        width: 60%;
+        max-height: 450px;
+        height: 450px;
+        overflow-y: scroll;
+    }
+
+    .disabled-checkbox {
+        margin-left: 0.4rem;
+        vertical-align: bottom;
+    }
+
+    .el-tree-node__expand-icon + span {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .filter-category-popup__selected {
+        width: 40%;
+
+        ul + ul {
+            margin-top: 0.5rem;
+        }
+
+        h4 {
+            font-weight: 500;
+        }
+    }
+
+    .is-leaf + span {
+        .disabled-checkbox {
+            margin-left: 1rem;
+        }
+    }
+
+    .el-dialog__title {
+        line-height: 24px;
+        font-size: 18px;
+        color: #303133;
+        display: block;
+        padding: 4px 6px;
+        background-color: #eee;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    .el-dialog__body {
+        font-size: 12px;
+        padding: 10px 15px;
+
+        .table-tree .el-tree-node__children > .el-tree-node:last-child > .el-tree-node__content::before {
+            background-size: 8px 18px;
+        }
+    }
+
+    .el-dialog__footer {
+        text-align: left;
+        background: #eee;
+        border-top: 1px solid #ccc;
+        padding: 5px 15px 5px;
+
+        text-align: left;
+        background: #eee;
+        border-top: 1px solid #ccc;
+        padding: 5px 5px 5px;
+        margin: 0px 15px 0;
+    }
+
+    .table-tree > .el-tree-node {
+        & > .el-tree-node__content > .el-tree-node__expand-icon {
+            margin-left: 0;
+        }
+
+        & > .el-tree-node__children {
+            margin-left: 8px;
+        }
+    } 
+
+    .jstree-anchor::after {
+        margin-left: 2px;
+    }
+
     @media (max-width: 992px) {
-        left: 10%;
         width: 80%;
-        top: 120px;
-        height: calc(95vh - 120px);
+
+        .el-dialog__body {
+            padding: 20px 10px;
+        }
     }
 }
 
@@ -86,10 +212,13 @@
     max-width: none;
 }
 
-.category-popup .jstree {
-    width:auto;
-    max-height: 60vh;
+.category-popup {
+    .table-tree .el-tree-node__children > .el-tree-node:last-child > .el-tree-node__content::before {
+        background-size: 8px 23px;
+    }
 }
+
+
 
 .category-popup a:hover {
     text-decoration: none;
@@ -101,7 +230,6 @@
 
 .category-popup a[title="expand all"],
 .category-popup a[title="collapse all"] {
-    margin-top:20px;
     display: inline-block;
     margin-bottom:10px;
     border: 2px solid $primaryColor;

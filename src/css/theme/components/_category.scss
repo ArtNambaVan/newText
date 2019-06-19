@@ -163,3 +163,193 @@
         padding-left: 15px;
     }
 }
+
+
+
+//@import "../abstract/variables";
+
+.category {
+    &-control {
+        //font-size: 12px;
+        text-align: center;
+        margin-top: 1rem;
+
+        &--plus {
+            i[class^="icon-minus"] {
+                display: none;
+            }
+        }
+
+        &--minus {
+            i[class^="icon-plus"] {
+                display: none;
+            }
+        }
+    }
+
+    &__item {
+        display: flex;
+        //color: $primaryColor;
+
+        & + & {
+            margin-top: 0.2rem;
+        }
+    }
+
+    &__value {
+        width: 120px;
+        text-align: right;
+        margin-left: auto;
+        display: flex;
+
+        .category__delete {
+            margin-right: 0;
+            margin-left: 0.3rem;
+        }
+    }
+
+    &__delete {
+        color: $thirdlyColor;
+        margin-right: 0.3rem;
+        cursor: pointer;
+    }
+
+    &__name {
+        //color: $primaryColor;
+    }
+
+    &__type {
+        margin-right: 0.25rem;
+    }
+
+    &__type + &__delete {
+        margin-left: 0.3rem;
+        //  margin-right: 0;
+    }
+
+    &__name + &__type {
+        margin-right: 0;
+        margin-left: 0.25rem;
+    }
+
+    &__popup {
+        position: absolute;
+        top: 0;
+        right: 1rem;
+    }
+
+    &__indicator {
+        width: 110px;
+        display: inline-block;
+        height: 17px;
+        vertical-align: middle;
+        border: 1px solid $primaryBorderColor;
+        border-radius: 2px;
+        overflow: hidden;
+        position: relative;
+
+        &--negative {
+            background: linear-gradient(90deg,$dangerColor 2px,transparent 0);
+            background-size: 4.2px;
+        }
+
+        &--positive {
+            background: linear-gradient(90deg,$sucessColor 2px,transparent 0);
+            background-size: 4.2px;
+        }
+
+        &--neutral {
+            background: linear-gradient(90deg,$colorGray 2px,transparent 0);
+            background-size: 4.2px;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $colorWhite;
+            height: 100%;
+            border-bottom-right-radius: 2px;
+            border-top-right-radius: 2px;
+        }
+
+        &--progress-25 {
+            &::before {
+                width: 75%;
+            }
+        }
+
+        &--progress-50 {
+            &::before {
+                width: 50%;
+            }
+        }
+
+        &--progress-75 {
+            &::before {
+                width: 25%;
+            }
+        }
+
+        &--progress-100 {
+            &::before {
+                width: 0;
+            }
+        }
+    }
+}
+
+.tags-categories {
+    flex: 0.7 1 0%;
+}
+
+.rating-categories {
+    flex: 1.2 1 0%;
+    position: relative;
+}
+
+.tags-categories,
+.rating-categories {
+    @media (max-width: 992px) {
+        flex: auto;
+    }
+    
+    & > p {
+        text-transform: uppercase;
+        margin-bottom: 0.4rem;
+    }
+}
+
+.rating-categories {
+    margin-left: 0.25rem;
+}
+
+.filter-category-popup {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__tree {
+        width: auto;
+        flex: 1;
+    }
+
+    &__selected {
+        max-width: 50%;
+        padding-left: 15px;
+
+        ul {
+            list-style-type: none;
+
+            & + ul {
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            max-width: none;
+            width: 100%;
+            margin-top: 1rem;
+        }
+    }
+}

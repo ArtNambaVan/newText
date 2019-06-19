@@ -1,0 +1,122 @@
+.predefined-filters {
+    font-size: 12px;
+
+    &__block {
+        margin-top: 1rem;
+        position: relative;
+    }
+
+    &__select {
+        width: 150px;
+        display: inline-block;
+        font-size: 14px;
+    }
+
+    &__item {
+        border: 1px solid $primaryColor;
+        border-radius: 6px;
+        padding: 10px;
+        display: inline-flex;
+        flex-wrap: wrap;
+        padding-bottom: 30px;
+        position: relative;
+    }
+
+    &__condition {
+        padding: 0.1rem 0.5rem;
+        display: inline-block;
+        text-align: left;
+        color: white;
+        background-color: #012b5b;
+        position: relative;
+        z-index: 2;
+        border: 1px solid #012b5b;
+        font-weight: normal;
+        margin: 0 auto;
+    }
+
+    &__group {
+        padding: 10px;
+        border: 1px solid $primaryColor;
+        border-radius: 6px;
+        min-width: 175px;
+
+        .predefined-filters__condition {
+            //background-color: #00a4d3;
+           // border-color: #00a4d3;
+        }
+    }
+
+    &__name {
+        width: 150px;
+        font-weight: bold;
+        color: #012b5b;
+        flex: 0 0 150px;
+        font-size: 14px;
+    }
+
+    .vertical {
+        position: relative;
+        margin: 0 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            background-color: rgba(117, 115, 115, 0.5);
+        }
+    }
+
+    .gorizontal {
+        position: relative;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: calc(100% + 20px);
+            height: 1px;
+            left: -10px;
+            top: 100%;
+            background-color: rgba(117, 115, 115, 0.5);
+        }
+    }
+
+    &__controls {
+        padding: 4px;
+        display: flex;
+        margin-top: auto;
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+    }
+
+    &__block {
+        display: flex;
+    }
+}
+
+.filter-name {
+    list-style-type: none;
+    //margin-top: 0.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+
+    li {
+        padding: 2px;
+    }
+}
+
+.input-container > .el-autocomplete {
+    width: 100%;
+}

@@ -1,0 +1,121 @@
+{% set title = "predefined filters" %}
+{% block styles %} <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">{% endblock styles %}
+
+{% block scriptsHead %} 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+{% endblock scriptsHead %}
+{% set pageIdSub = 11 %}
+{% set admin = true %}
+{% extends "layout.njk" %}
+
+{% block content %}
+            <div class="container" id="app">
+                {% include "partials/predefined-filters-portlet.njk" %}
+        
+            </div>
+            
+
+
+{% endblock content %}
+
+{% block scripts %} 
+    <script type="text/babel">
+    var Main = {
+          data() {
+            return {
+              options: [{
+                value: 'Option1',
+                label: 'Option11'
+              }, {
+                value: 'Option2',
+                label: 'Option22'
+              }, {
+                value: 'Option3',
+                label: 'Option33'
+              }, {
+                value: 'Option4',
+                label: 'Option44'
+              }, {
+                value: 'Option5',
+                label: 'Option55'
+              }],
+              value: '',
+              dlgFilterVisible: false,
+              dlgCategoryTree: false,
+              filter: {
+                categoryBlocks: [
+                    {
+                        blockCondition: "And",
+                        categories: [
+                            {
+                                id: 902,
+                                name: 'CIMS',
+                                ratingCategory: true,
+                                visibility: true
+                            },
+                            {
+                                id: 903,
+                                name: 'CIMS2',
+                                ratingCategory: true,
+                                visibility: true
+                            },
+                            {
+                                id: 904,
+                                name: 'CIMStag',
+                                ratingCategory: false,
+                                visibility: true
+                            }
+                        ]
+                    }
+                ]
+              },
+              categoryTree: [
+                {
+                  assigned: false,
+                  children: [
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: true,
+                    }
+                  ],
+                  id: 902,
+                  name: "CIMS ",
+                  organizationId: 28027,
+                  ratingCategory: true
+                }
+              ]
+            }
+          },
+
+          methods: {
+                getFilterCategories: function (prmCatBlockIndex, prmRating) {
+                  let ares = [];
+                  for (let i = 0; i < this.filter.categoryBlocks[prmCatBlockIndex].categories.length; i++) {
+                      let cat = this.filter.categoryBlocks[prmCatBlockIndex].categories[i];
+                      if (cat.ratingCategory == prmRating) {
+                          ares.push(cat);
+                      }
+                  }
+                  return ares;
+                },
+                hasTonality: function (cat) {
+                    let b = (typeof cat.tonalityType != 'undefined' && typeof cat.tonality != 'undefined' && cat.tonalityType != null && cat.tonality != null && cat.tonalityType >= -1 && cat.tonalityType <= 1 && cat.tonality > 0);
+                    return b;
+                },
+                selectCategory: function(catBlockIndex) {
+                  this.dlgCategoryTree = true;
+                  console.log(this.dlgCategoryTree)
+                }
+          }
+        }
+      var Ctor = Vue.extend(Main)
+      new Ctor().$mount('#app')
+    </script>
+{% endblock %}
