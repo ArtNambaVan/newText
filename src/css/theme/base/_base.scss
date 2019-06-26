@@ -21,6 +21,7 @@ body {
     flex: 1;
     background-color: $colorAppBG;
     color: $colorAppText;
+    font-size: 14px;
 
     .page-link:focus {
         box-shadow: none;

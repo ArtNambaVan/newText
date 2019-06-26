@@ -399,3 +399,29 @@ $( document ).ready(function() {
     
     
 });
+
+var arr = [{
+    key: 'search_and_filter',
+    text: 'search sda& filter'
+},{
+    key: 'extended_text_search',
+    text: 'extendeddas text search'
+},{
+    key: 'category_filter',
+    text: 'category dasfilter'
+}]
+
+
+document.addEventListener("DOMContentLoaded", function(e) {
+    let translateText = document.querySelectorAll('.text-translate');
+    //console.log(translateText)
+    translateText.forEach(function(e) {
+        let dataTr = e.getAttribute('data-translate');
+        arr.forEach(function(tr) {
+            if ( tr.key === dataTr ) {
+                e.textContent = tr.text;
+                return
+            }
+        })
+    })
+});

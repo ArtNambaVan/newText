@@ -123,11 +123,13 @@
                             <el-tree
                                     class="filter-tree table-tree"
                                     :data="categoryTree"
-                                    ref="treeCategories">
+                                    ref="treeCategories"
+                                    default-expand-all
+                                    >
                                     <span slot-scope="{ node, data }">
                                         <el-checkbox class="disabled-checkbox" v-model="node.checked"></el-checkbox>
                                         <a href="javascript:void(0)" :class="'jstree-anchor' + (data.ratingCategory === true?' jstree-rating':'') + (data.assigned === false?'':' tree-category--disabled')" >
-                                            {{ node.label }}
+                                            {% raw %} {{ data.name }} {% endraw %}
                                         </a>
                                     </span>
                             </el-tree>

@@ -113,7 +113,6 @@
         max-height: 500px;
         overflow-y: auto;
         overflow-x: hidden;
-        
     }
 
     .filter-category-popup__tree--left {
@@ -125,6 +124,7 @@
 
     .disabled-checkbox {
         margin-left: 0.4rem;
+        margin-right: 3px;
         vertical-align: bottom;
     }
 
@@ -204,6 +204,43 @@
         .el-dialog__body {
             padding: 20px 10px;
         }
+    }
+}
+
+.table-tree {
+    .el-tree-node__expand-icon {
+        margin-top: 1px;
+    }
+
+    .el-tree-node__content {
+        align-items: flex-start;
+    }
+    
+    & > .el-tree-node {
+        & > .el-tree-node__content > .el-tree-node__expand-icon {
+            margin-left: 0;
+        }
+
+        & > .el-tree-node__children {
+            margin-left: 8px;
+        }
+    }
+
+    .is-leaf + span {
+        .disabled-checkbox {
+            margin-left: 1rem;
+        }
+    }
+
+    .disabled-checkbox {
+        margin-left: 0.4rem;
+        margin-right: 3px;
+        vertical-align: bottom;
+    }
+
+    .el-tree-node__expand-icon + span {
+        display: flex;
+        align-items: flex-start;
     }
 }
 

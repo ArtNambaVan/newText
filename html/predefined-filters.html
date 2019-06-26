@@ -225,11 +225,13 @@
                             <el-tree
                                     class="filter-tree table-tree"
                                     :data="categoryTree"
-                                    ref="treeCategories">
+                                    ref="treeCategories"
+                                    default-expand-all
+                                    >
                                     <span slot-scope="{ node, data }">
                                         <el-checkbox class="disabled-checkbox" v-model="node.checked"></el-checkbox>
                                         <a href="javascript:void(0)" :class="'jstree-anchor' + (data.ratingCategory === true?' jstree-rating':'') + (data.assigned === false?'':' tree-category--disabled')" >
-                                            
+ {{ data.name }} 
                                         </a>
                                     </span>
                             </el-tree>
@@ -385,6 +387,11 @@
               value: '',
               dlgFilterVisible: false,
               dlgCategoryTree: false,
+              mandatory: [
+                {
+                  
+                }
+              ]
               filter: {
                 categoryBlocks: [
                     {
@@ -422,7 +429,78 @@
                       id: 5102,
                       name: "CIMS-Restructure ",
                       organizationId: 28027,
-                      ratingCategory: true,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [{
+                      assigned: false,
+                        children: [],
+                        id: 5102,
+                        name: "CIMS-Restructure ",
+                        organizationId: 28027,
+                        ratingCategory: false,
+                      },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    }],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
                     }
                   ],
                   id: 902,

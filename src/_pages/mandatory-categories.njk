@@ -1,4 +1,4 @@
-{% set title = "predefined filters" %}
+{% set title = "Mandatory categories" %}
 {% block styles %} <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">{% endblock styles %}
 
 {% block scriptsHead %} 
@@ -7,13 +7,13 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 {% endblock scriptsHead %}
-{% set pageIdSub = 11 %}
+{% set pageIdSub = 12 %}
 {% set admin = true %}
 {% extends "layout.njk" %}
 
 {% block content %}
             <div class="container" id="app">
-                {% include "partials/predefined-filters-portlet.njk" %}
+                {% include "partials/mandatory-categories-portlet.njk" %}
         
             </div>
             
@@ -43,13 +43,35 @@
                 label: 'Option55'
               }],
               value: '',
+              categoryTreeProps: {
+                hey: "test"
+              },
               dlgFilterVisible: false,
               dlgCategoryTree: false,
-              mandatory: [
+              mandatoryBlocks: [
                 {
-                  
+                  block1: {
+                    blockCondition: "AND",
+                    cat: ["test", "test2", "test3"]
+                  },
+                  block2: {
+                    blockCondition: "OR",
+                    cat: ["test", "test2", "test3"]
+                  },
+                  active: false
+                },
+                {
+                  block1: {
+                    blockCondition: "AND",
+                    cat: ["test", "test2", "test3"]
+                  },
+                  block2: {
+                    blockCondition: "OR",
+                    cat: ["test", "test2", "test3"]
+                  },
+                   active: false
                 }
-              ]
+              ],
               filter: {
                 categoryBlocks: [
                     {
@@ -188,6 +210,22 @@
                 selectCategory: function(catBlockIndex) {
                   this.dlgCategoryTree = true;
                   console.log(this.dlgCategoryTree)
+                },
+                categoryNodeClick: function() {
+                  console.log()
+                },
+                createMandatoryBlock: function() {
+
+                },
+                getActive: function(cat) {
+                  this.mandatoryBlocks.forEach(function(e) {
+                    e.active = false;
+                  })
+                  cat.active = true;
+                  console.log(this.mandatoryBlocks)
+                },
+                onCategoryNodeClick: function(q,w,e) {
+                  console.log(q,w,e)
                 }
           }
         }

@@ -1,0 +1,43 @@
+.vertical {
+    position: relative;
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        background-color: rgba(117, 115, 115, 0.5);
+    }
+}
+
+.gorizontal {
+    position: relative;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: calc(100% + 20px);
+        height: 1px;
+        left: -10px;
+        top: 100%;
+        background-color: rgba(117, 115, 115, 0.5);
+    }
+}
+
+.add-new {
+    margin: auto 15px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 3px;
+}

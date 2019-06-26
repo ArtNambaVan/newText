@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mandatory categories</title>
+    <link rel="stylesheet" href="css/libs/clay.css"> 
+
+    <link rel="stylesheet" href="css/libs/main.css">
+ <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
+    <link rel="stylesheet" href="css/libs/treeJS.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/libs.js"></script>
+
+ 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+
+</head>
+
+<body>
+
+    <div class="cims" id="wrapper">
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="main-nav navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="main-logo">
+                        <img class="main-logo__img" src="images/logoCims.png" alt="CIMS logo">
+                        <span class="main-logo__name">CIMS</span>
+                    </div>
+                    <div class="navbar-collapse collapse main-nav__navigation" id="navbarSupportedContent">
+                        <div class="main-nav__section main-nav__section--left">
+                            
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="organisation-selection.html">Home</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="index.html">Messages</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="main-nav__section main-nav__section--right">
+
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="message-editor.html">New Message</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <div class="header-dropdown">
+                                        <span data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle" data-display="static">
+                                            <a data-cq-component="link" href="#" target="_self" class="main-nav__link caret active">Administrator</a>
+                                        </span>
+
+                                        <div class="header-dropdown__inner dropdown-menu" role="menu">
+                                            <ul class="header-submenu">
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="categories-editor.html">Categories</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="ressource-editor.html">Resources</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="organisation-settings.html">Organisation Settings</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="translation.html">Translation</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="rules.html">Rules</a>
+                                                    </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link" href="#">Sign Out</a>
+                                </li>
+                            </ul>
+                        
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+
+            <div class="container" id="app">
+            <div>
+                <h2>Mandatory categories</h2>
+
+                <div class="row">
+                    <div class="col-6">
+                        <el-tree
+                            class="filter-tree table-tree"
+                            :data="categoryTree"
+                            ref="treeCategories"
+                            default-expand-all
+                            :props="categoryTreeProps"
+                            @node-click="onCategoryNodeClick"
+                            >
+                            <span slot-scope="{ node, data }">
+                                <el-checkbox class="disabled-checkbox" v-model="node.checked"></el-checkbox>
+                                <a href="javascript:void(0)" :class="'jstree-anchor' + (data.ratingCategory === true?' jstree-rating':'') + (data.assigned === false?'':' tree-category--disabled')" >
+ {{ data.name }} 
+                                </a>
+                            </span>
+                        </el-tree>
+                    </div>
+                    <div class="col-6">
+                        <el-tree
+                            class="filter-tree table-tree"
+                            :data="categoryTree"
+                            ref="treeCategories"
+                            default-expand-all
+                            @node-click="onCategoryNodeClick"
+                            >
+                            <span slot-scope="{ node, data }">
+                                <el-checkbox class="disabled-checkbox" v-model="node.checked"></el-checkbox>
+                                <a href="javascript:void(0)" :class="'jstree-anchor' + (data.ratingCategory === true?' jstree-rating':'') + (data.assigned === false?'':' tree-category--disabled')" >
+ {{ data.name }} 
+                                </a>
+                            </span>
+                        </el-tree>
+                    </div>
+                </div>
+
+                <div class="predefined-filters__block">
+                    <div v-for="(mCat) in mandatoryBlocks" class="predefined-filters__item active">
+                        <div class="predefined-filters__group">
+                            <div class="gorizontal"><p class="predefined-filters__condition">{{ mCat.block1.blockCondition }}</p></div>
+                            <ul v-for="(cat) in mCat.block1.cat" class="filter-name">
+                                <li>{{ cat }}</li>
+                            </ul>
+                        </div>
+                        <div class="vertical"><p class="predefined-filters__condition">CONNECT</p></div>
+                        <div class="predefined-filters__group">
+                            <div class="gorizontal"><p class="predefined-filters__condition">{{ mCat.block2.blockCondition }}</p></div>
+                            <ul v-for="(cat) in mCat.block2.cat" class="filter-name" class="filter-name">
+                                <li>{{ cat }}</li>
+                            </ul>
+                        </div>
+                        <div class="predefined-filters__controls">
+                            <a href="#" class="btn-link" v-on:click="getActive(mCat)">Edit</a>
+                            <a style="margin-left: 15px;" href="#" class="btn-link" v-on:click="">Delete</a>
+                        </div>                            
+                    </div>
+                    
+
+                    <button class="btn btn-primary add-new">
+                        <i class="fas fa-plus"></i>
+                        <p>Add new</p>
+                    </button>
+                </div>
+            </div>        
+            </div>
+            
+
+
+
+        </main>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="footer__copyright">© Copyright 2018 Consline AG</p>
+            </div>
+        </footer>
+        
+    </div>
+
+
+    <!-- SCRIPTS -->
+ 
+    <script type="text/babel">
+    var Main = {
+          data() {
+            return {
+              options: [{
+                value: 'Option1',
+                label: 'Option11'
+              }, {
+                value: 'Option2',
+                label: 'Option22'
+              }, {
+                value: 'Option3',
+                label: 'Option33'
+              }, {
+                value: 'Option4',
+                label: 'Option44'
+              }, {
+                value: 'Option5',
+                label: 'Option55'
+              }],
+              value: '',
+              categoryTreeProps: {
+                hey: "test"
+              },
+              dlgFilterVisible: false,
+              dlgCategoryTree: false,
+              mandatoryBlocks: [
+                {
+                  block1: {
+                    blockCondition: "AND",
+                    cat: ["test", "test2", "test3"]
+                  },
+                  block2: {
+                    blockCondition: "OR",
+                    cat: ["test", "test2", "test3"]
+                  },
+                  active: false
+                },
+                {
+                  block1: {
+                    blockCondition: "AND",
+                    cat: ["test", "test2", "test3"]
+                  },
+                  block2: {
+                    blockCondition: "OR",
+                    cat: ["test", "test2", "test3"]
+                  },
+                   active: false
+                }
+              ],
+              filter: {
+                categoryBlocks: [
+                    {
+                        blockCondition: "And",
+                        categories: [
+                            {
+                                id: 902,
+                                name: 'CIMS',
+                                ratingCategory: true,
+                                visibility: true
+                            },
+                            {
+                                id: 903,
+                                name: 'CIMS2',
+                                ratingCategory: true,
+                                visibility: true
+                            },
+                            {
+                                id: 904,
+                                name: 'CIMStag',
+                                ratingCategory: false,
+                                visibility: true
+                            }
+                        ]
+                    }
+                ]
+              },
+              categoryTree: [
+                {
+                  assigned: false,
+                  children: [
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [{
+                      assigned: false,
+                        children: [],
+                        id: 5102,
+                        name: "CIMS-Restructure ",
+                        organizationId: 28027,
+                        ratingCategory: false,
+                      },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    }],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    },
+                    {
+                      assigned: false,
+                      children: [],
+                      id: 5102,
+                      name: "CIMS-Restructure ",
+                      organizationId: 28027,
+                      ratingCategory: false,
+                    }
+                  ],
+                  id: 902,
+                  name: "CIMS ",
+                  organizationId: 28027,
+                  ratingCategory: true
+                }
+              ]
+            }
+          },
+
+          methods: {
+                getFilterCategories: function (prmCatBlockIndex, prmRating) {
+                  let ares = [];
+                  for (let i = 0; i < this.filter.categoryBlocks[prmCatBlockIndex].categories.length; i++) {
+                      let cat = this.filter.categoryBlocks[prmCatBlockIndex].categories[i];
+                      if (cat.ratingCategory == prmRating) {
+                          ares.push(cat);
+                      }
+                  }
+                  return ares;
+                },
+                hasTonality: function (cat) {
+                    let b = (typeof cat.tonalityType != 'undefined' && typeof cat.tonality != 'undefined' && cat.tonalityType != null && cat.tonality != null && cat.tonalityType >= -1 && cat.tonalityType <= 1 && cat.tonality > 0);
+                    return b;
+                },
+                selectCategory: function(catBlockIndex) {
+                  this.dlgCategoryTree = true;
+                  console.log(this.dlgCategoryTree)
+                },
+                categoryNodeClick: function() {
+                  console.log()
+                },
+                createMandatoryBlock: function() {
+
+                },
+                getActive: function(cat) {
+                  this.mandatoryBlocks.forEach(function(e) {
+                    e.active = false;
+                  })
+                  cat.active = true;
+                  console.log(this.mandatoryBlocks)
+                },
+                onCategoryNodeClick: function(q,w,e) {
+                  console.log(q,w,e)
+                }
+          }
+        }
+      var Ctor = Vue.extend(Main)
+      new Ctor().$mount('#app')
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
