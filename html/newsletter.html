@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>newsletter</title>
+    <link rel="stylesheet" href="css/libs/clay.css"> 
+
+    <link rel="stylesheet" href="css/libs/main.css">
+ <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
+    <link rel="stylesheet" href="css/libs/treeJS.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/libs.js"></script>
+
+ 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+
+    
+
+</head>
+
+<body>
+
+    <div class="cims" id="wrapper">
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="main-nav navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="main-logo">
+                        <img class="main-logo__img" src="images/logoCims.png" alt="CIMS logo">
+                        <span class="main-logo__name">CIMS</span>
+                    </div>
+                    <div class="navbar-collapse collapse main-nav__navigation" id="navbarSupportedContent">
+                        <div class="main-nav__section main-nav__section--left">
+                            
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="organisation-selection.html">Home</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="index.html">Messages</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="main-nav__section main-nav__section--right">
+
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="message-editor.html">New Message</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <div class="header-dropdown">
+                                        <span data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle" data-display="static">
+                                            <a data-cq-component="link" href="#" target="_self" class="main-nav__link caret active">Administrator</a>
+                                        </span>
+
+                                        <div class="header-dropdown__inner dropdown-menu" role="menu">
+                                            <ul class="header-submenu">
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="categories-editor.html">Categories</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="ressource-editor.html">Resources</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="organisation-settings.html">Organisation Settings</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="translation.html">Translation</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="rules.html">Rules</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="feeds.html">Feeds</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="mandatory-categories.html">Mandatory categories</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="message-preferences.html">Message preferences</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link active" href="newsletter.html">Newsletter</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="auditing.html">Auditing</a>
+                                                    </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link" href="#">Sign Out</a>
+                                </li>
+                            </ul>
+                        
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+
+            <div class="container-fluid" id="app">
+                <div class="container">    
+                    <div class="newsletter">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <h2 style="text-align: center">Newsletter</h2>
+                                <form>
+                                    <div class="form-group">
+                                        <label>Email receiver</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Subject</label>
+                                        <input type="text" class="form-control" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Freetext</label>
+                                        <textarea class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="cims-btn cims-btn--primary">Send</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-6 offset-md-1 col-xl-5 offset-xl-2">
+                                <div class="panel">
+                                    <a class="panel__head collapse-icon" aria-controls="mandatoryCategories"
+                                        aria-expanded="true" data-toggle="collapse" href="#mandatoryCategories" role="tab">
+                                        <h5 class="text-translate" data-translate="">Selected Messagess</h5>
+                                        <span class="collapse-icon-closed">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </span>
+                                        <span class="collapse-icon-open">
+                                            <i class="fas fa-chevron-up"></i>
+                                        </span>
+                                    </a>
+                                    
+                                    <div class="collapse show" id="mandatoryCategories" role="tabpanel"> 
+                                        <ol class="bullet bullet--flex">
+                                            <li>
+                                                <a class="category__name" href="https://www.reclameaqui.com.br/volkswagen/atraso-na-entrega-do-novo-polo_BqB6qNBmjQitSWGV/" target="_blank">Message title 1</a>
+                                                <span class="interact" ><i class="fas fa-times-circle"></i></span>
+                                            </li>
+                                            <li>
+                                                <a class="category__name" href="https://www.reclameaqui.com.br/volkswagen/atraso-na-entrega-do-novo-polo_BqB6qNBmjQitSWGV/" target="_blank">Message title 2</a>
+                                                <span class="interact" ><i class="fas fa-times-circle"></i></span>
+                                            </li>
+                                        </ol>
+                                        <button class="cims-btn cims-btn--default mb-2">Reset All Selections</button>
+                                    </div>
+                                </div>
+                
+                                <div class="panel">
+                                    <a class="panel__head collapse-icon collapsed" aria-controls="extendedTextSearchBody"
+                                        aria-expanded="true" data-toggle="collapse" href="#extendedTextSearchBody" id="extendedTextSearch" role="tab">
+                                        <h5 class="text-translate" data-translate="">My groups</h5>
+                                        <span class="collapse-icon-closed">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </span>
+                                        <span class="collapse-icon-open">
+                                            <i class="fas fa-chevron-up"></i>
+                                        </span>
+                                    </a>
+                                    
+                                    <div class="collapse show" aria-labelledby="extendedTextSearch" id="extendedTextSearchBody" role="tabpanel"> 
+                                        <div class="groups">
+                                            <div class="groups__item">
+                                                <p>Select group</p>
+                                                <ul class="newsletter-list">
+                                                    <li class="newsletter-list__item">
+                                                        <span class="add-btn"><i class="fas fa-plus"></i></span>
+                                                        <span class="category__name">group1</span>
+                                                        <span class="interact"><i class="fas fa-times-circle"></i></span>
+                                                    </li>
+                                                    <li class="newsletter-list__item">
+                                                        <span class="add-btn"><i class="fas fa-plus"></i></span>
+                                                        <span class="category__name">group2</span>
+                                                        <span class="interact"><i class="fas fa-times-circle"></i></span>
+                                                    </li>
+                                                </ul>
+                                            </div>  
+                                            <div class="groups__item">
+                                                <div class="form-group">
+                                                    <label>New Group</label>
+                                                    <input type="text" class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Email receiver</label>
+                                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="separate adresses with comma">
+                                                </div>
+                                                <div class="form-group">
+                                                    <button class="cims-btn cims-btn--primary" v-on:click="saveNewCat">Add new group</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="footer__copyright">© Copyright 2018 Consline AG</p>
+            </div>
+        </footer>
+        
+    </div>
+
+
+    <!-- SCRIPTS -->
+ 
+    <script type="text/babel">
+         
+    var Main = {
+      data() {
+        return {
+          options: [{
+            value: 'Option1',
+            label: 'Option1'
+          }, {
+            value: 'Option2',
+            label: 'Option2'
+          }, {
+            value: 'Option3',
+            label: 'Option3'
+          }, {
+            value: 'Option4',
+            label: 'Option4'
+          }, {
+            value: 'Option5',
+            label: 'Option5'
+          }],
+          value1: [],
+          value2: []
+        }
+      },
+      methods: {
+        editElement: function(el) {
+          this.currentCat = this.tableData[el.$index].name
+          this.dlgEdit = true;
+        },
+        saveNewCat: function() {
+          if(this.newFeedCat !== '') {
+            this.tableData.push({name: this.newFeedCat})
+          }
+          this.newFeedCat = '';
+        }
+      }
+    }
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app') 
+        
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

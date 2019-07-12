@@ -40,11 +40,6 @@
         border: 1px solid $primaryColor;
         border-radius: 6px;
         min-width: 175px;
-
-        .predefined-filters__condition {
-            //background-color: #00a4d3;
-           // border-color: #00a4d3;
-        }
     }
 
     &__name {
@@ -107,7 +102,6 @@
 
 .filter-name {
     list-style-type: none;
-    //margin-top: 0.5rem;
     max-height: 200px;
     overflow-y: auto;
     padding-right: 10px;

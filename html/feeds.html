@@ -7,14 +7,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>feeds</title>
     <link rel="stylesheet" href="css/libs/clay.css"> 
 
     <link rel="stylesheet" href="css/libs/main.css">
-     
+ <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
     <link rel="stylesheet" href="css/libs/treeJS.css">
     <link rel="stylesheet" href="css/custom.css">
     <script src="js/libs.js"></script>
+
+ 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
 
     
 
@@ -38,7 +45,7 @@
                             
                             <ul class="main-nav__list">
                                 <li class="main-nav__item">
-                                    <a class="main-nav__link active" href="organisation-selection.html">Home</a>
+                                    <a class="main-nav__link " href="organisation-selection.html">Home</a>
                                 </li>
                                 <li class="main-nav__item">
                                     <a class="main-nav__link " href="index.html">Messages</a>
@@ -56,7 +63,7 @@
                                 <li class="main-nav__item">
                                     <div class="header-dropdown">
                                         <span data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle" data-display="static">
-                                            <a data-cq-component="link" href="#" target="_self" class="main-nav__link caret ">Administrator</a>
+                                            <a data-cq-component="link" href="#" target="_self" class="main-nav__link caret active">Administrator</a>
                                         </span>
 
                                         <div class="header-dropdown__inner dropdown-menu" role="menu">
@@ -77,7 +84,7 @@
                                                         <a class="header-submenu__link " href="rules.html">Rules</a>
                                                     </li>
                                                     <li class="header-submenu__item">
-                                                        <a class="header-submenu__link " href="feeds.html">Feeds</a>
+                                                        <a class="header-submenu__link active" href="feeds.html">Feeds</a>
                                                     </li>
                                                     <li class="header-submenu__item">
                                                         <a class="header-submenu__link " href="mandatory-categories.html">Mandatory categories</a>
@@ -109,53 +116,63 @@
         </header>
         <main>
 
-            <div class="container">
-                <div class="cims-alert cims-alert--primary ">
-                    <p>Please sign in with your login data to get access to Consline Intelligence Management System (CIMS).</p>
-                    <p>You are signed in as <span class="bold">Softwerke Administrator</span>.</p>
+            <div class="container-fluid" id="app">
+
+                <div class="container">
+                    <h2>Feed Category</h2>
+                    <div class="inline-form">
+                        <span class="inline-form__item">New Feed Category</span>
+                        <div class="input-small">
+                            <input type="text" class="form-control" v-model="newFeedCat">
+                        </div>
+                        <button class="cims-btn cims-btn--primary" v-on:click="saveNewCat">Save</button>
+                        <button class="cims-btn cims-btn--default">Cancel</button>
+                    </div>
+
+                    <el-table
+                    :data="tableData"
+                    style="width: 100%"
+                    max-height="650"
+                    >
+                        <el-table-column
+                            prop="name"
+                            label="Name"
+                            >
+                        </el-table-column>
+                        <el-table-column
+                            prop=""
+                            label="Options">
+
+                            <template slot-scope="scope">
+                                <span class="interact" v-on:click="editElement(scope)">
+                                    <i class="fas fa-edit"></i>
+                                </span>
+                                <span class="interact">
+                                    <i class="fas fa-trash-alt"></i>
+                                </span>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                    
                 </div>
-                <div class="card-row">
-                    <a class="card" href="#">
-                        <img class="card__img" src="images/automotive.png" alt="Automotive">
-                        <p class="card__title">Automotive</p>
-                        <span class="card__btn">open cims</span>
-                    </a>
-                    <a class="card" href="#">
-                        <img class="card__img" src="images/jlr-cims.jpg" alt="JLR organization">
-                        <p class="card__title">JLR-CIMS</p>
-                        <span class="card__btn">open cims</span>
-                    </a>
-                    <a class="card" href="#">
-                        <img class="card__img" src="images/skoda-cims.jpg" alt="Skoda-CIMS">
-                        <p class="card__title">Skoda-CIMS</p>
-                        <span class="card__btn">open cims</span>
-                    </a>
-                    <a class="card" href="#">
-                        <img class="card__img" src="images/volkswagen-cims.jpg" alt="VW-Group organization">
-                        <p class="card__title">VW-Group-CIMS</p>
-                        <span class="card__btn">open cims</span>
-                    </a>
-                    <a class="card" href="#">
-                        <img class="card__img" src="images/webasto-cims.jpg" alt="Webasto organization">
-                        <p class="card__title">Webasto-CIMS</p>
-                        <span class="card__btn">open cims</span>
-                    </a>
-                    <a class="card" href="#">
-                        <img class="card__img" src="images/default-cims.jpg" alt="organization">
-                        <p class="card__title">CIMS</p>
-                        <span class="card__btn">open cims</span>
-                    </a>
-                    <a class="card" href="#">
-                        <img class="card__img" src="images/default-cims.jpg" alt="organization">
-                        <p class="card__title">CIMS</p>
-                        <span class="card__btn">open cims</span>
-                    </a>
-                    <a class="card" href="#">
-                        <img class="card__img" src="images/default-cims.jpg" alt="organization">
-                        <p class="card__title">CIMS</p>
-                        <span class="card__btn">open cims</span>
-                    </a>
-                </div>
+                <el-dialog title="Edit Feed Name" :visible.sync="dlgEdit" custom-class="">
+                    <div class="dialog-body">
+                        <h2>Edit Feed Name</h2>
+                        <div class="inline-form">
+                            <span class="inline-form__item">New Feed name</span>
+                            <div class="input-small">
+                                <input type="text" class="form-control" v-model="currentCat">
+                            </div>
+                        </div>
+                    </div>
+                    <div slot="footer" class="dialog-footer">
+                        <el-button size="small" >Cancel</el-button>
+                        <el-button size="small" type="primary" >Confirm</el-button>
+                    </div>
+                </el-dialog>
+
+
+
 
             </div>
 
@@ -172,7 +189,79 @@
 
 
     <!-- SCRIPTS -->
-    
+ 
+    <script type="text/babel">
+         
+    var Main = {
+      data() {
+        return {
+          tableData: [{
+            name: 'Feed'
+          }, {
+            name: 'Feed2'
+          }, {
+            name: 'Feed3'
+          }, {
+            name: 'Feed4'
+          },
+          {
+            name: 'Feed'
+          }, {
+            name: 'Feed2'
+          }, {
+            name: 'Feed3'
+          }, {
+            name: 'Feed4'
+          },
+          {
+            name: 'Feed'
+          }, {
+            name: 'Feed2'
+          }, {
+            name: 'Feed3'
+          }, {
+            name: 'Feed4'
+          },
+          {
+            name: 'Feed'
+          }, {
+            name: 'Feed2'
+          }, {
+            name: 'Feed3'
+          }, {
+            name: 'Feed4'
+          },
+          {
+            name: 'Feed'
+          }, {
+            name: 'Feed2'
+          }, {
+            name: 'Feed3'
+          }, {
+            name: 'Feed4'
+          }],
+          dlgEdit: false,
+          currentCat: '',
+          newFeedCat: ''
+        }
+      },
+      methods: {
+        editElement: function(el) {
+          this.currentCat = this.tableData[el.$index].name
+          this.dlgEdit = true;
+        },
+        saveNewCat: function() {
+          if(this.newFeedCat !== '') {
+            this.tableData.push({name: this.newFeedCat})
+          }
+          this.newFeedCat = '';
+        }
+      }
+    }
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app') 
+        
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>

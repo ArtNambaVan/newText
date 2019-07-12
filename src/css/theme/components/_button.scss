@@ -104,3 +104,56 @@
         margin-top: 0.5rem;
     }
 }
+
+.add-btn {
+    display: inline-block;
+    font-size: 18px;
+    padding: 1px 7px;
+    cursor: pointer;
+    position: relative;
+    color: $primaryColor;
+    transition: color 0.15s;
+    transition-delay: 0.15s;
+
+    &:hover {
+        color: $thirdlyColor;
+    }
+
+    &::before, &::after {
+        border: 0 solid transparent;
+        box-sizing: border-box;
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        width: 0;
+        height: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    &::before {
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+    }
+
+    &::after {
+        border-top-width: 1px;
+        border-right-width: 1px;
+    }
+
+    &:hover::before,
+    &:hover::after {
+        border-color: $thirdlyColor;
+        transition: border-color 0s, width 0.15s, height 0.15s;
+        width: 100%;
+        height: 100%;
+    }
+
+    &:hover::before {
+        transition-delay: 0s, 0s, 0.15s;
+    }
+
+    &:hover::after {
+        transition-delay: 0s, 0.15s, 0s;
+    }
+}

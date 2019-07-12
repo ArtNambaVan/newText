@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>auditing</title>
+    <link rel="stylesheet" href="css/libs/clay.css"> 
+
+    <link rel="stylesheet" href="css/libs/main.css">
+ <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
+    <link rel="stylesheet" href="css/libs/treeJS.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/libs.js"></script>
+
+ 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+
+    
+
+</head>
+
+<body>
+
+    <div class="cims" id="wrapper">
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="main-nav navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="main-logo">
+                        <img class="main-logo__img" src="images/logoCims.png" alt="CIMS logo">
+                        <span class="main-logo__name">CIMS</span>
+                    </div>
+                    <div class="navbar-collapse collapse main-nav__navigation" id="navbarSupportedContent">
+                        <div class="main-nav__section main-nav__section--left">
+                            
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="organisation-selection.html">Home</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="index.html">Messages</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="main-nav__section main-nav__section--right">
+
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="message-editor.html">New Message</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <div class="header-dropdown">
+                                        <span data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle" data-display="static">
+                                            <a data-cq-component="link" href="#" target="_self" class="main-nav__link caret active">Administrator</a>
+                                        </span>
+
+                                        <div class="header-dropdown__inner dropdown-menu" role="menu">
+                                            <ul class="header-submenu">
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="categories-editor.html">Categories</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="ressource-editor.html">Resources</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="organisation-settings.html">Organisation Settings</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="translation.html">Translation</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="rules.html">Rules</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="feeds.html">Feeds</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="mandatory-categories.html">Mandatory categories</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="message-preferences.html">Message preferences</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="newsletter.html">Newsletter</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link active" href="auditing.html">Auditing</a>
+                                                    </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link" href="#">Sign Out</a>
+                                </li>
+                            </ul>
+                        
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+
+            <div class="container-fluid" id="app">
+                <div class="container">
+                    <div class="inline-container">
+                        <div class="inline-container__item inline-container__item--medium">
+                            <p>Audit Object Type:</p>
+                            <el-select size="small" v-model="value" placeholder="Select">
+                                <el-option
+                                  v-for="item in options1"
+                                  :key="item.value"
+                                  :label="item.label"
+                                  :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </div>
+                        <div class="inline-container__item inline-container__item--medium">
+                            <p>Audit Case:</p>
+                            <el-select size="small" v-model="value2" placeholder="Select">
+                                <el-option
+                                  v-for="item in options2"
+                                  :key="item.value"
+                                  :label="item.label"
+                                  :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </div>
+                        <div class="inline-container__item inline-container__item--medium">
+                            <p>Audit Period:</p>
+                            <div class="select-container select-container--icon-right">
+                                <el-date-picker
+                                        v-model="filter.dateChangeRange"
+                                        type="daterange"
+                                        language="en"
+                                        start-placeholder="Start date"
+                                        end-placeholder="End date"
+                                        :default-time="['00:00:00', '23:59:59']"
+                                        unlink-panels
+                                        :picker-options="dateChangeOptions"
+                                        :format="dateChangeOptions.dateInFormat"
+                                        v-on:change="dateChangeOptions.onChange($event)">
+                                    <template v-slot:range-separator>
+                                        <span v-if="dateChangeOptions.rangeSeparator == '-'"></span>
+                                        <div v-if="dateChangeOptions.rangeSeparator != '-'" style="margin-left: -60px;"></div>
+                                    </template>
+                                </el-date-picker>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+
+                        <template>
+                            <div>
+                                <el-table
+                                    ref="multipleTable"
+                                    :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
+                                    style="width: 100%"
+                                    height="600px"
+                                    >
+                                    <el-table-column
+                                        prop="event"
+                                        label="Event"
+                                        width="">
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="user"
+                                        label="User"
+                                        width="">
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="time"
+                                        label="Time"
+                                        width="">
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="description"
+                                        label="Description"
+                                        width="">
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="info"
+                                        label="Info"
+                                        width="">
+                                    </el-table-column>
+                                </el-table>
+                                <div style="text-align: center; margin-top: 30px;">
+                                    <el-pagination
+                                    background
+                                    layout="prev, pager, next"
+                                    :page-size="pagesize"
+                                    :total="total"
+                                    @current-change="current_change">
+                                    </el-pagination>
+                                </div>
+                            </div>
+                        </template>
+
+
+                    </div>
+                </div>            </div>
+
+
+        </main>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="footer__copyright">© Copyright 2018 Consline AG</p>
+            </div>
+        </footer>
+        
+    </div>
+
+
+    <!-- SCRIPTS -->
+ 
+    <script type="text/babel">
+  class DateRangePickerOptions {
+    constructor() {
+        this.dateInCalcRule = -1;
+        this.dateInFormat = 'dd.MM.yyyy';
+        this.rangeSeparator = '-';
+        var thisObj = this;
+
+        this.onPick = function (dates) {
+            thisObj.dateInCalcRule = -1;
+            thisObj.rangeSeparator = '-';
+            thisObj.dateInFormat = 'dd.MM.yyyy';
+        };
+
+        this.shortcuts = [
+            {
+                text: 'Last 7 days',
+                onClick(picker) {
+                    thisObj.dateInCalcRule = 7;
+                    let arange = DateRangePickerOptions.calcRangeByRule(thisObj.dateInCalcRule, null, null);
+                    thisObj.dateInFormat = '.';
+                    thisObj.rangeSeparator = 'Last 7 days';
+                    picker.$emit('pick', arange);
+                }
+            }, {
+                text: 'Last 14 days',
+                onClick(picker) {
+                    thisObj.dateInCalcRule = 14;
+                    let arange = DateRangePickerOptions.calcRangeByRule(thisObj.dateInCalcRule, null, null);
+                    thisObj.dateInFormat = '.';
+                    thisObj.rangeSeparator = 'Last 14 days';
+                    picker.$emit('pick', arange);
+                }
+            }, {
+                text: 'Last 30 days',
+                onClick(picker) {
+                    thisObj.dateInCalcRule = 30;
+                    let arange = DateRangePickerOptions.calcRangeByRule(thisObj.dateInCalcRule, null, null);
+                    thisObj.dateInFormat = '.';
+                    thisObj.rangeSeparator = 'Last 30 days';
+                    picker.$emit('pick', arange);
+                }
+            }, {
+                text: 'Last Month',
+                onClick(picker) {
+                    thisObj.dateInCalcRule = 31;
+                    let arange = DateRangePickerOptions.calcRangeByRule(thisObj.dateInCalcRule, null, null);
+                    thisObj.dateInFormat = 'dd.MM.yyyy';
+                    thisObj.rangeSeparator = '-';
+                    picker.$emit('pick', arange);
+                }
+            }, {
+                text: 'Last Quarter',
+                onClick(picker) {
+                    thisObj.dateInCalcRule = 90;
+                    let arange = DateRangePickerOptions.calcRangeByRule(thisObj.dateInCalcRule, null, null);
+                    thisObj.dateInFormat = 'dd.MM.yyyy';
+                    thisObj.rangeSeparator = '-';
+                    picker.$emit('pick', arange);
+                }
+            }, {
+                text: 'Last Year',
+                onClick(picker) {
+                    thisObj.dateInCalcRule = 365;
+                    let arange = DateRangePickerOptions.calcRangeByRule(thisObj.dateInCalcRule, null, null);
+                    thisObj.dateInFormat = 'dd.MM.yyyy';
+                    thisObj.rangeSeparator = '-';
+                    picker.$emit('pick', arange);
+                }
+            }
+        ];
+    }
+
+    static calcRangeByRule(prmCalcRule, prmMinDefault, prmMaxDefault) {
+        switch (prmCalcRule) {
+            case -1: return [ prmMinDefault, prmMaxDefault ];
+            case 365: {
+                var targetYear = new Date();
+                targetYear.setFullYear(targetYear.getFullYear() - 1);
+                var startDate = new Date(targetYear.getFullYear(), 0, 1);
+                var endDate = new Date(targetYear.getFullYear(), 12, 0);
+                startDate.setHours(0, 0, 0, 0);
+                endDate.setHours(23, 59, 59, 0);
+                return [startDate, endDate];
+            };
+            case 90: {
+                var targetMonth = new Date();
+                targetMonth.setMonth(targetMonth.getMonth() - 3);
+                var targetQuater = parseInt((targetMonth.getMonth() + 1) / 3) + 1;
+                var startDate = new Date(targetMonth.getFullYear(), 0 + (targetQuater - 1) * 3, 1);
+                var endDate = new Date(targetMonth.getFullYear(), 3 + (targetQuater - 1) * 3, 0);
+                startDate.setHours(0, 0, 0, 0);
+                endDate.setHours(23, 59, 59, 0);
+                return [startDate, endDate];
+            };
+            case 31: {
+                var targetMonth = new Date();
+                targetMonth.setMonth(targetMonth.getMonth() - 1);
+                var startDate = new Date(targetMonth.getFullYear(), targetMonth.getMonth(), 1);
+                var endDate = new Date(targetMonth.getFullYear(), targetMonth.getMonth() + 1, 0);
+                startDate.setHours(0, 0, 0, 0);
+                endDate.setHours(23, 59, 59, 0);
+                return [startDate, endDate];
+            };
+            case 30: {
+                var now = new Date();
+                const date = new Date();
+                date.setHours(0, 0, 0, 0);
+                date.setTime(date.getTime() - 3600 * 1000 * 24 * 29);
+                return [date, now];
+            };
+            case 14: {
+                var now = new Date();
+                const date = new Date();
+                date.setHours(0, 0, 0, 0);
+                date.setTime(date.getTime() - 3600 * 1000 * 24 * 13);
+                return [date, now];
+            };
+            case 7: {
+                var now = new Date();
+                const date = new Date();
+                date.setHours(0, 0, 0, 0);
+                date.setTime(date.getTime() - 3600 * 1000 * 24 * 6);
+                return [date, now];
+            }
+        }
+    }
+
+    onChange (e) {
+        if (e == null) {
+            this.rangeSeparator = '-';
+            this.dateInFormat = 'dd.MM.yyyy';
+        } else {
+
+        }
+        console.log('changed');
+    }
+}
+   
+    var Main = {
+      data() {
+        return {
+              options1: [{
+                value: 'System',
+                label: 'System'
+                }, {
+                  value: 'Messages',
+                  label: 'Messages'
+                }, {
+                  value: 'Categories',
+                  label: 'Categories'
+                }, {
+                  value: 'Multi-Assignments',
+                  label: 'Multi-Assignments'
+                }, {
+                  value: 'Analyses',
+                  label: 'Analyses'
+                }, {
+                  value: 'Resources',
+                  label: 'Resources'
+                }, {
+                  value: 'Status',
+                  label: 'Status'
+              }],
+              options2: [{
+                value: 'All AuditCases',
+                label: 'All AuditCases'
+                }, {
+                  value: 'Message update',
+                  label: 'Message update'
+                }, {
+                  value: 'Message First Assign',
+                  label: 'Message First Assign'
+                }, {
+                  value: 'New Message Created',
+                  label: 'New Message Created'
+                }, {
+                  value: 'Message Deleted',
+                  label: 'Message Deleted'
+                }],
+            value: '',
+            value2: '',
+            dateChangeOptions: new DateRangePickerOptions(),
+            filter: {
+                
+                dateChangeRange: ['', ''],
+                dateCreateRange: ['', ''],
+            },
+          tableData: [
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"}
+
+          ],
+        multipleSelection: [],
+        total: null,
+        pagesize:25,
+        currentPage:1
+        }
+      },
+      mounted() {
+        this.total = this.tableData.length
+      },
+      methods: {
+        current_change:function(currentPage){
+          this.currentPage = currentPage;
+        },
+
+        getTotal: function(data) {
+          console.log(this.tableDate)
+        }
+　　　　
+      }
+    }
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app') 
+        
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

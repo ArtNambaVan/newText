@@ -11,6 +11,23 @@ body {
     background-color: $colorWhite;
 }
 
+h2 {
+    font-size: 24px;
+    color: #012b5b;
+}
+
+h3 {
+    font-size: 16px;
+    color: #012b5b;
+}
+
+dl,
+ol,
+ul,
+label {
+    margin-bottom: 0;
+}
+
 .cims {
     display: flex;
     flex-direction: column;
@@ -27,22 +44,7 @@ body {
         box-shadow: none;
     }
 
-    h2 {
-        font-size: 24px;
-        color: #012b5b;
-    }
-
-    h3 {
-        font-size: 16px;
-        color: #012b5b;
-    }
-
-    dl,
-    ol,
-    ul,
-    label {
-        margin-bottom: 0;
-    }
+    
 
     .caret {
         border: none;

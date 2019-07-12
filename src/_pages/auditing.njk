@@ -1,0 +1,271 @@
+{% set title = "auditing" %}
+{% set pageIdSub = 9 %}
+{% set admin = true %}
+{% extends "layout.njk" %}
+
+{% block styles %} <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">{% endblock styles %}
+
+{% block scriptsHead %} 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+
+{% endblock scriptsHead %}
+
+{% block content %}
+            <div class="container-fluid" id="app">
+                {% include "partials/auditing-portlet.njk" %}
+            </div>
+
+{% endblock content %}
+
+{% block scripts %} 
+    <script type="text/babel">
+  class DateRangePickerOptions {
+    constructor() {
+        this.dateInCalcRule = -1;
+        this.dateInFormat = 'dd.MM.yyyy';
+        this.rangeSeparator = '-';
+        var thisObj = this;
+
+        this.onPick = function (dates) {
+            thisObj.dateInCalcRule = -1;
+            thisObj.rangeSeparator = '-';
+            thisObj.dateInFormat = 'dd.MM.yyyy';
+        };
+
+        this.shortcuts = [
+            {
+                text: 'Last 7 days',
+                onClick(picker) {
+                    thisObj.dateInCalcRule = 7;
+                    let arange = DateRangePickerOptions.calcRangeByRule(thisObj.dateInCalcRule, null, null);
+                    thisObj.dateInFormat = '.';
+                    thisObj.rangeSeparator = 'Last 7 days';
+                    picker.$emit('pick', arange);
+                }
+            }, {
+                text: 'Last 14 days',
+                onClick(picker) {
+                    thisObj.dateInCalcRule = 14;
+                    let arange = DateRangePickerOptions.calcRangeByRule(thisObj.dateInCalcRule, null, null);
+                    thisObj.dateInFormat = '.';
+                    thisObj.rangeSeparator = 'Last 14 days';
+                    picker.$emit('pick', arange);
+                }
+            }, {
+                text: 'Last 30 days',
+                onClick(picker) {
+                    thisObj.dateInCalcRule = 30;
+                    let arange = DateRangePickerOptions.calcRangeByRule(thisObj.dateInCalcRule, null, null);
+                    thisObj.dateInFormat = '.';
+                    thisObj.rangeSeparator = 'Last 30 days';
+                    picker.$emit('pick', arange);
+                }
+            }, {
+                text: 'Last Month',
+                onClick(picker) {
+                    thisObj.dateInCalcRule = 31;
+                    let arange = DateRangePickerOptions.calcRangeByRule(thisObj.dateInCalcRule, null, null);
+                    thisObj.dateInFormat = 'dd.MM.yyyy';
+                    thisObj.rangeSeparator = '-';
+                    picker.$emit('pick', arange);
+                }
+            }, {
+                text: 'Last Quarter',
+                onClick(picker) {
+                    thisObj.dateInCalcRule = 90;
+                    let arange = DateRangePickerOptions.calcRangeByRule(thisObj.dateInCalcRule, null, null);
+                    thisObj.dateInFormat = 'dd.MM.yyyy';
+                    thisObj.rangeSeparator = '-';
+                    picker.$emit('pick', arange);
+                }
+            }, {
+                text: 'Last Year',
+                onClick(picker) {
+                    thisObj.dateInCalcRule = 365;
+                    let arange = DateRangePickerOptions.calcRangeByRule(thisObj.dateInCalcRule, null, null);
+                    thisObj.dateInFormat = 'dd.MM.yyyy';
+                    thisObj.rangeSeparator = '-';
+                    picker.$emit('pick', arange);
+                }
+            }
+        ];
+    }
+
+    static calcRangeByRule(prmCalcRule, prmMinDefault, prmMaxDefault) {
+        switch (prmCalcRule) {
+            case -1: return [ prmMinDefault, prmMaxDefault ];
+            case 365: {
+                var targetYear = new Date();
+                targetYear.setFullYear(targetYear.getFullYear() - 1);
+                var startDate = new Date(targetYear.getFullYear(), 0, 1);
+                var endDate = new Date(targetYear.getFullYear(), 12, 0);
+                startDate.setHours(0, 0, 0, 0);
+                endDate.setHours(23, 59, 59, 0);
+                return [startDate, endDate];
+            };
+            case 90: {
+                var targetMonth = new Date();
+                targetMonth.setMonth(targetMonth.getMonth() - 3);
+                var targetQuater = parseInt((targetMonth.getMonth() + 1) / 3) + 1;
+                var startDate = new Date(targetMonth.getFullYear(), 0 + (targetQuater - 1) * 3, 1);
+                var endDate = new Date(targetMonth.getFullYear(), 3 + (targetQuater - 1) * 3, 0);
+                startDate.setHours(0, 0, 0, 0);
+                endDate.setHours(23, 59, 59, 0);
+                return [startDate, endDate];
+            };
+            case 31: {
+                var targetMonth = new Date();
+                targetMonth.setMonth(targetMonth.getMonth() - 1);
+                var startDate = new Date(targetMonth.getFullYear(), targetMonth.getMonth(), 1);
+                var endDate = new Date(targetMonth.getFullYear(), targetMonth.getMonth() + 1, 0);
+                startDate.setHours(0, 0, 0, 0);
+                endDate.setHours(23, 59, 59, 0);
+                return [startDate, endDate];
+            };
+            case 30: {
+                var now = new Date();
+                const date = new Date();
+                date.setHours(0, 0, 0, 0);
+                date.setTime(date.getTime() - 3600 * 1000 * 24 * 29);
+                return [date, now];
+            };
+            case 14: {
+                var now = new Date();
+                const date = new Date();
+                date.setHours(0, 0, 0, 0);
+                date.setTime(date.getTime() - 3600 * 1000 * 24 * 13);
+                return [date, now];
+            };
+            case 7: {
+                var now = new Date();
+                const date = new Date();
+                date.setHours(0, 0, 0, 0);
+                date.setTime(date.getTime() - 3600 * 1000 * 24 * 6);
+                return [date, now];
+            }
+        }
+    }
+
+    onChange (e) {
+        if (e == null) {
+            this.rangeSeparator = '-';
+            this.dateInFormat = 'dd.MM.yyyy';
+        } else {
+
+        }
+        console.log('changed');
+    }
+}
+   
+    var Main = {
+      data() {
+        return {
+              options1: [{
+                value: 'System',
+                label: 'System'
+                }, {
+                  value: 'Messages',
+                  label: 'Messages'
+                }, {
+                  value: 'Categories',
+                  label: 'Categories'
+                }, {
+                  value: 'Multi-Assignments',
+                  label: 'Multi-Assignments'
+                }, {
+                  value: 'Analyses',
+                  label: 'Analyses'
+                }, {
+                  value: 'Resources',
+                  label: 'Resources'
+                }, {
+                  value: 'Status',
+                  label: 'Status'
+              }],
+              options2: [{
+                value: 'All AuditCases',
+                label: 'All AuditCases'
+                }, {
+                  value: 'Message update',
+                  label: 'Message update'
+                }, {
+                  value: 'Message First Assign',
+                  label: 'Message First Assign'
+                }, {
+                  value: 'New Message Created',
+                  label: 'New Message Created'
+                }, {
+                  value: 'Message Deleted',
+                  label: 'Message Deleted'
+                }],
+            value: '',
+            value2: '',
+            dateChangeOptions: new DateRangePickerOptions(),
+            filter: {
+                
+                dateChangeRange: ['', ''],
+                dateCreateRange: ['', ''],
+            },
+          tableData: [
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "info"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Message id', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"},
+            {event: 2016-12-12, user: "Tilly", time: "2016-12-12", description: 'Source name', info: "1321441234123"}
+
+          ],
+        multipleSelection: [],
+        total: null,
+        pagesize:25,
+        currentPage:1
+        }
+      },
+      mounted() {
+        this.total = this.tableData.length
+      },
+      methods: {
+        current_change:function(currentPage){
+          this.currentPage = currentPage;
+        },
+
+        getTotal: function(data) {
+          console.log(this.tableDate)
+        }
+　　　　
+      }
+    }
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app') 
+        
+    </script>
+{% endblock %}
+
+
+
+

@@ -49,15 +49,19 @@
     margin-left: 0;
     list-style: none;
     counter-reset: li;
+    margin-bottom: 1rem;
     }
     .bullet li {
     position: relative;
-    margin-top: 1em;
     border: 1px solid $primaryColor;
     padding: 0.3em;
     border-radius: 4px;
     background: #FEFEFE;
     color: #231F20;
+
+    & + li {
+        margin-top: 1rem;
+    }
     }
     .bullet li:before {
     // position: absolute;
@@ -73,10 +77,6 @@
     content: counter(li);
     }
 
-    .bullet li:last-child {
-        margin-bottom: 0.5rem;
-    }
-
 .assignment-rule__list {
     .delete-category {
         color: $dangerColor;
@@ -87,6 +87,47 @@
     .info-rules {
         margin-left: 15px;
     }
+}
+
+.bullet {
+    margin-left: 0;
+    list-style: none;
+    counter-reset: li;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    &--flex {
+        li {
+            display: flex;
+        }
+    }
+
+    li {
+        position: relative;
+        border: 2px solid $primaryColor;
+        padding: 0.3em;
+        border-radius: 4px;
+        background: #FEFEFE;
+        color: #231F20;
+        width: 100%;
+
+        & + li {
+            margin-top: 0.5em;
+        }
+
+        &::before {
+            padding-left: 0.4em;
+            padding-right: 0.4em;
+            font-size: 16px;
+            font-weight: bold;
+            color: #DCC24B;
+            counter-increment: li;
+            content: counter(li);
+        }
+    }
+
 }
 
 .rules-list {

@@ -37,8 +37,12 @@
     }
 }
 
-.delete {
+.interact {
     cursor: pointer;
+    display: inline-block;
+    padding: 0 5px;
+    transition: 0.25s;
+    color: $colorGray;
 
     &:hover {
         color: $thirdlyColor;

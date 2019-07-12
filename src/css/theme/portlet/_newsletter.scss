@@ -1,0 +1,44 @@
+.form-group > label {
+    color: $primaryColor;
+}
+
+.newsletter {
+    font-size: 14px;
+
+    .form-control {
+        height: 27px;
+    }
+
+    textarea.form-control {
+        height: 150px;
+    }
+}
+
+.groups {
+    &__item {
+        padding: 15px 0;
+
+        .inline-form {
+            margin: 0;
+        }
+
+        & + & {
+            border-top: 1px solid;
+        }
+    }
+}
+
+.select-block {
+    display: block;
+}
+
+.newsletter-list {
+    list-style-type: none;
+
+    &__item {
+
+        & + & {
+            margin-top: 0.5rem;
+        }
+    }
+}

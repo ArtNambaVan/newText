@@ -1,0 +1,102 @@
+{% set title = "feeds" %}
+{% set pageIdSub = 5 %}
+{% set admin = true %}
+{% extends "layout.njk" %}
+
+{% block styles %} <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">{% endblock styles %}
+
+{% block scriptsHead %} 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+
+{% endblock scriptsHead %}
+
+{% block content %}
+            <div class="container-fluid" id="app">
+                {% include "partials/feeds-portlet.njk" %}
+
+            </div>
+
+{% endblock content %}
+
+{% block scripts %} 
+    <script type="text/babel">
+         
+    var Main = {
+      data() {
+        return {
+          tableData: [{
+            name: 'Feed'
+          }, {
+            name: 'Feed2'
+          }, {
+            name: 'Feed3'
+          }, {
+            name: 'Feed4'
+          },
+          {
+            name: 'Feed'
+          }, {
+            name: 'Feed2'
+          }, {
+            name: 'Feed3'
+          }, {
+            name: 'Feed4'
+          },
+          {
+            name: 'Feed'
+          }, {
+            name: 'Feed2'
+          }, {
+            name: 'Feed3'
+          }, {
+            name: 'Feed4'
+          },
+          {
+            name: 'Feed'
+          }, {
+            name: 'Feed2'
+          }, {
+            name: 'Feed3'
+          }, {
+            name: 'Feed4'
+          },
+          {
+            name: 'Feed'
+          }, {
+            name: 'Feed2'
+          }, {
+            name: 'Feed3'
+          }, {
+            name: 'Feed4'
+          }],
+          dlgEdit: false,
+          currentCat: '',
+          newFeedCat: ''
+        }
+      },
+      methods: {
+        editElement: function(el) {
+          this.currentCat = this.tableData[el.$index].name
+          this.dlgEdit = true;
+        },
+        saveNewCat: function() {
+          if(this.newFeedCat !== '') {
+            this.tableData.push({name: this.newFeedCat})
+          }
+          this.newFeedCat = '';
+        }
+      }
+    }
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app') 
+        
+    </script>
+{% endblock %}
+
+
+
+

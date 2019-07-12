@@ -7,12 +7,12 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 {% endblock scriptsHead %}
-{% set pageIdSub = 12 %}
+{% set pageIdSub = 6 %}
 {% set admin = true %}
 {% extends "layout.njk" %}
 
 {% block content %}
-            <div class="container" id="app">
+            <div class="container-fluid" id="app">
                 {% include "partials/mandatory-categories-portlet.njk" %}
         
             </div>
@@ -72,6 +72,16 @@
                    active: false
                 }
               ],
+              LogicCondition: {
+                AND: 'And',
+                OR: 'Or',
+                EXCLUDE: 'Exclude',
+                ALL: "All",
+                ANY: "Any",
+                NEITHER: "Neither",
+                CONTAINS: "Contains",
+                NOT_CONTAINS: "Not_contains"
+              },
               filter: {
                 categoryBlocks: [
                     {
@@ -147,7 +157,57 @@
                     },
                     {
                       assigned: false,
-                      children: [],
+                      children: [
+                        {
+                          assigned: false,
+                          children: [],
+                          id: 5102,
+                          name: "CIMS-Restructure ",
+                          organizationId: 28027,
+                          ratingCategory: false,
+                        },
+                        {
+                          assigned: false,
+                          children: [
+                            {
+                              assigned: false,
+                              children: [],
+                              id: 5102,
+                              name: "CIMS-Restructure ",
+                              organizationId: 28027,
+                              ratingCategory: false,
+                            },
+                            {
+                              assigned: false,
+                              children: [],
+                              id: 5102,
+                              name: "CIMS-Restructure ",
+                              organizationId: 28027,
+                              ratingCategory: false,
+                            },
+                            {
+                              assigned: false,
+                              children: [],
+                              id: 5102,
+                              name: "CIMS-Restructure ",
+                              organizationId: 28027,
+                              ratingCategory: false,
+                            }
+                          ],
+                          id: 5102,
+                          name: "CIMS-Restructure ",
+                          organizationId: 28027,
+                          ratingCategory: false,
+                        },
+                        {
+                          assigned: false,
+                          children: [],
+                          id: 5102,
+                          name: "CIMS-Restructure ",
+                          organizationId: 28027,
+                          ratingCategory: false,
+                        }
+                      ],
                       id: 5102,
                       name: "CIMS-Restructure ",
                       organizationId: 28027,

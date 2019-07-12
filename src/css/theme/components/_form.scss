@@ -188,3 +188,24 @@ input.disabled {
 input[type="checkbox"]:checked ~ .test {
     width: 5rem;
 }
+
+.input-small {
+    width: 180px;
+    display: inline-block;
+}
+
+.inline-form {
+    margin: 15px 0;
+
+    .cims-btn {
+        margin-left: 10px;
+    }
+
+    &__item {
+        margin-right: 15px;
+    }
+}
+
+.form-control {
+    font-size: 14px;
+}

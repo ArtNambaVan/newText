@@ -1,135 +1,102 @@
-            <div>
-                <h2>Mandatory categories</h2>
-
-                <div class="row">
-                    <div class="col-6">
-                        <el-tree
-                            class="filter-tree table-tree"
-                            :data="categoryTree"
-                            ref="treeCategories"
-                            default-expand-all
-                            :props="categoryTreeProps"
-                            @node-click="onCategoryNodeClick"
-                            >
-                            <span slot-scope="{ node, data }">
-                                <el-checkbox class="disabled-checkbox" v-model="node.checked"></el-checkbox>
-                                <a href="javascript:void(0)" :class="'jstree-anchor' + (data.ratingCategory === true?' jstree-rating':'') + (data.assigned === false?'':' tree-category--disabled')" >
-                                    {% raw %} {{ data.name }} {% endraw %}
-                                </a>
+            <div class="row">
+                <div class="col">
+                    <div class="panel">
+                        <a class="panel__head collapse-icon" aria-controls="mandatoryCategories"
+                            aria-expanded="true" data-toggle="collapse" href="#mandatoryCategories" role="tab">
+                            <h2 class="text-translate" data-translate="">Mandatory categories</h2>
+                            <span class="collapse-icon-closed">
+                                <i class="fas fa-chevron-down"></i>
                             </span>
-                        </el-tree>
-                    </div>
-                    <div class="col-6">
-                        <el-tree
-                            class="filter-tree table-tree"
-                            :data="categoryTree"
-                            ref="treeCategories"
-                            default-expand-all
-                            @node-click="onCategoryNodeClick"
-                            >
-                            <span slot-scope="{ node, data }">
-                                <el-checkbox class="disabled-checkbox" v-model="node.checked"></el-checkbox>
-                                <a href="javascript:void(0)" :class="'jstree-anchor' + (data.ratingCategory === true?' jstree-rating':'') + (data.assigned === false?'':' tree-category--disabled')" >
-                                    {% raw %} {{ data.name }} {% endraw %}
-                                </a>
+                            <span class="collapse-icon-open">
+                                <i class="fas fa-chevron-up"></i>
                             </span>
-                        </el-tree>
+                        </a>
+                        
+                        <div class="collapse show" id="mandatoryCategories" role="tabpanel"> 
+                            <div class="table-tree__wrapper" style="max-height: 300px; overflow-y: auto;">
+                                <el-tree
+                                    class="filter-tree table-tree"
+                                    :data="categoryTree"
+                                    ref="treeCategories"
+                                    default-expand-all
+                                    :props="categoryTreeProps"
+                                    @node-click="onCategoryNodeClick"
+                                    >
+                                    <span slot-scope="{ node, data }">
+                                        <el-checkbox class="disabled-checkbox" v-model="node.checked"></el-checkbox>
+                                        <a href="javascript:void(0)" :class="'jstree-anchor' + (data.ratingCategory === true?' jstree-rating':'') + (data.assigned === false?'':' tree-category--disabled')" >
+                                            {% raw %} {{ data.name }} {% endraw %}
+                                        </a>
+                                    </span>
+                                </el-tree>
+                            </div>
+                            <button class="cims-btn cims-btn--primary mt-3">Add root</button>
+            
+                            <h2 class="mt-4">Selected nodes:</h2>
+                            <ol class="bullet">
+                                <li class="assignment-rule__item">
+                                    <span class="category__name">CIMS-Restructure</span>
+                                    <span class="interact" ><i class="fas fa-times-circle"></i></span>
+                                </li>
+                                <li class="assignment-rule__item">
+                                    <span class="category__name">China</span>
+                                    <span class="category__name">CIMS-Restructure</span>
+                                    <span class="category__name">CIMS</span>
+                                    <span class="interact" ><i class="fas fa-times-circle"></i></span>
+                                </li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
 
-                <div class="predefined-filters__block">
-                    <div v-for="(mCat) in mandatoryBlocks" class="predefined-filters__item active">
-                        <div class="predefined-filters__group">
-                            <div class="gorizontal"><p class="predefined-filters__condition">{% raw %}{{ mCat.block1.blockCondition }}{% endraw %}</p></div>
-                            <ul v-for="(cat) in mCat.block1.cat" class="filter-name">
-                                <li>{% raw %}{{ cat }}{% endraw %}</li>
-                            </ul>
+                <div class="col">
+                    <div class="panel">
+                        <a class="panel__head collapse-icon" aria-controls="extendedTextSearchBody"
+                            aria-expanded="true" data-toggle="collapse" href="#extendedTextSearchBody" id="extendedTextSearch" role="tab">
+                            <h2 class="text-translate" data-translate="">Revoke category node</h2>
+                            <span class="collapse-icon-closed">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                            <span class="collapse-icon-open">
+                                <i class="fas fa-chevron-up"></i>
+                            </span>
+                        </a>
+                        
+                        <div class="collapse show" aria-labelledby="extendedTextSearch" id="extendedTextSearchBody" role="tabpanel"> 
+                            <div class="table-tree__wrapper" style="max-height: 300px; overflow-y: auto;">
+                                <el-tree
+                                    class="filter-tree table-tree"
+                                    :data="categoryTree"
+                                    ref="treeCategories"
+                                    default-expand-all
+                                    :props="categoryTreeProps"
+                                    @node-click="onCategoryNodeClick"
+                                    >
+                                    <span slot-scope="{ node, data }">
+                                        <el-checkbox class="disabled-checkbox" v-model="node.checked"></el-checkbox>
+                                        <a href="javascript:void(0)" :class="'jstree-anchor' + (data.ratingCategory === true?' jstree-rating':'') + (data.assigned === false?'':' tree-category--disabled')" >
+                                            {% raw %} {{ data.name }} {% endraw %}
+                                        </a>
+                                    </span>
+                                </el-tree>
+                            </div>
+                            <button class="cims-btn cims-btn--primary mt-3">Add root</button>
+            
+                            <h2 class="mt-4">Selected nodes:</h2>
+                            <ol class="bullet">
+                                <li class="assignment-rule__item">
+                                    <span class="category__name">CIMS-Restructure</span>
+                                    <span class="interact" ><i class="fas fa-times-circle"></i></span>
+                                </li>
+                                <li class="assignment-rule__item">
+                                    <span class="category__name">China</span>
+                                    <span class="category__name">CIMS-Restructure</span>
+                                    <span class="category__name">CIMS</span>
+                                    <span class="interact" ><i class="fas fa-times-circle"></i></span>
+                                </li>
+                            </ol>
                         </div>
-                        <div class="vertical"><p class="predefined-filters__condition">CONNECT</p></div>
-                        <div class="predefined-filters__group">
-                            <div class="gorizontal"><p class="predefined-filters__condition">{% raw %}{{ mCat.block2.blockCondition }}{% endraw %}</p></div>
-                            <ul v-for="(cat) in mCat.block2.cat" class="filter-name" class="filter-name">
-                                <li>{% raw %}{{ cat }}{% endraw %}</li>
-                            </ul>
-                        </div>
-                        <div class="predefined-filters__controls">
-                            <a href="#" class="btn-link" v-on:click="getActive(mCat)">Edit</a>
-                            <a style="margin-left: 15px;" href="#" class="btn-link" v-on:click="">Delete</a>
-                        </div>                            
                     </div>
-                    {# <div class="predefined-filters__item active">
-                        <div class="predefined-filters__group">
-                            <div class="gorizontal"><p class="predefined-filters__condition">AND</p></div>
-                            <ul class="filter-name">
-                                <li>China</li>
-                                <li>Engine Noise</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                            </ul>
-                        </div>
-                        <div class="vertical"><p class="predefined-filters__condition">CONNECT</p></div>
-                        <div class="predefined-filters__group">
-                            <div class="gorizontal"><p class="predefined-filters__condition">OR</p></div>
-                            <ul class="filter-name">
-                                <li>China</li>
-                                <li>Engine Noise</li>
-                                <li>Concept Quality</li>
-                            </ul>
-                        </div>
-                        <div class="predefined-filters__controls">
-                            <a href="#" class="btn-link" v-on:click="">Edit</a>
-                            <a style="margin-left: 15px;" href="#" class="btn-link" v-on:click="">Delete</a>
-                        </div>                            
-                    </div>
-
-                    <div class="predefined-filters__item">
-                        <div class="predefined-filters__group">
-                            <div class="gorizontal"><p class="predefined-filters__condition">AND</p></div>
-                            <ul class="filter-name">
-                                <li>China</li>
-                                <li>Engine Noise</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                                <li>Concept Quality</li>
-                            </ul>
-                        </div>
-                        <div class="vertical"><p class="predefined-filters__condition">CONNECT</p></div>
-                        <div class="predefined-filters__group">
-                            <div class="gorizontal"><p class="predefined-filters__condition">OR</p></div>
-                            <ul class="filter-name">
-                                <li>China</li>
-                                <li>Engine Noise</li>
-                                <li>Concept Quality</li>
-                            </ul>
-                        </div>
-                        <div class="predefined-filters__controls">
-                            <a href="#" class="btn-link" v-on:click="">Edit</a>
-                            <a style="margin-left: 15px;" href="#" class="btn-link" v-on:click="">Delete</a>
-                        </div>                            
-                    </div> #}
-
-                    <button class="btn btn-primary add-new">
-                        <i class="fas fa-plus"></i>
-                        <p>Add new</p>
-                    </button>
                 </div>
             </div>
+

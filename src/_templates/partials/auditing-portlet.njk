@@ -1,0 +1,98 @@
+                <div class="container">
+                    <div class="inline-container">
+                        <div class="inline-container__item inline-container__item--medium">
+                            <p>Audit Object Type:</p>
+                            <el-select size="small" v-model="value" placeholder="Select">
+                                <el-option
+                                  v-for="item in options1"
+                                  :key="item.value"
+                                  :label="item.label"
+                                  :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </div>
+                        <div class="inline-container__item inline-container__item--medium">
+                            <p>Audit Case:</p>
+                            <el-select size="small" v-model="value2" placeholder="Select">
+                                <el-option
+                                  v-for="item in options2"
+                                  :key="item.value"
+                                  :label="item.label"
+                                  :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </div>
+                        <div class="inline-container__item inline-container__item--medium">
+                            <p>Audit Period:</p>
+                            <div class="select-container select-container--icon-right">
+                                <el-date-picker
+                                        v-model="filter.dateChangeRange"
+                                        type="daterange"
+                                        language="en"
+                                        start-placeholder="Start date"
+                                        end-placeholder="End date"
+                                        :default-time="['00:00:00', '23:59:59']"
+                                        unlink-panels
+                                        :picker-options="dateChangeOptions"
+                                        :format="dateChangeOptions.dateInFormat"
+                                        v-on:change="dateChangeOptions.onChange($event)">
+                                    <template v-slot:range-separator>
+                                        <span v-if="dateChangeOptions.rangeSeparator == '-'">{{ dateChangeOptions.rangeSeparator }}</span>
+                                        <div v-if="dateChangeOptions.rangeSeparator != '-'" style="margin-left: -60px;">{{ dateChangeOptions.rangeSeparator }}</div>
+                                    </template>
+                                </el-date-picker>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+
+                        <template>
+                            <div>
+                                <el-table
+                                    ref="multipleTable"
+                                    :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
+                                    style="width: 100%"
+                                    height="600px"
+                                    >
+                                    <el-table-column
+                                        prop="event"
+                                        label="Event"
+                                        width="">
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="user"
+                                        label="User"
+                                        width="">
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="time"
+                                        label="Time"
+                                        width="">
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="description"
+                                        label="Description"
+                                        width="">
+                                    </el-table-column>
+                                    <el-table-column
+                                        prop="info"
+                                        label="Info"
+                                        width="">
+                                    </el-table-column>
+                                </el-table>
+                                <div style="text-align: center; margin-top: 30px;">
+                                    <el-pagination
+                                    background
+                                    layout="prev, pager, next"
+                                    :page-size="pagesize"
+                                    :total="total"
+                                    @current-change="current_change">
+                                    </el-pagination>
+                                </div>
+                            </div>
+                        </template>
+
+
+                    </div>
+                </div>

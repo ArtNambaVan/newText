@@ -34,8 +34,33 @@
         },
         {
             "title" : "Rules",
-            "navActiveItem" : 3,
+            "navActiveItem" : 4,
             "link" : "rules.html"
+        },
+        {
+            "title" : "Feeds",
+            "navActiveItem" : 5,
+            "link" : "feeds.html"
+        },
+        {
+            "title" : "Mandatory categories",
+            "navActiveItem" : 6,
+            "link" : "mandatory-categories.html"
+        },
+        {
+            "title" : "Message preferences",
+            "navActiveItem" : 7,
+            "link" : "message-preferences.html"
+        },
+        {
+            "title" : "Newsletter",
+            "navActiveItem" : 8,
+            "link" : "newsletter.html"
+        },
+        {
+            "title" : "Auditing",
+            "navActiveItem" : 9,
+            "link" : "auditing.html"
         }
     ]
 }
