@@ -69,6 +69,19 @@
             return {
                categoryTree: JSON.parse(JSON.stringify(data)),
 
+               selectOptions: [
+                    { value: 'ALL_SELECT', label: 'Select All' },
+                    { value: '1', label: '1' },
+                    { value: '2', label: '2' },
+                    { value: '3', label: '3' },
+                    { value: '4', label: '4' },
+                    { value: '5', label: '5' },
+                    { value: '6', label: '6' }
+                ],
+                oldChooseData: [],
+                chooseData: [],
+
+
 
                 cimsStatuses:[],
                 workflowStatuses:[],
@@ -324,6 +337,35 @@
                 console.log(e.target.classList.contains("test-btn")) #}
 
                 this.testFunc(parent)
+            },
+            selectAll (val) {
+            const allValues = this.selectOptions.map(item => {
+                return item.value;
+            });
+            const oldVal = this.oldChooseData.length > 0 ? this.oldChooseData : [];
+        
+            if (val.includes('ALL_SELECT')) {
+                this.chooseData = allValues;
+            }
+        
+            if (oldVal.includes('ALL_SELECT') && !val.includes('ALL_SELECT')) {
+                this.chooseData = [];
+            }
+        
+            if (oldVal.includes('ALL_SELECT') && val.includes('ALL_SELECT')) {
+                const index = val.indexOf('ALL_SELECT');
+                val.splice(index, 1);
+                this.chooseData = val;
+                console.log(index, val, chooseData)
+            }
+        
+            if (!oldVal.includes('ALL_SELECT') && !val.includes('ALL_SELECT')) {
+                if (val.length === allValues.length - 1) {
+                this.chooseData = ['ALL_SELECT'].concat(val);
+                }
+            }
+        
+            this.oldChooseData = this.chooseData;
             }
         }
     });

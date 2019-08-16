@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Konzerne</title>
+    <link rel="stylesheet" href="css/libs/clay.css"> 
+
+    <link rel="stylesheet" href="css/libs/main.css">
+ <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">    
+    <link rel="stylesheet" href="css/libs/treeJS.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/libs.js"></script>
+
+ 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+
+    
+
+</head>
+
+<body>
+
+    <div class="cims" id="wrapper">
+        <header class="header">
+            <div class="container-fluid">
+                <nav class="main-nav navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="main-logo">
+                        <img class="main-logo__img" src="images/logoCims.png" alt="CIMS logo">
+                        <span class="main-logo__name">CIMS</span>
+                    </div>
+                    <div class="navbar-collapse collapse main-nav__navigation" id="navbarSupportedContent">
+                        <div class="main-nav__section main-nav__section--left">
+                            
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="organisation-selection.html">Home</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="index.html">Messages</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="main-nav__section main-nav__section--right">
+
+                            <ul class="main-nav__list">
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link " href="message-editor.html">New Message</a>
+                                </li>
+                                <li class="main-nav__item">
+                                    <div class="header-dropdown">
+                                        <span data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle" data-display="static">
+                                            <a data-cq-component="link" href="#" target="_self" class="main-nav__link caret active">Administrator</a>
+                                        </span>
+
+                                        <div class="header-dropdown__inner dropdown-menu" role="menu">
+                                            <ul class="header-submenu">
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="categories-editor.html">Categories</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="ressource-editor.html">Resources</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="organisation-settings.html">Organisation Settings</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="translation.html">Translation</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="rules.html">Rules</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="feeds.html">Feeds</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="mandatory-categories.html">Mandatory categories</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="message-preferences.html">Message preferences</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="newsletter.html">Newsletter</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="auditing.html">Auditing</a>
+                                                    </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link active" href="konzerne.html">Konzerne</a>
+                                                    </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li class="main-nav__item">
+                                    <a class="main-nav__link" href="#">Sign Out</a>
+                                </li>
+                            </ul>
+                        
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+
+            <div class="container-fluid" id="app">
+                <div class="">
+                    <h2 class="two-headers"><span>Meta CIMS</span><span>Mapping</span></h2>
+
+                    <div class="konzerne-container">
+                        <div class="konzerne-item" style="">
+                            <span class="konzerne-item__name">Copy categories from other Cims:</span>
+                            <el-input class="input-small" v-model="input"></el-input>
+                            <button class="cims-btn cims-btn--primary">Copy</button>
+                        </div>
+                        <div class="konzerne-item">
+                            <div v-for="box in boxes" class="konzerne__select">
+                                <div class="select-container">
+                                    <el-select size="small" v-model="value" placeholder="Select">
+                                        <el-option
+                                        v-for="item in options1"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                        </el-option>
+                                    </el-select>
+                                </div>
+                            </div>
+
+                            <div class="konzerne__btn-container">
+                                <button class="table-tree__btn" v-on:click="addField"><span
+                                    class="cims-btn-action">+</span>Add new</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="table-tree" id="table-tree">
+                            <div class="table-tree__wrapper">
+                                <el-tree
+                                    class="filter-tree"
+                                    :data="categoryTree"
+                                    :expand-on-click-node="false"
+                                    ref="treeCategories"
+                                    default-expand-all
+                                    >
+                                    <div class="el-tree__wrapper" slot-scope="{ node, data }" >
+                                        <div class="table-tree__item " v-if="data.id !== dlgEdit.category.id">
+                                            <img v-if="data.hasLogo != null && data.hasLogo === true" :src="getLogoUrl(data)" style="max-width: 32px; max-height: 32px" />
+                                            <div class="table-tree__name">
+                                                    <span :class="'jstree-anchor' + (data.ratingCategory === true?' jstree-rating':'') + (data.assigned === false?'':' tree-category--disabled')"
+                                                        v-bind:style= "data.assigned ? {'color':'#00a4d3'} : {}"
+                                                        >
+ {{data.name}} </span>
+                                                    <el-tooltip class="item" effect="dark" :content="data.tooltip" placement="right" v-if="data.tooltip">
+                                                        <i class="cims-tooltip fas fa-question-circle"></i>
+                                                    </el-tooltip>
+                                                </div>
+                                            <div class="table-tree__controls mr-30">
+                                                <button class="table-tree__btn" v-on:click="addChildCategory(data)"><span
+                                                        class="cims-btn-action">+</span>Add new</button>
+                                                <button class="table-tree__btn" v-on:click="editCategory(data)"><span><i
+                                                        class="far fa-edit"></i></span>Edit</button>
+                                                <button class="table-tree__btn" v-if="categoryTree[0].id !== data.id && data.children.length === 0"
+                                                        v-on:click="deleteCategory(data.id)"><span><i
+                                                        class="far fa-trash-alt"></i></span>Delete</button>
+                                                <button class="table-tree__btn hidden" v-else><span><i
+                                                        class="far fa-trash-alt"></i></span>Delete</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="table-tree__item active" v-if="data.id === dlgEdit.category.id">
+                                            <div class="table-tree__name">
+                                                <input style="width: 200px;" type="text" v-model="dlgEdit.category.name">
+                                            </div>
+                                            <div class="table-tree__category">
+
+                                                <span>Category type</span>
+                                                <el-radio-group class="" v-model="dlgEdit.category.ratingCategory">
+                                                        <el-radio class="" :label="true">Rating</el-radio>
+                                                        <el-radio class="" :label="false">Tagging</el-radio>
+                                                </el-radio-group>
+
+                                                <div>
+                                                    <el-checkbox class="required"
+                                                                v-model="dlgEdit.category.assigned">TOP</el-checkbox>
+                                                </div>
+
+                                                <div class="table-tree__upload">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="table-tree__controls">
+                                                <button class="cims-btn cims-btn--primary"
+                                                        v-on:click="saveCategory">Save</button>
+                                                <button class="cims-btn cims-btn--default" v-on:click="cancelCategory">Cancel</button>
+                                            </div>
+                                        </div>
+                                        <div class="mapping">
+                                            <div class="mapping__item" v-for="(items, index) in data.mappedItems">
+                                                <div class="mapping__controls">
+                                                    <button class="table-tree__btn" v-on:click="data.mappedItems.push(1)">
+                                                        <span class="cims-btn-action">+</span>
+                                                    </button>
+                                                    <button class="table-tree__btn" v-on:click="removeControl(data.mappedItems, index)">
+                                                        <span class="cims-btn-action">-</span>
+                                                    </button>
+                                                </div>
+                                                <div class="mapping__box" v-for="box in boxes">
+                                                    <el-autocomplete
+                                                        class="input-small"
+                                                        v-model="sourceName"
+                                                        :fetch-suggestions="querySearch"
+                                                        placeholder="Please Input"
+                                                        :trigger-on-focus="false"
+                                                        @select="handleSelect"
+                                                    ></el-autocomplete>
+                                                    <div aria-expanded="true" role="tab" class="open-icon" v-on:click="dlgCategoryTree = true">
+                                                        <i class="fas fa-folder"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </el-tree>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <el-dialog title="Category popup" :visible.sync="dlgCategoryTree"
+                           custom-class="category-popup" @open="handleSourceOpen">
+                    <div class="dialog-body">
+                        <a href="javascript:void(0)" title="expand all" v-if=""  v-on:click="">expand all</a>
+                        <a href="javascript:void(0)" title="collapse all" v-if="" v-on:click="">collapse all</a>
+                        <input type="text" class="cims-input filter-category__control"
+                               v-model="dlgSourceSearchText">
+                        <div class="filter-category-popup">
+                            <div class="filter-category-popup__tree">
+                                <el-tree
+                                    class="filter-tree table-tree"
+                                    :data="categoryTree"
+                                    ref="treeCategories"
+                                    default-expand-all
+                                    >
+                                    <span slot-scope="{ node, data }">
+                                        <a href="javascript:void(0)" class="jstree-nodename"
+                                        v-bind:style="data.id === filter.source.id ?{'font-weight':'bold'}:{}">
+ {{ data.name }} 
+                                        </a>
+                                    </span>
+                                </el-tree>
+                            </div>
+                        </div>
+                    </div>
+                    <div slot="footer" class="dialog-footer">
+                        <el-button size="small" @click="dlgSourceVisible = false">
+                            Cancel
+                        </el-button>
+                        <el-button size="small" type="primary" @click="dlgSourceVisible = false">
+                            Confirm
+                        </el-button>
+                    </div>
+                </el-dialog>
+            </div>
+
+
+        </main>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="footer__copyright">© Copyright 2018 Consline AG</p>
+            </div>
+        </footer>
+        
+    </div>
+
+
+    <!-- SCRIPTS -->
+ 
+        <script type="text/babel">
+   
+            var Main = {
+            data() {
+                return {
+                    options1: [{
+                        value: 'System',
+                        label: 'System'
+                        }, {
+                        value: 'Messages',
+                        label: 'Messages'
+                        }, {
+                        value: 'Categories',
+                        label: 'Categories'
+                        }, {
+                        value: 'Multi-Assignments',
+                        label: 'Multi-Assignments'
+                        }, {
+                        value: 'Analyses',
+                        label: 'Analyses'
+                        }, {
+                        value: 'Resources',
+                        label: 'Resources'
+                        }, {
+                        value: 'Status',
+                        label: 'Status'
+                    }],
+                    options2: [{
+                        value: 'All AuditCases',
+                        label: 'All AuditCases'
+                        }, {
+                        value: 'Message update',
+                        label: 'Message update'
+                        }, {
+                        value: 'Message First Assign',
+                        label: 'Message First Assign'
+                        }, {
+                        value: 'New Message Created',
+                        label: 'New Message Created'
+                        }, {
+                        value: 'Message Deleted',
+                        label: 'Message Deleted'
+                        }],
+                    value: '',
+                    value2: '',
+                    input: '',
+                    currentIndex: null,
+                    sourceName: '',
+                    editMode: false,
+                    filterText: '',
+                    mappingBlock: [1],
+                    filter: {
+                        source: {
+                            name: ''
+                        },
+                        dateChangeRange: ['', ''],
+                        dateCreateRange: ['', '']
+                    },
+                    dlgCategoryTree: false,
+                        tableData: [
+                            {org1: 'Noice', org2: 'Noice sound', org3: 'Engine noice', org4: 'Noice reduction', org5: 'Noice reduction', metaCat: 'Noice'},
+                            {org1: 'Noice', org2: 'Noice sound', org3: 'Engine noice', org4: 'Noice reduction', org5: 'Noice reduction', metaCat: 'Noice'},
+                            {org1: 'Noice', org2: 'Noice sound', org3: 'Engine noice', org4: 'Noice reduction', org5: 'Noice reduction', metaCat: 'Noice'},
+                            {org1: 'Noice', org2: 'Noice sound', org3: 'Engine noice', org4: 'Noice reduction', org5: 'Noice reduction', metaCat: 'Noice'}
+
+                        ],
+                    multipleSelection: [],
+                    total: null,
+                    pagesize:25,
+                    currentPage:1,
+                    boxes: [1],
+                    dlgEdit: {
+                        categoryOriginal: null,
+                        category: {
+                            id: 0,
+                            name: '',
+                            ratingCategory: false,
+                            assigned: false,
+                            hasLogo: false
+                        }
+                    },
+
+                    categoryTree: [
+                    {
+                    assigned: false,
+                    mappedItems : [
+                        1
+                    ],
+                    children: [
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5102,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                            assigned: false,
+                            children: [{
+                            assigned: false,
+                                children: [],
+                                id: 5103,
+                                name: "CIMS-Restructure ",
+                                organizationId: 28027,
+                                ratingCategory: false,
+                                mappedItems : [
+                                    1
+                                ],
+                        },
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5104,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5105,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5106,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                        assigned: false,
+                        children: [
+                            {
+                                assigned: false,
+                                children: [],
+                                id: 5107,
+                                name: "CIMS-Restructure ",
+                                organizationId: 28027,
+                                ratingCategory: false,
+                                    mappedItems : [
+                                    1
+                                ],
+                            },
+                            {
+                            assigned: false,
+                            children: [
+                                {
+                                    assigned: false,
+                                    children: [],
+                                    id: 5108,
+                                    name: "CIMS-Restructure ",
+                                    organizationId: 28027,
+                                    ratingCategory: false,
+                                    mappedItems : [
+                                        1
+                                    ],
+                                },
+                                {
+                                    assigned: false,
+                                    children: [],
+                                    id: 5109,
+                                    name: "CIMS-Restructure ",
+                                    organizationId: 28027,
+                                    ratingCategory: false,
+                                    mappedItems : [
+                                        1
+                                    ],
+                                },
+                                {
+                                    assigned: false,
+                                    children: [],
+                                    id: 5110,
+                                    name: "CIMS-Restructure ",
+                                    organizationId: 28027,
+                                    ratingCategory: false,
+                                    mappedItems : [
+                                        1
+                                    ],
+                                }
+                            ],
+                                id: 5111,
+                                name: "CIMS-Restructure ",
+                                organizationId: 28027,
+                                ratingCategory: false,
+                                mappedItems : [
+                                    1
+                                ],
+                            },
+                            {
+                                assigned: false,
+                                children: [],
+                                id: 5112,
+                                name: "CIMS-Restructure ",
+                                organizationId: 28027,
+                                ratingCategory: false,
+                                mappedItems : [
+                                    1
+                                ],
+                            }
+                        ],
+                            id: 5113,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                                mappedItems : [
+                                1
+                            ],
+                        }],
+                            id: 5114,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5115,
+                            name: "CIMS2-Restructure2 ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5116,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5117,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        }
+                    ],
+                    id: 902,
+                    name: "CIMS ",
+                    organizationId: 28027,
+                    ratingCategory: true
+                    }
+                ]
+                }
+            },
+            mounted() {
+                this.total = this.tableData.length
+            },
+            watch: {
+                filterText(val) {
+                    this.$refs.tree.filter(val);
+                }
+            },
+            methods: {
+                current_change:function(currentPage){
+                this.currentPage = currentPage;
+                },
+
+                getTotal: function(data) {
+                console.log(this.tableDate)
+                },
+
+                get: function(a) {
+                    console.log(a)
+                },
+
+                editRow: function(id) {
+                    this.currentIndex === id ? this.currentIndex = null : this.currentIndex = id;
+                },
+                filterNode(value, data) {
+                    if (!value) return true;
+                    return data.name.indexOf(value) !== -1;
+                },
+                editCategory: function (cat) {
+                    console.log(cat)
+                    
+                    this.dlgEdit.categoryOriginal = cat;
+                    this.dlgEdit.category.id = cat.id;
+                    this.dlgEdit.category.name = cat.name;
+                    this.dlgEdit.category.ratingCategory = cat.ratingCategory;
+                    this.dlgEdit.category.assigned = cat.assigned;
+                    console.log(this.dlgEdit.category.id, cat.id)
+                },
+                addField: function() {
+                    this.boxes.push('item')
+                },
+                findNodes: function(cat) {
+
+                },
+                removeControl: function(map, index) {
+                    if (map.length > 1 ) {
+                        map.splice(index, 1)
+                    }
+                }
+            }
+            }
+        var Ctor = Vue.extend(Main)
+        new Ctor().$mount('#app') 
+        
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

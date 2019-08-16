@@ -1,0 +1,119 @@
+.analytics {
+    .el-tabs--card > .el-tabs__header .el-tabs__nav {
+        margin-top: 17px;
+    }
+
+    &-dashbord {
+        margin-top: 15px;
+
+        .el-tabs__item {
+            min-width: 65px;
+
+            &.is-active {
+                .analytics-dashbord__edit-name {
+                    height: 18px;
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+
+        &__edit-name {
+            position: absolute;
+            line-height: 1.4;
+            bottom: 39px;
+            border: 1px solid #E4E7ED;
+            border-bottom: 0;
+            background: #fff;
+            width: 50px;
+            right: -1px;
+            height: 0;
+            transition: all cubic-bezier(0.645, 0.045, 0.355, 1), 0.3s;
+            text-align: center;
+            border-radius: 4px 4px 0px 0px;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &.el-tabs--top.el-tabs--card > .el-tabs__header .el-tabs__item:last-child {
+            padding: 0;
+            min-width: 40px;
+        }
+    }
+}
+
+.add-test {
+    display: block;
+    text-align: center;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: rgba($secondaryColor, 0.4);
+    }
+}
+
+.btn-analytics {
+    margin: 150px auto;
+    border: 1px dashed #d9d9d9;
+    color: #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    outline: none;
+    width: 180px;
+    height: 180px;
+    transition: all 0.3s;
+
+    &__title {
+        line-height: 180px;
+    }
+
+    &:hover {
+        border-color: $primaryColor;
+        color: $primaryColor;
+    }
+}
+
+.chart__header {
+    display: flex;
+    background: #d9d9d9;
+}
+
+.chart-list {
+    list-style-type: none;
+    display: flex;
+
+    &--left {
+        margin-right: auto;
+    }
+
+    &--right {
+        margin-left: auto;
+    }
+
+    &__item {
+        padding: 6px 8px;
+        font-size: 16px;
+        color: $primaryColor;
+        cursor: pointer;
+        //transition: all 0.25s;
+
+        &:hover,
+        &.active {
+            background-color: $primaryColor;
+            color: #d9d9d9;
+        }
+    }
+}
+
+.chart__body {
+    min-height: 400px;
+    display: flex;
+}
+
+.chart__graph {
+    width: 100%;
+    overflow: hidden;
+}

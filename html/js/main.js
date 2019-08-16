@@ -33,18 +33,18 @@ $( document ).ready(function() {
     })
 
     // Filters panel
-    filtersPanel.hasClass('active') ? $('#wrapper').addClass('panel-open-mb') : $('#wrapper').removeClass('panel-open-mb');
+    // filtersPanel.hasClass('active') ? $('#wrapper').addClass('panel-open-mb') : $('#wrapper').removeClass('panel-open-mb');
 
-    filtersBtn.on('click', function() {
-        if (filtersPanel.hasClass('active') ) {
-            filtersPanel.removeClass('active');
-            $('#wrapper').removeClass('panel-open-mb')
-        } else {
-            filtersPanel.addClass('active');
-            $('#wrapper').addClass('panel-open-mb');
-        }
+    // filtersBtn.on('click', function() {
+    //     if (filtersPanel.hasClass('active') ) {
+    //         filtersPanel.removeClass('active');
+    //         $('#wrapper').removeClass('panel-open-mb')
+    //     } else {
+    //         filtersPanel.addClass('active');
+    //         $('#wrapper').addClass('panel-open-mb');
+    //     }
 
-    });
+    // });
 
     // MESSAGE HISTORY
 
@@ -157,15 +157,15 @@ $( document ).ready(function() {
 
     // ressource
 
-    $('.table-tree__condition').on('click', function(e) {
-        $(this).parent().toggleClass('tree-collapse');
-        $(this).parent().next().slideToggle(400)
-    })
+    // $('.table-tree__condition').on('click', function(e) {
+    //     $(this).parent().toggleClass('tree-collapse');
+    //     $(this).parent().next().slideToggle(400)
+    // })
 
-    $('.table-tree__btn:nth-child(2)').on('click', function(e) {
-        var item = $(this).closest('.table-tree__item');
-        item .addClass('active').find('.table-tree__name').attr( 'contenteditable', 'true' ).focus();
-    })
+    // $('.table-tree__btn:nth-child(2)').on('click', function(e) {
+    //     var item = $(this).closest('.table-tree__item');
+    //     item .addClass('active').find('.table-tree__name').attr( 'contenteditable', 'true' ).focus();
+    // })
 
     $('#collapseAll').on('click', function(e) {
         var parentItems = $('.table-tree').find('.table-tree__item.have-children');

@@ -1,0 +1,269 @@
+{% set title = "newsletter" %}
+{% set pageIdSub = 8 %}
+{% set admin = true %}
+{% extends "layout.njk" %}
+
+{% block styles %} <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">{% endblock styles %}
+
+{% block scriptsHead %} 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    {# <script src="https://cdn.jsdelivr.net/npm/vue-highcharts@0.1.0/dist/vue-highcharts.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>#}
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highcharts@6/highcharts.js"></script>
+    <!-- vue-highcharts should be load after Highcharts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue-highcharts/dist/vue-highcharts.min.js"></script>
+
+    
+
+{% endblock scriptsHead %}
+
+{% block content %}
+            <div class="container-fluid" id="app">
+                {% include "partials/analytics-portlet.njk" %}
+
+            </div>
+
+{% endblock content %}
+
+{% block scripts %} 
+    <script type="text/babel">
+    var options = {
+        title: {
+        text: 'Move tooltip only horizontally'
+        },
+        legend: {
+        enabled: false
+        },
+        credits: {
+        enabled: false
+        },
+        tooltip: {
+        positioner: function(labelWidth, labelHeight, point) {
+            var seriesPoints = this.chart.series[0].points,
+            indexValue, tooltipX, tooltipY;
+
+            seriesPoints.forEach(function(el, inx) {
+            if ((point.plotX === Math.round(el.plotX)) && (point.plotY === Math.round(el.plotY))) {
+                indexValue = inx;
+            }
+            });
+
+            tooltipX = point.plotX;
+            tooltipY = this.chart.chartHeight - this.chart.plotTop - this.chart.xAxis[0].bottom;
+
+            if (indexValue === 0) {
+            tooltipX += this.chart.plotLeft;
+            }
+
+            return {
+            x: tooltipX,
+            y: tooltipY
+            };
+        },
+        shadow: false,
+        borderWidth: 1,
+        backgroundColor: 'rgba(255,255,255,0.8)'
+        },
+        xAxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        series: [{
+        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+        }]
+    }
+
+    Vue.use(VueHighcharts);
+
+    //Vue.use(HighchartsVue);
+    new Vue({
+        el: "#app",
+        data: function() {
+            return {
+                options: options,
+                isPanelActive: true,
+                selectedUserFilter: '',
+                savedUserFilters: [
+                    { name: 'test', id: 1},
+                    { name: 'test2', id: 2},
+                ],
+                filter: {
+                    keywords: '',
+                },
+                dashboardsValue: 0,
+                dashboards: [],
+                tabIndex: 0,
+                dlgTabName: false,
+                editTitle: '',
+                editTitleIndex: null,
+
+                dashboardsValue: '1',
+                dashboards: [
+                    {
+                        title: 'New Chart 1',
+                        name: '1',
+                        content: 'New Chart 1'
+                    },
+                ],
+                tabIndex: 1
+            }
+        },
+        methods: {
+            addNewDashbord(targetName) {
+                console.log(this.tabIndex)
+                let newDashbordName = ++this.tabIndex + '';
+                const title = `New chart ${this.tabIndex}`
+                this.dashboards.push({
+                    title: title,
+                    name: newDashbordName,
+                    content: 'New Tab content',
+
+                });
+                
+                this.dashboardsValue = newDashbordName;
+            },
+            removeDashbord(targetName) {
+                let tabs = this.dashboards;
+                let activeName = this.dashboardsValue;
+                console.log(targetName, activeName)
+                if (activeName === targetName) {
+                    tabs.forEach((tab, index) => {
+                        if (tab.name === targetName) {
+                            console.log(tab.name)
+                            let nextTab = tabs[index + 1] || tabs[index - 1];
+                            if (nextTab) {
+                                activeName = nextTab.name;
+                            }
+                        }
+                    });
+                }
+                
+                this.dashboardsValue = activeName;
+                this.dashboards = tabs.filter(tab => tab.name !== targetName);
+            },
+            editTabName(name,index) {
+                console.log(name)
+                this.editTitle = name;
+                this.editTitleIndex = index;
+                this.dlgTabName = true;
+            },
+            saveTabName() {
+                this.dashboards[this.editTitleIndex].title = this.editTitle;
+                console.log(this.editTitleIndex)
+                this.dlgTabName = false;
+                document.getElementById(`tab-${this.editTitleIndex + 1}`).focus()
+            },
+            openFilterListDlg() {
+                console.log('1')
+            },
+            openFilterDlg() {
+                console.log(1)
+            },
+            togglePanel(e) {
+                console.log(this.isPanelActive)
+                this.isPanelActive = !this.isPanelActive
+                console.log(this.isPanelActive)
+            }
+        }
+    });
+    {# var Main = {
+        data() {
+            return {
+                isPanelActive: true,
+                selectedUserFilter: '',
+                savedUserFilters: [
+                    { name: 'test', id: 1},
+                    { name: 'test2', id: 2},
+                ],
+                filter: {
+                    keywords: '',
+                },
+                dashboardsValue: 0,
+                dashboards: [],
+                tabIndex: 0,
+                dlgTabName: false,
+                editTitle: '',
+                editTitleIndex: null,
+
+                dashboardsValue: '1',
+                dashboards: [
+                    {
+                        title: 'New Chart 1',
+                        name: '1',
+                        content: 'New Chart 1'
+                    },
+                ],
+                tabIndex: 1
+            }
+        },
+        methods: {
+            addNewDashbord(targetName) {
+                console.log(this.tabIndex)
+                let newDashbordName = ++this.tabIndex + '';
+                const title = `New chart ${this.tabIndex}`
+                this.dashboards.push({
+                    title: title,
+                    name: newDashbordName,
+                    content: 'New Tab content',
+
+                });
+                
+                this.dashboardsValue = newDashbordName;
+            },
+            removeDashbord(targetName) {
+                let tabs = this.dashboards;
+                let activeName = this.dashboardsValue;
+                console.log(targetName, activeName)
+                if (activeName === targetName) {
+                    tabs.forEach((tab, index) => {
+                        if (tab.name === targetName) {
+                            console.log(tab.name)
+                            let nextTab = tabs[index + 1] || tabs[index - 1];
+                            if (nextTab) {
+                                activeName = nextTab.name;
+                            }
+                        }
+                    });
+                }
+                
+                this.dashboardsValue = activeName;
+                this.dashboards = tabs.filter(tab => tab.name !== targetName);
+            },
+            editTabName(name,index) {
+                console.log(name)
+                this.editTitle = name;
+                this.editTitleIndex = index;
+                this.dlgTabName = true;
+            },
+            saveTabName() {
+                this.dashboards[this.editTitleIndex].title = this.editTitle;
+                console.log(this.editTitleIndex)
+                this.dlgTabName = false;
+                document.getElementById(`tab-${this.editTitleIndex + 1}`).focus()
+            },
+            openFilterListDlg() {
+                console.log('1')
+            },
+            openFilterDlg() {
+                console.log(1)
+            },
+            togglePanel(e) {
+                console.log(this.isPanelActive)
+                this.isPanelActive = !this.isPanelActive
+                console.log(this.isPanelActive)
+            }
+        }
+    }
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app')  #}
+        
+    </script>
+{% endblock %}
+
+
+
+

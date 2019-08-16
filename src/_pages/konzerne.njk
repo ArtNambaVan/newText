@@ -1,0 +1,360 @@
+{% set title = "Konzerne" %}
+{% set pageIdSub = 10 %}
+{% set admin = true %}
+{% extends "layout.njk" %}
+
+{% block styles %} <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">{% endblock styles %}
+
+{% block scriptsHead %} 
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+
+{% endblock scriptsHead %}
+
+{% block content %}
+            <div class="container-fluid" id="app">
+                {% include "partials/konzerne-portlet.njk" %}
+
+            </div>
+
+{% endblock content %}
+
+{% block scripts %} 
+        <script type="text/babel">
+   
+            var Main = {
+            data() {
+                return {
+                    options1: [{
+                        value: 'System',
+                        label: 'System'
+                        }, {
+                        value: 'Messages',
+                        label: 'Messages'
+                        }, {
+                        value: 'Categories',
+                        label: 'Categories'
+                        }, {
+                        value: 'Multi-Assignments',
+                        label: 'Multi-Assignments'
+                        }, {
+                        value: 'Analyses',
+                        label: 'Analyses'
+                        }, {
+                        value: 'Resources',
+                        label: 'Resources'
+                        }, {
+                        value: 'Status',
+                        label: 'Status'
+                    }],
+                    options2: [{
+                        value: 'All AuditCases',
+                        label: 'All AuditCases'
+                        }, {
+                        value: 'Message update',
+                        label: 'Message update'
+                        }, {
+                        value: 'Message First Assign',
+                        label: 'Message First Assign'
+                        }, {
+                        value: 'New Message Created',
+                        label: 'New Message Created'
+                        }, {
+                        value: 'Message Deleted',
+                        label: 'Message Deleted'
+                        }],
+                    value: '',
+                    value2: '',
+                    input: '',
+                    currentIndex: null,
+                    sourceName: '',
+                    editMode: false,
+                    filterText: '',
+                    mappingBlock: [1],
+                    filter: {
+                        source: {
+                            name: ''
+                        },
+                        dateChangeRange: ['', ''],
+                        dateCreateRange: ['', '']
+                    },
+                    dlgCategoryTree: false,
+                        tableData: [
+                            {org1: 'Noice', org2: 'Noice sound', org3: 'Engine noice', org4: 'Noice reduction', org5: 'Noice reduction', metaCat: 'Noice'},
+                            {org1: 'Noice', org2: 'Noice sound', org3: 'Engine noice', org4: 'Noice reduction', org5: 'Noice reduction', metaCat: 'Noice'},
+                            {org1: 'Noice', org2: 'Noice sound', org3: 'Engine noice', org4: 'Noice reduction', org5: 'Noice reduction', metaCat: 'Noice'},
+                            {org1: 'Noice', org2: 'Noice sound', org3: 'Engine noice', org4: 'Noice reduction', org5: 'Noice reduction', metaCat: 'Noice'}
+
+                        ],
+                    multipleSelection: [],
+                    total: null,
+                    pagesize:25,
+                    currentPage:1,
+                    boxes: [1],
+                    dlgEdit: {
+                        categoryOriginal: null,
+                        category: {
+                            id: 0,
+                            name: '',
+                            ratingCategory: false,
+                            assigned: false,
+                            hasLogo: false
+                        }
+                    },
+
+                    categoryTree: [
+                    {
+                    assigned: false,
+                    mappedItems : [
+                        1
+                    ],
+                    children: [
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5102,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                            assigned: false,
+                            children: [{
+                            assigned: false,
+                                children: [],
+                                id: 5103,
+                                name: "CIMS-Restructure ",
+                                organizationId: 28027,
+                                ratingCategory: false,
+                                mappedItems : [
+                                    1
+                                ],
+                        },
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5104,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5105,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5106,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                        assigned: false,
+                        children: [
+                            {
+                                assigned: false,
+                                children: [],
+                                id: 5107,
+                                name: "CIMS-Restructure ",
+                                organizationId: 28027,
+                                ratingCategory: false,
+                                    mappedItems : [
+                                    1
+                                ],
+                            },
+                            {
+                            assigned: false,
+                            children: [
+                                {
+                                    assigned: false,
+                                    children: [],
+                                    id: 5108,
+                                    name: "CIMS-Restructure ",
+                                    organizationId: 28027,
+                                    ratingCategory: false,
+                                    mappedItems : [
+                                        1
+                                    ],
+                                },
+                                {
+                                    assigned: false,
+                                    children: [],
+                                    id: 5109,
+                                    name: "CIMS-Restructure ",
+                                    organizationId: 28027,
+                                    ratingCategory: false,
+                                    mappedItems : [
+                                        1
+                                    ],
+                                },
+                                {
+                                    assigned: false,
+                                    children: [],
+                                    id: 5110,
+                                    name: "CIMS-Restructure ",
+                                    organizationId: 28027,
+                                    ratingCategory: false,
+                                    mappedItems : [
+                                        1
+                                    ],
+                                }
+                            ],
+                                id: 5111,
+                                name: "CIMS-Restructure ",
+                                organizationId: 28027,
+                                ratingCategory: false,
+                                mappedItems : [
+                                    1
+                                ],
+                            },
+                            {
+                                assigned: false,
+                                children: [],
+                                id: 5112,
+                                name: "CIMS-Restructure ",
+                                organizationId: 28027,
+                                ratingCategory: false,
+                                mappedItems : [
+                                    1
+                                ],
+                            }
+                        ],
+                            id: 5113,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                                mappedItems : [
+                                1
+                            ],
+                        }],
+                            id: 5114,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5115,
+                            name: "CIMS2-Restructure2 ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5116,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        },
+                        {
+                            assigned: false,
+                            children: [],
+                            id: 5117,
+                            name: "CIMS-Restructure ",
+                            organizationId: 28027,
+                            ratingCategory: false,
+                            mappedItems : [
+                                1
+                            ],
+                        }
+                    ],
+                    id: 902,
+                    name: "CIMS ",
+                    organizationId: 28027,
+                    ratingCategory: true
+                    }
+                ]
+                }
+            },
+            mounted() {
+                this.total = this.tableData.length
+            },
+            watch: {
+                filterText(val) {
+                    this.$refs.tree.filter(val);
+                }
+            },
+            methods: {
+                current_change:function(currentPage){
+                this.currentPage = currentPage;
+                },
+
+                getTotal: function(data) {
+                console.log(this.tableDate)
+                },
+
+                get: function(a) {
+                    console.log(a)
+                },
+
+                editRow: function(id) {
+                    this.currentIndex === id ? this.currentIndex = null : this.currentIndex = id;
+                },
+                filterNode(value, data) {
+                    if (!value) return true;
+                    return data.name.indexOf(value) !== -1;
+                },
+                editCategory: function (cat) {
+                    console.log(cat)
+                    
+                    this.dlgEdit.categoryOriginal = cat;
+                    this.dlgEdit.category.id = cat.id;
+                    this.dlgEdit.category.name = cat.name;
+                    this.dlgEdit.category.ratingCategory = cat.ratingCategory;
+                    this.dlgEdit.category.assigned = cat.assigned;
+                    console.log(this.dlgEdit.category.id, cat.id)
+                },
+                addField: function() {
+                    this.boxes.push('item')
+                },
+                findNodes: function(cat) {
+
+                },
+                removeControl: function(map, index) {
+                    if (map.length > 1 ) {
+                        map.splice(index, 1)
+                    }
+                }
+            }
+            }
+        var Ctor = Vue.extend(Main)
+        new Ctor().$mount('#app') 
+        
+    </script>
+{% endblock %}
+
+
+
+

@@ -98,6 +98,9 @@
                                                     <li class="header-submenu__item">
                                                         <a class="header-submenu__link " href="auditing.html">Auditing</a>
                                                     </li>
+                                                    <li class="header-submenu__item">
+                                                        <a class="header-submenu__link " href="konzerne.html">Konzerne</a>
+                                                    </li>
 
                                             </ul>
                                         </div>
@@ -137,11 +140,26 @@
                         <el-table-column
                             prop="name"
                             label="Name"
+                            
+                            >
+                        </el-table-column>
+                        <el-table-column
+                            prop="id"
+                            label="id"
+                            
+                            >
+                        </el-table-column>
+                        <el-table-column
+                            prop="newMessage"
+                            label="New Message"
+                            
                             >
                         </el-table-column>
                         <el-table-column
                             prop=""
-                            label="Options">
+                            label="Options"
+                            align="right"
+                            >
 
                             <template slot-scope="scope">
                                 <span class="interact" v-on:click="editElement(scope)">
@@ -196,49 +214,87 @@
       data() {
         return {
           tableData: [{
-            name: 'Feed'
+            name: 'Feed',
+            id: 1,
+            newMessage: 4
           }, {
-            name: 'Feed2'
+            name: 'Feed2',
+            id: 1,
+            newMessage: 4
           }, {
-            name: 'Feed3'
+            name: 'Feed3',
+            id: 1,
+            newMessage: 4
           }, {
-            name: 'Feed4'
+            name: 'Feed4',
+            id: 1,
+            newMessage: 4
+          },
+          {
+            name: 'Feed',
+            id: 1,
+            newMessage: 4
+          }, {
+            name: 'Feed2',
+            id: 1,
+            newMessage: 4
+          }, {
+            name: 'Feed3',
+            id: 1,
+            newMessage: 4
+          }, {
+            name: 'Feed4',
+            id: 1,
+            newMessage: 4
+          },
+          {
+            name: 'Feed',
+            id: 1,
+            newMessage: 4
+          }, {
+            name: 'Feed2',
+            id: 1,
+            newMessage: 4
+          }, {
+            name: 'Feed3',
+            id: 1,
+            newMessage: 4
+          }, {
+            name: 'Feed4',
+            id: 1,
+            newMessage: 4
+          },
+          {
+            name: 'Feed',
+            id: 1,
+            newMessage: 4
+          }, {
+            name: 'Feed2',
+            id: 1,
+            newMessage: 4
+          }, {
+            name: 'Feed3',
+            id: 1,
+            newMessage: 4
+          }, {
+            name: 'Feed4',
+            id: 1,
+            newMessage: 4
           },
           {
             name: 'Feed'
           }, {
-            name: 'Feed2'
+            name: 'Feed2',
+            id: 1,
+            newMessage: 4
           }, {
-            name: 'Feed3'
+            name: 'Feed3',
+            id: 1,
+            newMessage: 4
           }, {
-            name: 'Feed4'
-          },
-          {
-            name: 'Feed'
-          }, {
-            name: 'Feed2'
-          }, {
-            name: 'Feed3'
-          }, {
-            name: 'Feed4'
-          },
-          {
-            name: 'Feed'
-          }, {
-            name: 'Feed2'
-          }, {
-            name: 'Feed3'
-          }, {
-            name: 'Feed4'
-          },
-          {
-            name: 'Feed'
-          }, {
-            name: 'Feed2'
-          }, {
-            name: 'Feed3'
-          }, {
-            name: 'Feed4'
+            name: 'Feed4',
+            id: 1,
+            newMessage: 4
           }],
           dlgEdit: false,
           currentCat: '',

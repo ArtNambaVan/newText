@@ -192,6 +192,12 @@ input[type="checkbox"]:checked ~ .test {
 .input-small {
     width: 180px;
     display: inline-block;
+
+    .el-input__inner {
+        height: 25px;
+        line-height: 25px;
+        padding: 4px;
+    }
 }
 
 .inline-form {

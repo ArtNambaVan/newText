@@ -61,6 +61,11 @@
             "title" : "Auditing",
             "navActiveItem" : 9,
             "link" : "auditing.html"
+        },
+        {
+            "title" : "Konzerne",
+            "navActiveItem" : 10,
+            "link" : "konzerne.html"
         }
     ]
 }

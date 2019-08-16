@@ -1,0 +1,197 @@
+                <div class="analytics">             
+                    <el-tabs class="analytics-dashbord" v-model="dashboardsValue" type="card" @tab-remove="removeDashbord">
+                        <el-tab-pane closable 
+                            v-for="(item, index) in dashboards"
+                            :key="item.name"
+                            :label="item.title"
+                            :name="item.name"
+                        >
+                        <span class="analytics-dashbord__tab-name" slot="label">
+                            {% raw %} {{item.title}} {% endraw %}
+                            <div class="analytics-dashbord__edit-name" @click="editTabName(item.title, index)">
+                                edit
+                            </div>
+                        </span>
+                            {% raw %}{{item.content}} {% endraw %}
+                            <div class="charts">
+                                <div class="charts__container">
+                                    <div class="chart">
+                                        <div class="chart__header">
+                                            <ul class="chart-list chart-list--left">
+                                                <li class="chart-list__item"  v-bind:class="{ active: isPanelActive }" v-on:click="togglePanel">
+                                                    <i class="fas fa-filter"></i>
+                                                </li>
+                                                <li class="chart-list__item">
+                                                    <i class="fas fa-cog"></i>
+                                                </li>
+                                                <li class="chart-list__item">
+                                                    <i class="far fa-chart-bar"></i>
+                                                </li>
+                                            </ul>
+                                            <ul class="chart-list chart-list--right">
+                                                <li class="chart-list__item">
+                                                    <i class="fas fa-download"></i>
+                                                </li>
+                                                <li class="chart-list__item">
+                                                    <i class="fas fa-trash"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="chart__body">
+                                            
+
+                                            <!-- start panel -->
+                                            <div class="chart__panels">
+                                                <div class="filters-panel" v-bind:class="{ active: isPanelActive }">
+                                                    <div class="filters-panel__btn" v-bind:class="{ active: isPanelActive }" v-if="isPanelActive" v-on:click="togglePanel">
+                                                        <span>&nbsp;</span>
+                                                        <span class="collapse-icon-closed">
+                                                            <i class="fas fa-chevron-left"></i>
+                                                        </span>
+                                                        <span class="collapse-icon-open">
+                                                            
+                                                        </span>
+                                                        <span class="search-mobile">
+                                                            <i class="fas fa-search"></i>
+                                                        </span>
+                                                    </div>
+                                                    <div class="filters-panel__body">
+                                                        <form>
+                                                            <!-- SEARCH & FILTER STARTS -->
+                                    
+                                                            <div class="filter-category">
+                                                                <div class="filter-category__title">search_and_filter
+                                                                </div>
+                                                                <div class="filter-category__body">
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-7 offset-4">
+                                                                            <div class="select-container">
+                                                                                <el-select v-model="selectedUserFilter"
+ 
+                                                                                            >
+                                                                                    <el-option
+                                                                                            v-for="opt in savedUserFilters"
+                                                                                            :label="opt.name"
+                                                                                            :key="opt.id"
+                                                                                            :value="opt.name">
+                                                                                    </el-option>
+                                                                                </el-select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-1">
+                                                                            <div class="open-icon" aria-expanded="true" v-on:click="openFilterListDlg">
+                                                                                <i class="fas fa-cog"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- SEARCH & FILTER END -->
+                                    
+                                                            <!-- TEXT & PERIOD FILTER STARTS -->
+                                                            <div class="filter-category">
+                                                                <a class="filter-category__head collapse-icon" aria-controls="textFilterBody"
+                                                                   aria-expanded="true" data-toggle="collapse" href="#textFilterBody" id="textFilter"
+                                                                   role="tab">
+                                                                    <span class="filter-category__title">text_and_period_filter</span>
+                                                                    <span class="collapse-icon-closed">
+                                                                                        <i class="fas fa-chevron-down"></i>
+                                                                                    </span>
+                                                                    <span class="collapse-icon-open">
+                                                                                        <i class="fas fa-chevron-up"></i>
+                                                                                    </span>
+                                                                </a>
+                                                                <div class="filter-category__body collapse show" aria-labelledby="textFilter"
+                                                                     id="textFilterBody" role="tabpanel">
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">posted</label>
+                                                                        </div>
+                                    
+                                                                        <div class="col-7">
+                                                                            <div class="select-container select-container--icon-right">
+                                                                                test
+                                                                            </div>
+                                                                        </div>
+                                    
+                                                                    </div>
+                                    
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">text_search</label>
+                                                                        </div>
+                                    
+                                                                        <div class="col-7">
+                                                                            <input type="text" class="cims-input filter-category__control"
+                                                                                   placeholder="search_title_or_message" v-model="filter.keywords">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- TEXT & PERIOD FILTER END -->
+                                    
+                                                        
+                                                            <div class="btn-container btn-container--center">
+                                                                <a href="javascript:void(0)" class="btn-link" value="save" v-on:click="openFilterDlg">
+                                                                    <i class="fas fa-save"></i>
+                                                                    save_filter
+                                                                </a>
+                                                            </div>
+                                    
+                                                            <div class="btn-container btn-container--center">
+                                                                <a href="javascript:void(0)" class="btn-link" value="reset"
+                                                                   v-on:click="clearFilters($event)">
+                                                                    <i class="far fa-trash-alt"></i>
+                                                                    reset
+                                                                </a>
+                                                                <a href="javascript:void(0)" class="btn-link btn-link--primary"
+                                                                   v-on:click="doSearch($event)">
+                                                                    <i class="fas fa-search"></i>
+                                                                    submit
+                                                                </a>
+                                                            </div>
+                                    
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <!-- ends panel -->
+                                            </div>
+
+                                            <div style="flex: 1; overflow: hidden;">
+                                                <highcharts class="chart__graph" :options="options" ref="highcharts"></highcharts>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </el-tab-pane>
+                        <el-tab-pane  v-if="dashboards.length !== 0" :name="`${(tabIndex + 1).toString()}`"> 
+                                <span class="add-test" slot="label" @click="addNewDashbord(tabIndex)">
+                                    <i class="far fa-plus-square"></i>
+                                </span>
+                        </el-tab-pane>
+                    </el-tabs>
+
+                    <div class="btn-analytics" @click="addNewDashbord(dashboardsValue)"><span class="btn-analytics__title">Add chart</span></div>
+
+                </div>
+
+                <el-dialog title="Category popup" :visible.sync="dlgTabName"
+                           custom-class="category-popup">
+                    <div class="dialog-body">
+                        <el-input
+                            class="input-small"
+                            v-model="editTitle"
+                        ></el-input>
+                    </div>
+                    <div slot="footer" class="dialog-footer">
+                        <el-button size="small" @click="dlgTabName = false">
+                            Cancel
+                        </el-button>
+                        <el-button size="small" type="primary" @click="saveTabName">
+                            Confirm
+                        </el-button>
+                    </div>
+                </el-dialog>

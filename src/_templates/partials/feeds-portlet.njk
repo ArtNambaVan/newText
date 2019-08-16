@@ -18,11 +18,26 @@
                         <el-table-column
                             prop="name"
                             label="Name"
+                            
+                            >
+                        </el-table-column>
+                        <el-table-column
+                            prop="id"
+                            label="id"
+                            
+                            >
+                        </el-table-column>
+                        <el-table-column
+                            prop="newMessage"
+                            label="New Message"
+                            
                             >
                         </el-table-column>
                         <el-table-column
                             prop=""
-                            label="Options">
+                            label="Options"
+                            align="right"
+                            >
 
                             <template slot-scope="scope">
                                 <span class="interact" v-on:click="editElement(scope)">

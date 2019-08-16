@@ -1,0 +1,174 @@
+                <div class="">
+                    <h2 class="two-headers"><span>Meta CIMS</span><span>Mapping</span></h2>
+
+                    <div class="konzerne-container">
+                        <div class="konzerne-item" style="">
+                            <span class="konzerne-item__name">Copy categories from other Cims:</span>
+                            <el-input class="input-small" v-model="input"></el-input>
+                            <button class="cims-btn cims-btn--primary">Copy</button>
+                        </div>
+                        <div class="konzerne-item">
+                            <div v-for="box in boxes" class="konzerne__select">
+                                <div class="select-container">
+                                    <el-select size="small" v-model="value" placeholder="Select">
+                                        <el-option
+                                        v-for="item in options1"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                        </el-option>
+                                    </el-select>
+                                </div>
+                            </div>
+
+                            <div class="konzerne__btn-container">
+                                <button class="table-tree__btn" v-on:click="addField"><span
+                                    class="cims-btn-action">+</span>Add new</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="table-tree" id="table-tree">
+                            <div class="table-tree__wrapper">
+                                <el-tree
+                                    class="filter-tree"
+                                    :data="categoryTree"
+                                    :expand-on-click-node="false"
+                                    ref="treeCategories"
+                                    default-expand-all
+                                    >
+                                    <div class="el-tree__wrapper" slot-scope="{ node, data }" >
+                                        <div class="table-tree__item " v-if="data.id !== dlgEdit.category.id">
+                                            <img v-if="data.hasLogo != null && data.hasLogo === true" :src="getLogoUrl(data)" style="max-width: 32px; max-height: 32px" />
+                                            <div class="table-tree__name">
+                                                    <span :class="'jstree-anchor' + (data.ratingCategory === true?' jstree-rating':'') + (data.assigned === false?'':' tree-category--disabled')"
+                                                        v-bind:style= "data.assigned ? {'color':'#00a4d3'} : {}"
+                                                        >
+                                                        {% raw %} {{data.name}} {% endraw %}</span>
+                                                    <el-tooltip class="item" effect="dark" :content="data.tooltip" placement="right" v-if="data.tooltip">
+                                                        <i class="cims-tooltip fas fa-question-circle"></i>
+                                                    </el-tooltip>
+                                                </div>
+                                            <div class="table-tree__controls mr-30">
+                                                <button class="table-tree__btn" v-on:click="addChildCategory(data)"><span
+                                                        class="cims-btn-action">+</span>Add new</button>
+                                                <button class="table-tree__btn" v-on:click="editCategory(data)"><span><i
+                                                        class="far fa-edit"></i></span>Edit</button>
+                                                <button class="table-tree__btn" v-if="categoryTree[0].id !== data.id && data.children.length === 0"
+                                                        v-on:click="deleteCategory(data.id)"><span><i
+                                                        class="far fa-trash-alt"></i></span>Delete</button>
+                                                <button class="table-tree__btn hidden" v-else><span><i
+                                                        class="far fa-trash-alt"></i></span>Delete</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="table-tree__item active" v-if="data.id === dlgEdit.category.id">
+                                            <div class="table-tree__name">
+                                                <input style="width: 200px;" type="text" v-model="dlgEdit.category.name">
+                                            </div>
+                                            <div class="table-tree__category">
+
+                                                <span>Category type</span>
+                                                <el-radio-group class="" v-model="dlgEdit.category.ratingCategory">
+                                                        <el-radio class="" :label="true">Rating</el-radio>
+                                                        <el-radio class="" :label="false">Tagging</el-radio>
+                                                </el-radio-group>
+
+                                                <div>
+                                                    <el-checkbox class="required"
+                                                                v-model="dlgEdit.category.assigned">TOP</el-checkbox>
+                                                </div>
+
+                                                <div class="table-tree__upload">
+                                                    {# <el-upload v-if="dlgEdit.category.id > 0"
+                                                            accept="png"
+                                                            :action="uploadLogoAction(dlgEdit.category)"
+                                                            :data="uploadData(dlgEdit.category)"
+                                                            :auto-upload="true"
+                                                            :show-file-list="false"
+                                                            :multiple="false"
+                                                            :before-upload="beforeAvatarUpload"
+                                                            :on-success="onLogoUploadSuccess"
+                                                            :on-error="onLogoUploadError">
+                                                            <el-button slot="trigger" size="small" type="primary">Select file</el-button>
+                                                            <div class="el-upload__tip" slot="tip">png files with a size less than 30kb</div>
+                                                            <i class="el-icon-delete" v-if="(dlgEdit.category.hasLogo && dlgEdit.category.hasLogo === true)" v-on:click="clearLogo()">delete logo</i>
+                                                    </el-upload> #}
+                                                </div>
+                                            </div>
+                                            <div class="table-tree__controls">
+                                                <button class="cims-btn cims-btn--primary"
+                                                        v-on:click="saveCategory">Save</button>
+                                                <button class="cims-btn cims-btn--default" v-on:click="cancelCategory">Cancel</button>
+                                            </div>
+                                        </div>
+                                        <div class="mapping">
+                                            <div class="mapping__item" v-for="(items, index) in data.mappedItems">
+                                                <div class="mapping__controls">
+                                                    <button class="table-tree__btn" v-on:click="data.mappedItems.push(1)">
+                                                        <span class="cims-btn-action">+</span>
+                                                    </button>
+                                                    <button class="table-tree__btn" v-on:click="removeControl(data.mappedItems, index)">
+                                                        <span class="cims-btn-action">-</span>
+                                                    </button>
+                                                </div>
+                                                <div class="mapping__box" v-for="box in boxes">
+                                                    <el-autocomplete
+                                                        class="input-small"
+                                                        v-model="sourceName"
+                                                        :fetch-suggestions="querySearch"
+                                                        placeholder="Please Input"
+                                                        :trigger-on-focus="false"
+                                                        @select="handleSelect"
+                                                    ></el-autocomplete>
+                                                    <div aria-expanded="true" role="tab" class="open-icon" v-on:click="dlgCategoryTree = true">
+                                                        <i class="fas fa-folder"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </el-tree>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <el-dialog title="Category popup" :visible.sync="dlgCategoryTree"
+                           custom-class="category-popup" @open="handleSourceOpen">
+                    <div class="dialog-body">
+                        <a href="javascript:void(0)" title="expand all" v-if=""  v-on:click="">expand all</a>
+                        <a href="javascript:void(0)" title="collapse all" v-if="" v-on:click="">collapse all</a>
+                        <input type="text" class="cims-input filter-category__control"
+                               v-model="dlgSourceSearchText">
+                        <div class="filter-category-popup">
+                            <div class="filter-category-popup__tree">
+                                <el-tree
+                                    class="filter-tree table-tree"
+                                    :data="categoryTree"
+                                    ref="treeCategories"
+                                    default-expand-all
+                                    >
+                                    <span slot-scope="{ node, data }">
+                                        <a href="javascript:void(0)" class="jstree-nodename"
+                                        v-bind:style="data.id === filter.source.id ?{'font-weight':'bold'}:{}">
+                                            {% raw %} {{ data.name }} {% endraw %}
+                                        </a>
+                                    </span>
+                                </el-tree>
+                            </div>
+                        </div>
+                    </div>
+                    <div slot="footer" class="dialog-footer">
+                        <el-button size="small" @click="dlgSourceVisible = false">
+                            Cancel
+                        </el-button>
+                        <el-button size="small" type="primary" @click="dlgSourceVisible = false">
+                            Confirm
+                        </el-button>
+                    </div>
+                </el-dialog>

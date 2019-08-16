@@ -1,0 +1,52 @@
+.konzerne-item {
+    display: flex;
+    
+    &:nth-child(1) {
+        flex-wrap: wrap;
+    }
+
+    &__name {
+        margin-right: 15px;
+    }
+
+    .el-input {
+        margin-right: 15px;
+    }
+
+    & + & {
+        margin-left: auto;
+    }
+}
+
+.el-input--small .el-input__inner {
+    height: 25px;
+    line-height: 25px;
+}
+
+.source-name {
+    min-width: 180px;
+}
+
+.konzerne-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.konzerne__select {
+    width: 180px;
+}
+
+.konzerne__btn-container {
+    width: 100px;
+    text-align: right;
+}
+
+.two-headers {
+    display: flex;
+    justify-content: space-around;
+}
+
+.mr-30 {
+    margin-right: 30px;
+}
