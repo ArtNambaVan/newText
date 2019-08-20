@@ -28614,6 +28614,20 @@ input[type="checkbox"]:checked ~ .test {
       opacity: 1;
       visibility: visible;
       display: block; }
+  .filters-panel--bottom {
+    width: 100%;
+    height: 0; }
+    .filters-panel--bottom.active {
+      height: auto;
+      width: auto; }
+    .filters-panel--bottom .form-inline {
+      display: flex;
+      align-items: flex-start; }
+    .filters-panel--bottom .filter-category {
+      flex: 1;
+      border-bottom: 0; }
+    .filters-panel--bottom .filter-category:nth-child(1) {
+      width: 450px; }
 
 .filter-category {
   border-bottom: 1px solid #aaa;
@@ -31083,20 +31097,46 @@ input[type="checkbox"]:checked ~ .test {
     margin-left: auto; }
   .chart-list__item {
     padding: 6px 8px;
-    font-size: 16px;
+    font-size: 22px;
     color: #012b5b;
-    cursor: pointer; }
+    cursor: pointer;
+    line-height: 1; }
     .chart-list__item:hover, .chart-list__item.active {
       background-color: #012b5b;
       color: #d9d9d9; }
 
 .chart__body {
   min-height: 400px;
-  display: flex; }
+  display: flex;
+  flex-wrap: wrap;
+  position: relative; }
 
 .chart__graph {
   width: 100%;
   overflow: hidden; }
+
+.highcharts-container {
+  width: 100% !important; }
+
+.select-container + .select-container {
+  margin-top: 0.5rem; }
+
+.full-width {
+  width: 100% !important; }
+
+.chart__panels--bottom {
+  width: 100%;
+  flex: 1; }
+  .chart__panels--bottom::before {
+    content: '';
+    flex-basis: 100%;
+    width: 0; }
+
+.chart-container {
+  overflow: hidden;
+  width: 100%; }
+  .chart-container.active {
+    width: calc(100% - 450px); }
 
 .spacing {
   display: flex; }

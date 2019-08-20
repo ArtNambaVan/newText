@@ -95,9 +95,10 @@
 
     &__item {
         padding: 6px 8px;
-        font-size: 16px;
+        font-size: 22px;
         color: $primaryColor;
         cursor: pointer;
+        line-height: 1;
         //transition: all 0.25s;
 
         &:hover,
@@ -111,9 +112,47 @@
 .chart__body {
     min-height: 400px;
     display: flex;
+    flex-wrap: wrap;
+    position: relative;
 }
 
 .chart__graph {
     width: 100%;
     overflow: hidden;
 }
+
+.highcharts-container {
+    width: 100% !important;
+}
+
+.select-container + .select-container {
+    margin-top: 0.5rem;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.chart__panels--bottom {
+    width: 100%;
+    flex: 1;
+
+    &::before {
+        content: '';
+        flex-basis: 100%;
+        width: 0;
+    }
+}
+
+.chart-container {
+    overflow: hidden;
+    width: 100%;
+
+    &.active {
+        width: calc(100% - 450px);
+    }
+}
+
+// .test-div {
+//     position: absolute;
+// }

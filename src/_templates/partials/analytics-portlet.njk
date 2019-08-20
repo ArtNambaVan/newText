@@ -18,10 +18,10 @@
                                     <div class="chart">
                                         <div class="chart__header">
                                             <ul class="chart-list chart-list--left">
-                                                <li class="chart-list__item"  v-bind:class="{ active: isPanelActive }" v-on:click="togglePanel">
+                                                <li class="chart-list__item"  v-bind:class="{ active : isPanelActive }" v-on:click="togglePanel('isPanelActive')">
                                                     <i class="fas fa-filter"></i>
                                                 </li>
-                                                <li class="chart-list__item">
+                                                <li class="chart-list__item" v-bind:class="{ active : isPanelActive2 }" v-on:click="togglePanel('isPanelActive2')">
                                                     <i class="fas fa-cog"></i>
                                                 </li>
                                                 <li class="chart-list__item">
@@ -42,8 +42,9 @@
 
                                             <!-- start panel -->
                                             <div class="chart__panels">
-                                                <div class="filters-panel" v-bind:class="{ active: isPanelActive }">
-                                                    <div class="filters-panel__btn" v-bind:class="{ active: isPanelActive }" v-if="isPanelActive" v-on:click="togglePanel">
+                                                <div class="filters-panel" v-bind:class="{ active : isPanelActive }">
+                                                    <div class="filters-panel__btn" v-bind:class="{ active : isPanelActive }"
+                                                    v-if="isPanelActive" v-on:click="togglePanel('isPanelActive')">
                                                         <span>&nbsp;</span>
                                                         <span class="collapse-icon-closed">
                                                             <i class="fas fa-chevron-left"></i>
@@ -67,7 +68,6 @@
                                                                         <div class="col-7 offset-4">
                                                                             <div class="select-container">
                                                                                 <el-select v-model="selectedUserFilter"
- 
                                                                                             >
                                                                                     <el-option
                                                                                             v-for="opt in savedUserFilters"
@@ -110,7 +110,22 @@
                                     
                                                                         <div class="col-7">
                                                                             <div class="select-container select-container--icon-right">
-                                                                                test
+                                                                                <el-date-picker
+                                                                                        v-model="filter.dateChangeRange"
+                                                                                        type="daterange"
+                                                                                        language="en"
+                                                                                        start-placeholder="Start date"
+                                                                                        end-placeholder="End date"
+                                                                                        :default-time="['00:00:00', '23:59:59']"
+                                                                                        unlink-panels
+                                                                                        :picker-options="dateChangeOptions"
+                                                                                        :format="dateChangeOptions.dateInFormat"
+                                                                                        v-on:change="dateChangeOptions.onChange($event)">
+                                                                                    <template v-slot:range-separator>
+                                                                                        <span v-if="dateChangeOptions.rangeSeparator == '-'">{{ dateChangeOptions.rangeSeparator }}</span>
+                                                                                        <div v-if="dateChangeOptions.rangeSeparator != '-'" style="margin-left: -60px;">{{ dateChangeOptions.rangeSeparator }}</div>
+                                                                                    </template>
+                                                                                </el-date-picker>
                                                                             </div>
                                                                         </div>
                                     
@@ -129,7 +144,174 @@
                                                                 </div>
                                                             </div>
                                                             <!-- TEXT & PERIOD FILTER END -->
+                                                            <!-- copy paste -->
+                                                            <div class="filter-category">
+                                                                <a class="filter-category__head collapse-icon" aria-controls="textFilterBody"
+                                                                    aria-expanded="true" data-toggle="collapse" href="#textFilterBody" id="textFilter"
+                                                                    role="tab">
+                                                                    <span class="filter-category__title">text_and_period_filter</span>
+                                                                    <span class="collapse-icon-closed">
+                                                                                        <i class="fas fa-chevron-down"></i>
+                                                                                    </span>
+                                                                    <span class="collapse-icon-open">
+                                                                                        <i class="fas fa-chevron-up"></i>
+                                                                                    </span>
+                                                                </a>
+                                                                <div class="filter-category__body collapse show" aria-labelledby="textFilter"
+                                                                        id="textFilterBody" role="tabpanel">
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">posted</label>
+                                                                        </div>
                                     
+                                                                        <div class="col-7">
+                                                                            <div class="select-container select-container--icon-right">
+                                                                                <el-date-picker
+                                                                                        v-model="filter.dateChangeRange"
+                                                                                        type="daterange"
+                                                                                        language="en"
+                                                                                        start-placeholder="Start date"
+                                                                                        end-placeholder="End date"
+                                                                                        :default-time="['00:00:00', '23:59:59']"
+                                                                                        unlink-panels
+                                                                                        :picker-options="dateChangeOptions"
+                                                                                        :format="dateChangeOptions.dateInFormat"
+                                                                                        v-on:change="dateChangeOptions.onChange($event)">
+                                                                                    <template v-slot:range-separator>
+                                                                                        <span v-if="dateChangeOptions.rangeSeparator == '-'">{{ dateChangeOptions.rangeSeparator }}</span>
+                                                                                        <div v-if="dateChangeOptions.rangeSeparator != '-'" style="margin-left: -60px;">{{ dateChangeOptions.rangeSeparator }}</div>
+                                                                                    </template>
+                                                                                </el-date-picker>
+                                                                            </div>
+                                                                        </div>
+                                    
+                                                                    </div>
+                                    
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">text_search</label>
+                                                                        </div>
+                                    
+                                                                        <div class="col-7">
+                                                                            <input type="text" class="cims-input filter-category__control"
+                                                                                    placeholder="search_title_or_message" v-model="filter.keywords">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- copy paste ends -->
+                                                            <!-- copy paste -->
+                                                            <div class="filter-category">
+                                                                <a class="filter-category__head collapse-icon" aria-controls="textFilterBody"
+                                                                    aria-expanded="true" data-toggle="collapse" href="#textFilterBody" id="textFilter"
+                                                                    role="tab">
+                                                                    <span class="filter-category__title">text_and_period_filter</span>
+                                                                    <span class="collapse-icon-closed">
+                                                                                        <i class="fas fa-chevron-down"></i>
+                                                                                    </span>
+                                                                    <span class="collapse-icon-open">
+                                                                                        <i class="fas fa-chevron-up"></i>
+                                                                                    </span>
+                                                                </a>
+                                                                <div class="filter-category__body collapse show" aria-labelledby="textFilter"
+                                                                        id="textFilterBody" role="tabpanel">
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">posted</label>
+                                                                        </div>
+                                    
+                                                                        <div class="col-7">
+                                                                            <div class="select-container select-container--icon-right">
+                                                                                <el-date-picker
+                                                                                        v-model="filter.dateChangeRange"
+                                                                                        type="daterange"
+                                                                                        language="en"
+                                                                                        start-placeholder="Start date"
+                                                                                        end-placeholder="End date"
+                                                                                        :default-time="['00:00:00', '23:59:59']"
+                                                                                        unlink-panels
+                                                                                        :picker-options="dateChangeOptions"
+                                                                                        :format="dateChangeOptions.dateInFormat"
+                                                                                        v-on:change="dateChangeOptions.onChange($event)">
+                                                                                    <template v-slot:range-separator>
+                                                                                        <span v-if="dateChangeOptions.rangeSeparator == '-'">{{ dateChangeOptions.rangeSeparator }}</span>
+                                                                                        <div v-if="dateChangeOptions.rangeSeparator != '-'" style="margin-left: -60px;">{{ dateChangeOptions.rangeSeparator }}</div>
+                                                                                    </template>
+                                                                                </el-date-picker>
+                                                                            </div>
+                                                                        </div>
+                                    
+                                                                    </div>
+                                    
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">text_search</label>
+                                                                        </div>
+                                    
+                                                                        <div class="col-7">
+                                                                            <input type="text" class="cims-input filter-category__control"
+                                                                                    placeholder="search_title_or_message" v-model="filter.keywords">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- copy paste ends -->
+                                                            <!-- copy paste -->
+                                                            <div class="filter-category">
+                                                                <a class="filter-category__head collapse-icon" aria-controls="textFilterBody"
+                                                                    aria-expanded="true" data-toggle="collapse" href="#textFilterBody" id="textFilter"
+                                                                    role="tab">
+                                                                    <span class="filter-category__title">text_and_period_filter</span>
+                                                                    <span class="collapse-icon-closed">
+                                                                                        <i class="fas fa-chevron-down"></i>
+                                                                                    </span>
+                                                                    <span class="collapse-icon-open">
+                                                                                        <i class="fas fa-chevron-up"></i>
+                                                                                    </span>
+                                                                </a>
+                                                                <div class="filter-category__body collapse show" aria-labelledby="textFilter"
+                                                                        id="textFilterBody" role="tabpanel">
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">posted</label>
+                                                                        </div>
+                                    
+                                                                        <div class="col-7">
+                                                                            <div class="select-container select-container--icon-right">
+                                                                                <el-date-picker
+                                                                                        v-model="filter.dateChangeRange"
+                                                                                        type="daterange"
+                                                                                        language="en"
+                                                                                        start-placeholder="Start date"
+                                                                                        end-placeholder="End date"
+                                                                                        :default-time="['00:00:00', '23:59:59']"
+                                                                                        unlink-panels
+                                                                                        :picker-options="dateChangeOptions"
+                                                                                        :format="dateChangeOptions.dateInFormat"
+                                                                                        v-on:change="dateChangeOptions.onChange($event)">
+                                                                                    <template v-slot:range-separator>
+                                                                                        <span v-if="dateChangeOptions.rangeSeparator == '-'">{{ dateChangeOptions.rangeSeparator }}</span>
+                                                                                        <div v-if="dateChangeOptions.rangeSeparator != '-'" style="margin-left: -60px;">{{ dateChangeOptions.rangeSeparator }}</div>
+                                                                                    </template>
+                                                                                </el-date-picker>
+                                                                            </div>
+                                                                        </div>
+                                    
+                                                                    </div>
+                                    
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">text_search</label>
+                                                                        </div>
+                                    
+                                                                        <div class="col-7">
+                                                                            <input type="text" class="cims-input filter-category__control"
+                                                                                    placeholder="search_title_or_message" v-model="filter.keywords">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- copy paste ends -->
                                                         
                                                             <div class="btn-container btn-container--center">
                                                                 <a href="javascript:void(0)" class="btn-link" value="save" v-on:click="openFilterDlg">
@@ -155,10 +337,390 @@
                                                     </div>
                                                 </div>
                                                 <!-- ends panel -->
+                                                <div class="filters-panel" v-bind:class="{ active: isPanelActive2 }">
+                                                    <div class="filters-panel__body">
+                                                        <form>
+                                                            <div class="filter-category">
+                                                                <div class="filter-category__title">Y-Axis
+                                                                </div>
+                                                                <div class="filter-category__body">
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">Breakdown by:</label>
+                                                                        </div>
+                                                                        <div class="col-7">
+                                                                            <div class="select-container">
+                                                                                <el-select v-model="yAxis.breakdownValue" placeholder="Select">
+                                                                                    <el-option
+                                                                                            v-for="opt in yAxis.breakdown"
+                                                                                            :label="opt.name"
+                                                                                            :key="opt.id"
+                                                                                            :value="opt.name">
+                                                                                    </el-option>
+                                                                                </el-select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- SEARCH & FILTER END -->
+                                    
+                                                            <!-- TEXT & PERIOD FILTER STARTS -->
+                                                            <div class="filter-category">
+                                                                <div class="filter-category__body collapse show" aria-labelledby="textFilter"
+                                                                     id="textFilterBody" role="tabpanel">
+                                                                    <p>Select categories to be shown on the Y-Axis:</p>
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <el-switch
+                                                                            v-model="yAxis.toggleControl"
+                                                                            active-text="Breakdown"
+                                                                            inactive-text="Summarize">
+                                                                        </el-switch>
+                                                                        
+                                                                    </div>
+                                    
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">Category</label>
+                                                                        </div>
+                                    
+                                                                        <div class="col-7">
+                                                                            <input type="text" class="cims-input filter-category__control"
+                                                                                   placeholder="search_title_or_message" v-model="filter.keywords">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="[ row no-gutters ]  filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">category</label>
+                                                                        </div>
+                                                                        <div class="col-7">
+                                                                            <div aria-expanded="true" class="input-container"
+                                                                                    v-on:click="setCategoryBlockIndex(catBlockIndex)">
+                                                                                <el-autocomplete
+                                                                                        v-model="yAxis.categorySearchResult"
+                                                                                        :fetch-suggestions="categorySearch"
+                                                                                        value-key="name"
+                                                                                        :placeholder="search_category"
+                                                                                        :trigger-on-focus="false"
+                                                                                        @select="selectPlainCategory"
+                                                                                ></el-autocomplete>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-1">
+                                                                            <div aria-expanded="true"
+                                                                                    class="open-icon" role="tab"
+                                                                                    v-on:click="selectCategory(catBlockIndex)">
+                                                                                <i class="fas fa-folder"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- TEXT & PERIOD FILTER END -->
+                                                            <div class="filter-category">
+                                                                <div class="filter-category__body">
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">Sort by:</label>
+                                                                        </div>
+                                                                        <div class="col-7">
+                                                                            <div class="select-container">
+                                                                                <el-select v-model="yAxis.typeSorting" placeholder="Select">
+                                                                                    <el-option
+                                                                                            v-for="opt in yAxis.typeSortingOptions"
+                                                                                            :label="opt.label"
+                                                                                            :key="opt.id"
+                                                                                            :value="opt.label">
+                                                                                    </el-option>
+                                                                                </el-select>
+                                                                            </div>
+                                                                            <div class="select-container">
+                                                                                <el-select v-model="yAxis.viewSorting" placeholder="Select">
+                                                                                    <el-option
+                                                                                            v-for="opt in yAxis.viewSortingOptions"
+                                                                                            :label="opt.label"
+                                                                                            :key="opt.id"
+                                                                                            :value="opt.label">
+                                                                                    </el-option>
+                                                                                </el-select>
+                                                                            </div>
+                                                                            <div class="select-container">
+                                                                                <el-select v-model="yAxis.orderSorting" placeholder="Select">
+                                                                                    <el-option
+                                                                                            v-for="opt in yAxis.orderSortingOptions"
+                                                                                            :label="opt.label"
+                                                                                            :key="opt.value"
+                                                                                            :value="opt.value">
+                                                                                    </el-option>
+                                                                            </el-select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="filter-category">
+                                                                <div class="filter-category__body">
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">List Results (0 = All):</label>
+                                                                        </div>
+                                                                        <div class="col-7">
+                                                                            <el-input v-model="yAxis.linitResults" class="full-width input-small"></el-input>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="filter-category">
+                                                                <div class="filter-category__body">
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">What to count?</label>
+                                                                        </div>
+                                                                        <div class="col-7">
+                                                                            <div class="select-container">
+                                                                                <el-select v-model="yAxis.breakdownValue"
+                                                                                            >
+                                                                                    <el-option
+                                                                                            v-for="opt in yAxis.breakdown"
+                                                                                            :label="opt.name"
+                                                                                            :key="opt.id"
+                                                                                            :value="opt.name">
+                                                                                    </el-option>
+                                                                                </el-select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="filter-category__item">
+                                                                        <el-switch
+                                                                            v-model="yAxis.toggleControl"
+                                                                            active-text="Delta vs. previous period"
+                                                                            >
+                                                                        </el-switch>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="filter-category">
+                                                                <div class="filter-category__body collapse show" aria-labelledby="textFilter"
+                                                                     id="textFilterBody" role="tabpanel">
+                                                                    <p>Limit count to the following categories:</p>
+                                                                    <div class="[ row no-gutters ]  filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">category</label>
+                                                                        </div>
+                                                                        <div class="col-7">
+                                                                            <div aria-expanded="true" class="input-container"
+                                                                                    v-on:click="setCategoryBlockIndex(catBlockIndex)">
+                                                                                <el-autocomplete
+                                                                                        v-model="yAxis.categorySearchResult"
+                                                                                        :fetch-suggestions="categorySearch"
+                                                                                        value-key="name"
+                                                                                        :placeholder="search_category"
+                                                                                        :trigger-on-focus="false"
+                                                                                        @select="selectPlainCategory"
+                                                                                ></el-autocomplete>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-1">
+                                                                            <div aria-expanded="true"
+                                                                                    class="open-icon" role="tab"
+                                                                                    v-on:click="selectCategory(catBlockIndex)">
+                                                                                <i class="fas fa-folder"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                            <div class="btn-container btn-container--center">
+                                                                <a href="javascript:void(0)" class="btn-link" value="save" v-on:click="openFilterDlg">
+                                                                    <i class="fas fa-save"></i>
+                                                                    save_filter
+                                                                </a>
+                                                            </div>
+                                    
+                                                            <div class="btn-container btn-container--center">
+                                                                <a href="javascript:void(0)" class="btn-link" value="reset"
+                                                                   v-on:click="clearFilters($event)">
+                                                                    <i class="far fa-trash-alt"></i>
+                                                                    reset
+                                                                </a>
+                                                                <a href="javascript:void(0)" class="btn-link btn-link--primary"
+                                                                   v-on:click="doSearch($event)">
+                                                                    <i class="fas fa-search"></i>
+                                                                    submit
+                                                                </a>
+                                                            </div>
+                                    
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </div>
 
-                                            <div style="flex: 1; overflow: hidden;">
-                                                <highcharts class="chart__graph" :options="options" ref="highcharts"></highcharts>
+                                            <div class="chart-container" v-bind:class="{ active: isPanelActive2 || isPanelActive }">
+                                                <div class="test-div">
+                                                    <highcharts class="chart__graph" :options="options" ref="highcharts"></highcharts>
+                                                </div>
+                                                <!-- <div class="bottom-panel">
+                                                    <div class="[ row no-gutters ]">
+                                                        <div class="col-4">
+                                                            <div class="filter-category">
+                                                                <h4>X-Axis</h4>
+                                                                <p>breakdown by:</p>
+                                                                <div class="[ row no-gutters ] filter-category__item">
+                                                                    reree
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="filter-category">
+                                                                <p>Add the following categories to the X-Axis:</p>
+                                                                <p>breakdown by:</p>
+                                                                <div class="[ row no-gutters ] filter-category__item">
+                                                                    reree
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="filter-category">
+                                                                <h4>X-Axis</h4>
+                                                                <p>breakdown by:</p>
+                                                                <div class="[ row no-gutters ] filter-category__item">
+                                                                    reree
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                            <div class="chart__panels chart__panels--bottom">
+                                                <div class="filters-panel filters-panel--bottom" v-bind:class="{ active: isPanelActive2 }">
+                                                    <div class="filters-panel__body">
+                                                        <form class="form-inline">
+                                                            <div class="filter-category">
+                                                                <div class="filter-category__title">Y-Axis
+                                                                </div>
+                                                                <div class="filter-category__body">
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">Breakdown by:</label>
+                                                                        </div>
+                                                                        <div class="col-7">
+                                                                            <div class="select-container">
+                                                                                <el-select v-model="yAxis.breakdownValue" placeholder="Select">
+                                                                                    <el-option
+                                                                                            v-for="opt in yAxis.breakdown"
+                                                                                            :label="opt.name"
+                                                                                            :key="opt.id"
+                                                                                            :value="opt.name">
+                                                                                    </el-option>
+                                                                                </el-select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- SEARCH & FILTER END -->
+                                    
+                                                            <!-- TEXT & PERIOD FILTER STARTS -->
+                                                            <div class="filter-category">
+                                                                <div class="filter-category__body collapse show" aria-labelledby="textFilter"
+                                                                     id="textFilterBody" role="tabpanel">
+                                                                    <p>Select categories to be shown on the Y-Axis:</p>
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <el-switch
+                                                                            v-model="yAxis.toggleControl"
+                                                                            active-text="Breakdown"
+                                                                            inactive-text="Summarize">
+                                                                        </el-switch>
+                                                                        
+                                                                    </div>
+                                    
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">Category</label>
+                                                                        </div>
+                                    
+                                                                        <div class="col-7">
+                                                                            <input type="text" class="cims-input filter-category__control"
+                                                                                   placeholder="search_title_or_message" v-model="filter.keywords">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="[ row no-gutters ]  filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">category</label>
+                                                                        </div>
+                                                                        <div class="col-7">
+                                                                            <div aria-expanded="true" class="input-container"
+                                                                                    v-on:click="setCategoryBlockIndex(catBlockIndex)">
+                                                                                <el-autocomplete
+                                                                                        v-model="yAxis.categorySearchResult"
+                                                                                        :fetch-suggestions="categorySearch"
+                                                                                        value-key="name"
+                                                                                        :placeholder="search_category"
+                                                                                        :trigger-on-focus="false"
+                                                                                        @select="selectPlainCategory"
+                                                                                ></el-autocomplete>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-1">
+                                                                            <div aria-expanded="true"
+                                                                                    class="open-icon" role="tab"
+                                                                                    v-on:click="selectCategory(catBlockIndex)">
+                                                                                <i class="fas fa-folder"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- TEXT & PERIOD FILTER END -->
+                                                            <div class="filter-category">
+                                                                <div class="filter-category__body">
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-4">
+                                                                            <label class="filter-category__label">Sort by:</label>
+                                                                        </div>
+                                                                        <div class="col-7">
+                                                                            <div class="select-container">
+                                                                                <el-select v-model="yAxis.typeSorting" placeholder="Select">
+                                                                                    <el-option
+                                                                                            v-for="opt in yAxis.typeSortingOptions"
+                                                                                            :label="opt.label"
+                                                                                            :key="opt.id"
+                                                                                            :value="opt.label">
+                                                                                    </el-option>
+                                                                                </el-select>
+                                                                            </div>
+                                                                            <div class="select-container">
+                                                                                <el-select v-model="yAxis.viewSorting" placeholder="Select">
+                                                                                    <el-option
+                                                                                            v-for="opt in yAxis.viewSortingOptions"
+                                                                                            :label="opt.label"
+                                                                                            :key="opt.id"
+                                                                                            :value="opt.label">
+                                                                                    </el-option>
+                                                                                </el-select>
+                                                                            </div>
+                                                                            <div class="select-container">
+                                                                                <el-select v-model="yAxis.orderSorting" placeholder="Select">
+                                                                                    <el-option
+                                                                                            v-for="opt in yAxis.orderSortingOptions"
+                                                                                            :label="opt.label"
+                                                                                            :key="opt.value"
+                                                                                            :value="opt.value">
+                                                                                    </el-option>
+                                                                            </el-select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </div>
 
 
