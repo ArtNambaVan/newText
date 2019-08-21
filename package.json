@@ -9,6 +9,7 @@
   "author": "Artem Klochkov",
   "license": "ISC",
   "dependencies": {
+    "highcharts-vue": "^1.3.5",
     "require-uncached": "^2.0.0"
   },
   "devDependencies": {

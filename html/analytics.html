@@ -21,9 +21,8 @@
     <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
     <!-- vue-highcharts should be load after Highcharts -->
     <script src="https://cdn.jsdelivr.net/npm/vue-highcharts/dist/vue-highcharts.min.js"></script>
 
@@ -153,7 +152,26 @@
                                                     <i class="fas fa-cog"></i>
                                                 </li>
                                                 <li class="chart-list__item">
+                                                    <i class="fas fa-sort-amount-down"></i>
+                                                    <el-select class="analytics-select" v-model="chartSorting" placeholder="Select">
+                                                        <el-option
+                                                          v-for="item in chartSortingOptions"
+                                                          :key="item.value"
+                                                          :label="item.label"
+                                                          :value="item.value">
+                                                        </el-option>
+                                                    </el-select>
+                                                </li>
+                                                <li class="chart-list__item">
                                                     <i class="far fa-chart-bar"></i>
+                                                    <el-select class="analytics-select" v-model="chartType" placeholder="Select">
+                                                        <el-option
+                                                          v-for="item in chartTypeOptions"
+                                                          :key="item.value"
+                                                          :label="item.label"
+                                                          :value="item.value">
+                                                        </el-option>
+                                                    </el-select>
                                                 </li>
                                             </ul>
                                             <ul class="chart-list chart-list--right">
@@ -686,42 +704,10 @@
                                                 </div>
                                             </div>
 
-                                            <div class="chart-container" v-bind:class="{ active: isPanelActive2 || isPanelActive }">
+                                            <div class="chart-container" ref="settingsBox" v-bind:class="{ active: isPanelActive2 || isPanelActive }">
                                                 <div class="test-div">
-                                                    <highcharts class="chart__graph" :options="options" ref="highcharts"></highcharts>
+                                                    <highcharts ref="myChart" class="chart__graph" :options="options" ref="highcharts"></highcharts>
                                                 </div>
-                                                <!-- <div class="bottom-panel">
-                                                    <div class="[ row no-gutters ]">
-                                                        <div class="col-4">
-                                                            <div class="filter-category">
-                                                                <h4>X-Axis</h4>
-                                                                <p>breakdown by:</p>
-                                                                <div class="[ row no-gutters ] filter-category__item">
-                                                                    reree
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <div class="filter-category">
-                                                                <p>Add the following categories to the X-Axis:</p>
-                                                                <p>breakdown by:</p>
-                                                                <div class="[ row no-gutters ] filter-category__item">
-                                                                    reree
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <div class="filter-category">
-                                                                <h4>X-Axis</h4>
-                                                                <p>breakdown by:</p>
-                                                                <div class="[ row no-gutters ] filter-category__item">
-                                                                    reree
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div> -->
                                             </div>
                                             <div class="chart__panels chart__panels--bottom">
                                                 <div class="filters-panel filters-panel--bottom" v-bind:class="{ active: isPanelActive2 }">
@@ -748,6 +734,28 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="filter-category">
+                                                                <div class="filter-category__title">Y-Axis
+                                                                </div>
+                                                                <div class="filter-category__body">
+
+                                                                            <label class="filter-category__label">Breakdown by:</label>
+
+
+                                                                            <div class="select-container">
+                                                                                <el-select v-model="yAxis.breakdownValue" placeholder="Select">
+                                                                                    <el-option
+                                                                                            v-for="opt in yAxis.breakdown"
+                                                                                            :label="opt.name"
+                                                                                            :key="opt.id"
+                                                                                            :value="opt.name">
+                                                                                    </el-option>
+                                                                                </el-select>
+                                                                            </div>
+
+
                                                                 </div>
                                                             </div>
                                                             <!-- SEARCH & FILTER END -->
@@ -808,7 +816,15 @@
                                                             <div class="filter-category">
                                                                 <div class="filter-category__body">
                                                                     <div class="[ row no-gutters ] filter-category__item">
-                                                                        <div class="col-4">
+                                                                        <div class="col-5">
+                                                                            <label class="filter-category__label">List Results (0 = All):</label>
+                                                                        </div>
+                                                                        <div class="col-7">
+                                                                            <el-input v-model="yAxis.linitResults" class="full-width input-small"></el-input>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="[ row no-gutters ] filter-category__item">
+                                                                        <div class="col-5">
                                                                             <label class="filter-category__label">Sort by:</label>
                                                                         </div>
                                                                         <div class="col-7">
@@ -1045,6 +1061,7 @@ class DateRangePickerOptions {
 
 
 
+
 var options = {
     title: {
         text: 'Move tooltip only horizontally'
@@ -1093,12 +1110,26 @@ var options = {
     //}
 }
 Vue.use(VueHighcharts);
+
 new Vue({
     el: "#app",
     data: function() {
         return {
             selectedUserFilter: '',
-            savedUserFilters: [{name: 'filter1', id: 1},{name: 'filter2', id: 2},{name: 'filter3', id: 3},],
+            savedUserFilters: [{name: 'filter1', id: 1},{name: 'filter2', id: 2},{name: 'filter3', id: 3}],
+
+            chartSorting: '',
+            chartSortingOptions: [{label: 'Sort by categories (ascending)', value: 'cat,asc'}, {label: 'Sort by categories (descending)', value: 'cat,desc'},
+                {label: 'Sort by total (ascending)', value: 'total,asc'}, {label: 'Sort by total (descending)', value: 'total,desc'},
+                {label: 'Sort by negatives (ascending)', value: 'negatives,asc'}, {label: 'Sort by negatives (descending)', value: 'negatives,desc'},
+                {label: 'Sort by neutrals (ascending)', value: 'neutrals,asc'}, {label: 'Sort by neutrals (descending)', value: 'neutrals,desc'},
+                {label: 'Sort by positives (ascending)', value: 'positives,asc'}, {label: 'Sort by positives (descending)', value: 'positives,desc'},
+            ],
+            chartType: '',
+            chartTypeOptions: [{label: 'Column Chart', value: 'column_chart'}, {label: 'Percentage Chart', value: 'percentage_chart'},
+                {label: 'Bar Chart', value: 'bar_chart'}, {label: 'Bar Chart (Percentage)', value: 'bar_chart_percentage'},
+                {label: 'Pie Chart', value: 'pie_chart'}, {label: 'Data table', value: 'data_table'},
+            ],
 
             options: options,
             panels: ['isPanelActive', 'isPanelActive2'],
@@ -1193,8 +1224,7 @@ new Vue({
             console.log(1)
         },
         togglePanel: function(panelName) {
-            
-            
+            console.log(this.$refs.myChart[0].chart)
             
             this.panels.forEach((function(e) {
                 if (e === panelName) {
@@ -1203,7 +1233,12 @@ new Vue({
                     this[e] = false
                 }
             }).bind(this))
-            
+            const that = this
+            setTimeout(function() {
+                const heightString = that.$refs.settingsBox[0].clientWidth;
+                that.$refs.myChart[0].chart.setSize(heightString, null)
+            }, 400)
+            console.log()
         }
     }
 }); 

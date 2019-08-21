@@ -10,9 +10,8 @@
     <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
     <!-- vue-highcharts should be load after Highcharts -->
     <script src="https://cdn.jsdelivr.net/npm/vue-highcharts/dist/vue-highcharts.min.js"></script>
 
@@ -173,6 +172,7 @@ class DateRangePickerOptions {
 
 
 
+
 var options = {
     title: {
         text: 'Move tooltip only horizontally'
@@ -221,12 +221,26 @@ var options = {
     //}
 }
 Vue.use(VueHighcharts);
+
 new Vue({
     el: "#app",
     data: function() {
         return {
             selectedUserFilter: '',
-            savedUserFilters: [{name: 'filter1', id: 1},{name: 'filter2', id: 2},{name: 'filter3', id: 3},],
+            savedUserFilters: [{name: 'filter1', id: 1},{name: 'filter2', id: 2},{name: 'filter3', id: 3}],
+
+            chartSorting: '',
+            chartSortingOptions: [{label: 'Sort by categories (ascending)', value: 'cat,asc'}, {label: 'Sort by categories (descending)', value: 'cat,desc'},
+                {label: 'Sort by total (ascending)', value: 'total,asc'}, {label: 'Sort by total (descending)', value: 'total,desc'},
+                {label: 'Sort by negatives (ascending)', value: 'negatives,asc'}, {label: 'Sort by negatives (descending)', value: 'negatives,desc'},
+                {label: 'Sort by neutrals (ascending)', value: 'neutrals,asc'}, {label: 'Sort by neutrals (descending)', value: 'neutrals,desc'},
+                {label: 'Sort by positives (ascending)', value: 'positives,asc'}, {label: 'Sort by positives (descending)', value: 'positives,desc'},
+            ],
+            chartType: '',
+            chartTypeOptions: [{label: 'Column Chart', value: 'column_chart'}, {label: 'Percentage Chart', value: 'percentage_chart'},
+                {label: 'Bar Chart', value: 'bar_chart'}, {label: 'Bar Chart (Percentage)', value: 'bar_chart_percentage'},
+                {label: 'Pie Chart', value: 'pie_chart'}, {label: 'Data table', value: 'data_table'},
+            ],
 
             options: options,
             panels: ['isPanelActive', 'isPanelActive2'],
@@ -321,8 +335,7 @@ new Vue({
             console.log(1)
         },
         togglePanel: function(panelName) {
-            
-            
+            console.log(this.$refs.myChart[0].chart)
             
             this.panels.forEach((function(e) {
                 if (e === panelName) {
@@ -331,7 +344,12 @@ new Vue({
                     this[e] = false
                 }
             }).bind(this))
-            
+            const that = this
+            setTimeout(function() {
+                const heightString = that.$refs.settingsBox[0].clientWidth;
+                that.$refs.myChart[0].chart.setSize(heightString, null)
+            }, 400)
+            console.log()
         }
     }
 }); 
