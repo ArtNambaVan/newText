@@ -140,15 +140,15 @@
                             </div>
                         </span>
 {{item.content}} 
-                            <div class="charts">
-                                <div class="charts__container">
-                                    <div class="chart">
+                            <div class="charts" v-for="chart in item.charts">
+                                <div class="charts__container" ref="test">
+                                    <div class="chart__item">
                                         <div class="chart__header">
                                             <ul class="chart-list chart-list--left">
-                                                <li class="chart-list__item"  v-bind:class="{ active : isPanelActive }" v-on:click="togglePanel('isPanelActive')">
+                                                <li class="chart-list__item"  v-bind:class="{ active : chart.isPanelActive }" v-on:click="togglePanel('isPanelActive', index, chart.id)">
                                                     <i class="fas fa-filter"></i>
                                                 </li>
-                                                <li class="chart-list__item" v-bind:class="{ active : isPanelActive2 }" v-on:click="togglePanel('isPanelActive2')">
+                                                <li class="chart-list__item" v-bind:class="{ active : chart.isPanelActive2 }" v-on:click="togglePanel('isPanelActive2', index, chart.id)">
                                                     <i class="fas fa-cog"></i>
                                                 </li>
                                                 <li class="chart-list__item">
@@ -184,13 +184,11 @@
                                             </ul>
                                         </div>
                                         <div class="chart__body">
-                                            
-
                                             <!-- start panel -->
                                             <div class="chart__panels">
-                                                <div class="filters-panel" v-bind:class="{ active : isPanelActive }">
-                                                    <div class="filters-panel__btn" v-bind:class="{ active : isPanelActive }"
-                                                    v-if="isPanelActive" v-on:click="togglePanel('isPanelActive')">
+                                                <div class="filters-panel filters-panel--small" v-bind:class="{ active : chart.isPanelActive }">
+                                                    <div class="filters-panel__btn" v-bind:class="{ active : chart.isPanelActive }"
+                                                    v-if="isPanelActive" v-on:click="togglePanel('isPanelActive1', index, chart.id)">
                                                         <span>&nbsp;</span>
                                                         <span class="collapse-icon-closed">
                                                             <i class="fas fa-chevron-left"></i>
@@ -483,7 +481,7 @@
                                                     </div>
                                                 </div>
                                                 <!-- ends panel -->
-                                                <div class="filters-panel" v-bind:class="{ active: isPanelActive2 }">
+                                                <div class="filters-panel filters-panel--small" v-bind:class="{ active : chart.isPanelActive2 }">
                                                     <div class="filters-panel__body">
                                                         <form>
                                                             <div class="filter-category">
@@ -545,11 +543,10 @@
                                                                                     v-on:click="setCategoryBlockIndex(catBlockIndex)">
                                                                                 <el-autocomplete
                                                                                         v-model="yAxis.categorySearchResult"
-                                                                                        :fetch-suggestions="categorySearch"
                                                                                         value-key="name"
-                                                                                        :placeholder="search_category"
+                                                                                        placeholder="search_category"
                                                                                         :trigger-on-focus="false"
-                                                                                        @select="selectPlainCategory"
+                                                                                        
                                                                                 ></el-autocomplete>
                                                                             </div>
                                                                         </div>
@@ -660,11 +657,10 @@
                                                                                     v-on:click="setCategoryBlockIndex(catBlockIndex)">
                                                                                 <el-autocomplete
                                                                                         v-model="yAxis.categorySearchResult"
-                                                                                        :fetch-suggestions="categorySearch"
                                                                                         value-key="name"
-                                                                                        :placeholder="search_category"
+                                                                                        placeholder="search_category"
                                                                                         :trigger-on-focus="false"
-                                                                                        @select="selectPlainCategory"
+                                                                                        
                                                                                 ></el-autocomplete>
                                                                             </div>
                                                                         </div>
@@ -678,39 +674,38 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="filter-category">
+                                                                <div class="filter-category__body collapse show" aria-labelledby="textFilter"
+                                                                     id="textFilterBody" role="tabpanel">
+                                                                    <p>Chart title</p>
+                                                                    <div class="filter-category__item">
+                                                                        <el-input v-model="yAxis.linitResults" placeholder="Title" class="full-width input-small"></el-input>
+                                                                    </div>
+                                                                    <div class="filter-category__item">
+                                                                        <el-input v-model="yAxis.linitResults" placeholder="Subtitle" class="full-width input-small"></el-input>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         
                                                             <div class="btn-container btn-container--center">
-                                                                <a href="javascript:void(0)" class="btn-link" value="save" v-on:click="openFilterDlg">
-                                                                    <i class="fas fa-save"></i>
-                                                                    save_filter
-                                                                </a>
-                                                            </div>
-                                    
-                                                            <div class="btn-container btn-container--center">
-                                                                <a href="javascript:void(0)" class="btn-link" value="reset"
-                                                                   v-on:click="clearFilters($event)">
-                                                                    <i class="far fa-trash-alt"></i>
-                                                                    reset
-                                                                </a>
                                                                 <a href="javascript:void(0)" class="btn-link btn-link--primary"
                                                                    v-on:click="doSearch($event)">
                                                                     <i class="fas fa-search"></i>
                                                                     submit
                                                                 </a>
                                                             </div>
-                                    
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="chart-container" ref="settingsBox" v-bind:class="{ active: isPanelActive2 || isPanelActive }">
-                                                <div class="test-div">
-                                                    <highcharts ref="myChart" class="chart__graph" :options="options" ref="highcharts"></highcharts>
-                                                </div>
+                                            <div class="chart-container" v-bind:style="chart.chartHeight" :ref="'settingsBox' + chart.id" v-bind:class="{ active: chart.isPanelActive2 || chart.isPanelActive }">
+
+                                                <highcharts :ref="'myChart' + chart.id" class="chart__graph" :options="options" ref="highcharts"></highcharts>
+
                                             </div>
-                                            <div class="chart__panels chart__panels--bottom">
-                                                <div class="filters-panel filters-panel--bottom" v-bind:class="{ active: isPanelActive2 }">
+                                            <div class="chart__panels chart__panels--bottom" >
+                                                <div class="filters-panel filters-panel--bottom" :ref="'panelBottom' + chart.id" v-bind:class="{ active: chart.isPanelActive2 }">
                                                     <div class="filters-panel__body">
                                                         <form class="form-inline">
                                                             <div class="filter-category">
@@ -794,11 +789,10 @@
                                                                                     v-on:click="setCategoryBlockIndex(catBlockIndex)">
                                                                                 <el-autocomplete
                                                                                         v-model="yAxis.categorySearchResult"
-                                                                                        :fetch-suggestions="categorySearch"
                                                                                         value-key="name"
-                                                                                        :placeholder="search_category"
+                                                                                        placeholder="search_category"
                                                                                         :trigger-on-focus="false"
-                                                                                        @select="selectPlainCategory"
+                                                                                        
                                                                                 ></el-autocomplete>
                                                                             </div>
                                                                         </div>
@@ -870,6 +864,7 @@
 
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </el-tab-pane>
@@ -1064,7 +1059,7 @@ class DateRangePickerOptions {
 
 var options = {
     title: {
-        text: 'Move tooltip only horizontally'
+        text: 'Title of this chart'
         },
     legend: {
     enabled: false
@@ -1154,8 +1149,6 @@ new Vue({
                 keywords: '',
             },
             dateChangeOptions: new DateRangePickerOptions(),
-            dashboardsValue: 0,
-            dashboards: [],
             tabIndex: 0,
             dlgTabName: false,
             editTitle: '',
@@ -1166,7 +1159,16 @@ new Vue({
                 {
                     title: 'New Chart 1',
                     name: '1',
-                    content: 'New Chart 1'
+                    content: 'New Chart 1',
+                    charts: [
+                        {
+                            id: 1,
+                            panels: ['isPanelActive', 'isPanelActive2'],
+                            isPanelActive: false,
+                            isPanelActive2: false,
+                            chartHeight: {},
+                        }
+                    ]
                 },
             ],
             tabIndex: 1
@@ -1223,22 +1225,42 @@ new Vue({
         openFilterDlg: function() {
             console.log(1)
         },
-        togglePanel: function(panelName) {
-            console.log(this.$refs.myChart[0].chart)
-            
-            this.panels.forEach((function(e) {
+        togglePanel: function(panelName, dashboardIndex, chartIndex) {
+            const currentChart =  this.dashboards[dashboardIndex].charts[1 - chartIndex];
+            const box = this.$refs[`settingsBox${chartIndex}`][0];
+            const chartBox = this.$refs[`myChart${chartIndex}`][0];
+            console.log(box, chartBox)
+            const chart = chartBox.chart;
+            const bottomPanel = this.$refs[`panelBottom${chartIndex}`][0];
+            console.log(bottomPanel)
+            currentChart.panels.forEach((function(e) {
                 if (e === panelName) {
-                    this[panelName] = !this[panelName]
+                    currentChart[panelName] = !currentChart[panelName]
                 } else {
-                    this[e] = false
+                    currentChart[e] = false
+                    
                 }
             }).bind(this))
+            console.log(bottomPanel.clientHeight)
+            let panelHeight
             const that = this
+
             setTimeout(function() {
-                const heightString = that.$refs.settingsBox[0].clientWidth;
-                that.$refs.myChart[0].chart.setSize(heightString, null)
+                /*const heightString = that.$refs.settingsBox[0].clientWidth;
+                that.$refs.myChart[0].chart.setSize(null, 300)*/
+                if (currentChart.isPanelActive2) {
+                    panelHeight = bottomPanel.clientHeight;
+                    console.log(box)
+                    Vue.set(currentChart.chartHeight, 'height', `600px`);
+                    chart.setSize(null, null)
+                } else {
+                    Vue.set(currentChart.chartHeight, 'height', '100%');
+                    chart.setSize(null, null)
+                }
+                const heightString = box.clientWidth
+                
+                
             }, 400)
-            console.log()
         }
     }
 }); 

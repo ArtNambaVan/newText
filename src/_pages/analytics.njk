@@ -175,7 +175,7 @@ class DateRangePickerOptions {
 
 var options = {
     title: {
-        text: 'Move tooltip only horizontally'
+        text: 'Title of this chart'
         },
     legend: {
     enabled: false
@@ -265,8 +265,6 @@ new Vue({
                 keywords: '',
             },
             dateChangeOptions: new DateRangePickerOptions(),
-            dashboardsValue: 0,
-            dashboards: [],
             tabIndex: 0,
             dlgTabName: false,
             editTitle: '',
@@ -277,7 +275,16 @@ new Vue({
                 {
                     title: 'New Chart 1',
                     name: '1',
-                    content: 'New Chart 1'
+                    content: 'New Chart 1',
+                    charts: [
+                        {
+                            id: 1,
+                            panels: ['isPanelActive', 'isPanelActive2'],
+                            isPanelActive: false,
+                            isPanelActive2: false,
+                            chartHeight: {},
+                        }
+                    ]
                 },
             ],
             tabIndex: 1
@@ -334,22 +341,42 @@ new Vue({
         openFilterDlg: function() {
             console.log(1)
         },
-        togglePanel: function(panelName) {
-            console.log(this.$refs.myChart[0].chart)
-            
-            this.panels.forEach((function(e) {
+        togglePanel: function(panelName, dashboardIndex, chartIndex) {
+            const currentChart =  this.dashboards[dashboardIndex].charts[1 - chartIndex];
+            const box = this.$refs[`settingsBox${chartIndex}`][0];
+            const chartBox = this.$refs[`myChart${chartIndex}`][0];
+            console.log(box, chartBox)
+            const chart = chartBox.chart;
+            const bottomPanel = this.$refs[`panelBottom${chartIndex}`][0];
+            console.log(bottomPanel)
+            currentChart.panels.forEach((function(e) {
                 if (e === panelName) {
-                    this[panelName] = !this[panelName]
+                    currentChart[panelName] = !currentChart[panelName]
                 } else {
-                    this[e] = false
+                    currentChart[e] = false
+                    
                 }
             }).bind(this))
+            console.log(bottomPanel.clientHeight)
+            let panelHeight
             const that = this
+
             setTimeout(function() {
-                const heightString = that.$refs.settingsBox[0].clientWidth;
-                that.$refs.myChart[0].chart.setSize(heightString, null)
+                /*const heightString = that.$refs.settingsBox[0].clientWidth;
+                that.$refs.myChart[0].chart.setSize(null, 300)*/
+                if (currentChart.isPanelActive2) {
+                    panelHeight = bottomPanel.clientHeight;
+                    console.log(box)
+                    Vue.set(currentChart.chartHeight, 'height', `600px`);
+                    chart.setSize(null, null)
+                } else {
+                    Vue.set(currentChart.chartHeight, 'height', '100%');
+                    chart.setSize(null, null)
+                }
+                const heightString = box.clientWidth
+                
+                
             }, 400)
-            console.log()
         }
     }
 }); 

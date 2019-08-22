@@ -1,6 +1,101 @@
 @import "../abstract/variables";
 @import "../abstract/mixin";
 
+.messages-portlet-sub {
+    .filters-panel {
+        @media (max-width: 991px ) {
+            position: static;
+            z-index: 22;
+            overflow-y: auto; 
+        }
+
+        @media (max-width: 991px ) {
+            border: none;
+        }
+
+        &.active {
+            width: 450px;
+            @media (max-width: 991px ) {
+                position: fixed;
+                width: 100%;
+                top: 90px;
+                z-index: 3;
+                left: 0;
+                bottom: 0;
+                border: none;
+                background: white; 
+                overflow-x: hidden
+            }
+    
+            &:after {
+                content: '';
+                display: block;
+                clear: both;
+                overflow: hidden;
+            }
+    
+            .filters-panel__btn {
+                height: 23px;
+                width: 100%;
+                background: transparent;
+                z-index: 2;
+                @media (max-width: 991px ) {
+                    top: 8px;
+                }
+    
+                span {
+                    position: absolute;
+                    right: 33px;
+                    top: auto;
+                    transform: translateY(0);
+                    padding-left: 0;
+                    @media (max-width: 991px ) {
+                        right: 16px;
+                        top: -5px;
+                    }
+    
+                    &:first-child {
+                        opacity: 0;
+                    }
+                }
+    
+                .collapse-icon-open {
+                    display: none;
+                }
+    
+                .collapse-icon-closed {
+                    display: block
+                }
+    
+                .search-mobile {
+                    display: none;
+                }
+            }
+    
+            .filters-panel__body {
+                opacity: 1;
+                visibility: visible;
+                display: block;
+            }        
+        }
+    }
+}
+
+.chart {
+    .filter-category {
+        padding-left: 5px;
+        padding-right: 5px;
+        
+        &__body {
+            padding: 0;
+        }
+    }
+
+    .filter-category__label {
+        text-align: left;
+    }
+}
+
 .filters-panel {
     display: flex;
     flex-direction: column;
@@ -10,27 +105,16 @@
     transition: all 0.4s;
     background-color: $colorFiltersPanelBG;
 
-    @media (max-width: 991px ) {
-        position: static;
-        z-index: 22;
-        overflow-y: auto; 
-    }
-
     &__body {
         border: 1px solid $primaryBorderColor;
         opacity: 0;
         visibility: hidden;
         display: none;
-
-        @media (max-width: 991px ) {
-            border: none;
-        }
     }
 
     [class^="collapse-icon"] {
         font-size: 1rem;
     }
-    
 
     &__btn {
         position: absolute;
@@ -45,7 +129,6 @@
         z-index: 2;
         background-color: $colorFiltersPanelBtnBG;
         //transform: translateX(350px);
-        
         height: 100%;
         width: 80px;
         transition: background 200ms;
@@ -101,56 +184,22 @@
 
     &.active {
         width: 450px;
-        @media (max-width: 991px ) {
-            position: fixed;
-            width: 100%;
-            top: 90px;
-            z-index: 3;
-            left: 0;
-            bottom: 0;
-            border: none;
-            background: white; 
-            overflow-x: hidden
-        }
 
-        &:after {
-            content: '';
-            display: block;
-            clear: both;
-            overflow: hidden;
-        }
+
+
 
         .filters-panel__btn {
             height: 23px;
             width: 100%;
             background: transparent;
             z-index: 2;
-            @media (max-width: 991px ) {
-                top: 8px;
-            }
-
-            span {
-                position: absolute;
-                right: 33px;
-                top: auto;
-                transform: translateY(0);
-                padding-left: 0;
-                @media (max-width: 991px ) {
-                    right: 16px;
-                    top: -5px;
-                }
-
-                &:first-child {
-                    opacity: 0;
-                }
-            }
 
             .collapse-icon-open {
                 display: none;
             }
 
             .collapse-icon-closed {
-                display: block
+                display: block;
             }
 
             .search-mobile {
@@ -165,9 +214,14 @@
         }        
     }
 
+    &--small.active {
+        width: 400px;
+    }
+
     &--bottom {
         width: 100%;
         height: 0;
+        margin-top: auto;
 
         &.active {
             height: auto;
@@ -204,7 +258,7 @@
     }
 
     @media (min-width: 576px) and (max-width: 991px) {
-        font-size: 16px;
+        //font-size: 16px;
     }
 
     &__head {

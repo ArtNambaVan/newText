@@ -141,6 +141,8 @@
 .chart__panels--bottom {
     width: 100%;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 
     &::before {
         content: '';
@@ -149,13 +151,35 @@
     }
 }
 
+.charts__container {
+    display: flex;
+}
+
+.chart__item {
+    flex: 1;
+
+    & + & {
+        margin-left: 50px;
+    }
+}
+
 .chart-container {
     overflow: hidden;
     width: 100%;
     transition: all 0.4s;
+    /////@debug
+    position: absolute;
+    left: 0;
+    height: 100%;
 
     &.active {
-        width: calc(100% - 450px);
+        width: calc(100% - 400px);
+        left: 400px;
+        //height: 100%;
+    }
+
+    &.panel2 {
+        height: calc(100% - 170px);
     }
 }
 
