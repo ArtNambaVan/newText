@@ -15,7 +15,45 @@
     <!-- vue-highcharts should be load after Highcharts -->
     <script src="https://cdn.jsdelivr.net/npm/vue-highcharts/dist/vue-highcharts.min.js"></script>
 
-    
+    <script type="text/javascript">
+	var cimsUserLang = 'en_US';
+	var cimsDict =
+			{"en":[["miscellanous_cloud","Show tagcloud"],["workflow","Workflow"],["add_status","add status"],["edit_status","edit status"],["delete_status","delete status"],["msg_status","Message status"],["Select_category","Select category"],["Open_any_message_and_copy_URL","Open any message and copy URL, starting from http, ending before &msgid"],["never","never"],["Session_timeout_warning","Session timeout warning"],["Session_timeout","Session timeout"],["Add_new_Categories","Add new Categories"],["Please_insert_the_default_landing_page","Please insert the default landing page for multi-organization users."],["Messages","Messages"],["Available_statuses","Available statuses"],["Add_new_status","Add new status"],["Languages","Languages"],["Workflow","Workflow"],["Categories","Categories"],["Sources","Sources"],["URL","URL"],["translated","translated"],["File","File"],["Original title required","Original title required"],["Translation title required","Translation title required"],["mandatory_categories","Mandatory categories"],["revoke_categories","Revoke categories"],["add_revoke","Add revoke"],["add_mandatory","Add mandatory"],["translate","Translate:"],["Hide_tagcloud","Hide tagcloud"],["miscellaneous_filter","miscellaneous filter"],["note_email_address_is_optional","Please note: Entering an email address is optional. If you enter an email adress you will receive a notification if the specified filter conditions are met by a newly added message."],["Select","Select"],["search_and_filter","search & filter"],["extended_text_search","extended text search"],["category_filter","category filter"],["admin_filter","admin filter"],["miscellanous_filter","miscellanous filter"],["save_filter","Save filter"],["reset","Reset"],["submit","Submit"],["mark_all_messages","Mark all messages"],["export_filtered","Export filtered"],["delete_marked","Delete marked"],["text_and_period_filter","text & period filter"],["deactivate_or_reactive_org","Deactivate or Reactive organization (Assets will remail in the Database)"],["cancel","Cancel"],["confirm","Confirm"],["edit","Edit"],["history","History"],["delete_only_messages","Delete only messages in the following timeframe"],["publish_marked","Publish marked"],["posted","Posted"],["text_search","Text Search"],["field","Field"],["search_term","Search Term"],["category","Category"],["created","Created"],["end_date","End date:"],["tags","tags"],["rating","rating"],["delete_complete_org","Delete complete organization (including all messages, categories and sources)"],["changed","Changed"],["feed","Feed"],["user","User"],["status","Status"],["source","Source"],["marked","Marked"],["publish","Publish"],["multi_assignment","Multi assignment"],["add_extended_group","Add Extended Group"],["remove_extended_group","Remove Extended Group"],["add_filter_group","Add Filter Group"],["remove_filter_group","Remove Filter Group"],["close","Close"],["add_to_all_filtered","Add to all filtered messages"],["remove_from_all_filtered","Remove from all filtered messages"],["rules","Rules"],["indexing","Indexing"],["save_rule","Save rule"],["type","Type:"],["id","id:"],["save_and_close","Save & Close"],["save","Save"],["expand_all","expand all"],["collapse_all","collapse all"],["delete","Delete"],["add_new","Add new"],["select_file","Select file"],["org_settings","Organizations settings"],["regular-org","regular-organization"],["resource","Resource:"],["expiration_days","Expiration Days:"],["message_default_url","Message Default URL:"],["new_root_cat","New Root-Category:"],["new_root_res_cat","New Root-Resource-Category:"],["new_res_exp_days","New Resource-Expriration Days:"],["redirect_settings","Redirect settings"],["save_default_login_redirect","Save Default Login Redirect"],["fast_indexing","fast indexing (avoid status editing of messages)"],["index_uncategorized","index uncategorized"],["start_date","Start date:"],["start","Start"],["save_and_next","Save & Next"],["copy_message","Copy message"],["date","Date:"],["views","Views:"],["url","Url:"],["file","File:"],["original","Original:"],["author","Author:"],["message","message"],["original_title","Original Title:"],["translation","translation"],["translate_now","Translate now"],["title","Title:"],["selected_categories","selected categories"],["recently_used","recently used (ai suggestions)"],["add_marked_to_newsletter","Add marked to newsletter"],["add_tonality","Add Tonality"],["show_translation","Show Translation"],["show_html_source","Show html source"],["and","And"],["or","Or"],["exclude","Exclude"],["contains","Contains"],["not_contains","Not contains"],["delete_saved_filter","Delete saved filter"],["note_email_adress_is_optional","Please note: Entering an email adress is optional. If you enter an email adress you will receive a notification if the specified filter conditions are met by a newly added message."],["show_filters","Show filters"],["select_saved_filter","Select saved filter"],["select_users","Select Users"],["search_category","Search category"],["select_source","Select source"],["search_title_or_message","Search title or message"],["category_tree","Category Tree"],["source_tree","Source Tree"],["assigned_rules","Assigned rules:"],["category_type","Category type"],["Rating","Rating"],["Tagging","Tagging"],["TOP","TOP"],["select_date_and_time","Select date and time"],["translate_to","Translate to:"],["ai_suggestions","ai suggestions"],["shortcuts","shortcuts"],["regular_org","regular organization"],["Sort by date (descending)","Sort by date (descending)"],["per_page","per page"],["Sort by date (ascending)","Sort by date (ascending)"],["Sort by views (descending)","Sort by views (descending)"],["Sort by views (ascending)","Sort by views (ascending)"],["Original title","Original title"],["Translated title","Translated title"],["Short description original","Short description original"],["Short description translated","Short description translated"],["Any","Any"],["Unpublished","Unpublished"],["Published","Published"],["Open","Open"],["In Progress","In Progress"],["Resolved","Resolved"],["Reopened","Reopened"],["Closed","Closed"],["language_short","en"],["sources","sources"],["categories","categories"],["New Message","New Messages"],["Date create is required","Date create is required"],["Source site required","Source site required"],["URL required","URL required"],["selected_messages","Selected messages"],["delete_messages","You are going to delete"],["reset_all_selections","Reset All Selections"],["newsletter","Newsletter"],["email_receiver","Email receiver"],["subject","Subject"],["freetext","Freetext"],["send","Send"],["my_groups","My groups"],["select_group","Select group"],["new_group","New group"],["add_new_group","Add new group"],["feed_category","Feed Category"],["new_feed_category","New Feed Category"],["name","Name"],["options","Options"],["new_messages","New messages"],["new_feed_name","New Feed Name"],["edit_feed_name","Edit Feed Name"],["delete_organization_confirm","Are you sure you want to delete organization"],["select_all","Select All"]]};
+	var cimsEnLocale = new Map(cimsDict.en);
+	var cimsLocale = new Map((cimsDict.lc) ? cimsDict.lc : []);
+
+	function cimsTranslate(e) {
+		let elms = document.getElementsByClassName('text-translate');
+		for (let e of elms) {
+			let key = e.getAttribute('data-translate');
+			if (key) {
+				e.textContent = getLocaleCimsText(key);
+			}
+		}
+	};
+
+	if(window.attachEvent) {
+		window.attachEvent('onload', cimsTranslate);
+	} else {
+		if(window.onload) {
+			let curronload = window.onload;
+			let newonload = function(evt) {
+				curronload(evt);
+				cimsTranslate(evt);
+			};
+			window.onload = newonload;
+		} else {
+			window.onload = cimsTranslate;
+		}
+	}
+
+	function getLocaleCimsText(key) {
+		let val = cimsLocale.get(key);
+		val = (val) ? val : cimsEnLocale.get(key);
+		return (val) ? val : key;
+	}
+
+</script>
 
 {% endblock scriptsHead %}
 
@@ -262,8 +300,159 @@ new Vue({
                 orderSortingOptions: [{label: "Descending", value: "desc"}, {label: "Ascending", value: "asc"},],
             },
             filter: {
-                keywords: '',
+                categoryBlocks: [{
+                    blockCondition: "And",
+                    categories: [
+                        {
+                            id: 1944,
+                            name: "Alerts",
+                            parentCategory: ['CIMS'],
+                            ratingCategory: false,
+                            visibility: true
+                        },
+                        {
+                            id: 4026,
+                            name: "Accident",
+                            parentCategory: ['CIMS', 'Alerts'],
+                            ratingCategory: false,
+                            visibility: true
+                        },
+                    ],
+                    categoryCondition: "And",
+                }],
+                dateChangeRange: ["", ""],
+                dateCreateRange: ["", ""],
+                dateInRange: ["", ""],
+                extendedKeywords: [
+                    {
+                        blockCondition: "And",
+                        containsCond: true,
+                        fieldName: "",
+                        keyword: "",
+                    }
+                ],
+                feedId: 0,
+                keywords: "",
+                reseted: 0,
+                source: {
+                    id: 0,
+                    name: "",
+                },
+                statusId: 0,
+                userIds: [],
+                views: [0, 20202]
             },
+            fieldNames: [
+                {
+                    fieldName: "title",
+                    label: "Original title"
+                },
+                {
+                    fieldName: "titleTransl",
+                    label: "Translated title"
+                },
+                {
+                    fieldName: "shorttext",
+                    label: "Short description original"
+                },
+                {
+                    fieldName: "shorttextTransl",
+                    label: "Short description translated"
+                }
+            ],
+            categorySearchResult: '',
+            userActions: {
+                FILTER_BY_DATE_CREATE: true,
+                FILTER_BY_DATE_CHANGE: true,
+                FILTER_BY_STATUS: true,
+                FILTER_BY_FEED: true,
+                FILTER_BY_USER: true,
+                FILTER_BY_WORKFLLOW_STATUS: true,
+                FILTER_BY_SOURCE: true,
+            },
+            cimsStatuses: [
+                {
+                    id: 1,
+                    name: "New Messages",
+                },
+                {
+                    id: 2,
+                    name: "Unpublished",
+                },
+                {
+                    id: 3,
+                    name: "Published"
+                }
+            ],
+            feeds: [
+                {
+                    id: 2,
+                    name: "qwerty",
+                    newMessages: 0,
+                    organizationId: 28027,
+                }
+            ],
+            users: [
+                {
+                    email: "schachtner@consline.com",
+                    firstName: "Dirk",
+                    lastName: "Schachtner",
+                    middleName: "",
+                    screenName: "schachtner@consline.com",
+                    userId: 10644,
+                },
+                {
+                    email: "van.deelen@consline.com",
+                    firstName: "Heinz",
+                    lastName: "van Deelen",
+                    middleName: "",
+                    screenName: "deelen",
+                    userId: 12616,
+                },
+            ],
+
+            workflowStatuses: [
+                {
+                    id: 78,
+                    name: "Open",
+                    organizationid: 28027,
+                },
+                {
+                    id: 131,
+                    name: "In Progress",
+                    organizationid: 28027,
+                },
+                {
+                    id: 184,
+                    name: "Resolved",
+                    organizationid: 28027,
+                },
+                {
+                    id: 237,
+                    name: "Reopened",
+                    organizationid: 28027,
+                },
+                {
+                    id: 290,
+                    name: "Closed",
+                    organizationid: 28027,
+                },
+                {
+                    id: 337,
+                    name: "tested",
+                    organizationid: 28027,
+                },
+            ],
+
+
+
+
+
+
+
+
+            dateInOptions: new DateRangePickerOptions(),
+            dateCreateOptions: new DateRangePickerOptions(),
             dateChangeOptions: new DateRangePickerOptions(),
             tabIndex: 0,
             dlgTabName: false,
@@ -280,7 +469,7 @@ new Vue({
                         {
                             id: 1,
                             panels: ['isPanelActive', 'isPanelActive2'],
-                            isPanelActive: false,
+                            isPanelActive: true,
                             isPanelActive2: false,
                             chartHeight: {},
                         }
@@ -367,7 +556,7 @@ new Vue({
                 if (currentChart.isPanelActive2) {
                     panelHeight = bottomPanel.clientHeight;
                     console.log(box)
-                    Vue.set(currentChart.chartHeight, 'height', `600px`);
+                    Vue.set(currentChart.chartHeight, 'height', `495px`);
                     chart.setSize(null, null)
                 } else {
                     Vue.set(currentChart.chartHeight, 'height', '100%');
@@ -377,6 +566,9 @@ new Vue({
                 
                 
             }, 400)
+        },
+        selectPlainCategory: function() {
+            console.log(1)
         }
     }
 }); 

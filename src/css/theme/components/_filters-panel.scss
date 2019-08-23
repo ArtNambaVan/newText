@@ -216,6 +216,19 @@
 
     &--small.active {
         width: 400px;
+
+        .filter-category__body {
+            padding: 0;
+        }
+
+        .filter-category__label {
+            text-align: left;
+        }
+
+        .filter-category {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
     }
 
     &--bottom {
@@ -240,6 +253,19 @@
 
         .filter-category:nth-child(1) {
             width: 450px;
+        }
+
+        .filter-category__body {
+            padding: 0;
+        }
+
+        .filter-category__label {
+            text-align: left;
+        }
+
+        .filter-category {
+            padding-left: 5px;
+            padding-right: 5px;
         }
     }
 }
