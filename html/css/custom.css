@@ -28216,6 +28216,9 @@ a:hover {
   .form-group--right {
     text-align: right; }
 
+.select-container-md {
+  max-width: 250px; }
+
 .select-container > select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -28626,6 +28629,8 @@ input[type="checkbox"]:checked ~ .test {
           top: 42px; }
           .filters-panel__btn span:first-child {
             display: none; } }
+  .filters-panel .el-switch__label * {
+    font-size: 12px; }
   .filters-panel.active {
     width: 450px; }
     .filters-panel.active .filters-panel__btn {
@@ -28643,8 +28648,15 @@ input[type="checkbox"]:checked ~ .test {
       opacity: 1;
       visibility: visible;
       display: block; }
+  .filters-panel--small {
+    max-height: 600px;
+    overflow: hidden; }
+    .filters-panel--small:hover {
+      overflow-y: auto; }
   .filters-panel--small.active {
     width: 400px; }
+    .filters-panel--small.active:hover {
+      overflow-y: auto; }
     .filters-panel--small.active .filter-category__body {
       padding: 0; }
     .filters-panel--small.active .filter-category__label {
@@ -28722,6 +28734,11 @@ input[type="checkbox"]:checked ~ .test {
 .filters-group {
   padding-top: 10px;
   padding-bottom: 10px; }
+
+.filter-title {
+  margin-bottom: 0.5rem;
+  font-size: 12px;
+  color: #012b5b; }
 
 .category-control {
   text-align: center;
@@ -29387,6 +29404,14 @@ input[type="checkbox"]:checked ~ .test {
     margin-bottom: 5px; }
     .panel__head > h5, .panel__head:hover > h5 {
       margin: 0; }
+  .panel__head .cloud__title:nth-child(1) {
+    display: none; }
+  .panel__head .cloud__title:nth-child(2) {
+    display: inline-block; }
+  .panel__head.collapsed .cloud__title:nth-child(1) {
+    display: inline-block; }
+  .panel__head.collapsed .cloud__title:nth-child(2) {
+    display: none; }
   .panel__title {
     color: #000;
     text-transform: uppercase;
@@ -31148,8 +31173,11 @@ input[type="checkbox"]:checked ~ .test {
       background-color: #012b5b;
       color: #d9d9d9; }
 
+.chart__messagess {
+  margin: 15px 0; }
+
 .chart__body {
-  min-height: 400px;
+  min-height: 600px;
   display: flex;
   flex-wrap: wrap;
   position: relative;
@@ -31160,7 +31188,8 @@ input[type="checkbox"]:checked ~ .test {
 .chart__graph {
   width: 100%;
   overflow: hidden;
-  height: 100%; }
+  height: 100%;
+  flex: 1; }
 
 .highcharts-container {
   width: 100% !important; }
@@ -31171,15 +31200,19 @@ input[type="checkbox"]:checked ~ .test {
 .full-width {
   width: 100% !important; }
 
+.filters-panel--small .filters-panel__body {
+  border-width: 0 1px 0 0; }
+
 .chart__panels--bottom {
   width: 100%;
-  flex: 1;
   display: flex;
   flex-direction: column; }
   .chart__panels--bottom::before {
     content: '';
     flex-basis: 100%;
     width: 0; }
+  .chart__panels--bottom .filters-panel__body {
+    border-width: 1px 0 0 0; }
 
 .charts__container {
   display: flex; }
@@ -31190,6 +31223,8 @@ input[type="checkbox"]:checked ~ .test {
     margin-left: 50px; }
 
 .chart-container {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   width: 100%;
   transition: all 0.4s;
@@ -31218,6 +31253,14 @@ input[type="checkbox"]:checked ~ .test {
     padding: 0;
     line-height: 36px;
     height: 36px; }
+
+.slider-range-views input {
+  max-width: 50%;
+  border: none;
+  transition: all 0.25s; }
+
+.slider-range-views input + input {
+  text-align: right; }
 
 .spacing {
   display: flex; }

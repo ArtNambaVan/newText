@@ -282,8 +282,8 @@ new Vue({
 
             options: options,
             panels: ['isPanelActive', 'isPanelActive2'],
-            isPanelActive: false,
-            isPanelActive2: true,
+            isPanelActive: true,
+            isPanelActive2: false,
             xAxis: {
 
             },
@@ -369,7 +369,12 @@ new Vue({
                 FILTER_BY_USER: true,
                 FILTER_BY_WORKFLLOW_STATUS: true,
                 FILTER_BY_SOURCE: true,
+                FILTER_BY_VIEWS: true,
             },
+            filterMaxViews: 2087420874,
+            filterMinViews: 0,
+            viewsMax: 2087420874,
+            viewsMin: 0,
             cimsStatuses: [
                 {
                     id: 1,
@@ -443,11 +448,118 @@ new Vue({
                     organizationid: 28027,
                 },
             ],
-
-
-
-
-
+            sourceTree: [
+                {
+                    id: 0,
+                    name: "Any",
+                    $treeNodeId: 649,
+                },
+                {
+                    expirationDays: 180,
+                    id: 903,
+                    name: "CIMS",
+                    organizationId: 28027,
+                    $treeNodeId: 650,
+                    children: {
+                        children: [],
+                        expirationDays: 0,
+                        id: 5447,
+                        name: "Consline AG Political Risks",
+                        organizationId: 28027,
+                        $treeNodeId: 651,
+                    },
+                },
+            ],
+            sourceTreeProps: {
+                children: "children",
+                label: "name"
+            },
+            uiViewsKey: 1,
+            messageCount: 734740,
+            messageList: [
+                {
+                    assignmentsRated: [
+                        {
+                            categoryId: 2246,
+                            categoryName: "Problem denied",
+                            tonality: 75,
+                            tonalityType: -1,
+                        },
+                        {
+                            categoryId: 2367,
+                            categoryName: "Engine Noise",
+                            tonality: 50,
+                            tonalityType: -1,
+                        }
+                    ],
+                    assignmentsTagged: [
+                        {
+                            categoryId: 2259,
+                            categoryName: "1.6 TDI",
+                        },
+                        {
+                            categoryId: 2259,
+                            categoryName: "1.6 TDI",
+                        },
+                        {
+                            categoryId: 2259,
+                            categoryName: "1.6 TDI",
+                        },
+                        {
+                            categoryId: 2259,
+                            categoryName: "1.6 TDI",
+                        }
+                    ],
+                    changeDate: 1516297794000,
+                    commentNew: "",
+                    dateIn: 4356321720000,
+                    hasTranslation: true,
+                    id: 2387308,
+                    langOriginal: {
+                        code: "it_IT",
+                        id: 5,
+                        name: "Italian",
+                    },
+                    langTransl: {
+                        code: "en_US",
+                        id: 1,
+                        name: "English",
+                    },
+                    marked: false,
+                    organizationId: 28027,
+                    processingMessage: null,
+                    shortText: "Golf 7 1.6 tdi 110cv 09/2015 41k. In VW mi hanno detto che non ci possono fare nulla, non hanno ricevuto direttiva da VW. Hanno controllato tramite codice cinghia che il tenditore non è da sostituire, è normale. auto portata a controllo a 36k. Mah... p.s. solo ad auto fredda e quando fa freddo secco, se è umido non fa alcun rumore↵<br>↵https://www.facebook.com/davide.emili.5/videos/10214577732097794/",
+                    shortTextTransl: "Golf 7 1.6 TDI 110 Hp 09.2015. Here is a video of the problem. The VW service told me that they cannot do anything about it. They did not got any instruction by VW. The told me that the tensioner is not to replace. My car was checked at 36.000 Km. The noise occurs only when cold.",
+                    showHistory: 0,
+                    sourceSite: {
+                        expirationDays: 10000,
+                        id: 11954,
+                        name: "facebook.com",
+                        organizationId: 28027,
+                        sourceId: 1624,
+                    },
+                    status: {
+                        id: 3,
+                        name: "Published",
+                    },
+                    systemIn: {
+                        id: 9999,
+                        name: "CIMS",
+                    },
+                    title: "Problema Golf ",
+                    titleTransl: "",
+                    type: {
+                        id: 2,
+                        name: "Url",
+                    },
+                    url: "https://www.facebook.com/groups/162945027204788/permalink/969957593170190/",
+                    views: 0,
+                    workflowStatusNew: null,
+                }
+            ],
+            uiMessageListKey: 0,
+            showHtmlSource: false,
+            showTranslation: true,
 
 
 
@@ -469,8 +581,8 @@ new Vue({
                         {
                             id: 1,
                             panels: ['isPanelActive', 'isPanelActive2'],
-                            isPanelActive: true,
-                            isPanelActive2: false,
+                            isPanelActive: false,
+                            isPanelActive2: true,
                             chartHeight: {},
                         }
                     ]
@@ -556,10 +668,10 @@ new Vue({
                 if (currentChart.isPanelActive2) {
                     panelHeight = bottomPanel.clientHeight;
                     console.log(box)
-                    Vue.set(currentChart.chartHeight, 'height', `495px`);
+                    //Vue.set(currentChart.chartHeight, 'height', `495px`);
                     chart.setSize(null, null)
                 } else {
-                    Vue.set(currentChart.chartHeight, 'height', '100%');
+                    //Vue.set(currentChart.chartHeight, 'height', '100%');
                     chart.setSize(null, null)
                 }
                 const heightString = box.clientWidth
@@ -569,6 +681,20 @@ new Vue({
         },
         selectPlainCategory: function() {
             console.log(1)
+        },
+        onSourceNodeClick: function() {},
+        translateCategoryName: function(cat) {
+            return cat.nam
+        },
+        canViewStatus: function() {return true},
+        getMessageStatusStyle: function(msg) {
+            return 'message-status message-status--published';
+        },
+        isEnabledFile: function (msg) {
+            return true
+        },
+        getFileIcon: function(type) {
+            return false
         }
     }
 }); 

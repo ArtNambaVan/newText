@@ -142,7 +142,6 @@
             right: 16px;
             top: 25px;
         }
-        
 
         .collapse-icon-open {
             display: none;
@@ -182,11 +181,12 @@
         }
     }
 
+    .el-switch__label * {
+        font-size: 12px;
+    }
+
     &.active {
         width: 450px;
-
-
-
 
         .filters-panel__btn {
             height: 23px;
@@ -214,8 +214,22 @@
         }        
     }
 
+    &--small {
+        max-height: 600px;
+        overflow: hidden;
+
+        &:hover {
+            overflow-y: auto;
+        }
+    }
+
     &--small.active {
         width: 400px;
+        
+
+        &:hover {
+            overflow-y: auto;
+        }
 
         .filter-category__body {
             padding: 0;
@@ -346,4 +360,10 @@
 
 .filters-group {
     @include padding(10px, null, 10px, null);
+}
+
+.filter-title {
+    margin-bottom: 0.5rem;
+    font-size: 12px;
+    color: $primaryColor;
 }

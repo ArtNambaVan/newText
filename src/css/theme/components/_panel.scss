@@ -17,6 +17,26 @@
         }
     }
 
+    &__head {
+        .cloud__title:nth-child(1) {
+            display: none;
+        }
+
+        .cloud__title:nth-child(2) {
+            display: inline-block;
+        }
+
+        &.collapsed {
+            .cloud__title:nth-child(1) {
+                display: inline-block;
+            }
+
+            .cloud__title:nth-child(2) {
+                display: none;
+            }
+        }
+    }
+
     &__title {
         color: #000;
         text-transform: uppercase;
