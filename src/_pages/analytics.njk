@@ -9,9 +9,10 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/highcharts-more.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <!-- vue-highcharts should be load after Highcharts -->
     <script src="https://cdn.jsdelivr.net/npm/vue-highcharts/dist/vue-highcharts.min.js"></script>
 
@@ -206,10 +207,63 @@ class DateRangePickerOptions {
     }
 }
 
+var options2 = {
 
+    title: {
+        text: 'Solar Employment Growth by Sector, 2010-2016'
+    },
 
+    subtitle: {
+        text: 'A demo of displaying a data table in Highcharts'
+    },
 
+    credits: {
+        text: 'Source: thesolarfoundation.com'
+    },
 
+    chart: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        spacingBottom: 30
+    },
+
+    yAxis: {
+        title: {
+            text: 'Number of Employees'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    {# plotOptions: {
+        categories: ['Model A', 'Model B', 'Model C', 'Model D', 'Model E', 'Model F']
+    }, #}
+    xAxis: {
+    categories: ['Model A', 'Model B', 'Model C', 'Model D', 'Model E', 'Model F']
+    },
+
+    series: [{
+        name: 'Country A',
+        data: [36, 50, 49, 27, 16, 36, 36, 50, 49, 27, 16, 36]
+    }, {
+        name: 'Country B',
+        data: [13, 37, 21, 32, 20, 13]
+    }, {
+        name: 'Country C',
+        data: [30, 32, 31, 13, 37, 34]
+    }, {
+        name: 'Country D',
+        data: [41, 29, 30, 32, 10, 21]
+    }],
+
+    exporting: {
+        showTable: true
+    }
+
+}
 
 var options = {
     title: {
@@ -254,9 +308,6 @@ var options = {
     series: [{
     data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
     }],
-    //exporting: {
-    //    showTable: true
-    //}
 }
 Vue.use(VueHighcharts);
 
@@ -280,7 +331,7 @@ new Vue({
                 {label: 'Pie Chart', value: 'pie_chart'}, {label: 'Data table', value: 'data_table'},
             ],
 
-            options: options,
+            options: {},
             panels: ['isPanelActive', 'isPanelActive2'],
             isPanelActive: true,
             isPanelActive2: false,
@@ -578,13 +629,37 @@ new Vue({
                     name: '1',
                     content: 'New Chart 1',
                     charts: [
-                        {
-                            id: 1,
-                            panels: ['isPanelActive', 'isPanelActive2'],
-                            isPanelActive: false,
-                            isPanelActive2: true,
-                            chartHeight: {},
-                        }
+                        [
+                            {
+                                id: 1,
+                                panels: ['isPanelActive', 'isPanelActive2'],
+                                isPanelActive: false,
+                                isPanelActive2: true,
+                                chartHeight: {},
+                                chartType: 'column_chart',
+                                messagess: true,
+                            }
+                        ],
+                        [
+                            {
+                                id: 2,
+                                panels: ['isPanelActive', 'isPanelActive2'],
+                                isPanelActive: false,
+                                isPanelActive2: false,
+                                chartHeight: {},
+                                chartType: null,
+                                messagess: false,
+                            },
+                            {
+                                id: 3,
+                                panels: ['isPanelActive', 'isPanelActive2'],
+                                isPanelActive: false,
+                                isPanelActive2: false,
+                                chartHeight: {},
+                                chartType: null,
+                                messagess: false,
+                            }
+                        ],
                     ]
                 },
             ],
@@ -642,8 +717,12 @@ new Vue({
         openFilterDlg: function() {
             console.log(1)
         },
-        togglePanel: function(panelName, dashboardIndex, chartIndex) {
-            const currentChart =  this.dashboards[dashboardIndex].charts[1 - chartIndex];
+        {# togglePanel: function(panelName, dashboardIndex, chartIndex, i) {
+            console.log(panelName,dashboardIndex,chartIndex, i)
+            //const currentChart =  this.dashboards[dashboardIndex].charts[chartIndex];
+        
+            const currentChart =  this.dashboards[dashboardIndex].charts[i][chartIndex - 1];
+            console.log(currentChart, currentChart)
             const box = this.$refs[`settingsBox${chartIndex}`][0];
             const chartBox = this.$refs[`myChart${chartIndex}`][0];
             console.log(box, chartBox)
@@ -651,6 +730,7 @@ new Vue({
             const bottomPanel = this.$refs[`panelBottom${chartIndex}`][0];
             console.log(bottomPanel)
             currentChart.panels.forEach((function(e) {
+                console.log(e)
                 if (e === panelName) {
                     currentChart[panelName] = !currentChart[panelName]
                 } else {
@@ -663,20 +743,37 @@ new Vue({
             const that = this
 
             setTimeout(function() {
-                /*const heightString = that.$refs.settingsBox[0].clientWidth;
-                that.$refs.myChart[0].chart.setSize(null, 300)*/
                 if (currentChart.isPanelActive2) {
                     panelHeight = bottomPanel.clientHeight;
                     console.log(box)
-                    //Vue.set(currentChart.chartHeight, 'height', `495px`);
                     chart.setSize(null, null)
                 } else {
-                    //Vue.set(currentChart.chartHeight, 'height', '100%');
                     chart.setSize(null, null)
                 }
                 const heightString = box.clientWidth
                 
                 
+            }, 400)
+        }, #}
+
+        togglePanel: function(panelName, dashboardIndex, graphIndex, chartIndex, w) {
+            console.log(panelName, dashboardIndex, graphIndex, chartIndex, w)
+            const currentChart =  this.dashboards[dashboardIndex].charts[graphIndex][chartIndex]; // get char by index
+            console.log(currentChart)
+            const chartBox = this.$refs[`myChart${dashboardIndex}${graphIndex}${chartIndex}`][0];
+            const chart = chartBox.chart;
+            currentChart.panels.forEach((function(e) {
+                console.log(e)
+                if (e === panelName) {
+                    currentChart[panelName] = !currentChart[panelName]
+                } else {
+                    currentChart[e] = false
+                    
+                }
+            }).bind(this))
+
+            setTimeout(function() {
+                chart.setSize(null, null)
             }, 400)
         },
         selectPlainCategory: function() {
@@ -695,6 +792,13 @@ new Vue({
         },
         getFileIcon: function(type) {
             return false
+        },
+        selectChart: function(item, e) {
+            if (item === 'data_table') {
+                this.options = options2;
+            } else {
+                this.options = options;
+            }
         }
     }
 }); 

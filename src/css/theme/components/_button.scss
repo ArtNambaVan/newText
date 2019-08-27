@@ -26,7 +26,12 @@
         padding: 10px 0;
 
         &--center {
-            justify-content: space-around;
+            //justify-content: space-around;
+            justify-content: center;
+
+            & > * + * {
+                margin-left: 60px;
+            }
         }
     }
 }
@@ -92,6 +97,11 @@
         color: $colorWhite;
         background-color: $sucessColor;
         border: 1px solid $sucessColor;
+    }
+
+    &--lg {
+        min-width: 290px;
+        padding: 6px 12px;
     }
 }
 

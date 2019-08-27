@@ -217,19 +217,12 @@
     &--small {
         max-height: 600px;
         overflow: hidden;
+        overflow-y: auto;
 
-        &:hover {
-            overflow-y: auto;
-        }
     }
 
     &--small.active {
-        width: 400px;
-        
-
-        &:hover {
-            overflow-y: auto;
-        }
+        width: 370px;
 
         .filter-category__body {
             padding: 0;
@@ -280,6 +273,7 @@
         .filter-category {
             padding-left: 5px;
             padding-right: 5px;
+            min-width: 220px;
         }
     }
 }

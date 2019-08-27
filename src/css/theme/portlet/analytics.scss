@@ -95,7 +95,7 @@
 
     &__item {
         padding: 6px 8px;
-        font-size: 22px;
+        font-size: 16px;
         color: $primaryColor;
         cursor: pointer;
         line-height: 1;
@@ -191,8 +191,8 @@
     height: 100%;
 
     &.active {
-        width: calc(100% - 400px);
-        left: 400px;
+        width: calc(100% - 370px);
+        left: 370px;
         //height: 100%;
     }
 
@@ -231,4 +231,33 @@
 
 .slider-range-views input + input {
     text-align: right;
+}
+
+.highcharts-data-table {
+    overflow-y: auto;
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        background: white;
+        min-width: 100%;
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    td,
+    th,
+    caption {
+        border: 1px solid silver;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    caption {
+        border-bottom: none;
+        font-size: 1.1em;
+        font-weight: bold;
+        text-align: center;
+        caption-side: top;
+    }
 }

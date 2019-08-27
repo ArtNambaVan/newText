@@ -1,27 +1,29 @@
                 <div class="analytics">             
                     <el-tabs class="analytics-dashbord" v-model="dashboardsValue" type="card" @tab-remove="removeDashbord">
                         <el-tab-pane closable 
-                            v-for="(item, index) in dashboards"
+                            v-for="(item, DashIndex) in dashboards"
                             :key="item.name"
                             :label="item.title"
                             :name="item.name"
                         >
                         <span class="analytics-dashbord__tab-name" slot="label">
                             {% raw %} {{item.title}} {% endraw %}
-                            <div class="analytics-dashbord__edit-name" @click="editTabName(item.title, index)">
+                            <div class="analytics-dashbord__edit-name" @click="editTabName(item.title, DashIndex)">
                                 edit
                             </div>
                         </span>
                             {% raw %}{{item.content}} {% endraw %}
-                            <div class="charts" v-for="chart in item.charts">
-                                <div class="charts__container" ref="test">
-                                    <div class="chart__item">
+                            <div class="charts" v-for="(graph, graphIndex) in item.charts">
+                                <div class="charts__container" ref="test"> <!-- CHART CONTAINER START-->
+                                    <div class="chart__item" v-for="(chart, chartIndex) in graph">
                                         <div class="chart__header">
                                             <ul class="chart-list chart-list--left">
-                                                <li class="chart-list__item"  v-bind:class="{ active : chart.isPanelActive }" v-on:click="togglePanel('isPanelActive', index, chart.id)">
+                                                <li class="chart-list__item"  v-bind:class="{ active : chart.isPanelActive }"
+                                                v-on:click="togglePanel('isPanelActive', DashIndex, graphIndex, chartIndex )">
                                                     <i class="fas fa-filter"></i>
                                                 </li>
-                                                <li class="chart-list__item" v-bind:class="{ active : chart.isPanelActive2 }" v-on:click="togglePanel('isPanelActive2', index, chart.id)">
+                                                <li class="chart-list__item" v-bind:class="{ active : chart.isPanelActive2 }"
+                                                v-on:click="togglePanel('isPanelActive2', DashIndex, graphIndex, chartIndex)">
                                                     <i class="fas fa-cog"></i>
                                                 </li>
                                                 <li class="chart-list__item">
@@ -37,12 +39,13 @@
                                                 </li>
                                                 <li class="chart-list__item">
                                                     <i class="far fa-chart-bar"></i>
-                                                    <el-select class="analytics-select" v-model="chartType" placeholder="Select">
+                                                    <el-select class="analytics-select" v-model="chart.chartType" placeholder="Select" @change="selectChart(chart.chartType, $event)">
                                                         <el-option
                                                           v-for="item in chartTypeOptions"
                                                           :key="item.value"
                                                           :label="item.label"
-                                                          :value="item.value">
+                                                          :value="item.value"
+                                                          >
                                                         </el-option>
                                                     </el-select>
                                                 </li>
@@ -56,12 +59,14 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="chart__body">
+                                        <div class="chart__body" v-if="chart.chartType !== null">
                                             <!-- start panel -->
                                             <div class="chart__panels">
                                                 <div class="filters-panel filters-panel--small" v-bind:class="{ active : chart.isPanelActive }">
                                                     <div class="filters-panel__btn" v-bind:class="{ active : chart.isPanelActive }"
-                                                    v-if="isPanelActive" v-on:click="togglePanel('isPanelActive1', index, chart.id)">
+                                                        v-if="isPanelActive"
+                                                        v-on:click="togglePanel('isPanelActive1', DashIndex, graphIndex, chartIndex, chart.chartType)"
+                                                    >
                                                         <span>&nbsp;</span>
                                                         <span class="collapse-icon-closed">
                                                             <i class="fas fa-chevron-left"></i>
@@ -76,7 +81,6 @@
                                                     <div class="filters-panel__body">
                                                         <form>
                                                             <!-- SEARCH & FILTER STARTS -->
-                                    
                                                             <div class="filter-category">
                                                                 <div class="filter-category__title">search & filter
                                                                 </div>
@@ -109,7 +113,7 @@
                                                             <!-- TEXT & PERIOD FILTER STARTS -->
                                                             <div class="filter-category">
                                                                 <a class="filter-category__head collapse-icon"
-                                                                   aria-expanded="true" data-toggle="collapse" :href="'#textFilterBody' + chart.id"
+                                                                   aria-expanded="true" data-toggle="collapse" :href="'#textFilterBody' + DashIndex + graphIndex + chartIndex"
                                                                    role="tab">
                                                                     <span class="filter-category__title">TEXT & PERIOD FILTER</span>
                                                                     <span class="collapse-icon-closed">
@@ -120,7 +124,7 @@
                                                                                     </span>
                                                                 </a>
                                                                 <div class="filter-category__body collapse show"
-                                                                    :id="'textFilterBody' + chart.id" role="tabpanel">
+                                                                    :id="'textFilterBody' + DashIndex + graphIndex + chartIndex" role="tabpanel">
                                                                     <div class="[ row no-gutters ] filter-category__item">
                                                                         <div class="col-4">
                                                                             <label class="filter-category__label">Posted</label>
@@ -168,7 +172,7 @@
                                                             <div class="filter-category">
 
                                                                 <a class="filter-category__head collapse-icon" aria-controls="extendedTextSearchBody"
-                                                                aria-expanded="true" data-toggle="collapse" href="#extendedTextSearchBody"
+                                                                aria-expanded="true" data-toggle="collapse" :href="'#extendedTextSearchBody' + DashIndex + graphIndex + chartIndex"
                                                                 id="extendedTextSearch" role="tab">
                                                                     <span class="filter-category__title">Extended text search</span>
                                                                     <span class="collapse-icon-closed">
@@ -180,7 +184,7 @@
                                                                 </a>
 
                                                                 <div class="filter-category__body collapse show" aria-labelledby="extendedTextSearch"
-                                                                    id="extendedTextSearchBody" role="tabpanel">
+                                                                    :id="'extendedTextSearchBody' + DashIndex + graphIndex + chartIndex" role="tabpanel">
                                                                     <div class="filter-category__section"
                                                                         v-for="(extItem, extIndex) in filter.extendedKeywords">
                                                                         <div class="filter-category__item" v-if="extIndex > 0">
@@ -265,8 +269,8 @@
                                                             <div class="filter-category">
 
                                                                 <a class="filter-category__head collapse-icon" aria-controls="categoryFilterBody"
-                                                                aria-expanded="true" data-toggle="collapse" href="#categoryFilterBody"
-                                                                id="categoryFilter" role="tab">
+                                                                aria-expanded="true" data-toggle="collapse" :href="'#categoryFilterBody' + DashIndex + graphIndex + chartIndex"
+                                                                id="categoryFilter " role="tab">
                                                                     <span class="filter-category__title">Category filter</span>
                                                                     <span class="collapse-icon-closed">
                                                                         <i class="fas fa-chevron-down"></i>
@@ -277,7 +281,7 @@
                                                                 </a>
                                     
                                                                 <div class="filter-category__body collapse show" aria-labelledby="categoryFilter"
-                                                                    id="categoryFilterBody" role="tabpanel">
+                                                                    :id="'categoryFilterBody' + DashIndex + graphIndex + chartIndex" role="tabpanel">
                                                                     <div v-for="(catBlock, catBlockIndex) in filter.categoryBlocks"
                                                                         class="filter-category__section">
                                                                         <div class="filter-category__item">
@@ -369,7 +373,7 @@
                                                             <!-- ADMIN FILTER STARTS -->
                                                             <div class="filter-category">
                                                                 <a class="filter-category__head collapse-icon" aria-controls="adminFilterBody"
-                                                                aria-expanded="true" data-toggle="collapse" href="#adminFilterBody" id="adminFilter"
+                                                                aria-expanded="true" data-toggle="collapse" :href="'#adminFilterBody' + DashIndex + graphIndex + chartIndex" id="adminFilter"
                                                                 role="tab">
                                                                     <span class="filter-category__title">Admin filter</span>
                                                                     <span class="collapse-icon-closed">
@@ -380,7 +384,7 @@
                                                                     </span>
                                                                 </a>
                                                                 <div class="filter-category__body collapse show" aria-labelledby="adminFilter"
-                                                                    id="adminFilterBody" role="tabpanel">
+                                                                    :id="'adminFilterBody' + DashIndex + graphIndex + chartIndex" role="tabpanel">
                                     
                                                                     <div class="[ row no-gutters ] filter-category__item"
                                                                         v-if="userActions.FILTER_BY_DATE_CREATE === true">
@@ -531,7 +535,8 @@
 
                                                             <div class="filter-category">
                                                                 <a class="filter-category__head collapse-icon" aria-controls="miscellanousFilterBody"
-                                                                    aria-expanded="true" data-toggle="collapse" href="#miscellanousFilterBody"
+                                                                    aria-expanded="true" data-toggle="collapse"
+                                                                    :href="'#miscellanousFilterBody' + DashIndex + graphIndex + chartIndex"
                                                                     id="miscellanousFilter" role="tab">
                                                                     <span class="filter-category__title">Miscellaneous filter</span>
                                                                     <span class="collapse-icon-closed">
@@ -543,7 +548,7 @@
                                                                 </a>
                                     
                                                                 <div class="filter-category__body collapse show" aria-labelledby="miscellanousFilter"
-                                                                        id="miscellanousFilterBody" role="tabpanel">
+                                                                        :id="'miscellanousFilterBody' + DashIndex + graphIndex + chartIndex" role="tabpanel">
                                     
                                                                     <div class="[ row no-gutters ] filter-category__item"
                                                                             v-if="userActions.FILTER_BY_WORKFLLOW_STATUS === true">
@@ -786,35 +791,6 @@
                                                                             </a>
                                                                         </div>
                                                                     </div>
-
-
-
-
-
-                                                                    <div class="[ row no-gutters ]  filter-category__item">
-                                                                        <div class="col-4">
-                                                                            <label class="filter-category__label">Category</label>
-                                                                        </div>
-                                                                        <div class="col-7">
-                                                                            <div aria-expanded="true" class="input-container"
-                                                                                    v-on:click="setCategoryBlockIndex(catBlockIndex)">
-                                                                                <el-autocomplete
-                                                                                        v-model="yAxis.categorySearchResult"
-                                                                                        value-key="name"
-                                                                                        placeholder="search_category"
-                                                                                        :trigger-on-focus="false"
-                                                                                        
-                                                                                ></el-autocomplete>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-1">
-                                                                            <div aria-expanded="true"
-                                                                                    class="open-icon" role="tab"
-                                                                                    v-on:click="selectCategory(catBlockIndex)">
-                                                                                <i class="fas fa-folder"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                 
                                                                 </div>
                                                             </div>
@@ -957,12 +933,18 @@
                                                 </div>
                                             </div>
 
-                                            <div class="chart-container" v-bind:style="chart.chartHeight" :ref="'settingsBox' + chart.id" v-bind:class="{ active: chart.isPanelActive2 || chart.isPanelActive }">
+                                            <div class="chart-container" v-bind:style="chart.chartHeight" 
+                                                v-bind:class="{ active: chart.isPanelActive2 || chart.isPanelActive }"
+                                            >
 
-                                                <highcharts :ref="'myChart' + chart.id" class="chart__graph" :options="options" ref="highcharts"></highcharts>
+                                                <highcharts v-bind:class="{ 'd-none': (chart.chartType == 'data_table')}"
+                                                    :ref="'myChart' + DashIndex + graphIndex + chartIndex" class="chart__graph" :options="options">
+                                                </highcharts>
 
                                                 <div class="chart__panels chart__panels--bottom" >
-                                                    <div class="filters-panel filters-panel--bottom" :ref="'panelBottom' + chart.id" v-bind:class="{ active: chart.isPanelActive2 }">
+                                                    <div class="filters-panel filters-panel--bottom" 
+                                                        :ref="'panelBottom' + DashIndex + graphIndex + chartIndex" v-bind:class="{ active: chart.isPanelActive2 }"
+                                                    >
                                                         <div class="filters-panel__body">
                                                             <form class="form-inline">
                                                                 <div class="filter-category">
@@ -1082,134 +1064,18 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {#<div class="chart__panels chart__panels--bottom" >
-                                                <div class="filters-panel filters-panel--bottom" :ref="'panelBottom' + chart.id" v-bind:class="{ active: chart.isPanelActive2 }">
-                                                    <div class="filters-panel__body">
-                                                        <form class="form-inline">
-                                                            <div class="filter-category">
-                                                                <div class="filter-category__title">X-Axis
-                                                                </div>
-                                                                <div class="filter-category__body">
-
-                                                                            <p class="filter-title">Breakdown by:</p>
-                                                                            <div class="select-container select-container-md">
-                                                                                <el-select v-model="yAxis.breakdownValue" placeholder="Select">
-                                                                                    <el-option
-                                                                                            v-for="opt in yAxis.breakdown"
-                                                                                            :label="opt.name"
-                                                                                            :key="opt.id"
-                                                                                            :value="opt.name">
-                                                                                    </el-option>
-                                                                                </el-select>
-                                                                            </div>
-
-
-                                                                </div>
-                                                            </div>
-                                                            <!-- SEARCH & FILTER END -->
-                                    
-                                                            <!-- TEXT & PERIOD FILTER STARTS -->
-                                                            <div class="filter-category">
-                                                                <div class="filter-category__body collapse show" aria-labelledby="textFilter"
-                                                                     id="textFilterBody" role="tabpanel">
-                                                                    <p class="filter-title">Add the following categories to the X-Axis:</p>
-                                                                    <div class="[ row no-gutters ] filter-category__item">
-                                                                        <el-switch
-                                                                            v-model="yAxis.toggleControl"
-                                                                            active-text="Breakdown"
-                                                                            inactive-text="Summarize">
-                                                                        </el-switch>
-                                                                        
-                                                                    </div>
-
-                                                                    <div class="[ row no-gutters ]  filter-category__item">
-                                                                        <div class="col-4">
-                                                                            <label class="filter-category__label">category</label>
-                                                                        </div>
-                                                                        <div class="col-7">
-                                                                            <div aria-expanded="true" class="input-container"
-                                                                                    v-on:click="setCategoryBlockIndex(catBlockIndex)">
-                                                                                <el-autocomplete
-                                                                                        v-model="yAxis.categorySearchResult"
-                                                                                        value-key="name"
-                                                                                        placeholder="search_category"
-                                                                                        :trigger-on-focus="false"
-                                                                                        
-                                                                                ></el-autocomplete>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-1">
-                                                                            <div aria-expanded="true"
-                                                                                    class="open-icon" role="tab"
-                                                                                    v-on:click="selectCategory(catBlockIndex)">
-                                                                                <i class="fas fa-folder"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- TEXT & PERIOD FILTER END -->
-                                                            <div class="filter-category">
-                                                                <div class="filter-category__body">
-                                                                    <div class="[ row no-gutters ] filter-category__item">
-                                                                        <div class="col-5">
-                                                                            <label class="filter-category__label">List Results (0 = All):</label>
-                                                                        </div>
-                                                                        <div class="col-7">
-                                                                            <el-input v-model="yAxis.linitResults" class="full-width input-small"></el-input>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="[ row no-gutters ] filter-category__item">
-                                                                        <div class="col-5">
-                                                                            <label class="filter-category__label">Sort by:</label>
-                                                                        </div>
-                                                                        <div class="col-7">
-                                                                            <div class="select-container">
-                                                                                <el-select v-model="yAxis.typeSorting" placeholder="Select">
-                                                                                    <el-option
-                                                                                            v-for="opt in yAxis.typeSortingOptions"
-                                                                                            :label="opt.label"
-                                                                                            :key="opt.id"
-                                                                                            :value="opt.label">
-                                                                                    </el-option>
-                                                                                </el-select>
-                                                                            </div>
-                                                                            <div class="select-container">
-                                                                                <el-select v-model="yAxis.viewSorting" placeholder="Select">
-                                                                                    <el-option
-                                                                                            v-for="opt in yAxis.viewSortingOptions"
-                                                                                            :label="opt.label"
-                                                                                            :key="opt.id"
-                                                                                            :value="opt.label">
-                                                                                    </el-option>
-                                                                                </el-select>
-                                                                            </div>
-                                                                            <div class="select-container">
-                                                                                <el-select v-model="yAxis.orderSorting" placeholder="Select">
-                                                                                    <el-option
-                                                                                            v-for="opt in yAxis.orderSortingOptions"
-                                                                                            :label="opt.label"
-                                                                                            :key="opt.value"
-                                                                                            :value="opt.value">
-                                                                                    </el-option>
-                                                                            </el-select>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>#}
-
-
                                         </div>
+                                        <div class="chart__body" v-else>
+                                            <h3>Select chart type</h3>
+                                        </div>
+                                        
 
-                                        <div class="chart__messagess">
+                                        <div class="chart__messagess" v-if="chart.messagess">
                                             <div class="panel" ref="tagCloud">
-                                                <a class="panel__head collapse-icon collapse-icon--left" aria-controls="tagCloud"
-                                                   aria-expanded="false" data-toggle="collapse" href="#tagCloud" role="tab">
+                                                <a class="panel__head collapse-icon collapse-icon--left"
+                                                   aria-expanded="false" data-toggle="collapse" 
+                                                   :href="'#messagePanel' + DashIndex + graphIndex + chartIndex" role="tab"
+                                                >
                                                     <span class="cloud__title">Show messagess</span>
                                                     <span class="cloud__title">Hide messagess</span>
                                                     <span class="collapse-icon-closed">
@@ -1220,7 +1086,7 @@
                                                     </span>
                                                 </a>
                     
-                                                <div class="collapse show" id="tagCloud" role="tabpanel">
+                                                <div class="collapse show" :id="'messagePanel' + DashIndex + graphIndex + chartIndex" role="tabpanel">
                                                     <div class="" id="messages-container-id">
                                                         <div v-if="messageCount == 0">No messages found</div>
                                                         <div class="message-item" v-for="cimsMessage in messageList" :key="uiMessageListKey">
@@ -1333,12 +1199,14 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                            
-
                                     </div>
                                     
-                                </div>
+                                </div> <!-- CHART CONTAINER ENDS-->
+                            </div>
+
+                            <div class="btn-container btn-container--center">
+                                <button class="cims-btn cims-btn--primary cims-btn--lg">Add large graphic (screen wide)</button>
+                                <button class="cims-btn cims-btn--primary cims-btn--lg">Add 2 small graphics (half screen each)</button>
                             </div>
                         </el-tab-pane>
                         <el-tab-pane  v-if="dashboards.length !== 0" :name="`${(tabIndex + 1).toString()}`"> 

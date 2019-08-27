@@ -28110,7 +28110,9 @@ a:hover {
   display: flex;
   padding: 10px 0; }
   .cims .btn-container--center {
-    justify-content: space-around; }
+    justify-content: center; }
+    .cims .btn-container--center > * + * {
+      margin-left: 60px; }
 
 .cims-btn {
   padding: 2px 7px;
@@ -28154,6 +28156,9 @@ a:hover {
     color: #fff;
     background-color: #5CB85C;
     border: 1px solid #5CB85C; }
+  .cims-btn--lg {
+    min-width: 290px;
+    padding: 6px 12px; }
 
 .btn-group-col {
   display: flex;
@@ -28650,13 +28655,10 @@ input[type="checkbox"]:checked ~ .test {
       display: block; }
   .filters-panel--small {
     max-height: 600px;
-    overflow: hidden; }
-    .filters-panel--small:hover {
-      overflow-y: auto; }
+    overflow: hidden;
+    overflow-y: auto; }
   .filters-panel--small.active {
-    width: 400px; }
-    .filters-panel--small.active:hover {
-      overflow-y: auto; }
+    width: 370px; }
     .filters-panel--small.active .filter-category__body {
       padding: 0; }
     .filters-panel--small.active .filter-category__label {
@@ -28685,7 +28687,8 @@ input[type="checkbox"]:checked ~ .test {
       text-align: left; }
     .filters-panel--bottom .filter-category {
       padding-left: 5px;
-      padding-right: 5px; }
+      padding-right: 5px;
+      min-width: 220px; }
 
 .filter-category {
   border-bottom: 1px solid #aaa;
@@ -31164,7 +31167,7 @@ input[type="checkbox"]:checked ~ .test {
     margin-left: auto; }
   .chart-list__item {
     padding: 6px 8px;
-    font-size: 22px;
+    font-size: 16px;
     color: #012b5b;
     cursor: pointer;
     line-height: 1;
@@ -31232,8 +31235,8 @@ input[type="checkbox"]:checked ~ .test {
   left: 0;
   height: 100%; }
   .chart-container.active {
-    width: calc(100% - 400px);
-    left: 400px; }
+    width: calc(100% - 370px);
+    left: 370px; }
   .chart-container.panel2 {
     height: calc(100% - 170px); }
 
@@ -31261,6 +31264,28 @@ input[type="checkbox"]:checked ~ .test {
 
 .slider-range-views input + input {
   text-align: right; }
+
+.highcharts-data-table {
+  overflow-y: auto; }
+  .highcharts-data-table table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: white;
+    min-width: 100%;
+    padding: 5px;
+    font-size: 12px; }
+  .highcharts-data-table td,
+  .highcharts-data-table th,
+  .highcharts-data-table caption {
+    border: 1px solid silver;
+    padding: 1rem;
+    text-align: center; }
+  .highcharts-data-table caption {
+    border-bottom: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    caption-side: top; }
 
 .spacing {
   display: flex; }

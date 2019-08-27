@@ -20,9 +20,10 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/element-ui@2.6.1/lib/index.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/highcharts-more.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <!-- vue-highcharts should be load after Highcharts -->
     <script src="https://cdn.jsdelivr.net/npm/vue-highcharts/dist/vue-highcharts.min.js"></script>
 
@@ -166,27 +167,29 @@
                 <div class="analytics">             
                     <el-tabs class="analytics-dashbord" v-model="dashboardsValue" type="card" @tab-remove="removeDashbord">
                         <el-tab-pane closable 
-                            v-for="(item, index) in dashboards"
+                            v-for="(item, DashIndex) in dashboards"
                             :key="item.name"
                             :label="item.title"
                             :name="item.name"
                         >
                         <span class="analytics-dashbord__tab-name" slot="label">
  {{item.title}} 
-                            <div class="analytics-dashbord__edit-name" @click="editTabName(item.title, index)">
+                            <div class="analytics-dashbord__edit-name" @click="editTabName(item.title, DashIndex)">
                                 edit
                             </div>
                         </span>
 {{item.content}} 
-                            <div class="charts" v-for="chart in item.charts">
-                                <div class="charts__container" ref="test">
-                                    <div class="chart__item">
+                            <div class="charts" v-for="(graph, graphIndex) in item.charts">
+                                <div class="charts__container" ref="test"> <!-- CHART CONTAINER START-->
+                                    <div class="chart__item" v-for="(chart, chartIndex) in graph">
                                         <div class="chart__header">
                                             <ul class="chart-list chart-list--left">
-                                                <li class="chart-list__item"  v-bind:class="{ active : chart.isPanelActive }" v-on:click="togglePanel('isPanelActive', index, chart.id)">
+                                                <li class="chart-list__item"  v-bind:class="{ active : chart.isPanelActive }"
+                                                v-on:click="togglePanel('isPanelActive', DashIndex, graphIndex, chartIndex )">
                                                     <i class="fas fa-filter"></i>
                                                 </li>
-                                                <li class="chart-list__item" v-bind:class="{ active : chart.isPanelActive2 }" v-on:click="togglePanel('isPanelActive2', index, chart.id)">
+                                                <li class="chart-list__item" v-bind:class="{ active : chart.isPanelActive2 }"
+                                                v-on:click="togglePanel('isPanelActive2', DashIndex, graphIndex, chartIndex)">
                                                     <i class="fas fa-cog"></i>
                                                 </li>
                                                 <li class="chart-list__item">
@@ -202,12 +205,13 @@
                                                 </li>
                                                 <li class="chart-list__item">
                                                     <i class="far fa-chart-bar"></i>
-                                                    <el-select class="analytics-select" v-model="chartType" placeholder="Select">
+                                                    <el-select class="analytics-select" v-model="chart.chartType" placeholder="Select" @change="selectChart(chart.chartType, $event)">
                                                         <el-option
                                                           v-for="item in chartTypeOptions"
                                                           :key="item.value"
                                                           :label="item.label"
-                                                          :value="item.value">
+                                                          :value="item.value"
+                                                          >
                                                         </el-option>
                                                     </el-select>
                                                 </li>
@@ -221,12 +225,14 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="chart__body">
+                                        <div class="chart__body" v-if="chart.chartType !== null">
                                             <!-- start panel -->
                                             <div class="chart__panels">
                                                 <div class="filters-panel filters-panel--small" v-bind:class="{ active : chart.isPanelActive }">
                                                     <div class="filters-panel__btn" v-bind:class="{ active : chart.isPanelActive }"
-                                                    v-if="isPanelActive" v-on:click="togglePanel('isPanelActive1', index, chart.id)">
+                                                        v-if="isPanelActive"
+                                                        v-on:click="togglePanel('isPanelActive1', DashIndex, graphIndex, chartIndex, chart.chartType)"
+                                                    >
                                                         <span>&nbsp;</span>
                                                         <span class="collapse-icon-closed">
                                                             <i class="fas fa-chevron-left"></i>
@@ -241,7 +247,6 @@
                                                     <div class="filters-panel__body">
                                                         <form>
                                                             <!-- SEARCH & FILTER STARTS -->
-                                    
                                                             <div class="filter-category">
                                                                 <div class="filter-category__title">search & filter
                                                                 </div>
@@ -274,7 +279,7 @@
                                                             <!-- TEXT & PERIOD FILTER STARTS -->
                                                             <div class="filter-category">
                                                                 <a class="filter-category__head collapse-icon"
-                                                                   aria-expanded="true" data-toggle="collapse" :href="'#textFilterBody' + chart.id"
+                                                                   aria-expanded="true" data-toggle="collapse" :href="'#textFilterBody' + DashIndex + graphIndex + chartIndex"
                                                                    role="tab">
                                                                     <span class="filter-category__title">TEXT & PERIOD FILTER</span>
                                                                     <span class="collapse-icon-closed">
@@ -285,7 +290,7 @@
                                                                                     </span>
                                                                 </a>
                                                                 <div class="filter-category__body collapse show"
-                                                                    :id="'textFilterBody' + chart.id" role="tabpanel">
+                                                                    :id="'textFilterBody' + DashIndex + graphIndex + chartIndex" role="tabpanel">
                                                                     <div class="[ row no-gutters ] filter-category__item">
                                                                         <div class="col-4">
                                                                             <label class="filter-category__label">Posted</label>
@@ -333,7 +338,7 @@
                                                             <div class="filter-category">
 
                                                                 <a class="filter-category__head collapse-icon" aria-controls="extendedTextSearchBody"
-                                                                aria-expanded="true" data-toggle="collapse" href="#extendedTextSearchBody"
+                                                                aria-expanded="true" data-toggle="collapse" :href="'#extendedTextSearchBody' + DashIndex + graphIndex + chartIndex"
                                                                 id="extendedTextSearch" role="tab">
                                                                     <span class="filter-category__title">Extended text search</span>
                                                                     <span class="collapse-icon-closed">
@@ -345,7 +350,7 @@
                                                                 </a>
 
                                                                 <div class="filter-category__body collapse show" aria-labelledby="extendedTextSearch"
-                                                                    id="extendedTextSearchBody" role="tabpanel">
+                                                                    :id="'extendedTextSearchBody' + DashIndex + graphIndex + chartIndex" role="tabpanel">
                                                                     <div class="filter-category__section"
                                                                         v-for="(extItem, extIndex) in filter.extendedKeywords">
                                                                         <div class="filter-category__item" v-if="extIndex > 0">
@@ -430,8 +435,8 @@
                                                             <div class="filter-category">
 
                                                                 <a class="filter-category__head collapse-icon" aria-controls="categoryFilterBody"
-                                                                aria-expanded="true" data-toggle="collapse" href="#categoryFilterBody"
-                                                                id="categoryFilter" role="tab">
+                                                                aria-expanded="true" data-toggle="collapse" :href="'#categoryFilterBody' + DashIndex + graphIndex + chartIndex"
+                                                                id="categoryFilter " role="tab">
                                                                     <span class="filter-category__title">Category filter</span>
                                                                     <span class="collapse-icon-closed">
                                                                         <i class="fas fa-chevron-down"></i>
@@ -442,7 +447,7 @@
                                                                 </a>
                                     
                                                                 <div class="filter-category__body collapse show" aria-labelledby="categoryFilter"
-                                                                    id="categoryFilterBody" role="tabpanel">
+                                                                    :id="'categoryFilterBody' + DashIndex + graphIndex + chartIndex" role="tabpanel">
                                                                     <div v-for="(catBlock, catBlockIndex) in filter.categoryBlocks"
                                                                         class="filter-category__section">
                                                                         <div class="filter-category__item">
@@ -534,7 +539,7 @@
                                                             <!-- ADMIN FILTER STARTS -->
                                                             <div class="filter-category">
                                                                 <a class="filter-category__head collapse-icon" aria-controls="adminFilterBody"
-                                                                aria-expanded="true" data-toggle="collapse" href="#adminFilterBody" id="adminFilter"
+                                                                aria-expanded="true" data-toggle="collapse" :href="'#adminFilterBody' + DashIndex + graphIndex + chartIndex" id="adminFilter"
                                                                 role="tab">
                                                                     <span class="filter-category__title">Admin filter</span>
                                                                     <span class="collapse-icon-closed">
@@ -545,7 +550,7 @@
                                                                     </span>
                                                                 </a>
                                                                 <div class="filter-category__body collapse show" aria-labelledby="adminFilter"
-                                                                    id="adminFilterBody" role="tabpanel">
+                                                                    :id="'adminFilterBody' + DashIndex + graphIndex + chartIndex" role="tabpanel">
                                     
                                                                     <div class="[ row no-gutters ] filter-category__item"
                                                                         v-if="userActions.FILTER_BY_DATE_CREATE === true">
@@ -696,7 +701,8 @@
 
                                                             <div class="filter-category">
                                                                 <a class="filter-category__head collapse-icon" aria-controls="miscellanousFilterBody"
-                                                                    aria-expanded="true" data-toggle="collapse" href="#miscellanousFilterBody"
+                                                                    aria-expanded="true" data-toggle="collapse"
+                                                                    :href="'#miscellanousFilterBody' + DashIndex + graphIndex + chartIndex"
                                                                     id="miscellanousFilter" role="tab">
                                                                     <span class="filter-category__title">Miscellaneous filter</span>
                                                                     <span class="collapse-icon-closed">
@@ -708,7 +714,7 @@
                                                                 </a>
                                     
                                                                 <div class="filter-category__body collapse show" aria-labelledby="miscellanousFilter"
-                                                                        id="miscellanousFilterBody" role="tabpanel">
+                                                                        :id="'miscellanousFilterBody' + DashIndex + graphIndex + chartIndex" role="tabpanel">
                                     
                                                                     <div class="[ row no-gutters ] filter-category__item"
                                                                             v-if="userActions.FILTER_BY_WORKFLLOW_STATUS === true">
@@ -951,35 +957,6 @@
                                                                             </a>
                                                                         </div>
                                                                     </div>
-
-
-
-
-
-                                                                    <div class="[ row no-gutters ]  filter-category__item">
-                                                                        <div class="col-4">
-                                                                            <label class="filter-category__label">Category</label>
-                                                                        </div>
-                                                                        <div class="col-7">
-                                                                            <div aria-expanded="true" class="input-container"
-                                                                                    v-on:click="setCategoryBlockIndex(catBlockIndex)">
-                                                                                <el-autocomplete
-                                                                                        v-model="yAxis.categorySearchResult"
-                                                                                        value-key="name"
-                                                                                        placeholder="search_category"
-                                                                                        :trigger-on-focus="false"
-                                                                                        
-                                                                                ></el-autocomplete>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-1">
-                                                                            <div aria-expanded="true"
-                                                                                    class="open-icon" role="tab"
-                                                                                    v-on:click="selectCategory(catBlockIndex)">
-                                                                                <i class="fas fa-folder"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                 
                                                                 </div>
                                                             </div>
@@ -1122,12 +1099,18 @@
                                                 </div>
                                             </div>
 
-                                            <div class="chart-container" v-bind:style="chart.chartHeight" :ref="'settingsBox' + chart.id" v-bind:class="{ active: chart.isPanelActive2 || chart.isPanelActive }">
+                                            <div class="chart-container" v-bind:style="chart.chartHeight" 
+                                                v-bind:class="{ active: chart.isPanelActive2 || chart.isPanelActive }"
+                                            >
 
-                                                <highcharts :ref="'myChart' + chart.id" class="chart__graph" :options="options" ref="highcharts"></highcharts>
+                                                <highcharts v-bind:class="{ 'd-none': (chart.chartType == 'data_table')}"
+                                                    :ref="'myChart' + DashIndex + graphIndex + chartIndex" class="chart__graph" :options="options">
+                                                </highcharts>
 
                                                 <div class="chart__panels chart__panels--bottom" >
-                                                    <div class="filters-panel filters-panel--bottom" :ref="'panelBottom' + chart.id" v-bind:class="{ active: chart.isPanelActive2 }">
+                                                    <div class="filters-panel filters-panel--bottom" 
+                                                        :ref="'panelBottom' + DashIndex + graphIndex + chartIndex" v-bind:class="{ active: chart.isPanelActive2 }"
+                                                    >
                                                         <div class="filters-panel__body">
                                                             <form class="form-inline">
                                                                 <div class="filter-category">
@@ -1247,15 +1230,18 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-
-
                                         </div>
+                                        <div class="chart__body" v-else>
+                                            <h3>Select chart type</h3>
+                                        </div>
+                                        
 
-                                        <div class="chart__messagess">
+                                        <div class="chart__messagess" v-if="chart.messagess">
                                             <div class="panel" ref="tagCloud">
-                                                <a class="panel__head collapse-icon collapse-icon--left" aria-controls="tagCloud"
-                                                   aria-expanded="false" data-toggle="collapse" href="#tagCloud" role="tab">
+                                                <a class="panel__head collapse-icon collapse-icon--left"
+                                                   aria-expanded="false" data-toggle="collapse" 
+                                                   :href="'#messagePanel' + DashIndex + graphIndex + chartIndex" role="tab"
+                                                >
                                                     <span class="cloud__title">Show messagess</span>
                                                     <span class="cloud__title">Hide messagess</span>
                                                     <span class="collapse-icon-closed">
@@ -1266,7 +1252,7 @@
                                                     </span>
                                                 </a>
                     
-                                                <div class="collapse show" id="tagCloud" role="tabpanel">
+                                                <div class="collapse show" :id="'messagePanel' + DashIndex + graphIndex + chartIndex" role="tabpanel">
                                                     <div class="" id="messages-container-id">
                                                         <div v-if="messageCount == 0">No messages found</div>
                                                         <div class="message-item" v-for="cimsMessage in messageList" :key="uiMessageListKey">
@@ -1379,12 +1365,14 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                            
-
                                     </div>
                                     
-                                </div>
+                                </div> <!-- CHART CONTAINER ENDS-->
+                            </div>
+
+                            <div class="btn-container btn-container--center">
+                                <button class="cims-btn cims-btn--primary cims-btn--lg">Add large graphic (screen wide)</button>
+                                <button class="cims-btn cims-btn--primary cims-btn--lg">Add 2 small graphics (half screen each)</button>
                             </div>
                         </el-tab-pane>
                         <el-tab-pane  v-if="dashboards.length !== 0" :name="`${(tabIndex + 1).toString()}`"> 
@@ -1571,10 +1559,61 @@ class DateRangePickerOptions {
     }
 }
 
+var options2 = {
 
+    title: {
+        text: 'Solar Employment Growth by Sector, 2010-2016'
+    },
 
+    subtitle: {
+        text: 'A demo of displaying a data table in Highcharts'
+    },
 
+    credits: {
+        text: 'Source: thesolarfoundation.com'
+    },
 
+    chart: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        spacingBottom: 30
+    },
+
+    yAxis: {
+        title: {
+            text: 'Number of Employees'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    
+    xAxis: {
+    categories: ['Model A', 'Model B', 'Model C', 'Model D', 'Model E', 'Model F']
+    },
+
+    series: [{
+        name: 'Country A',
+        data: [36, 50, 49, 27, 16, 36, 36, 50, 49, 27, 16, 36]
+    }, {
+        name: 'Country B',
+        data: [13, 37, 21, 32, 20, 13]
+    }, {
+        name: 'Country C',
+        data: [30, 32, 31, 13, 37, 34]
+    }, {
+        name: 'Country D',
+        data: [41, 29, 30, 32, 10, 21]
+    }],
+
+    exporting: {
+        showTable: true
+    }
+
+}
 
 var options = {
     title: {
@@ -1619,9 +1658,6 @@ var options = {
     series: [{
     data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
     }],
-    //exporting: {
-    //    showTable: true
-    //}
 }
 Vue.use(VueHighcharts);
 
@@ -1645,7 +1681,7 @@ new Vue({
                 {label: 'Pie Chart', value: 'pie_chart'}, {label: 'Data table', value: 'data_table'},
             ],
 
-            options: options,
+            options: {},
             panels: ['isPanelActive', 'isPanelActive2'],
             isPanelActive: true,
             isPanelActive2: false,
@@ -1943,13 +1979,37 @@ new Vue({
                     name: '1',
                     content: 'New Chart 1',
                     charts: [
-                        {
-                            id: 1,
-                            panels: ['isPanelActive', 'isPanelActive2'],
-                            isPanelActive: false,
-                            isPanelActive2: true,
-                            chartHeight: {},
-                        }
+                        [
+                            {
+                                id: 1,
+                                panels: ['isPanelActive', 'isPanelActive2'],
+                                isPanelActive: false,
+                                isPanelActive2: true,
+                                chartHeight: {},
+                                chartType: 'column_chart',
+                                messagess: true,
+                            }
+                        ],
+                        [
+                            {
+                                id: 2,
+                                panels: ['isPanelActive', 'isPanelActive2'],
+                                isPanelActive: false,
+                                isPanelActive2: false,
+                                chartHeight: {},
+                                chartType: null,
+                                messagess: false,
+                            },
+                            {
+                                id: 3,
+                                panels: ['isPanelActive', 'isPanelActive2'],
+                                isPanelActive: false,
+                                isPanelActive2: false,
+                                chartHeight: {},
+                                chartType: null,
+                                messagess: false,
+                            }
+                        ],
                     ]
                 },
             ],
@@ -2007,15 +2067,16 @@ new Vue({
         openFilterDlg: function() {
             console.log(1)
         },
-        togglePanel: function(panelName, dashboardIndex, chartIndex) {
-            const currentChart =  this.dashboards[dashboardIndex].charts[1 - chartIndex];
-            const box = this.$refs[`settingsBox${chartIndex}`][0];
-            const chartBox = this.$refs[`myChart${chartIndex}`][0];
-            console.log(box, chartBox)
+        
+
+        togglePanel: function(panelName, dashboardIndex, graphIndex, chartIndex, w) {
+            console.log(panelName, dashboardIndex, graphIndex, chartIndex, w)
+            const currentChart =  this.dashboards[dashboardIndex].charts[graphIndex][chartIndex]; // get char by index
+            console.log(currentChart)
+            const chartBox = this.$refs[`myChart${dashboardIndex}${graphIndex}${chartIndex}`][0];
             const chart = chartBox.chart;
-            const bottomPanel = this.$refs[`panelBottom${chartIndex}`][0];
-            console.log(bottomPanel)
             currentChart.panels.forEach((function(e) {
+                console.log(e)
                 if (e === panelName) {
                     currentChart[panelName] = !currentChart[panelName]
                 } else {
@@ -2023,25 +2084,9 @@ new Vue({
                     
                 }
             }).bind(this))
-            console.log(bottomPanel.clientHeight)
-            let panelHeight
-            const that = this
 
             setTimeout(function() {
-                /*const heightString = that.$refs.settingsBox[0].clientWidth;
-                that.$refs.myChart[0].chart.setSize(null, 300)*/
-                if (currentChart.isPanelActive2) {
-                    panelHeight = bottomPanel.clientHeight;
-                    console.log(box)
-                    //Vue.set(currentChart.chartHeight, 'height', `495px`);
-                    chart.setSize(null, null)
-                } else {
-                    //Vue.set(currentChart.chartHeight, 'height', '100%');
-                    chart.setSize(null, null)
-                }
-                const heightString = box.clientWidth
-                
-                
+                chart.setSize(null, null)
             }, 400)
         },
         selectPlainCategory: function() {
@@ -2060,6 +2105,13 @@ new Vue({
         },
         getFileIcon: function(type) {
             return false
+        },
+        selectChart: function(item, e) {
+            if (item === 'data_table') {
+                this.options = options2;
+            } else {
+                this.options = options;
+            }
         }
     }
 }); 
