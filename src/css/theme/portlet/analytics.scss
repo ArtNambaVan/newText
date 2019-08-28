@@ -3,6 +3,10 @@
         margin-top: 17px;
     }
 
+    &__global-panel {
+        margin-bottom: 15px;
+    }
+
     &-dashbord {
         margin-top: 15px;
 
@@ -111,11 +115,23 @@
 }
 
 .chart__messagess {
-    margin: 15px 0;
+    margin-top: 15px;
+
+    .panel {
+        margin-bottom: 5px;
+
+        &__head {
+            margin-bottom: 0;
+        }
+
+        .sub__title {
+            padding-top: 5px;
+        }
+    }
 }
 
 .chart__body {
-    min-height: 600px;
+    min-height: 585px;
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -169,6 +185,10 @@
 
 .charts__container {
     display: flex;
+}
+
+.charts + .charts {
+    margin-top: 15px;
 }
 
 .chart__item {
@@ -260,4 +280,11 @@
         text-align: center;
         caption-side: top;
     }
+}
+
+.highchart-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

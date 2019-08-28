@@ -206,8 +206,13 @@ class DateRangePickerOptions {
         console.log('changed');
     }
 }
+{# SETTINGS FOR DATE ENDS  #}
 
-var options2 = {
+
+
+
+{# CONFIGURATION OF DATA TABLE #}
+var dataTable = {
 
     title: {
         text: 'Solar Employment Growth by Sector, 2010-2016'
@@ -250,13 +255,13 @@ var options2 = {
         data: [36, 50, 49, 27, 16, 36, 36, 50, 49, 27, 16, 36]
     }, {
         name: 'Country B',
-        data: [13, 37, 21, 32, 20, 13]
+        data: [13, 37, 21, 32, 20, 13, 36, 50, 49, 27, 16, 36]
     }, {
         name: 'Country C',
-        data: [30, 32, 31, 13, 37, 34]
+        data: [30, 32, 31, 13, 37, 34, 49, 27, 16, 36, 36, 32]
     }, {
         name: 'Country D',
-        data: [41, 29, 30, 32, 10, 21]
+        data: [41, 29, 30, 32, 10, 21, 32, 31, 13, 37, 34, 22]
     }],
 
     exporting: {
@@ -265,6 +270,9 @@ var options2 = {
 
 }
 
+
+
+{# CONFIGURATION OF LINE CHART #}
 var options = {
     title: {
         text: 'Title of this chart'
@@ -309,6 +317,19 @@ var options = {
     data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
     }],
 }
+
+
+const chartDraft = {
+    id: null,
+    panels: ['isPanelActive', 'isPanelActive2'],
+    isPanelActive: false,
+    isPanelActive2: false,
+    chartHeight: {},
+    chartType: null,
+    messagess: false,
+}
+
+
 Vue.use(VueHighcharts);
 
 new Vue({
@@ -331,7 +352,8 @@ new Vue({
                 {label: 'Pie Chart', value: 'pie_chart'}, {label: 'Data table', value: 'data_table'},
             ],
 
-            options: {},
+
+            {# STAF FOR PANELS STARTS #}
             panels: ['isPanelActive', 'isPanelActive2'],
             isPanelActive: true,
             isPanelActive2: false,
@@ -611,20 +633,18 @@ new Vue({
             uiMessageListKey: 0,
             showHtmlSource: false,
             showTranslation: true,
-
-
-
             dateInOptions: new DateRangePickerOptions(),
             dateCreateOptions: new DateRangePickerOptions(),
             dateChangeOptions: new DateRangePickerOptions(),
-            tabIndex: 0,
+            {# STAF FOR PANELS ENDS #}
+
             dlgTabName: false,
             editTitle: '',
             editTitleIndex: null,
 
             dashboardsValue: '1',
             dashboards: [
-                {
+                {# {
                     title: 'New Chart 1',
                     name: '1',
                     content: 'New Chart 1',
@@ -638,6 +658,7 @@ new Vue({
                                 chartHeight: {},
                                 chartType: 'column_chart',
                                 messagess: true,
+                                options: options
                             }
                         ],
                         [
@@ -649,6 +670,7 @@ new Vue({
                                 chartHeight: {},
                                 chartType: null,
                                 messagess: false,
+                                options: options
                             },
                             {
                                 id: 3,
@@ -658,23 +680,65 @@ new Vue({
                                 chartHeight: {},
                                 chartType: null,
                                 messagess: false,
+                                options: options
                             }
                         ],
                     ]
-                },
+                }, #}
             ],
-            tabIndex: 1
+            //tabIndex: 1 //index of dashbords
+            tabIndex: 0 //index of dashbords
         }
     },
+    mounted() {
+    if (localStorage.dashboards) {
+      //console.log()
+      //this.dashboards = JSON.parse(localStorage.dashboards)
+    }
+  },
     methods: {
-        addNewDashbord: function(targetName) {
+        addNewDashbord: function(targetName, isChart) {
             console.log(this.tabIndex)
+            let newDashbordName = ++this.tabIndex + '';
+            const title = `New chart ${this.tabIndex}`
+            const dashbord = {
+                title: title,
+                name: newDashbordName,
+                content: 'New Tab content',
+                charts: []
+            }
+            if (isChart) {
+                dashbord.charts.push([
+                    {
+                        id: null,
+                        panels: ['isPanelActive', 'isPanelActive2'],
+                        isPanelActive: false,
+                        isPanelActive2: false,
+                        chartHeight: {},
+                        chartType: null,
+                        messagess: false,
+                        options: options
+                    }
+                ])
+            }
+            
+            this.dashboards.push(dashbord);
+            
+            this.dashboardsValue = newDashbordName;
+            this.addToLocalStorage()
+        },
+        addNewDashbordWithChart: function(targetName, isChart) {
+            console.log(this.tabIndex)
+            if (isChart) {
+                console.log(isChart)
+            }
             let newDashbordName = ++this.tabIndex + '';
             const title = `New chart ${this.tabIndex}`
             this.dashboards.push({
                 title: title,
                 name: newDashbordName,
                 content: 'New Tab content',
+                charts: []
 
             });
             
@@ -698,6 +762,7 @@ new Vue({
             
             this.dashboardsValue = activeName;
             this.dashboards = tabs.filter(tab => tab.name !== targetName);
+            this.addToLocalStorage()
         },
         editTabName: function(name,index) {
             console.log(name)
@@ -756,12 +821,13 @@ new Vue({
             }, 400)
         }, #}
 
-        togglePanel: function(panelName, dashboardIndex, graphIndex, chartIndex, w) {
-            console.log(panelName, dashboardIndex, graphIndex, chartIndex, w)
-            const currentChart =  this.dashboards[dashboardIndex].charts[graphIndex][chartIndex]; // get char by index
+        togglePanel: function(panelName, dashboardIndex, graphIndex, chartIndex) {
+            console.log(panelName, dashboardIndex, graphIndex, chartIndex)
+            const currentChart =  this.dashboards[dashboardIndex].charts[graphIndex][chartIndex]; // get chart by index
             console.log(currentChart)
             const chartBox = this.$refs[`myChart${dashboardIndex}${graphIndex}${chartIndex}`][0];
             const chart = chartBox.chart;
+            console.log(chartBox, chart)
             currentChart.panels.forEach((function(e) {
                 console.log(e)
                 if (e === panelName) {
@@ -774,7 +840,7 @@ new Vue({
 
             setTimeout(function() {
                 chart.setSize(null, null)
-            }, 400)
+            }, 450)
         },
         selectPlainCategory: function() {
             console.log(1)
@@ -793,12 +859,67 @@ new Vue({
         getFileIcon: function(type) {
             return false
         },
-        selectChart: function(item, e) {
+        selectChart: function(item, dashboardIndex, graphIndex, chartIndex) {
+            const currentChart =  this.dashboards[dashboardIndex].charts[graphIndex][chartIndex];
             if (item === 'data_table') {
-                this.options = options2;
+                currentChart.options = dataTable;
+                
             } else {
-                this.options = options;
+                currentChart.options = options;
+                const chartBox = this.$refs[`myChart${dashboardIndex}${graphIndex}${chartIndex}`][0];
+                chartBox.$el.nextElementSibling.classList.contains('highcharts-data-table') ? chartBox.$el.nextElementSibling.remove() : null;
             }
+        },
+        AddLargeGraphic: function(index) {
+            this.dashboards[index].charts.push([{
+                id: null,
+                panels: ['isPanelActive', 'isPanelActive2'],
+                isPanelActive: false,
+                isPanelActive2: false,
+                chartHeight: {},
+                chartType: null,
+                messagess: true,
+                options: options
+            }]);
+            this.addToLocalStorage()
+        },
+        AddSmallGraphics: function(index) {
+            this.dashboards[index].charts.push([
+                {
+                    id: null,
+                    panels: ['isPanelActive', 'isPanelActive2'],
+                    isPanelActive: false,
+                    isPanelActive2: false,
+                    chartHeight: {},
+                    chartType: null,
+                    messagess: false,
+                    options: options
+                },
+                {
+                    id: null,
+                    panels: ['isPanelActive', 'isPanelActive2'],
+                    isPanelActive: false,
+                    isPanelActive2: false,
+                    chartHeight: {},
+                    chartType: null,
+                    messagess: false,
+                    options: options
+                }
+            ])
+            this.addToLocalStorage()
+        },
+        deleteChart: function(dashboardIndex, graphIndex, chartIndex) {
+            const charts = this.dashboards[dashboardIndex].charts
+            const currentChart = charts[graphIndex][chartIndex]
+            console.log(charts, currentChart, charts[graphIndex])
+            charts[graphIndex].splice(chartIndex, 1)
+            if (charts[graphIndex].length === 0) {
+                charts.splice(graphIndex, 1)
+            }
+        },
+        addToLocalStorage: function(){
+            const dashboards = JSON.stringify(this.dashboards);
+            //localStorage.setItem('dashboards', dashboards)
         }
     }
 }); 
